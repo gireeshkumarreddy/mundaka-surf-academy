@@ -27,9 +27,9 @@
    the wave layer in front hides each letter until it has risen above the skyline */
 .hero__letter { display: inline-block; will-change: transform, opacity; }
 /* the word belongs to the scroll animation: it waits for hero.js (so it never shows and then vanishes on a slow
-   connection), and appears anyway after 4 s if the script never arrives */
+   connection), and appears anyway after 8 s if the script never arrives */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero:not(.hero--animated) .hero__title { opacity: 0; animation: heroWordFallback 0s 4s forwards; }
+  .js .hero:not(.hero--animated) .hero__title { opacity: 0; animation: heroWordFallback 0s 8s forwards; }
 }
 @keyframes heroWordFallback { to { opacity: 1; } }
 .hero--animated .hero__letter { opacity: 0; transform: translate3d(0, 108%, 0); }
