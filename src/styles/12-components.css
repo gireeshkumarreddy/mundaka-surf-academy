@@ -1,0 +1,156 @@
+/* ───────────── Poster used as a page hero (sixth reference) ───────────── */
+.poster--page { min-height: clamp(560px, 100vh, 980px); }
+.poster--page .poster__over, .poster--404 .poster__over { margin-top: calc(var(--header-h) + clamp(1.5rem, 4vw, 3rem)); }
+.poster--page .poster__title { font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6.6rem); }
+.poster__credits {
+  margin: 0.8rem 0 0; max-width: 70ch; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85;
+}
+.poster--404 .poster__title { color: var(--white); }
+
+/* ───────────── CTA band ───────────── */
+.cta-band { padding-block: clamp(3.5rem, 7vw, 6rem); border-top: 1px solid var(--line); }
+.cta-band__inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+.cta-band__title { font-size: var(--step-4); font-weight: 800; font-stretch: 78%; color: var(--sea); }
+.cta-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; }
+
+/* ───────────── Surf + weather cards (client's notes) ───────────── */
+.conditions__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.conditions__card { position: relative; display: grid; min-height: clamp(260px, 30vw, 380px); overflow: hidden; color: var(--white); text-decoration: none; isolation: isolate; }
+.conditions__card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--ease); }
+.conditions__card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(12, 12, 12, 0.48); transition: background 0.4s; }
+.conditions__card:hover img { transform: scale(1.04); }
+.conditions__card:hover::after { background: rgba(12, 12, 12, 0.36); }
+.conditions__body { display: grid; place-content: center; justify-items: center; gap: 0.8rem; padding: 2rem; text-align: center; }
+.conditions__title { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem); line-height: 1.1; }
+.conditions__text { max-width: 34ch; font-size: var(--step--1); opacity: 0.9; }
+.conditions__btn {
+  margin-top: 0.8rem; padding: 0.85rem 2rem; border: 1.5px solid var(--white); font-size: var(--step--2); font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; transition: background 0.25s, color 0.25s;
+}
+.conditions__card:hover .conditions__btn, .conditions__card:focus-visible .conditions__btn { background: var(--white); color: var(--ink); }
+
+/* ───────────── Framed statement over a photo (Haifins "Estabilidad insana") ───────────── */
+.framed { position: relative; display: grid; place-items: center; min-height: clamp(520px, 80vh, 820px); color: var(--white); overflow: hidden; isolation: isolate; }
+.framed--short { min-height: clamp(380px, 56vh, 560px); }
+.framed__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.framed::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12, 12, 12, 0.15), rgba(12, 12, 12, 0.5)); }
+.framed__inner { display: grid; justify-items: center; gap: 1.6rem; padding: 4rem var(--gutter); text-align: center; }
+.framed__box { padding: clamp(1.4rem, 3vw, 2.4rem) clamp(1.6rem, 4vw, 3.4rem); border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.framed__title { display: grid; font-family: var(--font-serif); font-weight: 400; line-height: 0.92; text-transform: uppercase; }
+.framed__title span { font-size: clamp(1.6rem, 1rem + 2.6vw, 3.2rem); font-style: italic; letter-spacing: 0.04em; }
+.framed__title em { font-size: clamp(2.6rem, 1.2rem + 6vw, 6.4rem); font-style: italic; }
+.framed__text { max-width: 46ch; font-size: var(--step-0); text-shadow: 0 1px 14px rgba(12, 12, 12, 0.5); }
+
+/* ───────────── Info cards ───────────── */
+.info { padding: 1.6rem 1.6rem 1.8rem; background: var(--white); border-top: 4px solid var(--brand-yellow); }
+.info h3 { margin-bottom: 0.6rem; font-size: var(--step-1); font-weight: 700; font-stretch: 85%; }
+.info p { font-size: var(--step--1); color: var(--ink-2); }
+
+/* ───────────── Spain map (Epic Portugal reference) ───────────── */
+.spain-map { width: 100%; height: auto; overflow: hidden; font-family: var(--font-sans); border-radius: 18px; }
+.map-dots { fill: #d9d4c8; opacity: 0.75; }
+.map-region { fill: #fbf9f4; stroke: var(--earth); stroke-width: 0.9; stroke-linejoin: round; transition: fill 0.3s; }
+.map-region:hover { fill: #f1ede3; }
+.map-region--home { fill: var(--kelp); stroke: var(--earth-ink); stroke-width: 1.1; }
+.map-region--home:hover { fill: #b2c393; }
+.map-inset { fill: none; stroke: var(--earth); stroke-width: 0.8; stroke-dasharray: 3 4; }
+.map-route { fill: none; stroke: var(--earth-ink); stroke-width: 1; stroke-dasharray: 1.5 4; stroke-linecap: round; }
+.map-distance rect { fill: #fbf9f4; stroke: var(--earth-ink); stroke-width: 0.9; }
+.map-distance text { font-size: 10px; fill: var(--earth-ink); font-weight: 500; }
+.map-label { font-size: 12px; fill: var(--earth-ink); font-weight: 500; }
+.map-label--sea { font-size: 11px; font-style: italic; fill: #9a9284; letter-spacing: 0.08em; }
+.map-label--region { font-size: 13px; font-weight: 600; }
+.map-label--home { font-size: 15px; font-weight: 700; fill: #4f5e36; }
+.map-label--pin { font-size: 18px; font-weight: 800; fill: var(--sea-800); letter-spacing: 0.02em; }
+.map-km { fill: var(--ink-3); font-weight: 400; }
+.map-leader { fill: none; stroke: var(--earth-ink); stroke-width: 0.8; }
+.map-city circle { fill: var(--earth-ink); }
+.map-pin-ring { fill: var(--brand-yellow); stroke: var(--ink); stroke-width: 2; }
+.map-pin-dot { fill: var(--ink); }
+.map-pin-pulse { fill: var(--brand-yellow); opacity: 0.25; transform-box: fill-box; transform-origin: center; animation: pulse 2.6s var(--ease) infinite; }
+@keyframes pulse { 0% { transform: scale(0.5); opacity: 0.45; } 100% { transform: scale(1.9); opacity: 0; } }
+.map-credit { font-size: 9px; fill: var(--ink-3); }
+
+/* ───────────── FAQ ───────────── */
+.faq__grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.faq__head { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.faq__list details { border-bottom: 1px solid var(--line); }
+.faq__list summary {
+  position: relative; padding: 1.25rem 3rem 1.25rem 0; cursor: pointer; list-style: none; font-size: var(--step-1); font-weight: 600; font-stretch: 90%;
+}
+.faq__list summary::-webkit-details-marker { display: none; }
+.faq__list summary::after {
+  content: ""; position: absolute; right: 0.4rem; top: 50%; width: 14px; height: 14px; margin-top: -7px;
+  background: linear-gradient(var(--sea), var(--sea)) center / 14px 2px no-repeat, linear-gradient(var(--sea), var(--sea)) center / 2px 14px no-repeat;
+  transition: transform 0.3s var(--ease);
+}
+.faq__list details[open] summary::after { transform: rotate(45deg); }
+.faq__list details p { padding: 0 0 1.4rem; color: var(--ink-2); max-width: 60ch; }
+
+/* ───────────── Embedded map (click to load) ───────────── */
+.embed { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--mist); }
+.embed__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(2px); transform: scale(1.05); }
+.embed__overlay {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1rem; padding: 2rem;
+  text-align: center; color: var(--white); background: rgba(12, 12, 12, 0.55);
+}
+.embed__overlay p { max-width: 36ch; font-size: var(--step--1); }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+@media (max-width: 760px) {
+  .conditions__grid { grid-template-columns: 1fr; }
+  .faq__grid { grid-template-columns: 1fr; }
+  .faq__head { position: static; }
+}
+
+/* ───────────── Interactive map ───────────── */
+.map { position: relative; }
+.map__controls { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1rem; }
+.map__btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; height: 40px; padding: 0 1.05rem; border-radius: 999px;
+  border: 1.5px solid rgba(139, 122, 98, 0.55); background: rgba(255, 255, 255, 0.55); color: var(--earth-ink);
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+  transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.4s var(--ease);
+}
+.map__btn .icon { width: 15px; height: 15px; }
+.map__btn:hover { background: var(--white); border-color: var(--earth); transform: translateY(-2px); }
+.map__btn.is-active { background: var(--brand-yellow); border-color: var(--brand-yellow); color: var(--ink); }
+.spain-map .map-region, .spain-map .map-leader, .spain-map .map-route, .spain-map .map-inset, .spain-map .map-link { vector-effect: non-scaling-stroke; }
+.map-region { cursor: pointer; }
+.map-region:hover { fill: #f7f0cf; }
+.map-region--home:hover { fill: #a9bd86; }
+.map-far, .map-dots { transition: opacity 0.6s var(--ease); }
+.map.is-zoomed .map-far { opacity: 0; pointer-events: none; }
+.map.is-zoomed .map-dots { opacity: 0.35; }
+.map-link {
+  fill: none; stroke: var(--sea); stroke-width: 1.8; stroke-dasharray: 5 6; opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+.map-link.is-on { opacity: 1; animation: mapDash 0.9s linear infinite; }
+@keyframes mapDash { to { stroke-dashoffset: -22; } }
+.map-city, .map-pin { cursor: pointer; outline: none; }
+.map-city-hit { fill: transparent; }
+.map-city-dot { fill: var(--earth-ink); transition: fill 0.3s, r 0.4s var(--ease); }
+.map-city:hover .map-city-dot, .map-city.is-on .map-city-dot, .map-city:focus-visible .map-city-dot { fill: var(--sea); r: 6px; }
+.map-city:focus-visible .map-city-hit { stroke: var(--sea); stroke-width: 2; }
+.map-city.is-on .map-label, .map-city:hover .map-label { fill: var(--sea); }
+.map-pin:hover .map-pin-ring, .map-pin:focus-visible .map-pin-ring { fill: #ffea3d; }
+.map-pin:focus-visible .map-pin-ring { stroke-width: 3; }
+.map__tip {
+  position: absolute; left: 0; top: 0; z-index: 3; display: grid; gap: 0.15rem; min-width: 150px; max-width: 260px; padding: 0.6rem 0.85rem;
+  border-radius: 12px; background: var(--ink); color: var(--white); font-size: 0.8rem; line-height: 1.35; text-align: center;
+  box-shadow: 0 16px 30px -14px rgba(12, 12, 12, 0.6); pointer-events: none;
+  opacity: 0; transform: translate(-50%, calc(-100% - 12px)) translate(var(--tx, 0), var(--ty, 0)) scale(0.94);
+  transition: opacity 0.25s, transform 0.35s var(--ease);
+}
+.map__tip.is-on { opacity: 1; transform: translate(-50%, calc(-100% - 14px)) translate(var(--tx, 0), var(--ty, 0)); }
+.map__tip::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 12px; height: 12px; background: inherit; transform: translateX(-50%) rotate(45deg); border-radius: 2px; }
+.map__tip strong { font-size: 0.9rem; }
+.map__tip span { opacity: 0.8; }
+.map__tip.is-card { pointer-events: auto; }
+.map__tip-link {
+  display: inline-block; justify-self: center; margin-top: 0.45rem; padding: 0.35rem 0.8rem; border-radius: 999px;
+  background: var(--brand-yellow); color: var(--ink); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+}
+.map__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 1.5rem; margin-top: 0.6rem; font-size: 0.72rem; color: var(--ink-3); }
+.map__foot p { margin: 0; }

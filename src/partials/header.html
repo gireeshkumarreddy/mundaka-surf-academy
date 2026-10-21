@@ -1,0 +1,54 @@
+{{> icons}}
+<a class="skip-link" href="#main">{{common.skip}}</a>
+<header class="site-header" data-site-header>
+  <div class="hdr">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+      <span class="menu-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">{{common.nav.menu}}</span>
+    </button>
+    <nav class="hdr__nav hdr__nav--start" aria-label="{{common.nav.label}}" data-nav-group>
+      <span class="hdr__pill" aria-hidden="true"></span>
+      <a href="{{link:about}}" data-nav="about">{{common.nav.about}}</a>
+      <a href="{{link:lessons}}" data-nav="lessons">{{common.nav.lessons}}</a>
+      <a href="{{link:plans}}" data-nav="plans">{{common.nav.plans}}</a>
+    </nav>
+    <a class="hdr__logo" href="{{link:home}}" data-nav="home" aria-label="{{config.brand.name}} — {{common.nav.home}}">{{> logo}}</a>
+    <div class="hdr__end">
+      <nav class="hdr__nav hdr__nav--end" aria-label="{{common.nav.labelSecondary}}" data-nav-group>
+        <span class="hdr__pill" aria-hidden="true"></span>
+        <a href="{{link:location}}" data-nav="location">{{common.nav.location}}</a>
+        <a href="{{link:contact}}" data-nav="contact">{{common.nav.contact}}</a>
+      </nav>
+      {{lang-switch}}
+      <a class="hdr__book" href="{{link:contact#booking}}" aria-label="{{common.cta.book}}" data-magnetic>
+        <span class="hdr__book-icon" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></span>
+        <span class="hdr__book-label">{{common.cta.book}}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu data-lenis-prevent hidden>
+  <nav aria-label="{{common.nav.label}}">
+    <ol class="mobile-menu__list">
+      <li><a href="{{link:home}}" data-nav="home"><span>01</span>{{common.nav.home}}</a></li>
+      <li><a href="{{link:about}}" data-nav="about"><span>02</span>{{common.nav.about}}</a></li>
+      <li><a href="{{link:lessons}}" data-nav="lessons"><span>03</span>{{common.nav.lessons}}</a></li>
+      <li><a href="{{link:plans}}" data-nav="plans"><span>04</span>{{common.nav.plans}}</a></li>
+      <li><a href="{{link:location}}" data-nav="location"><span>05</span>{{common.nav.location}}</a></li>
+      <li><a href="{{link:contact}}" data-nav="contact"><span>06</span>{{common.nav.contact}}</a></li>
+    </ol>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--accent btn--pill" href="{{link:contact#booking}}">{{common.cta.book}}</a>
+    {{#if config.whatsapp.number}}<a class="btn btn--ghost" href="#" data-whatsapp hidden><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>{{/if}}
+    {{lang-switch}}
+  </div>
+</div>
+
+<aside class="social-rail" aria-label="{{common.social}}">
+  <a href="{{config.social.instagram.url}}" target="_blank" rel="noopener" aria-label="Instagram {{config.social.instagram.handle}}"><svg class="icon"><use href="#i-instagram"/></svg></a>
+  {{#if config.whatsapp.number}}<a href="#" data-whatsapp hidden aria-label="WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg></a>{{/if}}
+</aside>
+
+<div class="page-curtain" aria-hidden="true"><img src="{{src:logo-mark@256}}" alt="" width="256" height="111"></div>

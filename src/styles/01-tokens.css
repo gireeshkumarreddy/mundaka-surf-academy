@@ -1,0 +1,54 @@
+/* Design tokens — white, black text and the logo's radium yellow (#FBDE04). No blue in the interface:
+   the --sea* names are kept for compatibility but now hold black. Photos keep their natural colour.
+   Green (--kelp) is reserved for the map highlight, as in the location reference. */
+:root {
+  --white: #ffffff;
+  --foam: #f6f5f2;
+  --sand: #f6f2ea;
+  --mist: #ecebe7;
+  --ink: #141414;
+  --ink-2: #4a4a48;
+  --ink-3: #6b6a67;
+  --sea: #141414;
+  --sea-600: #000000;
+  --sea-800: #000000;
+  --deep: #141414;
+  --atlantic: #fbde04;
+  --sky: #ecebe6;
+  --kelp: #bccb9f;
+  --brand-yellow: #fbde04;
+  --brand-yellow-600: #e8c900;
+  --header-bg: #ffffff;
+  --earth: #8b7a62;
+  --earth-ink: #6e5f4a;
+  --line: rgba(20, 20, 20, 0.12);
+  --line-strong: rgba(20, 20, 20, 0.26);
+  --danger: #b3262f;
+  --success: #12795a;
+
+  --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  --step--2: clamp(0.7rem, 0.68rem + 0.08vw, 0.75rem);
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.4rem);
+  --step-2: clamp(1.45rem, 1.27rem + 0.9vw, 2rem);
+  --step-3: clamp(1.9rem, 1.5rem + 2vw, 3.1rem);
+  --step-4: clamp(2.5rem, 1.8rem + 3.6vw, 4.8rem);
+  --step-5: clamp(3.2rem, 2rem + 6.5vw, 8rem);
+
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --max: 1240px;
+  --radius: 4px;
+  --radius-lg: 14px;
+  --shadow: 0 22px 44px -22px rgba(12, 12, 12, 0.45);
+  --shadow-soft: 0 10px 30px -18px rgba(12, 12, 12, 0.4);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --header-h: 96px;
+}
+
+@media (max-width: 1023px) {
+  :root { --header-h: 84px; }
+}

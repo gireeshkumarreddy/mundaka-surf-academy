@@ -1,0 +1,21 @@
+<section class="conditions" id="conditions" aria-labelledby="conditions-title">
+  <h2 class="visually-hidden" id="conditions-title">{{conditions.title}}</h2>
+  <div class="conditions__grid">
+    <a class="conditions__card" href="{{config.conditions.waves}}" target="_blank" rel="noopener">
+      {{img name=stock-wave-tunnel sizes="(min-width: 760px) 50vw, 100vw" alt=-}}
+      <span class="conditions__body">
+        <span class="conditions__title">{{conditions.waves.title}}</span>
+        <span class="conditions__text">{{conditions.waves.text}}</span>
+        <span class="conditions__btn">{{conditions.waves.cta}}<span class="visually-hidden"> ({{common.newTab}})</span></span>
+      </span>
+    </a>
+    <a class="conditions__card" href="{{config.conditions.weather}}" target="_blank" rel="noopener">
+      {{img name=stock-hermitage sizes="(min-width: 760px) 50vw, 100vw" alt=- style="object-position: 50% 20%"}}
+      <span class="conditions__body">
+        <span class="conditions__title">{{conditions.weather.title}}</span>
+        <span class="conditions__text">{{conditions.weather.text}}</span>
+        <span class="conditions__btn">{{conditions.weather.cta}}<span class="visually-hidden"> ({{common.newTab}})</span></span>
+      </span>
+    </a>
+  </div>
+</section>

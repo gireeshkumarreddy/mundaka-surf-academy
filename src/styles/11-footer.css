@@ -1,0 +1,90 @@
+/* Footer — full photo with grain, arch outlines, wide uppercase type (fourth reference image).
+   Neutral dark tints only: no blue. */
+/* clipped so items still waiting to fade up cannot make the page taller (a white strip under the footer) */
+.site-footer { position: relative; color: var(--white); background: var(--deep); overflow: hidden; overflow: clip; }
+.site-footer__photo { position: absolute; inset: 0 0 auto; height: var(--footer-h); overflow: hidden; }
+.site-footer__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.site-footer__photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.6) 100%);
+}
+.site-footer { --footer-h: clamp(640px, 100vh, 900px); }
+.site-footer__arches { position: absolute; inset: 0 0 auto; height: var(--footer-h); overflow: hidden; pointer-events: none; }
+.arch { position: absolute; border: 1.5px solid rgba(255, 255, 255, 0.92); border-radius: 999px 999px 0 0; border-bottom: 0; }
+.arch--center { left: 50%; width: min(42vw, 520px); top: 24%; bottom: 14%; transform: translateX(-50%); border-bottom: 1.5px solid rgba(255, 255, 255, 0.92); border-radius: 999px 999px 0 0; }
+.arch--left { left: calc(min(30vw, 380px) * -1); width: min(42vw, 520px); top: 34%; bottom: -10%; }
+.arch--right { right: calc(min(30vw, 380px) * -1); width: min(42vw, 520px); top: 34%; bottom: -10%; }
+
+.site-footer__inner {
+  position: relative; display: grid; grid-template-rows: auto 1fr auto; min-height: var(--footer-h);
+  width: min(100% - 2 * var(--gutter), 1400px); margin-inline: auto; padding-block: clamp(2rem, 4vw, 3.5rem);
+}
+.site-footer__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
+/* the logo sits straight on the photo; a dark edge and soft shadow keep the yellow lettering readable */
+.footer-badge { display: block; width: clamp(160px, 15vw, 220px); text-decoration: none; transition: transform 0.6s var(--ease); }
+.footer-badge .logo {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.95)) drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
+}
+.footer-badge:hover { transform: rotate(-2deg) scale(1.03); }
+.footer-claim { text-align: right; }
+.footer-claim__over { margin: 0 0 0.6rem; font-size: clamp(0.85rem, 1.4vw, 1.35rem); font-weight: 600; font-stretch: 118%; letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-claim__big {
+  font-size: clamp(2.4rem, 6.2vw, 5.4rem); font-weight: 600; font-stretch: 122%; line-height: 0.98; letter-spacing: 0.03em;
+  text-transform: uppercase; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+}
+.footer-arch-nav { position: relative; }
+.footer-arch-nav a {
+  position: absolute; font-size: clamp(0.72rem, 1.1vw, 0.95rem); font-weight: 600; font-stretch: 118%; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35); white-space: nowrap;
+  padding: 0.7rem 0.4rem; margin: -0.7rem -0.4rem; /* touch area */
+}
+.footer-arch-nav a:hover { text-decoration: underline; text-decoration-color: var(--brand-yellow); text-decoration-thickness: 2px; }
+.footer-arch-nav__a { left: 10%; top: 6%; }
+.footer-arch-nav__b { left: 50%; top: 24%; transform: translateX(-50%); }
+.footer-arch-nav__c { right: 13%; top: 58%; }
+.footer-arch-nav__d { left: 34%; top: 86%; }
+
+.site-footer__bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+.footer-tagline {
+  max-width: 30ch; margin: 0; font-size: clamp(0.9rem, 1.45vw, 1.3rem); font-weight: 600; font-stretch: 118%;
+  line-height: 1.22; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.footer-actions { display: grid; justify-items: end; gap: 0.15rem; }
+.footer-actions a {
+  font-size: clamp(0.95rem, 1.5vw, 1.35rem); font-weight: 600; font-stretch: 118%; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+}
+.footer-actions a:hover { text-decoration: underline; }
+.footer-actions__book { font-size: clamp(1.1rem, 1.8vw, 1.55rem) !important; }
+
+.site-footer__legal { position: relative; background: var(--deep); border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.site-footer__legal-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem;
+  width: min(100% - 2 * var(--gutter), 1400px); margin-inline: auto; padding-block: 1.6rem; font-size: var(--step--1);
+}
+.footer-address { display: grid; gap: 0.1rem; }
+.footer-address a { text-decoration: none; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; }
+.footer-links a { text-decoration: none; opacity: 0.85; }
+.footer-links a:hover { opacity: 1; text-decoration: underline; }
+.footer-copy { margin: 0; opacity: 0.7; }
+.site-footer .review-note { color: #ffd28a; }
+
+@media (max-width: 760px) {
+  /* the footer grows with its content (the Spanish claim runs to four lines); photo and arches cover it all */
+  .site-footer { --footer-h: auto; }
+  .site-footer__photo, .site-footer__arches { inset: 0; height: auto; }
+  .footer-arch-nav { min-height: 230px; margin-block: 1.5rem; }
+  .site-footer__top { flex-direction: column; align-items: stretch; }
+  .footer-badge { justify-self: start; }
+  .footer-claim__big { font-size: clamp(2.3rem, 12vw, 3.6rem); }
+  .arch--center { width: 64vw; top: 40%; bottom: 20%; }
+  .arch--left, .arch--right { width: 60vw; left: -46vw; top: 50%; }
+  .arch--right { left: auto; right: -46vw; }
+  .footer-arch-nav__a { left: 0; top: 18%; }
+  .footer-arch-nav__b { top: 34%; }
+  .footer-arch-nav__c { right: 0; top: 60%; }
+  .footer-arch-nav__d { left: 22%; top: 82%; }
+  .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+  .footer-actions { justify-items: start; }
+}

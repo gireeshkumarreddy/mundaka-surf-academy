@@ -1,0 +1,220 @@
+<!--page {"key": "home", "slug": "index", "header": "dark"} -->
+<section class="hero" data-hero aria-labelledby="hero-title">
+  <div class="hero__sticky">
+    <div class="hero__frame">
+      <div class="hero__stage" data-hero-stage>
+        <picture class="hero__layer hero__bg">
+          <source media="(max-aspect-ratio: 11/10)" srcset="{{srcset:hero-mundaka-sq}}" sizes="100vw">
+          {{img name=hero-mundaka sizes="100vw" alt=home.hero.alt loading=eager fetchpriority=high}}
+        </picture>
+        <h1 class="hero__title" id="hero-title" data-hero-title>
+          <span class="hero__eyebrow">{{home.hero.eyebrow}}</span>
+          <span class="hero__word" aria-hidden="true">Mundaka</span>
+          <span class="visually-hidden">{{home.hero.srTitle}}</span>
+        </h1>
+        <picture class="hero__layer hero__fg" data-hero-fg aria-hidden="true">
+          <source media="(max-aspect-ratio: 11/10)" srcset="{{srcset:hero-mundaka-sq-fg}}" sizes="100vw">
+          {{img name=hero-mundaka-fg sizes="100vw" alt=- loading=eager}}
+        </picture>
+      </div>
+      <a class="hero__explore" href="#lessons-intro" data-hero-explore>{{home.hero.explore}}<svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+      <div class="hero__rise" data-hero-rise aria-hidden="true">
+        <div class="hero__rise-water">{{img name=rise-wave sizes="100vw" alt=-}}</div>
+        <div class="hero__rise-foam"></div>
+      </div>
+    </div>
+    <p class="hero__statement" data-hero-statement>{{home.hero.statement}}</p>
+  </div>
+</section>
+
+<section class="stories" id="lessons-intro" aria-labelledby="stories-title">
+  <h2 class="stories__vertical" id="stories-title">{{home.stories.title}}</h2>
+  <div class="stories__inner">
+    <div class="stories__intro" data-reveal>
+      <p class="eyebrow">{{home.stories.eyebrow}}</p>
+      <p class="lead">{{home.stories.lead}}</p>
+    </div>
+    <div class="stories__grid">
+      <article class="story story--a" data-parallax="-0.06">
+        <a class="story__media" href="{{link:lessons#private}}" tabindex="-1" aria-hidden="true">{{img name=stock-private sizes="(min-width: 1024px) 34vw, 92vw" alt=- style="object-position: 50% 35%"}}</a>
+        <div class="story__panel">
+          <p class="story__meta">01 · {{home.stories.private.meta}}</p>
+          <h3 class="story__title"><a href="{{link:lessons#private}}">{{lessons.types.private.name}}</a></h3>
+          <p>{{home.stories.private.text}}</p>
+          <span class="story__more" aria-hidden="true">{{common.more}}</span>
+        </div>
+      </article>
+      <article class="story story--b story--portrait" data-parallax="0.05">
+        <a class="story__media" href="{{link:lessons#group}}" tabindex="-1" aria-hidden="true">{{img name=stock-group sizes="(min-width: 1024px) 22vw, 92vw" alt=-}}</a>
+        <div class="story__panel">
+          <p class="story__meta">02 · {{home.stories.group.meta}}</p>
+          <h3 class="story__title"><a href="{{link:lessons#group}}">{{lessons.types.group.name}}</a></h3>
+          <p>{{home.stories.group.text}}</p>
+          <span class="story__more" aria-hidden="true">{{common.more}}</span>
+        </div>
+      </article>
+      <article class="story story--c" data-parallax="-0.1">
+        <a class="story__media" href="{{link:lessons#kids}}" tabindex="-1" aria-hidden="true">{{img name=stock-kids sizes="(min-width: 1024px) 24vw, 92vw" alt=-}}</a>
+        <div class="story__panel">
+          <p class="story__meta">03 · {{home.stories.kids.meta}}</p>
+          <h3 class="story__title"><a href="{{link:lessons#kids}}">{{lessons.types.kids.name}}</a></h3>
+          <p>{{home.stories.kids.text}}</p>
+          <span class="story__more" aria-hidden="true">{{common.more}}</span>
+        </div>
+      </article>
+      <article class="story story--d" data-parallax="0.04">
+        <a class="story__media" href="{{link:lessons#courses}}" tabindex="-1" aria-hidden="true">{{img name=stock-courses sizes="(min-width: 1024px) 34vw, 92vw" alt=-}}</a>
+        <div class="story__panel">
+          <p class="story__meta">04 · {{home.stories.courses.meta}}</p>
+          <h3 class="story__title"><a href="{{link:lessons#courses}}">{{lessons.types.courses.name}}</a></h3>
+          <p>{{home.stories.courses.text}}</p>
+          <span class="story__more" aria-hidden="true">{{common.more}}</span>
+        </div>
+      </article>
+      <article class="story story--e story--portrait" data-parallax="-0.05">
+        <a class="story__media" href="{{link:lessons#adaptive}}" tabindex="-1" aria-hidden="true">{{img name=stock-adaptive sizes="(min-width: 1024px) 22vw, 92vw" alt=-}}</a>
+        <div class="story__panel">
+          <p class="story__meta">05 · {{home.stories.adaptive.meta}}</p>
+          <h3 class="story__title"><a href="{{link:lessons#adaptive}}">{{lessons.types.adaptive.name}}</a></h3>
+          <p>{{home.stories.adaptive.text}}</p>
+          <span class="story__more" aria-hidden="true">{{common.more}}</span>
+        </div>
+      </article>
+    </div>
+    <div class="stories__cta" data-reveal><a class="btn btn--outline" href="{{link:lessons}}">{{home.stories.all}}</a></div>
+  </div>
+</section>
+
+<section class="meet" aria-labelledby="meet-title">
+  <p class="meet__over">{{home.meet.over}}</p>
+  <p class="meet__vertical vertical-text" aria-hidden="true">Xabier Gondra León</p>
+  <h2 class="meet__name" id="meet-title">Xabier Gondra León</h2>
+  <div class="meet__film" data-film>
+    <div class="film__screen" data-film-screen data-cursor="play">
+      <video muted loop playsinline preload="none" poster="{{asset:video/mundaka-promo.webp}}" aria-label="{{home.meet.film.label}}">
+        <source src="{{asset:video/mundaka-promo-720.mp4}}" type="video/mp4" media="(max-width: 900px)">
+        <source src="{{asset:video/mundaka-promo-1080.mp4}}" type="video/mp4">
+      </video>
+      <span class="film__badge">{{home.meet.film.badge}}</span>
+      <span class="film__big" aria-hidden="true"></span>
+    </div>
+    <div class="film__bar" data-no-motion>
+      <button class="btn btn--accent film__play" type="button" data-film-toggle aria-pressed="false"><span class="film__icon" aria-hidden="true"></span><span data-film-label>{{common.video.play}}</span></button>
+      <ol class="film__chapters" aria-label="{{home.meet.film.chapters}}">
+        <li style="--len: 2.83"><button type="button" data-film-seek="0"><span class="film__chap">{{home.meet.film.c1}}</span></button></li>
+        <li style="--len: 4"><button type="button" data-film-seek="2.83"><span class="film__chap">{{home.meet.film.c2}}</span></button></li>
+        <li style="--len: 5.17"><button type="button" data-film-seek="6.83"><span class="film__chap">{{home.meet.film.c3}}</span></button></li>
+        <li style="--len: 5.33"><button type="button" data-film-seek="12"><span class="film__chap">{{home.meet.film.c4}}</span></button></li>
+        <li style="--len: 5.83"><button type="button" data-film-seek="17.33"><span class="film__chap">{{home.meet.film.c5}}</span></button></li>
+        <li style="--len: 3"><button type="button" data-film-seek="23.17"><span class="film__chap">{{home.meet.film.c6}}</span></button></li>
+        <li style="--len: 3.67"><button type="button" data-film-seek="26.17"><span class="film__chap">{{home.meet.film.c7}}</span></button></li>
+      </ol>
+      <button class="film__full" type="button" data-film-full aria-label="{{home.meet.film.full}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </div>
+  <div class="meet__row">
+    <figure class="meet__bw meet__bw--start" data-reveal>{{img name=stock-hermitage sizes="(min-width: 1024px) 24vw, 80vw" alt=home.meet.bwAltA}}</figure>
+    <div class="meet__text" data-reveal>
+      <p>{{home.meet.text}}</p>
+      <a class="link-arrow" href="{{link:about}}">{{home.meet.link}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <figure class="meet__bw meet__bw--end" data-reveal>{{img name=xabier-dark-barrel sizes="(min-width: 1024px) 18vw, 60vw" alt=home.meet.bwAltB}}</figure>
+  </div>
+  <div class="meet__quote" data-reveal>
+    <p class="meet__quote-text">{{home.meet.statement}}</p>
+    <span class="meet__quote-rule" aria-hidden="true"></span>
+    <p class="meet__quote-source">{{config.brand.name}}</p>
+  </div>
+</section>
+
+<section class="catch" aria-labelledby="catch-title">
+  <div class="catch__bg" aria-hidden="true">{{img name=stock-catch-bg sizes="100vw" alt=-}}</div>
+  <div class="catch__inner">
+    <div class="catch__copy" data-reveal>
+      <h2 class="catch__title" id="catch-title">{{home.catch.title}}</h2>
+      <p>{{home.catch.text}}</p>
+      <p class="catch__label">{{home.catch.choose}}</p>
+      <ul class="plan-links">
+        <li><a class="plan-link" href="{{link:plans}}?plan=private"><span class="plan-link__n">01</span><span class="plan-link__name">{{lessons.types.private.name}}</span><span class="plan-link__go" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+        <li><a class="plan-link" href="{{link:plans}}?plan=group"><span class="plan-link__n">02</span><span class="plan-link__name">{{lessons.types.group.name}}</span><span class="plan-link__go" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+        <li><a class="plan-link" href="{{link:plans}}?plan=kids"><span class="plan-link__n">03</span><span class="plan-link__name">{{lessons.types.kids.name}}</span><span class="plan-link__go" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+        <li><a class="plan-link" href="{{link:plans}}?plan=courses"><span class="plan-link__n">04</span><span class="plan-link__name">{{lessons.types.courses.name}}</span><span class="plan-link__go" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+        <li><a class="plan-link" href="{{link:plans}}?plan=adaptive"><span class="plan-link__n">05</span><span class="plan-link__name">{{lessons.types.adaptive.name}}</span><span class="plan-link__go" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+      </ul>
+      <div class="catch__actions">
+        <a class="btn btn--accent btn--pill btn--lg" href="{{link:contact#booking}}" data-magnetic><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{common.cta.book}}</a>
+        <a class="btn btn--light btn--pill btn--lg" href="{{link:plans}}" data-magnetic>{{home.catch.cta}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <figure class="catch__frame" data-reveal="fade" data-tilt>
+      <div class="catch__photo">{{img name=xabier-carve sizes="(min-width: 1024px) 30vw, 70vw" alt=home.catch.alt}}</div>
+      <span class="catch__border" aria-hidden="true"></span>
+      <div class="catch__cut" aria-hidden="true">{{img name=xabier-carve-cut sizes="(min-width: 1024px) 30vw, 70vw" alt=-}}</div>
+    </figure>
+  </div>
+</section>
+
+<section class="strip section" aria-labelledby="strip-title">
+  <div class="container strip__head">
+    <div data-reveal>
+      <p class="eyebrow">{{home.strip.eyebrow}}</p>
+      <h2 class="title title--md" id="strip-title">{{home.strip.title}}</h2>
+    </div>
+    <a class="link-arrow" href="{{link:about#gallery}}">{{home.strip.link}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+  <div class="strip__track" tabindex="0" role="region" aria-label="{{home.strip.title}}">
+    <figure class="strip__item strip__item--video">
+      <div class="clip" data-clip>
+        <video muted loop playsinline preload="none" poster="{{asset:video/mundaka-session-28.webp}}" aria-label="{{home.strip.videoLabel}}">
+          <source src="{{asset:video/mundaka-session-28.mp4}}" type="video/mp4">
+        </video>
+        <button class="clip__toggle" type="button" data-clip-toggle aria-pressed="false"><span class="visually-hidden" data-clip-label>{{common.video.play}}</span></button>
+      </div>
+      <figcaption>{{home.strip.videoCaption}}</figcaption>
+    </figure>
+    <figure class="strip__item">{{img name=xabier-big-wall sizes="(min-width: 1024px) 30vw, 80vw" alt=gallery.bigWall}}<figcaption>{{gallery.bigWall}} <span class="credit">· {{gallery.creditKoldo}}</span></figcaption></figure>
+    <figure class="strip__item strip__item--tall">{{img name=spray-backlit sizes="(min-width: 1024px) 22vw, 70vw" alt=gallery.sprayBacklit}}<figcaption>{{gallery.sprayBacklit}}</figcaption></figure>
+    <figure class="strip__item">{{img name=xabier-snap sizes="(min-width: 1024px) 30vw, 80vw" alt=gallery.snap}}<figcaption>{{gallery.snap}}</figcaption></figure>
+    <figure class="strip__item">{{img name=mundaka-lineup sizes="(min-width: 1024px) 30vw, 80vw" alt=gallery.lineup}}<figcaption>{{gallery.lineup}}</figcaption></figure>
+    <figure class="strip__item strip__item--video">
+      <div class="clip" data-clip>
+        <video muted loop playsinline preload="none" poster="{{asset:video/mundaka-session-27.webp}}" aria-label="{{home.strip.videoLabel}}">
+          <source src="{{asset:video/mundaka-session-27.mp4}}" type="video/mp4">
+        </video>
+        <button class="clip__toggle" type="button" data-clip-toggle aria-pressed="false"><span class="visually-hidden" data-clip-label>{{common.video.play}}</span></button>
+      </div>
+      <figcaption>{{home.strip.videoCaption}}</figcaption>
+    </figure>
+    <figure class="strip__item">{{img name=xabier-dark-barrel sizes="(min-width: 1024px) 30vw, 80vw" alt=gallery.darkBarrel}}<figcaption>{{gallery.darkBarrel}} <span class="credit">· {{gallery.creditMartin}}</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="where section section--sand" aria-labelledby="where-title">
+  <div class="container where__grid">
+    <div class="where__copy" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md title--sea" id="where-title">{{home.where.title}}</h2>
+      <p class="where__text">{{home.where.text}}</p>
+      <div class="where__actions">
+        <a class="btn btn--pill" href="{{config.maps.directions}}" target="_blank" rel="noopener">{{common.cta.directions}}<span class="btn__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></a>
+        <a class="link-arrow" href="{{link:location}}">{{home.where.link}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="conditions-mini">
+        <li><a href="{{config.conditions.waves}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg>{{conditions.waves.short}}<span class="visually-hidden"> ({{common.newTab}})</span></a></li>
+        <li><a href="{{config.conditions.weather}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>{{conditions.weather.short}}<span class="visually-hidden"> ({{common.newTab}})</span></a></li>
+      </ul>
+    </div>
+    <div class="where__map" data-reveal="fade"><template data-defer>{{> spain-map}}</template></div>
+  </div>
+</section>
+
+<section class="poster" aria-labelledby="poster-title">
+  {{img name=mundaka-lineup sizes="100vw" alt=home.poster.alt class="poster__img"}}
+  <p class="poster__over">{{home.poster.over}}</p>
+  <div class="poster__bottom" data-reveal>
+    <p class="poster__kicker">{{home.poster.kicker}}</p>
+    <h2 class="poster__title" id="poster-title">{{home.poster.title}}</h2>
+    <p class="poster__season">{{home.poster.season}}</p>
+    <a class="btn btn--accent btn--pill" href="{{link:contact#booking}}">{{common.cta.book}}</a>
+  </div>
+</section>

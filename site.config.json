@@ -1,0 +1,74 @@
+{
+  "$comment": "Central site settings. Empty strings mean 'not supplied yet': the related UI stays hidden. Run `npm run build` after editing. Never put secret keys here; this file is published.",
+
+  "siteUrl": "",
+  "reviewMode": true,
+
+  "brand": {
+    "name": "Mundaka Surf Academy",
+    "instructor": "Xabier Gondra León",
+    "locality": "Mundaka",
+    "region": "Bizkaia",
+    "postalCode": "48360",
+    "country": "ES",
+    "geo": { "lat": 43.4075, "lng": -2.6986 }
+  },
+
+  "locales": {
+    "default": "en",
+    "enabled": ["en", "es"],
+    "planned": ["de", "fr"]
+  },
+
+  "contact": {
+    "email": "",
+    "phone": "",
+    "meetingPoint": "",
+    "openingHours": ""
+  },
+
+  "social": {
+    "instagram": { "url": "https://www.instagram.com/xabigondra/", "handle": "@xabigondra" }
+  },
+
+  "whatsapp": {
+    "$comment": "International format, digits only, no + or spaces (e.g. 34600000000). Leave empty to hide every WhatsApp button.",
+    "number": ""
+  },
+
+  "enquiry": {
+    "$comment": "provider: none | formspree | webhook | netlify. 'none' keeps the form in demo mode: it validates and reviews but tells the visitor nothing was sent.",
+    "provider": "none",
+    "endpoint": ""
+  },
+
+  "payments": {
+    "$comment": "Online payment is prepared but OFF. The checkout endpoint must be a server function holding the provider's secret key (see server/README.md).",
+    "enabled": false,
+    "provider": "stripe",
+    "mode": "deposit",
+    "depositPercent": null,
+    "currency": "EUR",
+    "checkoutEndpoint": "/api/create-checkout-session",
+    "acceptedMethods": ["card-online", "pay-on-arrival", "deposit-online"]
+  },
+
+  "season": {
+    "$comment": "From the questionnaire: monthly hour timetable from March to September.",
+    "fromMonth": 3,
+    "toMonth": 9
+  },
+
+  "conditions": {
+    "waves": "https://www.windguru.cz/3650",
+    "weather": "https://www.eltiempo.es/mundaka.html"
+  },
+
+  "maps": {
+    "directions": "https://www.google.com/maps/dir/?api=1&destination=Mundaka%2C%2048360%20Bizkaia%2C%20Spain",
+    "openStreetMap": "https://www.openstreetmap.org/?mlat=43.4075&mlon=-2.6986#map=15/43.4075/-2.6986",
+    "embed": "https://www.openstreetmap.org/export/embed.html?bbox=-2.7186%2C43.3985%2C-2.6786%2C43.4165&layer=mapnik&marker=43.4075%2C-2.6986"
+  },
+
+  "reviews": []
+}

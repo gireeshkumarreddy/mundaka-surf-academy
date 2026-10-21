@@ -1,0 +1,65 @@
+<!--page {"key": "location", "slug": "location", "header": "light"} -->
+<section class="loc-hero" aria-labelledby="loc-title">
+  <div class="loc-hero__img">{{img name=mundaka-santa-catalina sizes="100vw" alt=location.hero.alt loading=eager fetchpriority=high}}</div>
+  <div class="loc-hero__copy">
+    <span class="dash dash--white" aria-hidden="true"></span>
+    <h1 class="loc-hero__title" id="loc-title">Mundaka</h1>
+    <p>{{location.hero.text}}</p>
+    <a class="btn btn--pill" href="{{config.maps.directions}}" target="_blank" rel="noopener">{{common.cta.directions}}<span class="btn__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span><span class="visually-hidden"> ({{common.newTab}})</span></a>
+  </div>
+</section>
+
+<section class="discover section" aria-labelledby="discover-title">
+  <span class="discover__wash" aria-hidden="true"></span>
+  <div class="container discover__grid">
+    <div class="discover__copy" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md title--sea" id="discover-title">{{location.discover.title}}</h2>
+      <p>{{location.discover.text}}</p>
+      <dl class="discover__facts">
+        <div><dt>{{location.facts.addressK}}</dt><dd>Mundaka, {{config.brand.postalCode}} Bizkaia, {{common.country}}</dd></div>
+        <div><dt>{{location.facts.meetingK}}</dt><dd>{{tbc}}</dd></div>
+        <div><dt>{{location.facts.regionK}}</dt><dd>{{location.facts.regionV}}</dd></div>
+        <div><dt>{{location.facts.cityK}}</dt><dd>{{location.facts.cityV}}</dd></div>
+        <div><dt>{{location.facts.airportK}}</dt><dd>{{location.facts.airportV}}</dd></div>
+      </dl>
+    </div>
+    <div class="discover__map" data-reveal="fade"><template data-defer>{{> spain-map}}</template></div>
+  </div>
+</section>
+
+<section class="local section section--foam" aria-labelledby="local-title">
+  <div class="container local__grid">
+    <div class="local__map">
+      <div class="embed" data-embed data-src="{{config.maps.embed}}" data-title="{{location.local.mapTitle}}">
+        {{img name=hero-mundaka sizes="(min-width: 1024px) 60vw, 100vw" alt=- class="embed__poster"}}
+        <div class="embed__overlay">
+          <p>{{location.local.consent}}</p>
+          <button class="btn btn--white" type="button" data-embed-load><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>{{location.local.load}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="local__info" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="local-title">{{location.local.title}}</h2>
+      <address class="local__address">
+        <strong>{{config.brand.name}}</strong><br>
+        Mundaka, {{config.brand.postalCode}} Bizkaia<br>
+        {{common.country}}
+      </address>
+      <p class="small muted">{{location.local.meetingNote}} {{tbc}}</p>
+      <div class="local__links">
+        <a class="btn btn--pill" href="{{config.maps.directions}}" target="_blank" rel="noopener">{{common.cta.directions}}<span class="visually-hidden"> ({{common.newTab}})</span></a>
+        <a class="link-arrow" href="{{config.maps.openStreetMap}}" target="_blank" rel="noopener">{{location.local.osm}}<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg><span class="visually-hidden"> ({{common.newTab}})</span></a>
+      </div>
+      <h3 class="local__sub">{{location.local.gettingThere}}</h3>
+      <p>{{location.local.gettingThereText}}</p>
+    </div>
+  </div>
+</section>
+
+<div class="section section--tight">
+  <div class="container">{{> conditions}}</div>
+</div>
+
+{{> cta-band}}

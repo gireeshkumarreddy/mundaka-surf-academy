@@ -1,0 +1,32 @@
+<!--page {"key": "privacy", "slug": "privacy", "header": "dark"} -->
+<section class="legal section">
+  <div class="container--narrow">
+    <span class="dash" aria-hidden="true"></span>
+    <h1 class="title title--md">{{privacy.title}}</h1>
+    <p class="muted small">{{legalCommon.updated}} 20/10/2026 · {{legalCommon.draft}}</p>
+    <div class="prose">
+      <h2>{{privacy.controller.title}}</h2>
+      <p>{{privacy.controller.text}}</p>
+      <ul>
+        <li>{{legalCommon.owner}}: {{tbc}}</li>
+        <li>{{legalCommon.taxId}}: {{tbc}}</li>
+        <li>{{legalCommon.address}}: {{tbc}}</li>
+        <li>{{legalCommon.email}}: {{#if config.contact.email}}<a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a>{{/if}}{{#unless config.contact.email}}{{tbc}}{{/unless}}</li>
+      </ul>
+      <h2>{{privacy.data.title}}</h2>
+      <p>{{privacy.data.text}}</p>
+      <h2>{{privacy.purpose.title}}</h2>
+      <p>{{privacy.purpose.text}}</p>
+      <h2>{{privacy.basis.title}}</h2>
+      <p>{{privacy.basis.text}}</p>
+      <h2>{{privacy.retention.title}}</h2>
+      <p>{{privacy.retention.text}} {{tbc}}</p>
+      <h2>{{privacy.recipients.title}}</h2>
+      <p>{{privacy.recipients.text}}</p>
+      <h2>{{privacy.rights.title}}</h2>
+      <p>{{privacy.rights.text}}</p>
+      <h2>{{privacy.cookies.title}}</h2>
+      <p>{{privacy.cookies.text}}</p>
+    </div>
+  </div>
+</section>

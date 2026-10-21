@@ -1,0 +1,6 @@
+dist/
+node_modules/
+_source/
+.claude/
+*.log
+_qa/

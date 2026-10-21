@@ -1,0 +1,17 @@
+{
+  "name": "mundaka-surf-academy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Website for Mundaka Surf Academy (Xabier Gondra León). Static, bilingual (EN/ES), no runtime dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "dev": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs --no-watch",
+    "test": "node _tools/test-server.mjs && node scripts/build.mjs --check"
+  }
+}

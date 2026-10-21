@@ -1,0 +1,137 @@
+<!--page {"key": "about", "slug": "about", "header": "light"} -->
+<section class="poster poster--page" aria-labelledby="about-title">
+  {{img name=mundaka-santa-catalina sizes="100vw" alt=about.hero.alt class="poster__img" loading=eager fetchpriority=high}}
+  <p class="poster__over">{{about.hero.over}}</p>
+  <div class="poster__bottom">
+    <p class="poster__kicker">{{about.hero.kicker}}</p>
+    <h1 class="poster__title" id="about-title">{{about.hero.title}}</h1>
+    <p class="poster__credits">{{about.hero.credits}}</p>
+  </div>
+</section>
+
+<section class="section about-intro" aria-labelledby="intro-title">
+  <div class="container about-intro__grid">
+    <div data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="intro-title">{{about.intro.title}}</h2>
+    </div>
+    <div class="about-intro__text" data-reveal>
+      <p class="lead">{{about.intro.lead}}</p>
+      <p>{{about.intro.text}}</p>
+    </div>
+  </div>
+  <ul class="facts container" data-reveal>
+    <li><span class="facts__k">{{about.facts.whereK}}</span><span class="facts__v">Mundaka, Bizkaia</span></li>
+    <li><span class="facts__k">{{about.facts.levelsK}}</span><span class="facts__v">{{about.facts.levelsV}}</span></li>
+    <li><span class="facts__k">{{about.facts.whoK}}</span><span class="facts__v">{{about.facts.whoV}}</span></li>
+    <li><span class="facts__k">{{about.facts.seasonK}}</span><span class="facts__v">{{about.facts.seasonV}}</span></li>
+    <li><span class="facts__k">{{about.facts.inclusiveK}}</span><span class="facts__v">{{about.facts.inclusiveV}}</span></li>
+  </ul>
+</section>
+
+<section class="profile section section--foam" id="xabier" aria-labelledby="profile-title">
+  <div class="container profile__grid">
+    <div class="profile__media" data-reveal>
+      <figure class="profile__photo">{{img name=xabier-bottom-turn sizes="(min-width: 1024px) 40vw, 92vw" alt=about.profile.photoAlt}}</figure>
+      <figure class="profile__photo profile__photo--small">{{img name=xabier-layback sizes="(min-width: 1024px) 20vw, 50vw" alt=about.profile.photoAltB}}</figure>
+    </div>
+    <div class="profile__body" data-reveal>
+      <p class="eyebrow">{{about.profile.eyebrow}}</p>
+      <h2 class="profile__name serif" id="profile-title">Xabier<br>Gondra León</h2>
+      <p class="lead">{{about.profile.lead}}</p>
+      <dl class="profile__facts">
+        <div><dt>{{about.profile.baseK}}</dt><dd>Mundaka, Bizkaia (Euskadi)</dd></div>
+        <div><dt>{{about.profile.teachesK}}</dt><dd>{{about.profile.teachesV}}</dd></div>
+        <div><dt>{{about.profile.qualificationsK}}</dt><dd>{{tbc}}</dd></div>
+        <div><dt>{{about.profile.experienceK}}</dt><dd>{{tbc}}</dd></div>
+        <div><dt>{{about.profile.languagesK}}</dt><dd>{{tbc}}</dd></div>
+      </dl>
+      <a class="link-arrow" href="{{config.social.instagram.url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>{{config.social.instagram.handle}}<span class="visually-hidden"> ({{common.newTab}})</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="approach section" aria-labelledby="approach-title">
+  <div class="container approach__grid">
+    <div class="approach__head" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="approach-title">{{about.approach.title}}</h2>
+      <p class="lead">{{about.approach.lead}}</p>
+      <p class="review-note">{{about.approach.draft}}</p>
+    </div>
+    <ol class="approach__list">
+      <li data-reveal><span class="approach__n">01</span><h3>{{about.approach.a.title}}</h3><p>{{about.approach.a.text}}</p></li>
+      <li data-reveal><span class="approach__n">02</span><h3>{{about.approach.b.title}}</h3><p>{{about.approach.b.text}}</p></li>
+      <li data-reveal><span class="approach__n">03</span><h3>{{about.approach.c.title}}</h3><p>{{about.approach.c.text}}</p></li>
+      <li data-reveal><span class="approach__n">04</span><h3>{{about.approach.d.title}}</h3><p>{{about.approach.d.text}}</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="framed" aria-labelledby="adaptive-title">
+  {{img name=stock-adaptive-wide sizes="100vw" alt=- class="framed__img"}}
+  <div class="framed__inner">
+    <div class="framed__box" data-reveal>
+      <h2 class="framed__title" id="adaptive-title"><span>{{about.adaptive.title1}}</span><em>{{about.adaptive.title2}}</em></h2>
+    </div>
+    <p class="framed__text" data-reveal>{{about.adaptive.text}}</p>
+    <a class="btn btn--white btn--pill" href="{{link:lessons#adaptive}}">{{about.adaptive.cta}}</a>
+  </div>
+</section>
+
+<section class="gallery section" id="gallery" aria-labelledby="gallery-title" data-gallery>
+  <div class="container">
+    <div class="gallery__head" data-reveal>
+      <div>
+        <p class="eyebrow">{{about.gallery.eyebrow}}</p>
+        <h2 class="title title--md" id="gallery-title">{{about.gallery.title}}</h2>
+      </div>
+      <p class="muted small">{{about.gallery.note}}</p>
+    </div>
+    <ul class="gallery__grid">
+      <li class="g-wide"><button type="button" class="gallery__item" data-full="{{src:mundaka-santa-catalina@2400}}" data-caption="{{gallery.santaCatalina}}">{{img name=mundaka-santa-catalina sizes="(min-width: 1024px) 60vw, 100vw" alt=gallery.santaCatalina}}</button></li>
+      <li class="g-tall"><button type="button" class="gallery__item" data-full="{{src:spray-backlit@1439}}" data-caption="{{gallery.sprayBacklit}}">{{img name=spray-backlit sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.sprayBacklit}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:xabier-snap@1600}}" data-caption="{{gallery.snap}}">{{img name=xabier-snap sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.snap}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:xabier-barrel@1600}}" data-caption="{{gallery.barrel}}">{{img name=xabier-barrel sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.barrel}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:barrel-grey@1600}}" data-caption="{{gallery.barrelGrey}}">{{img name=barrel-grey sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.barrelGrey}}</button></li>
+      <li class="g-wide"><button type="button" class="gallery__item" data-full="{{src:mundaka-lineup@2400}}" data-caption="{{gallery.lineup}}">{{img name=mundaka-lineup sizes="(min-width: 1024px) 60vw, 100vw" alt=gallery.lineup}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:xabier-big-wall@1080}}" data-caption="{{gallery.bigWall}} · {{gallery.creditKoldo}}">{{img name=xabier-big-wall sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.bigWall}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:green-curl@1600}}" data-caption="{{gallery.greenCurl}}">{{img name=green-curl sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.greenCurl}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:xabier-trim@1600}}" data-caption="{{gallery.trim}}">{{img name=xabier-trim sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.trim}}</button></li>
+      <li class="g-wide"><button type="button" class="gallery__item" data-full="{{src:spray-turn@2000}}" data-caption="{{gallery.sprayTurn}}">{{img name=spray-turn sizes="(min-width: 1024px) 60vw, 100vw" alt=gallery.sprayTurn}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:barrel-blue@1600}}" data-caption="{{gallery.barrelBlue}}">{{img name=barrel-blue sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.barrelBlue}}</button></li>
+      <li><button type="button" class="gallery__item" data-full="{{src:xabier-dark-barrel@1600}}" data-caption="{{gallery.darkBarrel}} · {{gallery.creditMartin}}">{{img name=xabier-dark-barrel sizes="(min-width: 1024px) 30vw, 50vw" alt=gallery.darkBarrel}}</button></li>
+    </ul>
+    <div class="clips">
+      <figure class="clips__item">
+        <div class="clip" data-clip>
+          <video muted loop playsinline preload="none" poster="{{asset:video/mundaka-session-27.webp}}" aria-label="{{home.strip.videoLabel}}"><source src="{{asset:video/mundaka-session-27.mp4}}" type="video/mp4"></video>
+          <button class="clip__toggle" type="button" data-clip-toggle aria-pressed="false"><span class="visually-hidden" data-clip-label>{{common.video.play}}</span></button>
+        </div>
+        <figcaption>{{home.strip.videoCaption}}</figcaption>
+      </figure>
+      <figure class="clips__item">
+        <div class="clip" data-clip>
+          <video muted loop playsinline preload="none" poster="{{asset:video/mundaka-session-28.webp}}" aria-label="{{home.strip.videoLabel}}"><source src="{{asset:video/mundaka-session-28.mp4}}" type="video/mp4"></video>
+          <button class="clip__toggle" type="button" data-clip-toggle aria-pressed="false"><span class="visually-hidden" data-clip-label>{{common.video.play}}</span></button>
+        </div>
+        <figcaption>{{home.strip.videoCaption}}</figcaption>
+      </figure>
+    </div>
+  </div>
+  <dialog class="lightbox" data-lightbox aria-label="{{about.gallery.title}}">
+    <figure class="lightbox__figure"><img data-lightbox-img alt=""><figcaption data-lightbox-caption></figcaption></figure>
+    <button type="button" class="lightbox__btn lightbox__btn--prev" data-lightbox-prev aria-label="{{about.gallery.prev}}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lightbox__btn lightbox__btn--next" data-lightbox-next aria-label="{{about.gallery.next}}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lightbox__btn lightbox__btn--close" data-lightbox-close aria-label="{{about.gallery.close}}"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </dialog>
+</section>
+
+{{#if review}}<section class="section section--tight review-only" aria-labelledby="reviews-title">
+  <div class="container reviews-pending">
+    <h2 class="title title--md" id="reviews-title">{{about.reviews.title}}</h2>
+    <p class="review-note">{{about.reviews.pending}}</p>
+  </div>
+</section>{{/if}}
+
+{{> cta-band}}

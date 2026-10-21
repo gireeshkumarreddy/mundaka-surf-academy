@@ -1,0 +1,17 @@
+{
+  "name": "mundaka-promo-video",
+  "private": true,
+  "description": "30-second Spanish motion-graphics film for the instructor section (Remotion).",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Promo out/mundaka-promo.mp4 --codec=h264 --crf=20"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/transitions": "4.0.532",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.532"
+  }
+}

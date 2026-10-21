@@ -1,0 +1,15 @@
+<!--page {"key": "bookingStatus", "slug": "booking-status", "header": "dark", "noindex": true} -->
+<section class="status section" aria-labelledby="status-title" data-booking-status>
+  <div class="container--narrow status__inner">
+    <span class="dash" aria-hidden="true"></span>
+    <h1 class="title title--md" id="status-title" data-status-title>{{bookingStatus.generic.title}}</h1>
+    <p class="lead" data-status-text>{{bookingStatus.generic.text}}</p>
+    <template data-status="success"><h1>{{bookingStatus.success.title}}</h1><p>{{bookingStatus.success.text}}</p></template>
+    <template data-status="cancelled"><h1>{{bookingStatus.cancelled.title}}</h1><p>{{bookingStatus.cancelled.text}}</p></template>
+    <template data-status="failed"><h1>{{bookingStatus.failed.title}}</h1><p>{{bookingStatus.failed.text}}</p></template>
+    <div class="status__actions">
+      <a class="btn btn--pill" href="{{link:contact#booking}}">{{bookingStatus.back}}</a>
+      <a class="link-arrow" href="{{link:home}}">{{common.nav.home}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>

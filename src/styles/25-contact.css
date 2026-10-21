@@ -1,0 +1,89 @@
+/* ───────────── Contact & booking ───────────── */
+.contact-hero { padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 5rem)); }
+.contact-hero__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2rem, 6vw, 6rem); align-items: end; }
+.contact-hero .lead { margin-top: 1.2rem; }
+.channels { display: grid; gap: 0.6rem; }
+.channel {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--line); background: var(--white);
+  text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+}
+a.channel:hover { border-color: var(--sea); transform: translateX(3px); }
+.channel .icon { width: 40px; height: 40px; padding: 9px; border-radius: 50%; background: var(--brand-yellow); color: var(--ink); }
+.channel > span { display: grid; }
+.channel small { color: var(--ink-3); font-size: var(--step--1); }
+.channel--pending { border-style: dashed; border-color: #e0a64a; background: #fffaf0; }
+
+.booking__grid > * { min-width: 0; }
+.booking__grid { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.booking__intro { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.booking__intro > p { color: var(--ink-2); margin-top: 1rem; }
+.steps { display: grid; gap: 0.2rem; margin: 2rem 0; }
+.steps li { display: flex; align-items: center; gap: 0.9rem; padding: 0.5rem 0; color: var(--ink-3); font-weight: 600; font-size: var(--step--1); }
+.steps li span {
+  display: grid; place-items: center; width: 32px; height: 32px; border: 1.5px solid currentColor; border-radius: 50%; font-size: 0.8rem;
+}
+.steps li[aria-current="step"] { color: var(--sea); }
+.steps li[aria-current="step"] span { background: var(--brand-yellow); border-color: var(--brand-yellow); color: var(--ink); }
+.steps li.is-done { color: var(--ink); }
+.steps li.is-done span { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.booking__note { display: flex; gap: 0.8rem; padding: 1rem 1.1rem; background: var(--white); border-left: 3px solid var(--success); font-size: var(--step--1); }
+.booking__note .icon { color: var(--success); margin-top: 0.15rem; }
+
+.booking__form { padding: clamp(1.4rem, 4vw, 3rem); background: var(--white); box-shadow: var(--shadow-soft); }
+.booking__alert { margin-bottom: 1.4rem; padding: 1rem 1.2rem; border-left: 3px solid var(--danger); background: #fdf1f1; color: var(--danger); font-weight: 500; }
+.step { margin: 0; padding: 0; border: 0; display: grid; gap: 1.3rem; min-width: 0; }
+.step[hidden] { display: none; }
+.step__title { font-size: var(--step-2); font-weight: 800; font-stretch: 84%; margin-bottom: 0.4rem; padding: 0; }
+.step__title:focus { outline: none; }
+.step__error { color: var(--danger); font-size: var(--step--1); font-weight: 500; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.field--trap { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.textarea--short { min-height: 90px; }
+.season-note { padding: 0.8rem 1rem; background: #fff6e6; border-left: 3px solid #e0a64a; font-size: var(--step--1); }
+.check a { color: var(--sea); }
+
+.plan-options__set { min-width: 0; margin: 0; padding: 0; border: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.plan-option { position: relative; display: block; cursor: pointer; }
+.plan-option input { position: absolute; top: 1rem; right: 1rem; width: 20px; height: 20px; accent-color: var(--ink); }
+.plan-option__body {
+  display: grid; gap: 0.3rem; height: 100%; padding: 1rem 2.8rem 1rem 1.1rem; border: 1.5px solid var(--line-strong); border-radius: var(--radius);
+  transition: border-color 0.2s, background 0.2s;
+}
+.plan-option:hover .plan-option__body { border-color: var(--sea); }
+.plan-option input:checked + .plan-option__body { border-color: var(--sea); background: rgba(251, 222, 4, 0.06); box-shadow: inset 0 0 0 1px var(--sea); }
+.plan-option input:focus-visible + .plan-option__body { outline: 2px solid var(--sea); outline-offset: 2px; }
+.plan-option__name { font-weight: 700; }
+.plan-option__summary { font-size: var(--step--1); color: var(--ink-2); }
+.plan-option__price { font-size: var(--step--1); font-weight: 600; color: var(--sea); }
+
+.summary { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--line); }
+.summary div { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--line); font-size: var(--step--1); }
+.summary dt { color: var(--ink-3); font-weight: 600; }
+.summary dd { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+.summary__total { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 0; font-size: var(--step-1); }
+.summary__total strong { color: var(--sea); }
+.summary__pay { padding: 0.9rem 1rem; background: var(--foam); font-size: var(--step--1); }
+
+.booking__nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.booking__nav [data-next], .booking__nav [data-submit] { margin-left: auto; }
+.booking__wa { margin-top: 1rem; font-size: var(--step--1); }
+.booking__wa a { color: var(--sea); font-weight: 600; }
+.booking__done { display: grid; justify-items: start; gap: 0.8rem; padding: 1rem 0; }
+.booking__done[hidden] { display: none; }
+.booking__done > .icon { width: 44px; height: 44px; padding: 10px; border-radius: 50%; background: var(--success); color: var(--white); }
+.booking__done h3 { font-size: var(--step-2); }
+.booking__done p { color: var(--ink-2); max-width: 52ch; }
+.booking__done:focus { outline: none; }
+.booking__noscript { grid-column: 1 / -1; padding: 1rem; background: #fff6e6; }
+
+@media (max-width: 1023px) {
+  .contact-hero__grid, .booking__grid { grid-template-columns: 1fr; }
+  .booking__intro { position: static; }
+  .steps { grid-auto-flow: column; justify-content: start; gap: 1rem; margin: 1.4rem 0; overflow-x: auto; }
+}
+@media (max-width: 600px) {
+  .field-row, .plan-options__set { grid-template-columns: 1fr; }
+  .summary div { grid-template-columns: 1fr; gap: 0.1rem; }
+  .steps li { font-size: 0; gap: 0; }
+  .steps li span { font-size: 0.8rem; }
+}

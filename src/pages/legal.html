@@ -1,0 +1,28 @@
+<!--page {"key": "legal", "slug": "legal-notice", "header": "dark"} -->
+<section class="legal section">
+  <div class="container--narrow">
+    <span class="dash" aria-hidden="true"></span>
+    <h1 class="title title--md">{{legal.title}}</h1>
+    <p class="muted small">{{legalCommon.updated}} 20/10/2026 · {{legalCommon.draft}}</p>
+    <div class="prose">
+      <h2>{{legal.owner.title}}</h2>
+      <p>{{legal.owner.text}}</p>
+      <ul>
+        <li>{{legalCommon.owner}}: {{tbc}}</li>
+        <li>{{legalCommon.tradeName}}: {{config.brand.name}}</li>
+        <li>{{legalCommon.taxId}}: {{tbc}}</li>
+        <li>{{legalCommon.address}}: {{tbc}}</li>
+        <li>{{legalCommon.email}}: {{#if config.contact.email}}<a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a>{{/if}}{{#unless config.contact.email}}{{tbc}}{{/unless}}</li>
+      </ul>
+      <h2>{{legal.use.title}}</h2>
+      <p>{{legal.use.text}}</p>
+      <h2>{{legal.ip.title}}</h2>
+      <p>{{legal.ip.text}}</p>
+      <p>{{legal.ip.credits}}</p>
+      <h2>{{legal.links.title}}</h2>
+      <p>{{legal.links.text}}</p>
+      <h2>{{legal.law.title}}</h2>
+      <p>{{legal.law.text}}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,123 @@
+/* ───────────── Lessons hero (Haifins: wave fading into white, gradient title, floating card) ───────────── */
+.lessons-hero { position: relative; padding-top: var(--header-h); }
+.lessons-hero__img { position: relative; height: clamp(440px, 74vh, 760px); overflow: hidden; }
+.lessons-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.lessons-hero__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.7) 82%, #fff 100%); }
+.lessons-hero__copy {
+  position: absolute; top: calc(var(--header-h) + clamp(2rem, 6vw, 4.5rem)); right: max(var(--gutter), calc((100vw - 1240px) / 2));
+  display: grid; justify-items: end; text-align: right;
+}
+.lessons-hero__copy .eyebrow { color: var(--white); text-shadow: 0 1px 10px rgba(12, 12, 12, 0.4); }
+.lessons-hero__title { display: grid; justify-items: end; line-height: 0.95; }
+.lessons-hero__grad {
+  font-size: clamp(2.4rem, 1.2rem + 4.6vw, 5.4rem); font-weight: 800; font-stretch: 82%; text-transform: uppercase; letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #f3e3b8 0%, #ffffff 45%, #fff6b0 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 18px rgba(12, 12, 12, 0.35));
+}
+.lessons-hero__title em { font-size: clamp(2rem, 1rem + 3.6vw, 4.4rem); color: var(--white); text-transform: uppercase; text-shadow: 0 2px 18px rgba(12, 12, 12, 0.4); }
+.feature-card {
+  position: absolute; left: max(var(--gutter), calc((100vw - 1240px) / 2)); bottom: clamp(-2rem, -3vw, -1rem);
+  display: grid; gap: 0.35rem; width: clamp(200px, 20vw, 250px); padding: 1.2rem 1.3rem 1.4rem; background: var(--white);
+  box-shadow: var(--shadow); text-decoration: none; color: var(--ink); transition: transform 0.3s var(--ease);
+}
+.feature-card:hover { transform: translateY(-4px); }
+.feature-card__label { font-size: var(--step--2); color: var(--ink-3); }
+.feature-card__img { display: grid; place-items: center; height: 130px; background: radial-gradient(circle at 50% 70%, var(--mist), transparent 70%); }
+.feature-card__img img { height: 100%; width: auto; }
+.feature-card__name { font-size: var(--step-1); font-weight: 700; font-stretch: 85%; color: var(--sea); }
+.feature-card__sub { font-size: var(--step--2); color: var(--ink-3); }
+
+/* ───────────── Levels "anatomy" (Haifins anatomy diagram) ───────────── */
+.anatomy { overflow: hidden; }
+.anatomy__head { text-align: center; margin-bottom: clamp(2rem, 5vw, 4rem); padding-inline: var(--gutter); }
+.anatomy__title { font-size: clamp(1.2rem, 0.9rem + 1.2vw, 1.8rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.anatomy__sub { margin-top: 0.4rem; font-style: italic; color: var(--sea); font-size: var(--step-0); letter-spacing: 0.06em; text-transform: uppercase; }
+.anatomy__stage {
+  position: relative; display: grid; grid-template-columns: 1fr minmax(240px, 0.9fr) 1fr; grid-template-rows: auto auto; gap: clamp(1rem, 3vw, 3rem) clamp(1rem, 3vw, 2.4rem);
+  width: min(100% - 2 * var(--gutter), 1180px); margin-inline: auto; align-items: center;
+}
+.anatomy__center { grid-column: 2; grid-row: 1 / span 2; position: relative; display: grid; place-items: center; min-height: 420px; }
+.anatomy__streaks {
+  position: absolute; inset: 22% -30%;
+  background: repeating-linear-gradient(180deg, rgba(251, 222, 4, 0) 0 9px, rgba(251, 222, 4, 0.22) 9px 11px, rgba(251, 222, 4, 0) 11px 22px);
+  -webkit-mask: radial-gradient(closest-side, #000 30%, transparent); mask: radial-gradient(closest-side, #000 30%, transparent);
+  filter: blur(1.5px);
+}
+.anatomy__surfer { position: relative; width: min(100%, 300px); height: auto; filter: drop-shadow(0 30px 30px rgba(12, 12, 12, 0.25)); }
+.callout { position: relative; display: grid; gap: 0.5rem; max-width: 300px; }
+.callout__lens { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 24px -10px rgba(12, 12, 12, 0.6); }
+.callout__lens img { width: 100%; height: 100%; object-fit: cover; }
+.callout__title { font-size: var(--step--1); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.callout p { font-size: var(--step--1); line-height: 1.55; color: var(--ink-2); }
+.callout__line { position: absolute; top: 48px; height: 1px; width: clamp(40px, 7vw, 110px); background: var(--ink-3); }
+.callout--a { grid-column: 1; grid-row: 1; justify-self: end; text-align: right; justify-items: end; }
+.callout--a .callout__line { left: 100%; margin-left: 1rem; }
+.callout--b { grid-column: 3; grid-row: 1; }
+.callout--b .callout__line { right: 100%; margin-right: 1rem; }
+.callout--c { grid-column: 3; grid-row: 2; }
+.callout--c .callout__line { right: 100%; margin-right: 1rem; }
+.anatomy__note { text-align: center; margin-top: 2rem; }
+
+/* ───────────── Lesson finder ───────────── */
+.finder__grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.finder__intro p { color: var(--ink-2); max-width: 40ch; margin-top: 1rem; }
+.finder__form { display: grid; gap: 1.6rem; }
+.choice-group { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.choice-group legend { width: 100%; margin-bottom: 0.8rem; font-weight: 700; font-size: var(--step-0); }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.choice span {
+  display: inline-block; padding: 0.6rem 1.1rem; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--white);
+  font-size: var(--step--1); transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.choice input:checked + span { background: var(--brand-yellow); border-color: var(--brand-yellow); color: var(--ink); font-weight: 600; }
+.choice input:focus-visible + span { outline: 2px solid var(--sea); outline-offset: 3px; }
+.choice:hover span { border-color: var(--sea); }
+.finder__result { min-height: 160px; padding: 1.6rem; background: var(--white); border-left: 4px solid var(--brand-yellow); }
+.finder__placeholder { color: var(--ink-3); }
+.finder__label { font-size: var(--step--2); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sea); margin-bottom: 0.4rem; }
+.finder__plan { font-size: var(--step-2); font-weight: 800; font-stretch: 82%; line-height: 1.15; margin-bottom: 0.5rem; }
+.finder__why { color: var(--ink-2); }
+.finder__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; margin-top: 1.2rem; }
+
+/* ───────────── Lesson types ───────────── */
+.types__head { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.types__head .lead { margin-top: 1rem; }
+.types__list { display: grid; gap: clamp(3rem, 7vw, 6rem); }
+.type { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.6rem, 5vw, 5rem); align-items: center; scroll-margin-top: calc(var(--header-h) + 1rem); }
+.type--flip .type__media { order: 2; }
+.type__media { aspect-ratio: 5 / 4; overflow: hidden; box-shadow: var(--shadow); }
+.type__media img { width: 100%; height: 100%; object-fit: cover; }
+.type__n { font-family: var(--font-serif); font-size: 1.8rem; color: var(--sea); margin-bottom: 0.4rem; }
+.type__name { font-size: var(--step-3); font-weight: 800; font-stretch: 80%; margin-bottom: 1rem; }
+.type__body > p:not(.type__n) { color: var(--ink-2); max-width: 50ch; }
+.spec { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 1.6rem 0 1.8rem; border-top: 1px solid var(--line); }
+.spec div { padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--line); }
+.spec dt { font-size: var(--step--2); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.spec dd { margin: 0.2rem 0 0; font-size: var(--step--1); }
+.spec a { color: var(--sea); font-weight: 600; }
+
+.practical__head { margin-bottom: 2.4rem; }
+.practical__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+@media (max-width: 1023px) {
+  .lessons-hero__copy { position: relative; top: auto; right: auto; justify-items: start; text-align: left; padding: 1.6rem var(--gutter) 0; }
+  .lessons-hero__copy .eyebrow { color: var(--sea); text-shadow: none; }
+  .lessons-hero__title { justify-items: start; }
+  .lessons-hero__grad { background: none; color: var(--ink); filter: none; -webkit-text-fill-color: currentColor; }
+  .lessons-hero__title em { color: var(--sea); text-shadow: none; }
+  .lessons-hero__img { height: clamp(300px, 56vw, 520px); }
+  .feature-card { position: relative; left: auto; bottom: auto; margin: 1.6rem var(--gutter) 0; }
+  .anatomy__stage { grid-template-columns: 1fr 1fr; }
+  .anatomy__center { grid-column: 1 / -1; grid-row: 1; min-height: 320px; }
+  .callout--a, .callout--b, .callout--c { grid-row: auto; grid-column: auto; justify-self: start; text-align: left; justify-items: start; }
+  .callout__line { display: none; }
+  .finder__grid, .type { grid-template-columns: 1fr; }
+  .type--flip .type__media { order: 0; }
+  .practical__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .anatomy__stage { grid-template-columns: 1fr; }
+  .spec { grid-template-columns: 1fr; }
+  .practical__grid { grid-template-columns: 1fr; }
+}

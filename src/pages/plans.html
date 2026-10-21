@@ -1,0 +1,62 @@
+<!--page {"key": "plans", "slug": "plans", "header": "light"} -->
+<section class="plans-hero" aria-labelledby="plans-title" data-plans>
+  <div class="plans-hero__bg" aria-hidden="true">{{img name=stock-plans-bg sizes="100vw" alt=- loading=eager fetchpriority=high}}</div>
+  <div class="plans-hero__inner">
+    <div class="plans-hero__copy">
+      <h1 class="plans-hero__title" id="plans-title">{{plans.hero.title}}</h1>
+      <p class="plans-hero__text">{{plans.hero.text}}</p>
+      <div class="plan-tabs" role="tablist" aria-label="{{plans.hero.tabsLabel}}" data-plan-tabs>
+        <span class="plan-tabs__skeleton" aria-hidden="true"></span><span class="plan-tabs__skeleton" aria-hidden="true"></span><span class="plan-tabs__skeleton" aria-hidden="true"></span>
+      </div>
+      <form class="pill-form" data-plan-go novalidate>
+        <label class="visually-hidden" for="plan-email">{{plans.hero.emailLabel}}</label>
+        <input class="pill-form__input" id="plan-email" name="email" type="email" autocomplete="email" placeholder="{{plans.hero.emailPlaceholder}}">
+        <button class="pill-form__btn" type="submit">{{plans.hero.go}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </form>
+      <p class="pill-form__hint" data-plan-go-error hidden>{{plans.hero.emailError}}</p>
+      <a class="plans-hero__privacy" href="{{link:privacy}}">{{plans.hero.privacy}}</a>
+    </div>
+    <div class="plan-stage" data-plan-stage>
+      <figure class="plan-stage__frame" data-tilt>
+        <div class="plan-stage__photo" data-plan-photo>{{img name=xabier-carve sizes="(min-width: 1024px) 26vw, 70vw" alt=-}}</div>
+        <span class="plan-stage__border" aria-hidden="true"></span>
+      </figure>
+      <div class="plan-panel" role="tabpanel" data-plan-panel aria-live="polite">
+        <p class="plan-panel__status" data-plans-status>{{plans.loading}}</p>
+      </div>
+    </div>
+  </div>
+  <noscript><p class="plans-hero__noscript">{{plans.noscript}} <a href="{{link:contact}}">{{common.nav.contact}}</a></p></noscript>
+</section>
+
+<section class="compare section" aria-labelledby="compare-title">
+  <div class="container">
+    <div class="compare__head" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="compare-title">{{plans.compare.title}}</h2>
+      <p class="lead">{{plans.compare.lead}}</p>
+    </div>
+    <div class="compare__wrap" data-plans-compare>
+      <p class="compare__status" data-plans-compare-status>{{plans.loading}}</p>
+    </div>
+    <p class="small muted compare__updated" data-plans-updated></p>
+  </div>
+</section>
+
+<section class="pay section section--sand" aria-labelledby="pay-title">
+  <div class="container pay__grid">
+    <div data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="pay-title">{{plans.pay.title}}</h2>
+      <p class="lead">{{plans.pay.lead}}</p>
+    </div>
+    <ul class="pay__list">
+      <li class="info" data-reveal><h3>{{plans.pay.card.title}}</h3><p>{{plans.pay.card.text}}</p></li>
+      <li class="info" data-reveal><h3>{{plans.pay.deposit.title}}</h3><p>{{plans.pay.deposit.text}} {{tbc}}</p></li>
+      <li class="info" data-reveal><h3>{{plans.pay.arrival.title}}</h3><p>{{plans.pay.arrival.text}}</p></li>
+      <li class="info" data-reveal><h3>{{plans.pay.conditions.title}}</h3><p>{{plans.pay.conditions.text}} {{tbc}}</p></li>
+    </ul>
+  </div>
+</section>
+
+{{> cta-band}}

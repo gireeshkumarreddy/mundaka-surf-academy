@@ -1,0 +1,43 @@
+/* ───────────── Location (Epic Portugal reference: brushed photo edge, sand page, stylised map) ───────────── */
+.page-location { background: var(--sand); }
+.loc-hero { position: relative; color: var(--white); }
+.loc-hero__img {
+  height: clamp(560px, 100vh, 960px); overflow: hidden;
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 200px) no-repeat, url(../img/brush-edge.webp) bottom / 100% 202px no-repeat;
+  mask: linear-gradient(#000 0 0) top / 100% calc(100% - 200px) no-repeat, url(../img/brush-edge.webp) bottom / 100% 202px no-repeat;
+}
+.loc-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 40%; }
+.loc-hero__img::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 25%, rgba(12, 12, 12, 0.55), rgba(12, 12, 12, 0) 55%); }
+.loc-hero__copy {
+  position: absolute; top: calc(var(--header-h) + clamp(2rem, 6vw, 5rem)); left: max(var(--gutter), calc((100vw - 1240px) / 2));
+  max-width: 400px; text-shadow: 0 1px 16px rgba(12, 12, 12, 0.45);
+}
+.dash--white::before { background: var(--white); }
+.loc-hero__title { font-size: clamp(3rem, 2rem + 4vw, 5.4rem); font-weight: 700; font-stretch: 90%; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.loc-hero__copy p { font-size: var(--step-0); line-height: 1.75; margin-bottom: 1.6rem; }
+
+.discover { position: relative; overflow: hidden; }
+.discover__wash {
+  position: absolute; left: -16vw; bottom: -14%; width: min(34vw, 460px); height: 52%; opacity: 0.28; pointer-events: none;
+  background: url(../img/texture-wave-face-800.webp) center / cover;
+  -webkit-mask: url(../img/brush-frame.webp) center / 100% 100% no-repeat; mask: url(../img/brush-frame.webp) center / 100% 100% no-repeat;
+  filter: saturate(1.1) brightness(1.15);
+}
+.discover__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.discover__copy p { color: var(--sea); line-height: 1.85; max-width: 34ch; }
+.discover__copy .title { margin-bottom: 1.2rem; }
+.discover__facts { margin: 2rem 0 0; border-top: 1px solid rgba(139, 122, 98, 0.35); font-size: var(--step--1); }
+.discover__facts div { padding: 0.7rem 0; border-bottom: 1px solid rgba(139, 122, 98, 0.35); }
+.discover__facts dt { font-size: var(--step--2); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--earth-ink); }
+.discover__facts dd { margin: 0.15rem 0 0; color: var(--ink); }
+
+.local__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.local__address { margin: 1.2rem 0 0.8rem; line-height: 1.7; }
+.local__links { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; margin: 1.6rem 0 2rem; }
+.local__sub { font-size: var(--step-1); margin-bottom: 0.5rem; }
+.local__info > p:last-child { color: var(--ink-2); }
+
+@media (max-width: 1023px) {
+  .discover__grid, .local__grid { grid-template-columns: 1fr; }
+  .loc-hero__copy { right: var(--gutter); }
+}

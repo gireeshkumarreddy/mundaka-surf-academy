@@ -1,0 +1,59 @@
+<footer class="site-footer" aria-labelledby="footer-title">
+  <div class="site-footer__photo" aria-hidden="true">
+    {{img name=footer-walking-out sizes="100vw" alt=-}}
+  </div>
+
+  <div class="site-footer__arches" aria-hidden="true">
+    <span class="arch arch--left"></span>
+    <span class="arch arch--center"></span>
+    <span class="arch arch--right"></span>
+  </div>
+
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <a class="footer-badge" href="{{link:home}}" aria-label="{{config.brand.name}} — {{common.nav.home}}">
+        {{> logo-large}}
+      </a>
+      <div class="footer-claim">
+        <p class="footer-claim__over">{{config.brand.name}}</p>
+        <h2 class="footer-claim__big" id="footer-title">{{footer.claim}}</h2>
+      </div>
+    </div>
+
+    <nav class="footer-arch-nav" aria-label="{{common.nav.footer}}">
+      <a class="footer-arch-nav__a" href="{{link:lessons}}">{{common.nav.lessons}}</a>
+      <a class="footer-arch-nav__b" href="{{link:about}}">{{common.nav.about}}</a>
+      <a class="footer-arch-nav__c" href="{{link:location}}">{{common.nav.location}}</a>
+      <a class="footer-arch-nav__d" href="{{link:plans}}">{{common.nav.plans}}</a>
+    </nav>
+
+    <div class="site-footer__bottom">
+      <p class="footer-tagline">{{footer.tagline}}</p>
+      <div class="footer-actions">
+        <a class="footer-actions__book" href="{{link:contact#booking}}">{{common.cta.bookNow}}</a>
+        <a href="{{config.social.instagram.url}}" target="_blank" rel="noopener">{{config.social.instagram.handle}}</a>
+        {{#if config.whatsapp.number}}<a href="#" data-whatsapp hidden>WhatsApp</a>{{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__legal">
+    <div class="site-footer__legal-inner">
+      <address class="footer-address">
+        <strong>{{config.brand.name}}</strong>
+        <span>{{config.brand.locality}}, {{config.brand.postalCode}} {{config.brand.region}} · {{common.country}}</span>
+        {{#if config.contact.email}}<a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a>{{/if}}
+        {{#if config.contact.phone}}<a href="tel:{{config.contact.phone}}">{{config.contact.phone}}</a>{{/if}}
+        {{#if review}}<span class="review-note">{{footer.pendingContact}}</span>{{/if}}
+      </address>
+      <nav class="footer-links" aria-label="{{common.nav.legal}}">
+        <a href="{{link:home}}">{{common.nav.home}}</a>
+        <a href="{{link:contact}}">{{common.nav.contact}}</a>
+        <a href="{{link:privacy}}">{{common.nav.privacy}}</a>
+        <a href="{{link:legal}}">{{common.nav.legalNotice}}</a>
+      </nav>
+      <p class="footer-copy">© {{year}} {{config.brand.name}}. {{footer.rights}}</p>
+      {{lang-switch}}
+    </div>
+  </div>
+</footer>

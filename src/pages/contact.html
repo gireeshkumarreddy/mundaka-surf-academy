@@ -1,0 +1,182 @@
+<!--page {"key": "contact", "slug": "contact", "header": "dark"} -->
+<section class="contact-hero section" aria-labelledby="contact-title">
+  <div class="container contact-hero__grid">
+    <div data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h1 class="title" id="contact-title">{{contact.hero.title}}</h1>
+      <p class="lead">{{contact.hero.lead}}</p>
+    </div>
+    <ul class="channels" data-reveal>
+      <li><a class="channel" href="#booking"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span><strong>{{contact.channels.online}}</strong><small>{{contact.channels.onlineText}}</small></span></a></li>
+      {{#if config.whatsapp.number}}<li><a class="channel" href="#" data-whatsapp hidden><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span><strong>WhatsApp</strong><small>{{contact.channels.whatsappText}}</small></span></a></li>{{/if}}
+      {{#unless config.whatsapp.number}}<li class="review-only"><span class="channel channel--pending"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span><strong>WhatsApp</strong><small class="review-note">{{contact.channels.whatsappPending}}</small></span></span></li>{{/unless}}
+      {{#if config.contact.phone}}<li><a class="channel" href="tel:{{config.contact.phone}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><strong>{{config.contact.phone}}</strong><small>{{contact.channels.phoneText}}</small></span></a></li>{{/if}}
+      {{#if config.contact.email}}<li><a class="channel" href="mailto:{{config.contact.email}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><strong>{{config.contact.email}}</strong><small>{{contact.channels.emailText}}</small></span></a></li>{{/if}}
+      {{#unless config.contact.email}}<li class="review-only"><span class="channel channel--pending"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><strong>{{contact.channels.emailPhone}}</strong><small class="review-note">{{contact.channels.emailPending}}</small></span></span></li>{{/unless}}
+      <li><a class="channel" href="{{config.social.instagram.url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg><span><strong>{{config.social.instagram.handle}}</strong><small>{{contact.channels.instagramText}}</small></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="booking section section--foam" id="booking" aria-labelledby="booking-title" data-booking>
+  <div class="container booking__grid">
+    <div class="booking__intro">
+      <h2 class="title title--md" id="booking-title">{{contact.booking.title}}</h2>
+      <p>{{contact.booking.lead}}</p>
+      <ol class="steps">
+        <li data-step-dot="1" aria-current="step"><span>1</span>{{contact.steps.lesson}}</li>
+        <li data-step-dot="2"><span>2</span>{{contact.steps.when}}</li>
+        <li data-step-dot="3"><span>3</span>{{contact.steps.details}}</li>
+        <li data-step-dot="4"><span>4</span>{{contact.steps.review}}</li>
+      </ol>
+      <div class="booking__note">
+        <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+        <p>{{contact.booking.noPayment}}</p>
+      </div>
+      <p class="review-note" data-demo-note hidden>{{contact.booking.demoNote}}</p>
+    </div>
+
+    <form class="booking__form" data-booking-form novalidate>
+      <div class="booking__alert" data-booking-alert role="alert" hidden></div>
+
+      <fieldset class="step" data-step="1">
+        <legend class="step__title">{{contact.steps.lessonLong}}</legend>
+        <div class="plan-options" data-plan-options>
+          <p class="muted" data-plan-options-status>{{plans.loading}}</p>
+        </div>
+        <p class="step__error" data-error="plan" hidden>{{contact.errors.plan}}</p>
+        <div class="field" data-field="level">
+          <label for="b-level">{{contact.fields.level}}</label>
+          <select class="select" id="b-level" name="level" required aria-describedby="b-level-err">
+            <option value="">{{contact.fields.choose}}</option>
+            <option value="beginner">{{lessons.levels.beginner.title}}</option>
+            <option value="intermediate">{{lessons.levels.intermediate.title}}</option>
+            <option value="advanced">{{lessons.levels.advanced.title}}</option>
+            <option value="unsure">{{contact.fields.unsure}}</option>
+          </select>
+          <p class="error" id="b-level-err">{{contact.errors.level}}</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend class="step__title">{{contact.steps.whenLong}}</legend>
+        <div class="field-row">
+          <div class="field" data-field="date">
+            <label for="b-date">{{contact.fields.date}}</label>
+            <input class="input" id="b-date" name="date" type="date" required aria-describedby="b-date-hint b-date-err">
+            <p class="hint" id="b-date-hint">{{contact.fields.dateHint}}</p>
+            <p class="error" id="b-date-err">{{contact.errors.date}}</p>
+          </div>
+          <div class="field" data-field="time">
+            <label for="b-time">{{contact.fields.time}}</label>
+            <select class="select" id="b-time" name="time">
+              <option value="flexible">{{contact.fields.times.flexible}}</option>
+              <option value="morning">{{contact.fields.times.morning}}</option>
+              <option value="midday">{{contact.fields.times.midday}}</option>
+              <option value="afternoon">{{contact.fields.times.afternoon}}</option>
+            </select>
+          </div>
+        </div>
+        <p class="season-note" data-season-note hidden>{{contact.fields.outOfSeason}}</p>
+        <div class="field-row">
+          <div class="field" data-field="participants">
+            <label for="b-people">{{contact.fields.people}}</label>
+            <input class="input" id="b-people" name="participants" type="number" inputmode="numeric" min="1" max="40" value="1" required aria-describedby="b-people-err">
+            <p class="error" id="b-people-err">{{contact.errors.people}}</p>
+          </div>
+          <div class="field" data-field="ages">
+            <label for="b-ages">{{contact.fields.ages}}</label>
+            <input class="input" id="b-ages" name="ages" type="text" autocomplete="off" aria-describedby="b-ages-hint">
+            <p class="hint" id="b-ages-hint">{{contact.fields.agesHint}}</p>
+          </div>
+        </div>
+        <div class="field" data-field="availability">
+          <label for="b-availability">{{contact.fields.availability}}</label>
+          <textarea class="textarea textarea--short" id="b-availability" name="availability" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="3" hidden>
+        <legend class="step__title">{{contact.steps.detailsLong}}</legend>
+        <div class="field-row">
+          <div class="field" data-field="name">
+            <label for="b-name">{{contact.fields.name}}</label>
+            <input class="input" id="b-name" name="name" type="text" autocomplete="name" required aria-describedby="b-name-err">
+            <p class="error" id="b-name-err">{{contact.errors.name}}</p>
+          </div>
+          <div class="field" data-field="email">
+            <label for="b-email">{{contact.fields.email}}</label>
+            <input class="input" id="b-email" name="email" type="email" autocomplete="email" required aria-describedby="b-email-err">
+            <p class="error" id="b-email-err">{{contact.errors.email}}</p>
+          </div>
+        </div>
+        <div class="field" data-field="phone">
+          <label for="b-phone">{{contact.fields.phone}}</label>
+          <input class="input" id="b-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="b-phone-hint b-phone-err">
+          <p class="hint" id="b-phone-hint">{{contact.fields.phoneHint}}</p>
+          <p class="error" id="b-phone-err">{{contact.errors.phone}}</p>
+        </div>
+        <label class="check"><input type="checkbox" name="adaptive" value="yes"><span>{{contact.fields.adaptive}}</span></label>
+        <div class="field" data-field="message">
+          <label for="b-message">{{contact.fields.message}}</label>
+          <textarea class="textarea" id="b-message" name="message" rows="4" aria-describedby="b-message-hint"></textarea>
+          <p class="hint" id="b-message-hint">{{contact.fields.messageHint}}</p>
+        </div>
+        <div class="field field--trap" aria-hidden="true">
+          <label for="b-company">Company</label>
+          <input id="b-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field" data-field="consent">
+          <label class="check"><input type="checkbox" name="consent" value="yes" required aria-describedby="b-consent-err"><span>{{contact.fields.consent}}</span></label>
+          <p class="error" id="b-consent-err">{{contact.errors.consent}}</p>
+        </div>
+      </fieldset>
+
+      <section class="step" data-step="4" hidden aria-labelledby="review-title">
+        <h3 class="step__title" id="review-title">{{contact.steps.reviewLong}}</h3>
+        <dl class="summary" data-summary></dl>
+        <div class="summary__total" data-summary-total></div>
+        <p class="summary__pay" data-summary-pay></p>
+      </section>
+
+      <div class="booking__done" data-booking-done hidden tabindex="-1">
+        <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+        <h3 data-done-title></h3>
+        <p data-done-text></p>
+        <button class="btn btn--outline" type="button" data-restart>{{contact.booking.another}}</button>
+      </div>
+
+      <div class="booking__nav" data-booking-nav>
+        <button class="btn btn--outline" type="button" data-back hidden>{{contact.nav.back}}</button>
+        <button class="btn" type="button" data-next>{{contact.nav.next}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="btn" type="submit" data-submit hidden>{{contact.nav.submit}}</button>
+      </div>
+      <p class="booking__wa" data-wa-alt hidden>{{contact.booking.waAlt}} <a href="#" data-wa-booking target="_blank" rel="noopener">{{contact.booking.waLink}}</a></p>
+    </form>
+    <noscript><p class="booking__noscript">{{contact.booking.noscript}} <a href="{{config.social.instagram.url}}">{{config.social.instagram.handle}}</a></p></noscript>
+  </div>
+</section>
+
+<section class="faq section" id="faq" aria-labelledby="faq-title">
+  <div class="container faq__grid">
+    <div class="faq__head" data-reveal>
+      <span class="dash" aria-hidden="true"></span>
+      <h2 class="title title--md" id="faq-title">{{faq.title}}</h2>
+      <p>{{faq.lead}}</p>
+    </div>
+    <div class="faq__list">
+      <details><summary>{{faq.q1}}</summary><p>{{faq.a1}}</p></details>
+      <details><summary>{{faq.q2}}</summary><p>{{faq.a2}} {{tbc}}</p></details>
+      <details><summary>{{faq.q3}}</summary><p>{{faq.a3}}</p></details>
+      <details><summary>{{faq.q4}}</summary><p>{{faq.a4}}</p></details>
+      <details><summary>{{faq.q5}}</summary><p>{{faq.a5}}</p></details>
+      <details><summary>{{faq.q6}}</summary><p>{{faq.a6}}</p></details>
+      <details><summary>{{faq.q7}}</summary><p>{{faq.a7}}</p></details>
+      <details><summary>{{faq.q8}}</summary><p>{{faq.a8}} {{tbc}}</p></details>
+      <details><summary>{{faq.q9}}</summary><p>{{tbc}}</p></details>
+      <details><summary>{{faq.q10}}</summary><p>{{tbc}}</p></details>
+      <details><summary>{{faq.q11}}</summary><p>{{faq.a11}} {{tbc}}</p></details>
+      <details><summary>{{faq.q12}}</summary><p>{{faq.a12}} {{tbc}}</p></details>
+    </div>
+  </div>
+</section>

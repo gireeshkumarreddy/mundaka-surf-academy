@@ -1,0 +1,7 @@
+.legal, .status { padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 5rem)); }
+.legal .title { margin-bottom: 0.6rem; }
+.legal .prose { margin-top: 2rem; color: var(--ink-2); }
+.legal .prose h2 { color: var(--ink); }
+.status__inner { min-height: 50vh; }
+.status__inner .lead { margin: 1.2rem 0 2rem; }
+.status__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
