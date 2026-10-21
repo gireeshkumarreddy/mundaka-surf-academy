@@ -12,13 +12,17 @@ export default function initFilm(root, config) {
   const starts = chapters.map((b) => Number(b.dataset.filmSeek));
 
   // 0 while the film's bottom edge is entering the viewport, 1 once it is two thirds of the way up
+  // measured only while the film is near the screen: measuring it while its section is still skipped off-screen
+  // (content-visibility) would force the browser to render that whole section during page load
   let ticking = false;
+  let near = false;
   const grow = () => {
     ticking = false;
     if (reduceMotion.matches) {
       root.style.setProperty('--grow', '1');
       return;
     }
+    if (!near) return;
     const r = root.getBoundingClientRect();
     const vh = window.innerHeight;
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.8)));
@@ -33,7 +37,10 @@ export default function initFilm(root, config) {
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', request);
   reduceMotion.addEventListener?.('change', request);
-  request();
+  new IntersectionObserver(([entry]) => {
+    near = entry.isIntersecting;
+    if (near) request();
+  }, { rootMargin: '60% 0px' }).observe(root);
 
   const play = () => {
     video.preload = 'auto';

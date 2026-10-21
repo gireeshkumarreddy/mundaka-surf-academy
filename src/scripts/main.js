@@ -97,6 +97,8 @@ function initParallax() {
   const wide = window.matchMedia('(min-width: 1024px)');
   if (!items.length) return;
   let ticking = false;
+  // only cards near the screen are measured (measuring skipped off-screen sections would force them to render)
+  const near = new Set();
   const update = () => {
     ticking = false;
     const on = wide.matches && !reduceMotion.matches;
@@ -106,6 +108,7 @@ function initParallax() {
         el.style.removeProperty('--py');
         continue;
       }
+      if (!near.has(el)) continue;
       const r = el.getBoundingClientRect();
       if (r.bottom < -200 || r.top > window.innerHeight + 200) continue;
       el.style.setProperty('--py', `${((r.top + r.height / 2 - mid) * Number(el.dataset.parallax)).toFixed(1)}px`);
@@ -117,9 +120,13 @@ function initParallax() {
       requestAnimationFrame(update);
     }
   };
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) e.isIntersecting ? near.add(e.target) : near.delete(e.target);
+    request();
+  }, { rootMargin: '200px 0px' });
+  items.forEach((el) => io.observe(el));
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', request);
-  request();
 }
 
 initMotion();

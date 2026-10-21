@@ -15,6 +15,20 @@ const easeInOut = (t) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
 export default function initHero(root) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const sticky = root.querySelector('.hero__sticky');
+  // the foreground (sky cut away) and rising-wave layers are invisible until the hero moves, so they are only
+  // requested once the page has loaded (or on the first scroll): decoding them made the first paint wait on phones
+  const lazyLayers = [...root.querySelectorAll('[data-srcset]')];
+  let layersLoaded = false;
+  const loadLayers = () => {
+    if (layersLoaded) return;
+    layersLoaded = true;
+    for (const el of lazyLayers) {
+      el.srcset = el.dataset.srcset;
+      if (el.dataset.src) el.src = el.dataset.src;
+    }
+  };
+  if (document.readyState === 'complete') setTimeout(loadLayers, 0);
+  else window.addEventListener('load', () => setTimeout(loadLayers, 0), { once: true });
   const word = root.querySelector('.hero__word');
   let letters = [];
   let ticking = false;
@@ -43,6 +57,8 @@ export default function initHero(root) {
     const h = sticky.clientHeight;
     const total = root.offsetHeight - h;
     const p = clamp(-root.getBoundingClientRect().top / total);
+    root.classList.toggle('hero--moving', p > 0 && p < 1);
+    if (p > 0) loadLayers();
     const s = root.style;
 
     // 1. letters rise from behind the wave, one after another

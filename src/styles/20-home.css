@@ -9,14 +9,18 @@
   position: absolute; left: 50%; top: 50%; container-type: size;
   width: max(100vw, 100svh * var(--ar)); height: max(100svh, 100vw / var(--ar));
   transform: translate(-50%, -50%) translateY(var(--stage-y, 0px)) scale(var(--stage-scale, 1));
-  transform-origin: 50% 60%; will-change: transform;
+  transform-origin: 50% 60%;
 }
 .hero__layer, .hero__layer img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__layer img { object-fit: cover; }
-.hero__fg { transform: translateY(var(--fg-y, 0px)); will-change: transform; }
+.hero__fg { transform: translateY(var(--fg-y, 0px)); }
+/* compositing hints only while the hero is moving: set up front they made the very first paint rasterise several
+   full-screen layers (the biggest single delay before the first paint on phones) */
+.hero--moving :is(.hero__stage, .hero__fg, .hero__rise) { will-change: transform; }
+.hero--moving :is(.hero__title, .hero__letter) { will-change: transform, opacity; }
 .hero__title {
   position: absolute; left: var(--title-left, 0); right: 0; bottom: var(--title-bottom); display: grid; justify-items: center;
-  transform: translateY(var(--title-y, 0px)); opacity: var(--title-o, 1); will-change: transform, opacity;
+  transform: translateY(var(--title-y, 0px)); opacity: var(--title-o, 1);
 }
 .hero__word {
   font-size: var(--title-size); font-weight: 800; font-stretch: 74%; line-height: 0.74; letter-spacing: -0.012em;
@@ -25,7 +29,7 @@
 }
 /* letters rise one by one from behind the wave as you scroll (hero.js); the word clips nothing itself,
    the wave layer in front hides each letter until it has risen above the skyline */
-.hero__letter { display: inline-block; will-change: transform, opacity; }
+.hero__letter { display: inline-block; }
 /* the word belongs to the scroll animation: it waits for hero.js (so it never shows and then vanishes on a slow
    connection), and appears anyway after 8 s if the script never arrives */
 @media (prefers-reduced-motion: no-preference) {
@@ -65,7 +69,7 @@
 .hero--animated .hero__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .hero--animated .hero__rise {
   display: block; position: absolute; inset: 0 0 auto; height: 240svh; z-index: 2; pointer-events: none;
-  transform: translate3d(0, var(--rise, 100svh), 0); will-change: transform;
+  transform: translate3d(0, var(--rise, 100svh), 0);
 }
 .hero__rise-water { position: absolute; inset: 0 0 auto; height: 112svh; }
 .hero__rise-water img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }

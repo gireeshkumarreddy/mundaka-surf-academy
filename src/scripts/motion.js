@@ -178,6 +178,8 @@ function initReveals() {
 
   // anything already scrolled past (e.g. arriving on #anchor) shows at once
   window.addEventListener('load', () => requestAnimationFrame(() => {
+    // only when the page opened part-way down: measuring every target would force the skipped sections to render
+    if (window.scrollY === 0) return;
     targets.forEach((el) => {
       if (!el.classList.contains('is-in') && el.getBoundingClientRect().bottom < 0) el.classList.add('is-in');
     });

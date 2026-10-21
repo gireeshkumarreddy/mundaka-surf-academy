@@ -12,14 +12,15 @@
           <span class="hero__word" aria-hidden="true">Mundaka</span>
           <span class="visually-hidden">{{home.hero.srTitle}}</span>
         </h1>
+        <!-- the foreground and rising-wave layers only show once the hero moves: hero.js loads them after first paint -->
         <picture class="hero__layer hero__fg" data-hero-fg aria-hidden="true">
-          <source media="(max-aspect-ratio: 11/10)" srcset="{{srcset:hero-mundaka-sq-fg}}" sizes="100vw">
-          {{img name=hero-mundaka-fg sizes="100vw" alt=- loading=eager}}
+          <source media="(max-aspect-ratio: 11/10)" data-srcset="{{srcset:hero-mundaka-sq-fg}}" sizes="100vw">
+          <img data-src="{{src:hero-mundaka-fg@1024}}" data-srcset="{{srcset:hero-mundaka-fg}}" sizes="100vw" width="2048" height="1399" alt="" decoding="async">
         </picture>
       </div>
       <a class="hero__explore" href="#lessons-intro" data-hero-explore>{{home.hero.explore}}<svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
       <div class="hero__rise" data-hero-rise aria-hidden="true">
-        <div class="hero__rise-water">{{img name=rise-wave sizes="100vw" alt=-}}</div>
+        <div class="hero__rise-water"><img data-src="{{src:rise-wave@1024}}" data-srcset="{{srcset:rise-wave}}" sizes="100vw" width="1600" height="1066" alt="" decoding="async"></div>
         <div class="hero__rise-foam"></div>
       </div>
     </div>
