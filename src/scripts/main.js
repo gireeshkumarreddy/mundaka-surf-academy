@@ -129,6 +129,10 @@ function initParallax() {
   window.addEventListener('resize', request);
 }
 
+// The first screen needs no script (its entrance is pure CSS), so let the browser paint it before the scripts start:
+// on phones the start-up work below otherwise delayed the first paint.
+await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+
 initMotion();
 initHeader();
 initMenu();
