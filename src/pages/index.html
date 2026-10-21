@@ -204,7 +204,7 @@
         <li><a href="{{config.conditions.weather}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>{{conditions.weather.short}}<span class="visually-hidden"> ({{common.newTab}})</span></a></li>
       </ul>
     </div>
-    <div class="where__map" data-reveal="fade"><template data-defer>{{> spain-map}}</template></div>
+    <div class="where__map" data-reveal="fade"><template data-defer data-src="{{link:mapFragment}}"></template></div>
   </div>
 </section>
 

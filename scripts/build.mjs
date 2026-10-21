@@ -221,7 +221,9 @@ export async function build({ check = false, quiet = false } = {}) {
           return (kind === 'if' ? truthy : !truthy) ? yes : no;
         });
 
-      let html = layout.replace('{{content}}', () => page.body);
+      // a fragment (e.g. the Spain map) is written without the layout and fetched into pages when needed
+      let html = page.fragment ? `<!-- fragment: fetched into pages by main.js -->
+${page.body}` : layout.replace('{{content}}', () => page.body);
       for (let pass = 0; pass < 6 && html.includes('{{'); pass++) {
         html = conditionals(html);
         html = html.replace(/\{\{([^{}]+?)\}\}/g, (_, token) => helpers(token.trim()));
@@ -245,6 +247,9 @@ export async function build({ check = false, quiet = false } = {}) {
 
   // robots + sitemap (sitemap needs the production domain in site.config.json)
   const robots = ['User-agent: *', 'Allow: /'];
+  for (const l of config.locales.enabled) {
+    for (const p of pages.filter((p) => p.fragment)) robots.push(`Disallow: ${BASE}${l === defaultLocale ? '' : `${l}/`}${p.slug}.html`);
+  }
   if (config.siteUrl) {
     const base = config.siteUrl.replace(/\/$/, '');
     const urls = [];
@@ -318,6 +323,8 @@ async function checkLinks() {
   };
   for (const file of htmlFiles) {
     const html = await readFile(file, 'utf8');
+    // a fragment's own #references (icons) resolve against the page it is inserted into
+    const self = html.startsWith('<!-- fragment') ? path.join(path.dirname(file), 'index.html') : file;
     const refs = [];
     for (const m of html.matchAll(/\s(?:href|src|poster)="([^"]+)"/g)) refs.push(m[1]);
     for (const m of html.matchAll(/\ssrcset="([^"]+)"/g)) refs.push(...m[1].split(',').map((s) => s.trim().split(/\s+/)[0]));
@@ -326,7 +333,7 @@ async function checkLinks() {
       if (/^(https?:|mailto:|tel:|data:|javascript:)/.test(ref) || ref === '#') continue;
       const [p, hash] = ref.split('#');
       const clean = p.split('?')[0];
-      const target = !p ? file : clean.startsWith('/') ? path.join(DIST, clean.startsWith(BASE) ? clean.slice(BASE.length - 1) : clean) : path.resolve(path.dirname(file), clean);
+      const target = !p ? self : clean.startsWith('/') ? path.join(DIST, clean.startsWith(BASE) ? clean.slice(BASE.length - 1) : clean) : path.resolve(path.dirname(file), clean);
       if (!existsSync(target)) {
         problems.push(`${path.relative(DIST, file)} → missing ${ref}`);
         continue;

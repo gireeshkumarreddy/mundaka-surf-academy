@@ -150,15 +150,26 @@ const startModules = (root) => {
 };
 startModules(document);
 
-/* Heavy blocks (the Spain map) arrive as <template data-defer>: they are put in place, and their scripts started,
-   shortly before they scroll into view, so they cost nothing while the page first loads. */
+/* Heavy blocks (the Spain map) arrive as <template data-defer>, either inline or as a separate file (data-src): they
+   are put in place, and their scripts started, shortly before they scroll into view, so they cost nothing (not even
+   download time) while the page first loads. */
 const deferred = new IntersectionObserver((entries) => {
   for (const { target, isIntersecting } of entries) {
     if (!isIntersecting) continue;
     deferred.unobserve(target);
     const template = target.querySelector(':scope > template[data-defer]');
-    template.replaceWith(template.content);
-    startModules(target);
+    const place = (html) => {
+      if (html != null) template.insertAdjacentHTML('afterend', html);
+      else template.after(template.content);
+      template.remove();
+      startModules(target);
+    };
+    if (template.dataset.src) {
+      fetch(template.dataset.src)
+        .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`${res.status} ${template.dataset.src}`))))
+        .then(place)
+        .catch((err) => console.error('Deferred block failed to load', err));
+    } else place(null);
   }
-}, { rootMargin: '800px 0px' });
+}, { rootMargin: '1200px 0px' });
 document.querySelectorAll('template[data-defer]').forEach((t) => deferred.observe(t.parentElement));
