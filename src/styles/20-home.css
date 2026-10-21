@@ -77,6 +77,13 @@
   -webkit-mask: url(../img/brush-edge-top.webp) top / 100% 26svh no-repeat, linear-gradient(#000 0 0) 0 25svh / 100% calc(100% - 25svh) no-repeat;
   mask: url(../img/brush-edge-top.webp) top / 100% 26svh no-repeat, linear-gradient(#000 0 0) 0 25svh / 100% calc(100% - 25svh) no-repeat;
 }
+/* phones get the 800 px mask (10 KB instead of 82 KB); same layers, same order */
+@media (max-width: 767px) {
+  .hero__rise-water, .hero__rise-foam {
+    -webkit-mask-image: url(../img/brush-edge-top-sm.webp), linear-gradient(#000 0 0);
+    mask-image: url(../img/brush-edge-top-sm.webp), linear-gradient(#000 0 0);
+  }
+}
 .hero__rise-water::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12, 12, 12, 0) 30%, rgba(12, 12, 12, 0.28) 100%); }
 .hero__rise-foam { position: absolute; left: 0; right: 0; top: 86svh; bottom: 0; background: var(--white); }
 .hero--animated .hero__statement {

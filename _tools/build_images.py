@@ -119,3 +119,4 @@ save_variants(Image.fromarray((warm * 255).astype(np.uint8)), 'footer-walking-ou
 # flipped brush edge (ragged top) for layers that rise from below
 from PIL import Image as _I
 _I.open(f'{OUT}/brush-edge.webp').transpose(_I.FLIP_TOP_BOTTOM).save(f'{OUT}/brush-edge-top.webp', quality=90, alpha_quality=85, method=6)
+_I.open(f'{OUT}/brush-edge-sm.webp').transpose(_I.FLIP_TOP_BOTTOM).save(f'{OUT}/brush-edge-top-sm.webp', quality=90, alpha_quality=70, method=6)

@@ -98,12 +98,25 @@ site from the domain root, leave `SITE_BASE` unset.
 
 ## Mobile performance
 
-* The first screen of every page paints without waiting for scripts: its text and photo animate with CSS
-  (`03-motion.css`), and `motion.js` tags each later section's content only as it nears the screen.
-* Phones (touch screens) keep native scrolling; Lenis runs only with a mouse or trackpad.
-* The Spain map arrives as `<template data-defer>` and is put in place shortly before it scrolls into view.
-* Photos have phone-sized variants (768 px full-width, 560 px cards, 200 px logo); the CSS is minified at build time.
-* `npm run dev` gzips text files like most hosts, so local Lighthouse runs are realistic.
+Measured with PageSpeed Insights (mobile). Things that keep the site fast on phones — keep them in mind when editing:
+
+* **First screen first.** The first section of every page paints without waiting for scripts: its text and photo
+  animate with CSS (`03-motion.css`), and `main.js` starts its work only after the first frame has been painted.
+* **Off-screen sections are skipped** (`content-visibility: auto` in `03-motion.css`) until they near the screen.
+  Do not measure elements in later sections at start-up (`getBoundingClientRect`, `offsetTop`…): that forces the
+  browser to render them. Measure on scroll, behind an `IntersectionObserver` (see `film.js`, the parallax in
+  `main.js`). Pages opened with a `#section`, and in-page jumps, turn the skipping off (`cv-off`) so jumps are exact.
+  Nothing may overhang a section edge (it would be clipped): `node _qa/overflow.mjs 390 844` lists offenders.
+* **Hero:** the foreground (sky cut away) and rising-wave layers load after first paint (`data-srcset`, filled in by
+  `hero.js`); compositing hints apply only while the hero moves; Home preloads `hero.js` and skips the font preload
+  (page options `"preload"` and `"noFontPreload"`).
+* **The Spain map** is a separate fragment (`src/pages/map-fragment.html`, page option `"fragment": true`) fetched
+  shortly before it scrolls into view.
+* **No layout shift:** the plan tabs are written into the Plans page at build time (`{{plan-tabs}}`).
+* **Text:** no `text-rendering: optimizeLegibility`; `text-wrap: pretty` only from 768 px (both are costly on phones).
+* Phones keep native scrolling; Lenis runs only with a mouse or trackpad.
+* Photos have phone-sized variants (768 px full-width, 560 px cards, 200 px logo); CSS is minified at build time;
+  `npm run dev` gzips text files like most hosts.
 
 ## Credits
 

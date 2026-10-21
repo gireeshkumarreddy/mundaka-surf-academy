@@ -41,6 +41,8 @@ alpha = np.maximum(alpha, cv2.dilate(specks.astype(np.float32), np.ones((3, 3), 
 alpha = cv2.GaussianBlur(alpha, (0, 0), 0.7)
 alpha[:8] = 1
 as_mask(alpha).save(f'{OUT}/brush-edge.webp', quality=90, alpha_quality=85, method=6)
+# phone-sized copy (used below 768 px)
+as_mask(alpha).resize((800, 144), Image.LANCZOS).save(f'{OUT}/brush-edge-sm.webp', quality=90, alpha_quality=70, method=6)
 
 # square frame with brushed edges on every side
 S = 1000
@@ -56,4 +58,5 @@ for side in range(4):
 m = np.where(m > 0.5, np.clip(m * 1.4, 0, 1), m * 0.3)
 m = cv2.GaussianBlur(m, (0, 0), 0.7)
 as_mask(m).save(f'{OUT}/brush-frame.webp', quality=90, alpha_quality=85, method=6)
+as_mask(m).resize((480, 480), Image.LANCZOS).save(f'{OUT}/brush-frame-sm.webp', quality=90, alpha_quality=70, method=6)
 print('brush masks written')
