@@ -13,7 +13,11 @@ export let lenis = null;
 const HEADER_OFFSET = () => (window.innerWidth < 1024 ? 84 : 104);
 
 export function scrollToTarget(target, { immediate = false } = {}) {
-  if (lenis) lenis.scrollTo(target, { offset: -HEADER_OFFSET(), immediate });
+  html.classList.add('cv-off'); // render every section for real so the target's position is exact
+  if (lenis) {
+    lenis.resize();
+    lenis.scrollTo(target, { offset: -HEADER_OFFSET(), immediate });
+  }
   else target.scrollIntoView({ behavior: immediate || reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
 }
 
@@ -214,6 +218,12 @@ function initTransitions() {
     setTimeout(() => window.location.assign(url.href), 560);
   });
 }
+
+// an in-page #link (native jump on touch screens) needs real section heights too, before the browser scrolls
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href*="#"]');
+  if (a && new URL(a.href, window.location.href).pathname === window.location.pathname) html.classList.add('cv-off');
+}, { capture: true });
 
 export function initMotion() {
   if (reduceMotion.matches || !('IntersectionObserver' in window)) {

@@ -9,7 +9,7 @@ const config = getConfig();
 function initHeader() {
   const header = document.querySelector('[data-site-header]');
   if (!header) return;
-  let lastY = window.scrollY;
+  let lastY = 0; // read on the first frame: reading scrollY during start-up forces a full layout
   let ticking = false;
   const update = () => {
     ticking = false;

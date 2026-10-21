@@ -12,6 +12,13 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes motionFallback { to { opacity: 1; } }
 main > *, .site-footer { transition: opacity 0.5s var(--ease); }
 
+/* below the first screen the browser skips styling, layout and painting of each section until it nears the screen
+   (the biggest saving on phones). "auto" keeps a section's real height once it has been shown. Nothing on the site
+   overhangs a section edge, so the paint containment this implies clips nothing (checked with _qa/overflow.mjs). */
+main > :not(:first-child), .site-footer { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+/* jumping to a #section needs the real heights above it: off for pages opened with a hash or after an in-page jump */
+.cv-off main > :not(:first-child), .cv-off .site-footer { content-visibility: visible; }
+
 /* first screen: text rises in and photos settle, without waiting for scripts (motion.js leaves this section alone) */
 .js main > :first-child:not(.hero) :is(h1, h2, .eyebrow, .dash) { animation: firstRise 1.2s var(--ease) 0.1s backwards; }
 .js main > :first-child:not(.hero) :is(p, .btn, .link-arrow, address) { animation: firstRise 1.2s var(--ease) 0.3s backwards; }

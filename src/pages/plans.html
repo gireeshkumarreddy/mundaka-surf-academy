@@ -5,9 +5,7 @@
     <div class="plans-hero__copy">
       <h1 class="plans-hero__title" id="plans-title">{{plans.hero.title}}</h1>
       <p class="plans-hero__text">{{plans.hero.text}}</p>
-      <div class="plan-tabs" role="tablist" aria-label="{{plans.hero.tabsLabel}}" data-plan-tabs>
-        <span class="plan-tabs__skeleton" aria-hidden="true"></span><span class="plan-tabs__skeleton" aria-hidden="true"></span><span class="plan-tabs__skeleton" aria-hidden="true"></span>
-      </div>
+      <div class="plan-tabs" role="tablist" aria-label="{{plans.hero.tabsLabel}}" data-plan-tabs>{{plan-tabs}}</div>
       <form class="pill-form" data-plan-go novalidate>
         <label class="visually-hidden" for="plan-email">{{plans.hero.emailLabel}}</label>
         <input class="pill-form__input" id="plan-email" name="email" type="email" autocomplete="email" placeholder="{{plans.hero.emailPlaceholder}}">

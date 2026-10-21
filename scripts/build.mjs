@@ -49,6 +49,7 @@ export async function build({ check = false, quiet = false } = {}) {
   const images = await imageManifest(path.join(PUBLIC, 'assets/img'));
   const locales = {};
   for (const code of config.locales.enabled) locales[code] = await readJSON(path.join(SRC, 'locales', `${code}.json`));
+  const plansData = await readJSON(path.join(PUBLIC, 'data/plans.json'));
   const defaultLocale = config.locales.default;
 
   const layout = await readFile(path.join(SRC, 'layouts/base.html'), 'utf8');
@@ -140,6 +141,12 @@ export async function build({ check = false, quiet = false } = {}) {
             .join('')}</nav>`;
         }
         if (token === 'head-extra') return headExtra();
+        // the plan tabs are written into the page (plans.js takes them over), so nothing moves when the data arrives
+        if (token === 'plan-tabs') {
+          return plansData.plans
+            .map((p) => `<button type="button" role="tab" class="plan-tab" id="tab-${p.id}" data-id="${p.id}" aria-controls="plan-panel">${escapeHTML(p.name[locale] ?? p.name[defaultLocale])}</button>`)
+            .join('');
+        }
         if (token === 'site-config') return siteConfigScript();
         if (token.startsWith('meta.')) return t(`${page.key}.${token}`);
         if (token.startsWith('config.')) return escapeHTML(get(config, token.slice(7)) ?? '');

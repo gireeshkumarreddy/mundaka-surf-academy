@@ -9,14 +9,15 @@ body {
   font-family: var(--font-sans);
   font-size: var(--step-0);
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
 img, video, svg { display: block; max-width: 100%; }
 img { height: auto; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.08; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
-p { margin: 0 0 1em; text-wrap: pretty; }
+p { margin: 0 0 1em; }
+/* nicer paragraph line breaks where there is CPU to spare (it lays every paragraph out several times) */
+@media (min-width: 768px) { p { text-wrap: pretty; } }
 p:last-child { margin-bottom: 0; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 button, input, select, textarea { font: inherit; color: inherit; }

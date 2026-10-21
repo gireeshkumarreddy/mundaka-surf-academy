@@ -26,8 +26,6 @@
 .plan-tab[aria-selected="true"] { background: var(--brand-yellow); color: var(--ink); border-color: var(--brand-yellow); }
 .plan-tab[aria-selected="true"]::after { background: var(--ink); border-color: var(--ink); opacity: 1; transform: scale(1.1); }
 .plan-tab:last-child:nth-child(odd) { grid-column: 1 / -1; }
-.plan-tabs__skeleton { display: inline-block; height: 52px; border-radius: 14px; background: rgba(255, 255, 255, 0.18); animation: shimmer 1.4s ease-in-out infinite; }
-@keyframes shimmer { 50% { opacity: 0.45; } }
 .pill-form {
   display: flex; align-items: center; gap: 0.4rem; width: min(100%, 440px); height: 60px; padding: 6px 6px 6px 8px;
   border: 1.5px solid var(--white); border-radius: 999px; background: var(--white);
