@@ -151,6 +151,8 @@ export async function build({ check = false, quiet = false } = {}) {
         const out = [];
         const abs = (loc) => (config.siteUrl ? `${config.siteUrl.replace(/\/$/, '')}/${loc === defaultLocale ? '' : `${loc}/`}${page.slug === 'index' ? '' : `${page.slug}.html`}` : null);
         if (page.noindex) out.push('<meta name="robots" content="noindex">');
+        // page scripts that would otherwise only be requested once main.js has run ("preload" in the page header)
+        for (const file of page.preload ?? []) out.push(`<link rel="modulepreload" href="${up}assets/${file}">`);
         if (config.siteUrl && !page.noindex) {
           out.push(`<link rel="canonical" href="${abs(locale)}">`);
           for (const l of config.locales.enabled) out.push(`<link rel="alternate" hreflang="${l}" href="${abs(l)}">`);
