@@ -6,8 +6,8 @@
  *   STRIPE_WEBHOOK_SECRET   whsec_… from the Stripe dashboard (Developers → Webhooks)
  * Events to enable: checkout.session.completed, checkout.session.expired, checkout.session.async_payment_failed
  */
-import { json } from './shared.mjs';
-import { updateBooking } from './booking-store.mjs';
+import { json, sendMail, customerEmail } from './shared.mjs';
+import { updateBooking, getBooking } from './booking-store.mjs';
 
 const TOLERANCE_SECONDS = 300;
 
@@ -39,7 +39,17 @@ export default async function handler(request) {
   switch (event.type) {
     case 'checkout.session.completed':
       await updateBooking(reference, { status: session.payment_status === 'paid' ? 'paid' : 'pending', paidAmount: session.amount_total / 100, paymentIntent: session.payment_intent });
-      // TODO when activating: send the confirmation email to the customer and the academy here.
+      if (session.payment_status === 'paid') {
+        // confirmation to the customer and a copy to the academy (a mail failure must not make Stripe retry the event)
+        try {
+          const booking = await getBooking(reference);
+          const mail = customerEmail(booking, booking.estimate ?? {}, reference, 'paid', session.amount_total / 100);
+          if (booking?.contact?.email) await sendMail({ to: booking.contact.email, from: process.env.ENQUIRY_FROM, replyTo: process.env.ENQUIRY_TO, ...mail });
+          if (process.env.ENQUIRY_TO) await sendMail({ to: process.env.ENQUIRY_TO, from: process.env.ENQUIRY_FROM, replyTo: booking?.contact?.email, subject: `PAID deposit — ${mail.subject}`, text: mail.text });
+        } catch (err) {
+          console.error('confirmation email failed', err);
+        }
+      }
       break;
     case 'checkout.session.expired':
       await updateBooking(reference, { status: 'cancelled' });

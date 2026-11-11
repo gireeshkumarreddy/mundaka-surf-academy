@@ -23,15 +23,16 @@ export default async function handler(request) {
   }
   const { booking, plan, error } = await validateBooking(body.booking);
   if (error) return json({ error }, 422);
+  if (!booking.policyAccepted) return json({ error: 'policy' }, 422);
 
-  const est = estimate(plan, { participants: booking.participants, date: booking.date });
+  const est = estimate(plan, { participants: booking.participants, option: booking.option });
   if (est.total == null) return json({ error: 'price-not-published' }, 409);
-  const percent = Number(process.env.DEPOSIT_PERCENT) || 100;
+  const percent = Number(process.env.DEPOSIT_PERCENT) || 15;
   const dueNow = Math.round(est.total * percent) / 100;
 
   const reference = await createBooking({ ...booking, estimate: est, dueNow }, 'pending');
   const site = process.env.SITE_URL.replace(/\/$/, '');
-  const prefix = booking.locale === 'es' ? '/es' : '';
+  const prefix = booking.locale === 'en' ? '/en' : ''; // Spanish is served at the site root
   const params = new URLSearchParams({
     mode: 'payment',
     'line_items[0][quantity]': '1',

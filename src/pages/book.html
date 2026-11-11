@@ -1,0 +1,147 @@
+<!--page {"key": "book", "slug": "book", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="book-title">
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{book.eyebrow}}</p>
+    <h1 class="page-hero__title" id="book-title">{{book.title}}</h1>
+    <p class="lead">{{book.lead}}</p>
+  </div>
+  <img class="page-hero__badge" src="{{src:badge-clear@320}}" alt="" width="320" height="320" aria-hidden="true">
+</section>
+
+<section class="section booking" id="booking" aria-label="{{book.formLabel}}" data-booking>
+  <div class="container booking__grid">
+    <form class="booking__form" novalidate data-booking-form>
+      <p class="demo-note" data-demo-note hidden>{{book.demo}}</p>
+
+      <fieldset class="field-group">
+        <legend class="field-group__title"><span>1</span>{{book.step1}}</legend>
+        <div class="type-options">
+          <label class="type-option"><input type="radio" name="type" value="private" required><span class="type-option__body"><span class="type-option__name">{{lessons.private.name}}</span><span class="type-option__price">{{from-price:private}} {{lessons.table.perPersonHour}}</span></span></label>
+          <label class="type-option"><input type="radio" name="type" value="group"><span class="type-option__body"><span class="type-option__name">{{lessons.group.name}}</span><span class="type-option__price">{{common.from}} {{from-price:group}} {{lessons.table.perPersonDay}}</span></span></label>
+          <label class="type-option"><input type="radio" name="type" value="advanced"><span class="type-option__body"><span class="type-option__name">{{lessons.advanced.name}}</span><span class="type-option__price">{{common.from}} {{from-price:advanced}} {{lessons.table.perPersonDay}}</span></span></label>
+        </div>
+        <p class="field-error field-error--group" data-error="type" hidden>{{book.errors.type}}</p>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend class="field-group__title"><span>2</span>{{book.step2}}</legend>
+        <div class="fields">
+          <div class="field" data-field="option">
+            <label for="b-option" data-option-label>{{book.fields.option}}</label>
+            <select id="b-option" name="option" required disabled><option value="">{{book.fields.optionFirst}}</option></select>
+            <p class="field-error">{{book.errors.option}}</p>
+          </div>
+          <div class="field" data-field="date">
+            <label for="b-date">{{book.fields.date}}</label>
+            <input id="b-date" name="date" type="date" required>
+            <p class="field-error">{{book.errors.date}}</p>
+          </div>
+          <div class="field" data-field="participants">
+            <label for="b-people">{{book.fields.people}}</label>
+            <input id="b-people" name="participants" type="number" min="1" max="20" value="1" inputmode="numeric" required>
+            <p class="field-error">{{book.errors.people}}</p>
+          </div>
+          <div class="field" data-field="level">
+            <label for="b-level">{{book.fields.level}}</label>
+            <select id="b-level" name="level" required>
+              <option value="">{{book.fields.levelChoose}}</option>
+              <option value="beginner">{{common.levels.beginner}}</option>
+              <option value="intermediate">{{common.levels.intermediate}}</option>
+              <option value="advanced">{{common.levels.advanced}}</option>
+            </select>
+            <p class="field-error">{{book.errors.level}}</p>
+          </div>
+        </div>
+        <p class="field-hint">{{book.tideHint}}</p>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend class="field-group__title"><span>3</span>{{book.step3}}</legend>
+        <div class="fields">
+          <div class="field" data-field="name">
+            <label for="b-name">{{book.fields.name}}</label>
+            <input id="b-name" name="name" autocomplete="name" required>
+            <p class="field-error">{{book.errors.name}}</p>
+          </div>
+          <div class="field" data-field="email">
+            <label for="b-email">{{book.fields.email}}</label>
+            <input id="b-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error">{{book.errors.email}}</p>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="b-phone">{{book.fields.phone}}</label>
+            <input id="b-phone" name="phone" type="tel" autocomplete="tel">
+            <p class="field-error">{{book.errors.phone}}</p>
+          </div>
+          <div class="field field--full">
+            <label for="b-message">{{book.fields.message}}</label>
+            <textarea id="b-message" name="message" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend class="field-group__title"><span>4</span>{{book.step4}}</legend>
+        <div class="policy-box" id="policy">
+          <h3>{{conditions.title}}</h3>
+          <ul>
+            <li>{{conditions.items.deposit}}</li>
+            <li>{{conditions.items.balance}}</li>
+            <li>{{conditions.items.cancel}} {{tbc}}</li>
+            <li>{{conditions.items.weather}} {{tbc}}</li>
+            <li>{{conditions.items.noshow}} {{tbc}}</li>
+          </ul>
+          <a class="link-arrow" href="{{link:conditions}}" target="_blank">{{book.policyFull}}<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+        </div>
+        <div class="field field--check" data-field="policy">
+          <label><input type="checkbox" name="policy" required> <span>{{book.fields.policy}}</span></label>
+          <p class="field-error">{{book.errors.policy}}</p>
+        </div>
+        <div class="field field--check" data-field="consent">
+          <label><input type="checkbox" name="consent" required> <span>{{book.fields.consentA}} <a href="{{link:privacy}}" target="_blank">{{book.fields.consentLink}}</a>.</span></label>
+          <p class="field-error">{{book.errors.consent}}</p>
+        </div>
+      </fieldset>
+
+      <div class="booking__alert" data-booking-alert role="alert" tabindex="-1" hidden></div>
+      <button class="btn btn--primary btn--lg booking__submit" type="submit" data-submit>{{book.submit}}</button>
+      <p class="small muted" data-pay-note>{{book.payNote}}</p>
+    </form>
+
+    <aside class="summary" aria-labelledby="summary-title" data-summary-box>
+      <div class="summary__card">
+        <h2 class="summary__title" id="summary-title">{{book.summary.title}}</h2>
+        <dl class="summary__rows" data-summary></dl>
+        <dl class="summary__money">
+          <div><dt>{{book.summary.total}}</dt><dd data-sum-total>—</dd></div>
+          <div class="summary__now"><dt>{{book.summary.now}}</dt><dd data-sum-now>—</dd></div>
+          <div><dt>{{book.summary.later}}</dt><dd data-sum-later>—</dd></div>
+        </dl>
+        <p class="summary__fine">{{book.summary.fine}}</p>
+        {{#if config.whatsapp.number}}<a class="btn btn--wa btn--block" href="{{wa-url}}" target="_blank" rel="noopener" data-wa-booking><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{book.waAlt}}</a>{{/if}}
+      </div>
+      <img class="summary__badge" src="{{src:badge-clear@160}}" alt="" width="160" height="160" aria-hidden="true" loading="lazy">
+    </aside>
+
+    <div class="pay-bar" data-pay-bar aria-hidden="true">
+      <div><span class="pay-bar__k">{{book.summary.total}}</span><span class="pay-bar__v" data-bar-total>—</span></div>
+      <div class="pay-bar__now"><span class="pay-bar__k">{{book.summary.now}}</span><span class="pay-bar__v" data-bar-now>—</span></div>
+    </div>
+
+    <div class="booking__done" data-booking-done tabindex="-1" hidden>
+      <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+      <h2 class="title" data-done-title></h2>
+      <p data-done-text></p>
+      <button type="button" class="btn btn--ghost" data-restart>{{book.again}}</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint deposits" aria-labelledby="deposit-title">
+  <div class="container container--narrow">
+    <h2 class="title title--sm" id="deposit-title">{{book.examplesTitle}}</h2>
+    {{deposit-table}}
+    {{> section-actions}}
+  </div>
+</section>

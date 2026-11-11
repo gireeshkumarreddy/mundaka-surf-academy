@@ -1,10 +1,10 @@
-<!--page {"key": "notfound", "slug": "404", "header": "light", "noindex": true, "absolutePaths": true} -->
-<section class="poster poster--404" aria-labelledby="nf-title">
-  {{img name=stock-wave-tunnel sizes="100vw" alt=- class="poster__img" loading=eager}}
-  <p class="poster__over">404</p>
-  <div class="poster__bottom">
-    <h1 class="poster__title" id="nf-title">{{notfound.title}}</h1>
-    <p class="poster__kicker">{{notfound.text}}</p>
-    <a class="btn btn--white btn--pill" href="{{link:home}}">{{notfound.cta}}</a>
+<!--page {"key": "notfound", "slug": "404", "header": "overlay", "noindex": true, "absolutePaths": true} -->
+<section class="page-hero page-hero--img page-hero--full" aria-labelledby="nf-title">
+  {{img name=stock-wave-tunnel sizes="100vw" alt=- class="page-hero__img" loading=eager}}
+  <div class="container page-hero__inner">
+    <p class="eyebrow">404</p>
+    <h1 class="page-hero__title" id="nf-title">{{notfound.title}}</h1>
+    <p class="lead">{{notfound.text}}</p>
+    <a class="btn btn--primary" href="{{link:home}}">{{notfound.cta}}</a>
   </div>
 </section>

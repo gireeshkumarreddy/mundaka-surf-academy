@@ -1,0 +1,117 @@
+/* Phones first (most visitors): bigger tap targets, readable text, photos framed to show their subject, swipeable
+   card rows so the home page stays short, and a booking page that starts with the form. Loaded last on purpose. */
+
+/* every tappable thing ≥ 44 px on touch screens */
+@media (pointer: coarse), (max-width: 767px) {
+  .link-arrow { min-height: 44px; }
+  .btn, .btn--sm { min-height: 46px; }
+  .lang-switch a { display: inline-grid; place-items: center; min-width: 44px; min-height: 40px; padding: 0 0.6rem; font-size: 0.8125rem; }
+  .chips a, .filter { display: inline-flex; align-items: center; min-height: 44px; }
+  .embed__alt { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 0.5rem; font-size: var(--step--1); }
+  .hdr__logo { display: flex; align-items: center; min-height: 48px; }
+  .site-footer__col ul { gap: 0; }
+  .site-footer__col ul a, .site-footer__address a, .site-footer__social a { display: flex; align-items: center; min-height: 44px; }
+  .site-footer__address { gap: 0; }
+  .site-footer__legal nav { gap: 0 1rem; }
+  .site-footer__legal nav a, .site-footer__legal .linklike { display: inline-flex; align-items: center; min-height: 44px; }
+  .field--check label { min-height: 44px; }
+  .faq__list summary { min-height: 56px; align-items: center; }
+}
+
+@media (max-width: 767px) {
+  body { font-size: 1.0625rem; }
+  .section { padding-block: 3rem; }
+  .title { font-size: clamp(1.9rem, 1.2rem + 3.6vw, 2.4rem); }
+  .lead { font-size: 1.12rem; }
+  .eyebrow { font-size: 0.8125rem; letter-spacing: 0.14em; }
+
+  /* the two section buttons share the row equally */
+  .section-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .section-actions .btn { padding-inline: 0.6rem; }
+
+  /* framed photos: landscape on phones so the whole scene (and the surfer) stays in view, no offset overhang */
+  .frame::before { inset: 10px 0 -10px 10px; }
+  .xabi__photo img, .story__photo img, .lesson__photo img { aspect-ratio: 4 / 3; }
+  .xabi__photo { max-width: none; }
+  .xabi__photo img { object-position: 78% 50%; }
+  .lesson__photo { max-width: none; }
+  .story__grid .story__photo { order: -1; }
+
+  /* class cards: compact rows (photo left, name and price right) so all three fit on one screen */
+  .class-grid { grid-template-columns: 1fr; gap: 0.6rem; max-width: none; }
+  .class-card { flex-direction: row; min-height: 118px; }
+  .class-card__img { flex: none; width: 112px; aspect-ratio: auto; }
+  .class-card__body { padding: 0.75rem 0.9rem; gap: 0.2rem; justify-content: center; }
+  .class-card__num { font-size: 0.8125rem; }
+  .class-card__name { font-size: 1.15rem; }
+  .class-card__text { font-size: 0.875rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .class-card__price { margin-top: 0.15rem; padding-top: 0; font-size: 0.8125rem; }
+  .class-card__price strong { font-size: 1.2rem; }
+  .class-card__more { display: none; }
+  .classes .section-head { margin-bottom: 1.1rem; }
+
+  /* reviews: small boxes, all visible */
+  .reviews__empty, .review-grid:has(.review-card:not(.review-card--ph)) { grid-template-columns: 1fr; gap: 0.6rem; }
+  .review-card { padding: 0.85rem 1rem; }
+  .review-card blockquote { margin: 0.3rem 0 0.4rem; font-size: 0.9375rem; line-height: 1.45; }
+  .review-card .stars { font-size: 0.95rem; }
+  .reviews .section-head { margin-bottom: 1.1rem; }
+
+  /* the map and forecasts read better a little taller */
+  .embed--map { aspect-ratio: 1 / 1; }
+  .forecast__grid .panel { padding: 0.9rem; }
+
+  /* lessons: facts side by side when they fit */
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts > div:last-child { grid-column: 1 / -1; }
+  .price-table th, .price-table td { padding: 0.7rem 0.75rem; }
+
+  /* page headers: a little shorter, so the content starts sooner */
+  .page-hero--img { min-height: 62svh; }
+  .page-hero--plain .page-hero__inner { padding-block: 2.25rem 3.5rem; }
+  .page-hero__title { font-size: clamp(2.3rem, 1.4rem + 5vw, 3rem); }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .team-card .tbc { white-space: normal; }
+  .team-card__body { padding: 0.9rem; }
+  .gallery__grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .gallery__grid li:nth-child(5n + 1) { grid-column: 1 / -1; }
+}
+@media (max-width: 380px) {
+  .team-grid { grid-template-columns: 1fr; }
+}
+
+/* header: a larger logo on phones */
+@media (max-width: 560px) {
+  .hdr__logo .logo, .site-header.is-min .hdr__logo .logo { width: 138px; }
+}
+
+/* booking on phones: the form first, the full summary after it, and a pay bar pinned to the bottom of the screen
+   with the total and the deposit due now */
+.pay-bar { display: none; }
+@media (max-width: 1023px) {
+  .summary { order: 0; }
+  .field-group__title { float: left; width: 100%; }
+  .field-group__title + * { clear: both; }
+  .pay-bar:not([hidden]) {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 65; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.7rem var(--gutter) calc(0.7rem + env(safe-area-inset-bottom)); background: var(--deep); color: #fff;
+    box-shadow: 0 -12px 30px -18px rgba(0, 30, 38, 0.6); transform: translateY(110%); transition: transform 0.45s var(--ease);
+  }
+  .pay-bar.is-on { transform: translateY(0); }
+  .pay-bar__k { display: block; font-size: 0.8125rem; color: rgba(255, 255, 255, 0.7); }
+  .pay-bar__v { font: 800 1.15rem/1.2 var(--font-head); }
+  .pay-bar__now { text-align: right; }
+  .pay-bar__now .pay-bar__v { color: var(--turq); }
+  .page-book .wa-float { bottom: 86px; }
+  .page-book .site-footer { padding-bottom: 72px; }
+}
+
+/* home: the hero has its own WhatsApp button, so the floating one waits until the hero has scrolled away */
+.wa-float { transition: transform 0.4s var(--ease), background 0.3s, opacity 0.4s; }
+.page-home:not(.past-hero) .wa-float { opacity: 0; transform: translateY(16px); pointer-events: none; }
+
+/* smoother scrolling on phones: no live blur behind the sticky header or the hero buttons */
+@media (max-width: 1023px) {
+  .site-header { backdrop-filter: none; background: #fff; }
+  .hero .btn--wa { backdrop-filter: none; background: rgba(0, 40, 50, 0.35); }
+}

@@ -12,6 +12,6 @@
     "check": "node scripts/build.mjs --check",
     "dev": "node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs --no-watch",
-    "test": "node _tools/test-server.mjs && node scripts/build.mjs --check"
+    "test": "node _tools/test-server.mjs && node _tools/test-admin.mjs && node scripts/build.mjs --check"
   }
 }

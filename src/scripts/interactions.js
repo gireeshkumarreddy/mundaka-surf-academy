@@ -71,7 +71,7 @@ function initCursor() {
   document.addEventListener('pointerover', (e) => {
     const media = e.target.closest('[data-cursor]');
     const kind = media?.dataset.cursor;
-    const interactive = e.target.closest('a, button, [role="tab"], label, summary, select, input, textarea, .map-region, .map-city, .map-pin');
+    const interactive = e.target.closest('a, button, [role="tab"], label, summary, select, input, textarea');
     el.classList.toggle('is-media', Boolean(kind));
     el.classList.toggle('is-link', !kind && Boolean(interactive));
     label.textContent = kind ? t(LABELS[kind] ?? 'cursorView') : '';
@@ -82,7 +82,7 @@ function initCursor() {
 
 /* label media areas for the cursor */
 function tagCursorAreas() {
-  document.querySelectorAll('.gallery__item, .story__media, .type__media, .strip__item:not(.strip__item--video), .conditions__card').forEach((el) => (el.dataset.cursor = 'view'));
+  document.querySelectorAll('.gallery__item, .class-card').forEach((el) => (el.dataset.cursor = 'view'));
   document.querySelectorAll('.clip').forEach((el) => (el.dataset.cursor = 'play'));
   document.querySelectorAll('.strip__track').forEach((el) => (el.dataset.cursor = 'drag'));
 }

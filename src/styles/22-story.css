@@ -1,0 +1,98 @@
+/* Our story — the wave, the interactive Spain map, Urdaibai and a photo grid */
+.wave__grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
+.mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.mosaic figure { margin: 0; overflow: hidden; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; }
+.mosaic__a { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+.mosaic__b, .mosaic__c { aspect-ratio: 4 / 3; }
+
+.find__grid { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
+.find__facts { margin: 1.5rem 0; display: grid; }
+.find__facts div { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.find__facts dt { font: 700 var(--step--2)/1.2 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+.find__facts dd { margin: 0.2rem 0 0; color: var(--ink); }
+.find__map { min-height: 300px; }
+
+.urdaibai__grid { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
+.urdaibai__photo { margin: 0; }
+.urdaibai__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.urdaibai__photo figcaption { margin-top: 0.6rem; font-size: var(--step--1); color: rgba(255, 255, 255, 0.7); }
+.urdaibai .btn--wa { --bg: rgba(255, 255, 255, 0.1); --bd: rgba(160, 245, 238, 0.4); }
+
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: clamp(150px, 18vw, 260px); gap: 0.75rem; }
+.photo-grid figure { margin: 0; overflow: hidden; }
+.photo-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+.photo-grid__tall { grid-row: span 2; }
+.photo-grid__wide { grid-column: span 2; }
+@media (hover: hover) { .photo-grid figure:hover img, .mosaic figure:hover img { transform: scale(1.05); } .mosaic img { transition: transform 0.8s var(--ease); } }
+
+@media (max-width: 899px) {
+  .wave__grid, .find__grid, .urdaibai__grid { grid-template-columns: 1fr; }
+  .urdaibai__photo img { aspect-ratio: 4 / 3; }
+  .photo-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 42vw; gap: 0.5rem; }
+  .photo-grid__wide { grid-column: 1 / -1; }
+}
+
+/* interactive Spain map (map.js): Spain ⇄ Basque coast zoom, regions, city distances, Mundaka card */
+.map { position: relative; }
+.map__controls { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1rem; }
+.map__btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; padding: 0 1rem; border: 1.5px solid var(--line-strong);
+  background: #fff; color: var(--deep); font: 700 0.78rem/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.map__btn .icon { width: 15px; height: 15px; }
+.map__btn:hover { border-color: var(--teal); }
+.map__btn.is-active { background: var(--deep); border-color: var(--deep); color: #fff; }
+.spain-map { width: 100%; height: auto; overflow: hidden; font-family: var(--font-sans); background: var(--aqua-50); border: 1px solid var(--line); }
+.spain-map .map-region, .spain-map .map-leader, .spain-map .map-route, .spain-map .map-inset, .spain-map .map-link { vector-effect: non-scaling-stroke; }
+.map-dots { fill: #b9dcdc; opacity: 0.6; }
+.map-region { fill: #fff; stroke: #8fb6bd; stroke-width: 0.9; stroke-linejoin: round; transition: fill 0.3s; cursor: pointer; }
+.map-region:hover { fill: var(--aqua-100); }
+.map-region--home { fill: var(--aqua); stroke: var(--teal); stroke-width: 1.2; }
+.map-region--home:hover { fill: #8eeee6; }
+.map-inset { fill: none; stroke: #8fb6bd; stroke-width: 0.8; stroke-dasharray: 3 4; }
+.map-route { fill: none; stroke: var(--teal); stroke-width: 1; stroke-dasharray: 1.5 4; stroke-linecap: round; }
+.map-distance rect { fill: #fff; stroke: var(--teal); stroke-width: 0.9; }
+.map-distance text { font-size: 10px; fill: var(--deep); font-weight: 600; }
+.map-label { font-size: 12px; fill: var(--deep); font-weight: 600; }
+.map-label--sea { font-size: 11px; font-style: italic; fill: #5f8a92; letter-spacing: 0.08em; font-weight: 500; }
+.map-label--region { font-size: 13px; }
+.map-label--home { font-size: 15px; font-weight: 800; fill: var(--deep); }
+.map-label--pin { font-size: 18px; font-weight: 800; fill: var(--deep); letter-spacing: 0.02em; }
+.map-km { fill: var(--ink-3); font-weight: 400; }
+.map-leader { fill: none; stroke: var(--teal); stroke-width: 0.8; }
+.map-far, .map-dots { transition: opacity 0.6s var(--ease); }
+.map.is-zoomed .map-far { opacity: 0; pointer-events: none; }
+.map.is-zoomed .map-dots { opacity: 0.3; }
+.map-link { fill: none; stroke: var(--teal); stroke-width: 1.8; stroke-dasharray: 5 6; opacity: 0; pointer-events: none; transition: opacity 0.35s; }
+.map-link.is-on { opacity: 1; animation: mapDash 0.9s linear infinite; }
+@keyframes mapDash { to { stroke-dashoffset: -22; } }
+.map-city, .map-pin { cursor: pointer; outline: none; }
+.map-city-hit { fill: transparent; }
+.map-city-dot { fill: var(--teal); transition: fill 0.3s, r 0.4s var(--ease); }
+.map-city:hover .map-city-dot, .map-city.is-on .map-city-dot, .map-city:focus-visible .map-city-dot { fill: var(--turq); r: 6px; }
+.map-city:focus-visible .map-city-hit { stroke: var(--teal); stroke-width: 2; }
+.map-city.is-on .map-label, .map-city:hover .map-label { fill: var(--teal); }
+.map-pin-ring { fill: var(--turq); stroke: var(--deep); stroke-width: 2; }
+.map-pin-dot { fill: var(--deep); }
+.map-pin-pulse { fill: var(--turq); opacity: 0.3; transform-box: fill-box; transform-origin: center; animation: mapPulse 2.6s var(--ease) infinite; }
+@keyframes mapPulse { 0% { transform: scale(0.5); opacity: 0.5; } 100% { transform: scale(1.9); opacity: 0; } }
+.map-pin:hover .map-pin-ring, .map-pin:focus-visible .map-pin-ring { fill: var(--aqua); }
+.map-pin:focus-visible .map-pin-ring { stroke-width: 3; }
+.map-credit { font-size: 9px; fill: var(--ink-3); }
+.map__tip {
+  position: absolute; left: 0; top: 0; z-index: 3; display: grid; gap: 0.15rem; min-width: 150px; max-width: 260px; padding: 0.65rem 0.9rem;
+  background: var(--deep); color: #fff; font-size: 0.85rem; line-height: 1.35; text-align: center; box-shadow: var(--shadow); pointer-events: none;
+  opacity: 0; transform: translate(-50%, calc(-100% - 12px)) translate(var(--tx, 0), var(--ty, 0)) scale(0.94);
+  transition: opacity 0.25s, transform 0.35s var(--ease);
+}
+.map__tip.is-on { opacity: 1; transform: translate(-50%, calc(-100% - 14px)) translate(var(--tx, 0), var(--ty, 0)); }
+.map__tip::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 12px; height: 12px; background: inherit; transform: translateX(-50%) rotate(45deg); }
+.map__tip strong { font-size: 0.95rem; }
+.map__tip span { opacity: 0.85; }
+.map__tip.is-card { pointer-events: auto; }
+.map__tip-link { display: inline-flex; align-items: center; justify-content: center; justify-self: center; min-height: 40px; margin-top: 0.45rem; padding: 0 0.9rem; background: var(--turq); color: var(--deep); font: 700 0.75rem/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+.map__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 1.5rem; margin-top: 0.6rem; font-size: 0.8125rem; color: var(--ink-3); }
+.map__foot p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .map-pin-pulse, .map-link.is-on { animation: none; } }

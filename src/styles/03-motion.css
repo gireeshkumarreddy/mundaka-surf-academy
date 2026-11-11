@@ -8,7 +8,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* until motion.js has tagged the page, everything below the first screen waits (max 2.5 s) so nothing flashes
    before animating. The first screen never waits: it paints at once (fast on phones) and animates in with CSS. */
-.motion-pending main > :not(:first-child), .motion-pending .site-footer { opacity: 0; animation: motionFallback 0s 2.5s forwards; }
+.motion-pending main > :not(:first-child), .motion-pending .site-footer { opacity: 0; animation: motionFallback 0s 1.2s forwards; }
 @keyframes motionFallback { to { opacity: 1; } }
 main > *, .site-footer { transition: opacity 0.5s var(--ease); }
 
@@ -20,42 +20,43 @@ main > :not(:first-child), .site-footer { content-visibility: auto; contain-intr
 .cv-off main > :not(:first-child), .cv-off .site-footer { content-visibility: visible; }
 
 /* first screen: text rises in and photos settle, without waiting for scripts (motion.js leaves this section alone) */
-.js main > :first-child:not(.hero) :is(h1, h2, .eyebrow, .dash) { animation: firstRise 1.2s var(--ease) 0.1s backwards; }
-.js main > :first-child:not(.hero) :is(p, .btn, .link-arrow, address) { animation: firstRise 1.2s var(--ease) 0.3s backwards; }
-.js main > :first-child:not(.hero) :is(.lessons-hero__img, .loc-hero__img, .plans-hero__bg) img,
-.js main > :first-child.poster > .poster__img { animation: firstSettle 2.2s var(--ease) backwards; }
+.js main > :first-child:not(.hero) :is(h1, .eyebrow) { animation: firstRise 1.2s var(--ease) 0.1s backwards; }
+.js main > :first-child:not(.hero) :is(.page-hero__inner p, .chips, .page-hero__inner .btn) { animation: firstRise 1.2s var(--ease) 0.3s backwards; }
+.js main > :first-child:not(.hero) .page-hero__img { animation: firstSettle 2.4s var(--ease) backwards; }
+.js main > :first-child .page-hero__badge { animation: badgeIn 1.6s var(--ease) 0.2s backwards; }
+@keyframes badgeIn { from { opacity: 0; rotate: -20deg; scale: 0.8; } }
 @keyframes firstRise { from { translate: 0 34px; } }
 @keyframes firstSettle { from { scale: 1.1; } }
 
 /* whole sections glide up and fade in as they arrive */
-.motion [data-section] { opacity: 0; translate: 0 90px; }
-.motion [data-section="slow"] { translate: 0 140px; scale: 0.97; }
+.motion [data-section] { opacity: 0; translate: 0 28px; }
+.motion [data-section="slow"] { translate: 0 36px; }
 .motion [data-section].is-in {
   opacity: 1; translate: 0 0; scale: 1;
-  transition: opacity 1.4s var(--ease) var(--delay, 0s), translate 1.6s var(--ease) var(--delay, 0s), scale 1.6s var(--ease) var(--delay, 0s);
+  transition: opacity 0.6s var(--ease) var(--delay, 0s), translate 0.8s var(--ease) var(--delay, 0s), scale 0.8s var(--ease) var(--delay, 0s);
 }
-.motion [data-section="slow"].is-in { transition-duration: 1.9s, 2.2s, 2.2s; }
+.motion [data-section="slow"].is-in { transition-duration: 0.7s, 0.9s, 0.9s; }
 
 /* content fades up */
-.motion [data-fade], .motion [data-reveal] { opacity: 0; translate: 0 56px; }
+.motion [data-fade], .motion [data-reveal] { opacity: 0; translate: 0 22px; }
 .motion [data-reveal="fade"] { translate: 0 0; }
 .motion [data-fade].is-in, .motion [data-reveal].is-in {
   opacity: 1; translate: 0 0;
-  transition: opacity 1.2s var(--ease) var(--delay, 0s), translate 1.4s var(--ease) var(--delay, 0s);
+  transition: opacity 0.6s var(--ease) var(--delay, 0s), translate 0.75s var(--ease) var(--delay, 0s);
 }
 
 /* images and video fade in and rise from the bottom, uncovering upwards */
-.motion [data-img] { opacity: 0; clip-path: inset(100% 0 0 0); translate: 0 70px; }
+.motion [data-img] { opacity: 0; clip-path: inset(100% 0 0 0); translate: 0 24px; }
 .motion [data-img].is-in {
   opacity: 1; clip-path: inset(0 0 0 0); translate: 0 0;
-  transition: opacity 1.3s var(--ease) var(--delay, 0s), clip-path 1.6s var(--ease) var(--delay, 0s), translate 1.8s var(--ease) var(--delay, 0s), transform 1.2s var(--ease), filter 0.4s;
+  transition: opacity 0.6s var(--ease) var(--delay, 0s), clip-path 0.9s var(--ease) var(--delay, 0s), translate 0.9s var(--ease) var(--delay, 0s), transform 0.8s var(--ease), filter 0.4s;
 }
 
 /* headings: each word rises out of its own mask */
 .split-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0.02em 0.1em; margin: -0.06em -0.02em -0.1em; }
 .split-w > span { display: inline-block; translate: 0 115%; }
 .is-in .split-w > span, .split-done .split-w > span {
-  translate: 0 0; transition: translate 1.15s var(--ease) calc(var(--delay, 0s) + 0.15s + var(--i, 0) * 55ms);
+  translate: 0 0; transition: translate 0.7s var(--ease) calc(var(--delay, 0s) + 0.05s + var(--i, 0) * 35ms);
 }
 
 @media (prefers-reduced-motion: reduce) {

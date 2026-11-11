@@ -6,69 +6,74 @@
 
   "brand": {
     "name": "Mundaka Surf Academy",
-    "instructor": "Xabier Gondra León",
     "locality": "Mundaka",
     "region": "Bizkaia",
     "postalCode": "48360",
+    "street": "Erreka 6",
     "country": "ES",
-    "geo": { "lat": 43.4075, "lng": -2.6986 }
+    "geo": { "lat": 43.40712, "lng": -2.69872 }
   },
 
   "locales": {
-    "default": "en",
-    "enabled": ["en", "es"],
-    "planned": ["de", "fr"]
+    "$comment": "Spanish is the main language (served at the site root), English lives under /en/.",
+    "default": "es",
+    "enabled": ["es", "en"]
   },
 
   "contact": {
-    "email": "",
+    "email": "mundakasurfacademy@gmail.com",
     "phone": "",
-    "meetingPoint": "",
+    "address": "Erreka 6, 48360 Mundaka, Bizkaia",
     "openingHours": ""
   },
 
   "social": {
-    "instagram": { "url": "https://www.instagram.com/xabigondra/", "handle": "@xabigondra" }
+    "instagram": { "url": "https://www.instagram.com/mundakasurfacademy/", "handle": "@mundakasurfacademy" },
+    "facebook": { "url": "https://www.facebook.com/mundakasurfacademy", "handle": "@mundakasurfacademy" }
   },
 
   "whatsapp": {
-    "$comment": "International format, digits only, no + or spaces (e.g. 34600000000). Leave empty to hide every WhatsApp button.",
-    "number": ""
+    "$comment": "Temporary number from the brief — replace it here (digits with country code, no + or spaces) when the business number arrives; every WhatsApp button on the site uses this one value.",
+    "number": "34688681436",
+    "display": "688 68 14 36"
+  },
+
+  "hero": {
+    "$comment": "Home hero background. Leave video empty to show the main photo (mundaka-lineup); put an .mp4 file name from public/assets/video to play the drone video instead, with the photo as its poster.",
+    "video": ""
   },
 
   "enquiry": {
-    "$comment": "provider: none | formspree | webhook | netlify. 'none' keeps the form in demo mode: it validates and reviews but tells the visitor nothing was sent.",
+    "$comment": "provider: none | formspree | webhook | netlify. 'none' keeps the forms in demo mode: they validate and review but tell the visitor nothing was sent.",
     "provider": "none",
     "endpoint": ""
   },
 
   "payments": {
-    "$comment": "Online payment is prepared but OFF. The checkout endpoint must be a server function holding the provider's secret key (see server/README.md).",
+    "$comment": "Online deposit is prepared but OFF until the Stripe functions are deployed with their secret keys (server/README.md). The browser never sees card data.",
     "enabled": false,
     "provider": "stripe",
     "mode": "deposit",
-    "depositPercent": null,
+    "depositPercent": 15,
     "currency": "EUR",
-    "checkoutEndpoint": "/api/create-checkout-session",
-    "acceptedMethods": ["card-online", "pay-on-arrival", "deposit-online"]
+    "checkoutEndpoint": "/api/create-checkout-session"
   },
 
-  "season": {
-    "$comment": "From the questionnaire: monthly hour timetable from March to September.",
-    "fromMonth": 3,
-    "toMonth": 9
-  },
-
-  "conditions": {
-    "waves": "https://www.windguru.cz/3650",
-    "weather": "https://www.eltiempo.es/mundaka.html"
+  "forecast": {
+    "windguruSpot": "48688",
+    "windguru": "https://www.windguru.cz/48688",
+    "aemetWidget": "https://www.aemet.es/es/eltiempo/prediccion/municipios/mostrarwidget/mundaka-id48068?w=g4p01110001ohmffffffw600z190x4f86d9t95b6e9r0s4n1",
+    "aemet": "https://www.aemet.es/es/eltiempo/prediccion/municipios/mundaka-id48068"
   },
 
   "maps": {
-    "directions": "https://www.google.com/maps/dir/?api=1&destination=Mundaka%2C%2048360%20Bizkaia%2C%20Spain",
-    "openStreetMap": "https://www.openstreetmap.org/?mlat=43.4075&mlon=-2.6986#map=15/43.4075/-2.6986",
-    "embed": "https://www.openstreetmap.org/export/embed.html?bbox=-2.7186%2C43.3985%2C-2.6786%2C43.4165&layer=mapnik&marker=43.4075%2C-2.6986"
+    "embed": "https://maps.google.com/maps?q=Erreka%206%2C%2048360%20Mundaka%2C%20Bizkaia%2C%20Spain&z=16&output=embed",
+    "directions": "https://www.google.com/maps/dir/?api=1&destination=Erreka%206%2C%2048360%20Mundaka%2C%20Bizkaia%2C%20Spain"
   },
 
-  "reviews": []
+  "reviews": {
+    "$comment": "Hand-picked testimonials: { \"name\": \"…\", \"date\": \"2026-08-14\", \"rating\": 5, \"text\": { \"es\": \"…\", \"en\": \"…\" } }. googleUrl = the academy's Google reviews link once the Business Profile exists.",
+    "googleUrl": "",
+    "items": []
+  }
 }

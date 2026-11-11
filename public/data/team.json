@@ -1,0 +1,9 @@
+{
+  "$comment": "Instructor cards (website brief, section 5). Add an object to add an instructor; the grid grows by itself. photo = an image name in public/assets/img (4:5 crop, a different photo per person) or null while it is missing. Empty texts show as 'pending' in review mode. Never put two cards on the same photo.",
+  "instructors": [
+    { "id": "instructor-1", "photo": null, "name": { "es": "Instructor 1", "en": "Instructor 1" }, "role": { "es": "Monitor principal", "en": "Head instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
+    { "id": "instructor-2", "photo": null, "name": { "es": "Instructor 2", "en": "Instructor 2" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
+    { "id": "instructor-3", "photo": null, "name": { "es": "Instructor 3", "en": "Instructor 3" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
+    { "id": "instructor-4", "photo": null, "name": { "es": "Instructor 4", "en": "Instructor 4" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] }
+  ]
+}

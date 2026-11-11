@@ -1,0 +1,133 @@
+/* Inner pages — about, team, lessons, booking, surf, gallery, contact, legal, status */
+.story__grid { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(2rem, 1rem + 5vw, 6rem); align-items: center; }
+.story__photo img { aspect-ratio: 4 / 5; }
+@media (max-width: 899px) { .story__grid { grid-template-columns: 1fr; } }
+
+/* team: a flexible grid, one card per instructor (public/data/team.json) */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+.team-card { display: flex; flex-direction: column; border-radius: 0; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.team-card__photo { position: relative; margin: 0; aspect-ratio: 4 / 5; background: var(--aqua-50); overflow: hidden; }
+.team-card__photo > img { width: 100%; height: 100%; object-fit: cover; }
+.team-card__ph { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, var(--aqua-100), var(--aqua-50) 60%); }
+.team-card__ph img { width: 54%; opacity: 0.45; }
+.team-card__photo .tbc { position: absolute; left: 1rem; bottom: 1rem; }
+.team-card__body { padding: 1.3rem 1.4rem 1.5rem; display: grid; gap: 0.35rem; align-content: start; }
+.team-card__num { margin: 0; font: 800 var(--step--2)/1 var(--font-head); color: var(--teal); letter-spacing: 0.12em; }
+.team-card__name { margin: 0; font-size: var(--step-1); }
+.team-card__role { margin: 0 0 0.5rem; font-weight: 600; color: var(--teal); font-size: var(--step--1); }
+.team-card__bio { font-size: var(--step--1); color: var(--ink-2); margin-bottom: 0.6rem; }
+.team-card__certs-title { margin: 0.25rem 0 0.4rem; font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.team-card__certs { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.team-card__certs li { padding: 0.25rem 0.65rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); font-size: var(--step--2); font-weight: 600; color: var(--deep); }
+.team-card__certs-empty { margin: 0; }
+.team .review-note { margin-bottom: 1.5rem; }
+.team__end { margin-top: clamp(2rem, 1rem + 3vw, 3.5rem); padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); border-radius: 0; background: var(--aqua-50); text-align: center; }
+.team__end p { font: 700 var(--step-1)/1.35 var(--font-head); color: var(--deep); margin: 0; }
+.team__end .section-actions { justify-content: center; margin-top: 1.25rem; }
+
+/* lessons */
+.lesson__grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 1rem + 5vw, 5.5rem); align-items: start; }
+.lesson--flip .lesson__photo { order: 2; }
+.lesson__photo { position: sticky; top: calc(var(--header-h) + 2rem); }
+.lesson__photo img { aspect-ratio: 4 / 5; }
+.lesson__num { margin: 0 0 0.5rem; font: 800 var(--step-3)/1 var(--font-head); color: var(--aqua-100); -webkit-text-stroke: 1.5px var(--turq); }
+.lesson .ticks { margin-bottom: 1.5rem; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
+.facts > div { padding: 0.9rem 1rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); }
+.section--tint .facts > div { background: #fff; }
+.facts dt { font: 700 var(--step--2)/1.2 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.35rem; }
+.facts dd { margin: 0; font-size: var(--step--1); color: var(--ink); }
+.lesson .section-actions { margin-top: 0.5rem; }
+@media (max-width: 899px) {
+  .lesson__grid { grid-template-columns: 1fr; }
+  .lesson--flip .lesson__photo { order: 0; }
+  .lesson__photo { position: relative; top: auto; max-width: 460px; }
+  .facts { grid-template-columns: 1fr; }
+}
+
+/* booking: form + live summary (total, deposit now, balance at the school) */
+.booking__grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 3vw, 3.5rem); align-items: start; }
+.booking__form { display: grid; gap: 1.25rem; }
+.booking__form .demo-note { margin: 0; }
+.field-group { margin: 0; padding: clamp(1.1rem, 0.8rem + 1.2vw, 1.75rem); border: 1px solid var(--line); border-radius: 0; background: #fff; min-width: 0; }
+.field-group__title { display: flex; align-items: center; gap: 0.7rem; padding: 0; margin-bottom: 1.1rem; font: 800 var(--step-1)/1.2 var(--font-head); color: var(--deep); }
+.field-group__title span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 0; background: var(--turq); color: var(--deep); font-size: 0.9rem; }
+.type-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.type-option { position: relative; cursor: pointer; }
+.type-option input { position: absolute; opacity: 0; inset: 0; }
+.type-option__body { display: grid; gap: 0.3rem; height: 100%; padding: 1rem 1.1rem; border-radius: 0; border: 2px solid var(--line); background: #fff; }
+.type-option__name { font: 700 var(--step-0)/1.25 var(--font-head); color: var(--deep); }
+.type-option__price { font-size: var(--step--1); color: var(--ink-3); }
+.type-option:hover .type-option__body { border-color: var(--turq); }
+.type-option input:checked + .type-option__body { border-color: var(--teal); background: var(--aqua-50); box-shadow: inset 0 0 0 1px var(--teal); }
+.type-option input:focus-visible + .type-option__body { outline: 3px solid var(--turq); outline-offset: 2px; }
+.policy-box { padding: 1.1rem 1.25rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); margin-bottom: 1rem; font-size: var(--step--1); }
+.policy-box h3 { font-size: var(--step-0); margin-bottom: 0.6rem; }
+.policy-box ul { padding-left: 1.1rem; margin-bottom: 0.75rem; }
+.policy-box li { margin-bottom: 0.3rem; }
+.booking__form .field--check + .field--check { margin-top: 0.6rem; }
+.booking__submit { justify-self: start; }
+.summary { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.summary__card { padding: 1.6rem; border-radius: 0; background: var(--deep); color: rgba(255, 255, 255, 0.85); box-shadow: var(--shadow); }
+.summary__title { color: #fff; font-size: var(--step-1); margin-bottom: 1rem; }
+.summary__rows, .summary__money { margin: 0; display: grid; gap: 0.55rem; }
+.summary__rows > div, .summary__money > div { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--step--1); }
+.summary__rows dt { color: rgba(255, 255, 255, 0.6); }
+.summary__rows dd, .summary__money dd { margin: 0; text-align: right; color: #fff; font-weight: 600; }
+.summary__money { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid rgba(160, 245, 238, 0.25); }
+.summary__money dd { font: 800 var(--step-1)/1.1 var(--font-head); }
+.summary__now { padding: 0.7rem 0.85rem; margin-inline: -0.85rem; border-radius: 0; background: var(--turq); color: var(--deep); }
+.summary__now dt, .summary__now dd { color: var(--deep) !important; font-weight: 800; }
+.summary__fine { font-size: var(--step--2); color: rgba(255, 255, 255, 0.65); margin: 1rem 0; }
+.summary__badge { width: 96px; margin: 1.25rem auto 0; opacity: 0.9; }
+.booking__done { grid-column: 1 / -1; display: grid; justify-items: center; text-align: center; gap: 0.5rem; padding: clamp(2rem, 1rem + 4vw, 4rem); border-radius: 0; background: var(--aqua-50); }
+.booking__done > .icon { width: 56px; height: 56px; padding: 12px; border-radius: 0; background: var(--turq); color: var(--deep); }
+.booking__done[hidden], .booking__form[hidden], .summary[hidden] { display: none; }
+@media (max-width: 1023px) { .booking__grid { grid-template-columns: 1fr; } .summary { position: static; order: -1; } .summary__badge { display: none; } }
+@media (max-width: 640px) { .type-options { grid-template-columns: 1fr; } }
+
+/* surf & weather */
+.surf__weather { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 1rem + 3vw, 4rem); align-items: center; }
+@media (max-width: 899px) { .surf__weather { grid-template-columns: 1fr; } }
+
+/* gallery */
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+.filter { padding: 0.6rem 1.2rem; border-radius: 0; border: 1.5px solid var(--line-strong); background: #fff; color: var(--deep); font: 700 var(--step--1)/1 var(--font-head); cursor: pointer; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+.filter:hover { border-color: var(--teal); }
+.filter[aria-pressed="true"] { background: var(--deep); border-color: var(--deep); color: #fff; }
+.gallery .review-note { margin-bottom: 1.5rem; }
+.gallery__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.gallery__cell[hidden] { display: none; }
+.gallery__item { display: block; width: 100%; padding: 0; border: 0; border-radius: 0; overflow: hidden; background: var(--aqua-50); cursor: zoom-in; aspect-ratio: 4 / 3; }
+.gallery__item img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__credit { margin-top: 1.25rem; }
+@media (max-width: 899px) { .gallery__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .gallery__grid { grid-template-columns: 1fr; } }
+
+/* contact */
+.contact__grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: start; }
+.channel-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.channel-list li { display: flex; gap: 1rem; align-items: center; padding: 1rem 1.1rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); }
+.channel-list .icon { width: 26px; height: 26px; color: var(--teal); }
+.channel-list__k { display: block; font: 700 var(--step--2)/1.2 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.channel-list a { font-weight: 600; color: var(--deep); text-decoration: none; word-break: break-word; }
+.channel-list a:hover { color: var(--teal); }
+.contact__form { display: grid; gap: 1rem; }
+.contact__form .title { margin: 0; }
+.contact__form .btn { justify-self: start; }
+@media (max-width: 899px) { .contact__grid { grid-template-columns: 1fr; } }
+
+.deposits .title { margin-bottom: 1.25rem; }
+.legal .prose { max-width: 72ch; }
+.status__inner { text-align: center; }
+.status__actions { display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* instructors: how we teach */
+.approach__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.approach__item { padding: 1.5rem; background: #fff; border: 1px solid var(--line); }
+.approach__num { display: block; margin-bottom: 0.9rem; font: 800 var(--step-2)/1 var(--font-head); color: var(--turq); }
+.approach__item h3 { font-size: var(--step-1); }
+.approach__item p { margin: 0; color: var(--ink-2); font-size: var(--step--1); }
+.approach .team__end { background: #fff; }
+@media (max-width: 1023px) { .approach__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .approach__grid { grid-template-columns: 1fr; gap: 0.6rem; } .approach__item { padding: 1.1rem; } }

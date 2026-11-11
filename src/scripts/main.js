@@ -1,6 +1,6 @@
 import { getConfig } from './integrations/config.js';
-import { initWhatsApp } from './integrations/whatsapp.js';
-import { initMotion, reduceMotion } from './motion.js';
+import initConsent from './consent.js';
+import { initMotion } from './motion.js';
 import initInteractions from './interactions.js';
 
 const config = getConfig();
@@ -54,81 +54,6 @@ function initMenu() {
   window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => e.matches && setOpen(false));
 }
 
-/* Ambient video clips: play in view (unless reduced motion), always pausable. */
-function initClips() {
-  const clips = document.querySelectorAll('[data-clip]');
-  if (!clips.length) return;
-  const label = (clip, playing) => {
-    const btn = clip.querySelector('[data-clip-toggle]');
-    btn.setAttribute('aria-pressed', String(playing));
-    btn.querySelector('[data-clip-label]').textContent = playing ? config.strings.videoPause : config.strings.videoPlay;
-  };
-  const io = new IntersectionObserver((entries) => {
-    for (const { target, isIntersecting } of entries) {
-      const video = target.querySelector('video');
-      if (isIntersecting && !reduceMotion.matches && target.dataset.userPaused !== 'true') {
-        video.preload = 'auto';
-        video.play().then(() => label(target, true)).catch(() => label(target, false));
-      } else if (!video.paused) {
-        video.pause();
-        label(target, false);
-      }
-    }
-  }, { threshold: 0.35 });
-  clips.forEach((clip) => {
-    const video = clip.querySelector('video');
-    clip.querySelector('[data-clip-toggle]').addEventListener('click', () => {
-      if (video.paused) {
-        clip.dataset.userPaused = 'false';
-        video.play().then(() => label(clip, true));
-      } else {
-        clip.dataset.userPaused = 'true';
-        video.pause();
-        label(clip, false);
-      }
-    });
-    io.observe(clip);
-  });
-}
-
-/* Gentle vertical drift on the staggered lesson cards (desktop only). */
-function initParallax() {
-  const items = [...document.querySelectorAll('[data-parallax]')];
-  const wide = window.matchMedia('(min-width: 1024px)');
-  if (!items.length) return;
-  let ticking = false;
-  // only cards near the screen are measured (measuring skipped off-screen sections would force them to render)
-  const near = new Set();
-  const update = () => {
-    ticking = false;
-    const on = wide.matches && !reduceMotion.matches;
-    const mid = window.innerHeight / 2;
-    for (const el of items) {
-      if (!on) {
-        el.style.removeProperty('--py');
-        continue;
-      }
-      if (!near.has(el)) continue;
-      const r = el.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > window.innerHeight + 200) continue;
-      el.style.setProperty('--py', `${((r.top + r.height / 2 - mid) * Number(el.dataset.parallax)).toFixed(1)}px`);
-    }
-  };
-  const request = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  };
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) e.isIntersecting ? near.add(e.target) : near.delete(e.target);
-    request();
-  }, { rootMargin: '200px 0px' });
-  items.forEach((el) => io.observe(el));
-  window.addEventListener('scroll', request, { passive: true });
-  window.addEventListener('resize', request);
-}
-
 // The first screen needs no script (its entrance is pure CSS), so let the browser paint it before the scripts start:
 // on phones the start-up work below otherwise delayed the first paint.
 await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
@@ -137,21 +62,16 @@ initMotion();
 initHeader();
 initMenu();
 initInteractions();
-initClips();
-initParallax();
-initWhatsApp(config);
+initConsent();
 
 // page modules, loaded only where their markup exists
 const modules = [
-  ['[data-hero]', './hero.js'],
-  ['[data-plans]', './plans.js'],
   ['[data-booking]', './booking.js'],
-  ['[data-finder]', './finder.js'],
+  ['[data-contact-form]', './contact.js'],
   ['[data-gallery]', './gallery.js'],
   ['[data-embed]', './embed.js'],
   ['[data-booking-status]', './status.js'],
   ['[data-map]', './map.js'],
-  ['[data-film]', './film.js'],
 ];
 const startModules = (root) => {
   for (const [selector, path] of modules) {
@@ -161,26 +81,33 @@ const startModules = (root) => {
 };
 startModules(document);
 
-/* Heavy blocks (the Spain map) arrive as <template data-defer>, either inline or as a separate file (data-src): they
-   are put in place, and their scripts started, shortly before they scroll into view, so they cost nothing (not even
-   download time) while the page first loads. */
+let lastScroll = 0;
+window.addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
+
+/* Heavy blocks (the Spain map) arrive as <template data-defer data-src>: fetched and started shortly before they
+   scroll into view, so they cost nothing while the page first loads. */
 const deferred = new IntersectionObserver((entries) => {
   for (const { target, isIntersecting } of entries) {
     if (!isIntersecting) continue;
     deferred.unobserve(target);
     const template = target.querySelector(':scope > template[data-defer]');
-    const place = (html) => {
-      if (html != null) template.insertAdjacentHTML('afterend', html);
-      else template.after(template.content);
-      template.remove();
-      startModules(target);
-    };
-    if (template.dataset.src) {
-      fetch(template.dataset.src)
-        .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`${res.status} ${template.dataset.src}`))))
-        .then(place)
-        .catch((err) => console.error('Deferred block failed to load', err));
-    } else place(null);
+    fetch(template.dataset.src)
+      .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`${res.status} ${template.dataset.src}`))))
+      .then((html) => {
+        // insert once scrolling has paused, so a scroll in progress never waits for it
+        const place = () => {
+          if (performance.now() - lastScroll < 180) {
+            setTimeout(place, 120);
+            return;
+          }
+          template.insertAdjacentHTML('afterend', html);
+          template.remove();
+          startModules(target);
+        };
+        if ('requestIdleCallback' in window) requestIdleCallback(place, { timeout: 600 });
+        else setTimeout(place, 50);
+      })
+      .catch((err) => console.error('Deferred block failed to load', err));
   }
 }, { rootMargin: '1200px 0px' });
 document.querySelectorAll('template[data-defer]').forEach((t) => deferred.observe(t.parentElement));

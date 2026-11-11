@@ -18,8 +18,8 @@ export function t(key, vars = {}) {
   return value.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? ''));
 }
 
-/** Pick the current locale from a { en, es } object, falling back to English. */
+/** Pick the current locale from a { es, en } object, falling back to Spanish (the main language). */
 export function local(value) {
   if (value == null || typeof value !== 'object') return value;
-  return value[getConfig().locale] ?? value.en ?? '';
+  return value[getConfig().locale] ?? value.es ?? value.en ?? '';
 }

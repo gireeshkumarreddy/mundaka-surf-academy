@@ -1,0 +1,55 @@
+<!--page {"key": "surf", "slug": "surf-weather", "header": "overlay"} -->
+<section class="page-hero page-hero--img" aria-labelledby="surf-title">
+  {{img name=stock-catch-bg mobile=stock-catch-bg-m sizes="100vw" alt=- class="page-hero__img" loading=eager fetchpriority=high}}
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{surf.eyebrow}}</p>
+    <h1 class="page-hero__title" id="surf-title">{{surf.title}}</h1>
+    <p class="lead">{{surf.lead}}</p>
+  </div>
+</section>
+
+<section class="section surf" aria-labelledby="waves-title">
+  <div class="container">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow">Windguru · Mundaka, Laida</p>
+        <h2 class="title" id="waves-title">{{surf.waves.title}}</h2>
+        <p class="lead">{{surf.waves.lead}}</p>
+      </div>
+      <a class="link-arrow" href="{{config.forecast.windguru}}" target="_blank" rel="noopener">windguru.cz<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+    </div>
+    <div class="panel">
+      <div class="embed embed--windguru embed--tall" data-embed data-kind="windguru" data-spot="{{config.forecast.windguruSpot}}" data-hours="168" data-lang="{{locale}}">
+        <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-wave"/></svg><p class="embed__text">{{common.embed.windguruText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint surf" aria-labelledby="weather-title">
+  <div class="container surf__weather">
+    <div>
+      <p class="eyebrow">AEMET · Mundaka</p>
+      <h2 class="title" id="weather-title">{{surf.weather.title}}</h2>
+      <p class="lead">{{surf.weather.lead}}</p>
+      <a class="link-arrow" href="{{config.forecast.aemet}}" target="_blank" rel="noopener">aemet.es<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+    </div>
+    <div class="panel">
+      <div class="embed embed--aemet" data-embed data-src="{{config.forecast.aemetWidget}}" data-title="{{surf.weather.frameTitle}}">
+        <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-sun"/></svg><p class="embed__text">{{common.embed.aemetText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section surf-tips" aria-labelledby="tips-title">
+  <div class="container">
+    <h2 class="title title--sm" id="tips-title">{{surf.tips.title}}</h2>
+    <div class="info-grid info-grid--light">
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><h3>{{surf.tips.tide.title}}</h3><p>{{surf.tips.tide.text}}</p></article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><h3>{{surf.tips.safety.title}}</h3><p>{{surf.tips.safety.text}}</p></article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><h3>{{surf.tips.ask.title}}</h3><p>{{surf.tips.ask.text}}</p></article>
+    </div>
+    {{> section-actions}}
+  </div>
+</section>

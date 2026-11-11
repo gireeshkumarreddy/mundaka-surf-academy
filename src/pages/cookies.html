@@ -1,0 +1,29 @@
+<!--page {"key": "cookies", "slug": "cookies", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="cookies-title">
+  <div class="container page-hero__inner">
+    <h1 class="page-hero__title" id="cookies-title">{{cookies.title}}</h1>
+    <p class="small muted">{{legalCommon.updated}} 11/11/2026</p>
+  </div>
+</section>
+<section class="section legal">
+  <div class="container container--narrow">
+    <div class="prose">
+      <p>{{cookies.intro}}</p>
+      <h2>{{cookies.own.title}}</h2>
+      <p>{{cookies.own.text}}</p>
+      <h2>{{cookies.third.title}}</h2>
+      <p>{{cookies.third.text}}</p>
+      <div class="table-wrap"><table class="price-table">
+        <thead><tr><th scope="col">{{cookies.table.service}}</th><th scope="col">{{cookies.table.purpose}}</th><th scope="col">{{cookies.table.where}}</th></tr></thead>
+        <tbody>
+          <tr><td>Google Maps</td><td>{{cookies.table.maps}}</td><td>{{common.nav.home}}, {{common.nav.contact}}</td></tr>
+          <tr><td>Windguru</td><td>{{cookies.table.windguru}}</td><td>{{common.nav.home}}, {{common.nav.surf}}</td></tr>
+          <tr><td>AEMET</td><td>{{cookies.table.aemet}}</td><td>{{common.nav.home}}, {{common.nav.surf}}</td></tr>
+        </tbody>
+      </table></div>
+      <h2>{{cookies.manage.title}}</h2>
+      <p>{{cookies.manage.text}}</p>
+      <p><button type="button" class="btn btn--teal btn--sm" data-consent-open>{{cookies.banner.settings}}</button></p>
+    </div>
+  </div>
+</section>

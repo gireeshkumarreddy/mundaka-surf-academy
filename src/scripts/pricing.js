@@ -1,37 +1,45 @@
 /**
- * Price estimates from data/plans.json. Pure functions, shared by the browser and the
- * reference server code (server/), so both always agree.
+ * Prices from data/plans.json. Pure functions, shared by the browser, the build and the reference server code
+ * (server/), so all three always agree.
  *
- * plan.price = {
- *   amount: number | null,                    // null → "price on request"
- *   unit: "person" | "lesson" | "package",    // per participant, per private lesson, per package (per person)
- *   perPersonTiers?: [{ people: 2, amount }], // optional private-lesson price per person by group size
- *   seasons?: [{ from: "07-01", to: "08-31", amount }]  // optional seasonal prices (MM-DD, inclusive)
- * }
+ * plan.price = { unit: 'personHour', amount, hours: [1, 2, 3] }          → amount × hours × people
+ *            | { unit: 'package', packages: [{ days, hours, amount }] }  → package amount × people
+ * `option` is the number of hours (personHour) or days (package) chosen in the booking form.
  */
-export function seasonalAmount(price, isoDate) {
-  if (!price || price.amount == null) return null;
-  if (!isoDate || !price.seasons?.length) return price.amount;
-  const md = isoDate.slice(5, 10);
-  const match = price.seasons.find((s) => (s.from <= s.to ? md >= s.from && md <= s.to : md >= s.from || md <= s.to));
-  return match ? match.amount : price.amount;
+export function planOptions(plan) {
+  const p = plan?.price;
+  if (!p) return [];
+  if (p.unit === 'personHour') return (p.hours ?? [1]).map((h) => ({ value: h, hours: h, amount: p.amount * h }));
+  if (p.unit === 'package') return (p.packages ?? []).map((k) => ({ value: k.days, days: k.days, hours: k.hours, amount: k.amount }));
+  return [];
 }
 
-export function estimate(plan, { participants = 1, date = '' } = {}) {
-  const price = plan?.price;
-  const base = seasonalAmount(price, date);
-  const currency = price?.currency ?? 'EUR';
-  if (base == null) return { total: null, currency };
+/** The lowest price shown as "from …" (per person). */
+export function fromPrice(plan) {
+  const p = plan?.price;
+  if (!p) return null;
+  if (p.unit === 'personHour') return p.amount ?? null;
+  const amounts = (p.packages ?? []).map((k) => k.amount).filter((a) => a != null);
+  return amounts.length ? Math.min(...amounts) : null;
+}
+
+export function estimate(plan, { participants = 1, option } = {}) {
+  const currency = plan?.price?.currency ?? 'EUR';
+  const options = planOptions(plan);
+  const chosen = options.find((o) => o.value === Number(option)) ?? options[0];
+  if (!chosen || chosen.amount == null) return { total: null, currency };
   const n = Math.max(1, Number(participants) || 1);
-
-  if (price.unit === 'lesson') {
-    const tier = [...(price.perPersonTiers ?? [])].sort((a, b) => b.people - a.people).find((t) => n >= t.people);
-    return tier ? { total: tier.amount * n, currency, perPerson: tier.amount } : { total: base, currency };
-  }
-  return { total: base * n, currency, perPerson: base };
+  return { total: Math.round(chosen.amount * n * 100) / 100, currency, perPerson: chosen.amount, option: chosen.value, hours: chosen.hours, days: chosen.days ?? null };
 }
 
-export function formatMoney(amount, currency = 'EUR', locale = 'en') {
+/** Deposit now and balance at the school (percent of the total, rounded to cents). */
+export function split(total, percent) {
+  if (total == null) return { now: null, later: null };
+  const now = Math.round(total * percent) / 100;
+  return { now, later: Math.round((total - now) * 100) / 100 };
+}
+
+export function formatMoney(amount, currency = 'EUR', locale = 'es') {
   if (amount == null) return null;
-  return new Intl.NumberFormat(locale === 'es' ? 'es-ES' : 'en-IE', { style: 'currency', currency, maximumFractionDigits: amount % 1 ? 2 : 0 }).format(amount);
+  return new Intl.NumberFormat(locale === 'en' ? 'en-IE' : 'es-ES', { style: 'currency', currency, minimumFractionDigits: amount % 1 ? 2 : 0, maximumFractionDigits: 2 }).format(amount);
 }

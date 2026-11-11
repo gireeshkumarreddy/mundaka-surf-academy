@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data: https://raw.githubusercontent.com; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#004A5C">
+<title>Administración · Mundaka Surf Academy</title>
+<link rel="icon" href="../assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="stylesheet" href="admin.css">
+<script type="module" src="admin.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="top__brand">
+    <span class="top__name">Mundaka Surf Academy</span>
+    <span class="top__sub">Panel de administración</span>
+  </div>
+  <div class="top__status" id="status"></div>
+</header>
+
+<main id="main">
+  <noscript><p class="callout">Este panel necesita JavaScript.</p></noscript>
+
+  <section class="connect" id="connect" aria-labelledby="connect-title" hidden>
+    <h1 id="connect-title">Editar la web</h1>
+    <p>Desde aquí cambias precios, instructores, galería, opiniones, datos de contacto y textos. Cada vez que guardas se crea un cambio (commit) en GitHub y la web se publica sola en 1–2 minutos.</p>
+
+    <form class="connect__form" id="connect-form" novalidate>
+      <label for="token">Token de acceso de GitHub</label>
+      <input id="token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">
+      <p class="hint">El token se guarda solo en este navegador. Puedes borrarlo cuando quieras con «Olvidar token».</p>
+      <p class="error" id="connect-error" role="alert" hidden></p>
+      <div class="row">
+        <button class="btn" type="submit" id="btn-connect">Conectar</button>
+        <button class="btn btn--ghost" type="button" id="btn-preview">Ver sin conectar</button>
+        <button class="btn btn--quiet" type="button" id="btn-forget-stored" hidden>Olvidar token guardado</button>
+      </div>
+      <p class="hint">«Ver sin conectar» abre una vista previa de solo lectura con los datos publicados en la web.</p>
+    </form>
+
+    <details class="help">
+      <summary>Cómo crear el token (una sola vez)</summary>
+      <ol>
+        <li>En GitHub, abre <strong>Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong> y pulsa <strong>Generate new token</strong>.</li>
+        <li>Ponle un nombre (por ejemplo «Panel web») y una fecha de caducidad.</li>
+        <li>En <strong>Repository access</strong> elige <strong>Only select repositories</strong> y marca solo <code id="repo-name">el repositorio de la web</code>.</li>
+        <li>En <strong>Repository permissions</strong> busca <strong>Contents</strong> y elige <strong>Read and write</strong>. No hace falta ningún otro permiso.</li>
+        <li>Pulsa <strong>Generate token</strong>, copia el código (empieza por <code>github_pat_</code>) y pégalo arriba.</li>
+      </ol>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Crear el token en GitHub</a></p>
+    </details>
+  </section>
+
+  <div class="app" id="app" hidden>
+    <nav class="tabs" aria-label="Secciones">
+      <div class="tabs__list" role="tablist">
+        <button class="tab" type="button" role="tab" id="tab-precios" aria-controls="panel-precios" data-tab="precios">Precios / clases</button>
+        <button class="tab" type="button" role="tab" id="tab-instructores" aria-controls="panel-instructores" data-tab="instructores">Instructores</button>
+        <button class="tab" type="button" role="tab" id="tab-galeria" aria-controls="panel-galeria" data-tab="galeria">Galería</button>
+        <button class="tab" type="button" role="tab" id="tab-opiniones" aria-controls="panel-opiniones" data-tab="opiniones">Opiniones</button>
+        <button class="tab" type="button" role="tab" id="tab-ajustes" aria-controls="panel-ajustes" data-tab="ajustes">Ajustes / contacto</button>
+        <button class="tab" type="button" role="tab" id="tab-textos" aria-controls="panel-textos" data-tab="textos">Textos</button>
+      </div>
+    </nav>
+
+    <div class="notice" id="notice" role="status" hidden></div>
+
+    <section class="panel" id="panel-precios" role="tabpanel" aria-labelledby="tab-precios" hidden></section>
+    <section class="panel" id="panel-instructores" role="tabpanel" aria-labelledby="tab-instructores" hidden></section>
+    <section class="panel" id="panel-galeria" role="tabpanel" aria-labelledby="tab-galeria" hidden></section>
+    <section class="panel" id="panel-opiniones" role="tabpanel" aria-labelledby="tab-opiniones" hidden></section>
+    <section class="panel" id="panel-ajustes" role="tabpanel" aria-labelledby="tab-ajustes" hidden></section>
+    <section class="panel" id="panel-textos" role="tabpanel" aria-labelledby="tab-textos" hidden></section>
+  </div>
+</main>
+
+<div class="savebar" id="savebar" hidden>
+  <p class="savebar__summary" id="save-summary" role="status"></p>
+  <div class="savebar__actions">
+    <button class="btn btn--ghost" type="button" id="btn-discard">Descartar</button>
+    <button class="btn" type="button" id="btn-save">Guardar cambios</button>
+  </div>
+</div>
+
+<dialog class="picker" id="picker" aria-labelledby="picker-title"></dialog>
+</body>
+</html>

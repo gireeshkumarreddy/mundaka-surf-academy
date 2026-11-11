@@ -1,9 +1,12 @@
-<!--page {"key": "legal", "slug": "legal-notice", "header": "dark"} -->
-<section class="legal section">
-  <div class="container--narrow">
-    <span class="dash" aria-hidden="true"></span>
-    <h1 class="title title--md">{{legal.title}}</h1>
-    <p class="muted small">{{legalCommon.updated}} 20/10/2026 · {{legalCommon.draft}}</p>
+<!--page {"key": "legal", "slug": "legal-notice", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="legal-title">
+  <div class="container page-hero__inner">
+    <h1 class="page-hero__title" id="legal-title">{{legal.title}}</h1>
+    <p class="small muted">{{legalCommon.updated}} 11/11/2026 · {{legalCommon.draft}}</p>
+  </div>
+</section>
+<section class="section legal">
+  <div class="container container--narrow">
     <div class="prose">
       <h2>{{legal.owner.title}}</h2>
       <p>{{legal.owner.text}}</p>
@@ -11,8 +14,8 @@
         <li>{{legalCommon.owner}}: {{tbc}}</li>
         <li>{{legalCommon.tradeName}}: {{config.brand.name}}</li>
         <li>{{legalCommon.taxId}}: {{tbc}}</li>
-        <li>{{legalCommon.address}}: {{tbc}}</li>
-        <li>{{legalCommon.email}}: {{#if config.contact.email}}<a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a>{{/if}}{{#unless config.contact.email}}{{tbc}}{{/unless}}</li>
+        <li>{{legalCommon.address}}: {{config.contact.address}}</li>
+        <li>{{legalCommon.email}}: <a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a></li>
       </ul>
       <h2>{{legal.use.title}}</h2>
       <p>{{legal.use.text}}</p>

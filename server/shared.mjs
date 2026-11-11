@@ -2,6 +2,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { planOptions } from '../src/scripts/pricing.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,6 +26,9 @@ export async function validateBooking(input) {
   const participants = Number(input.participants);
   if (!Number.isInteger(participants) || participants < 1 || participants > 40) return { error: 'participants' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? '')) return { error: 'date' };
+  // hours (private) or days (group packages): must be one of the options published in plans.json
+  const option = Number(input.option);
+  if (!planOptions(plan).some((o) => o.value === option)) return { error: 'option' };
   const name = String(input.contact?.name ?? '').trim();
   const email = String(input.contact?.email ?? '').trim();
   if (name.length < 2 || !EMAIL.test(email)) return { error: 'contact' };
@@ -34,16 +38,65 @@ export async function validateBooking(input) {
     booking: {
       planId: plan.id,
       planName: plan.name?.en ?? plan.id,
+      option,
       level: clip(input.level, 20),
       date: input.date,
-      time: clip(input.time, 20),
       participants,
-      ages: clip(input.ages, 200),
-      availability: clip(input.availability, 1000),
       contact: { name: clip(name, 120), email: clip(email, 200), phone: clip(input.contact?.phone, 40) },
-      adaptive: Boolean(input.adaptive),
+      policyAccepted: input.policyAccepted === true,
       message: clip(input.message, 3000),
-      locale: input.locale === 'es' ? 'es' : 'en',
+      locale: input.locale === 'en' ? 'en' : 'es',
     },
+  };
+}
+
+/** Sends one plain-text email through Resend (https://resend.com); swap the fetch for any other email API. */
+export async function sendMail({ to, from, replyTo, subject, text }) {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ to, from, reply_to: replyTo, subject, text }),
+  });
+  if (!res.ok) throw new Error(`mail ${res.status}`);
+}
+
+/** Confirmation for the customer, in the language they booked in. status: 'requested' | 'paid'. */
+export function customerEmail(booking, est, reference, status, paid = null) {
+  const es = booking.locale !== 'en';
+  const eur = (n) => (n == null ? (es ? 'precio a confirmar' : 'price to be confirmed') : `${n.toFixed(2)} EUR`);
+  const unit = es ? (booking.option === 1 ? 'día' : 'días') : booking.option === 1 ? 'day' : 'days';
+  const option = est.hours && !est.days ? `${booking.option} h` : `${booking.option} ${unit}`;
+  const lines = es
+    ? [
+        status === 'paid' ? 'Gracias: tu reserva en Mundaka Surf Academy está confirmada.' : 'Gracias: hemos recibido tu solicitud de reserva en Mundaka Surf Academy.',
+        '',
+        `Referencia: ${reference}`,
+        `Clase: ${booking.planName} (${option})`,
+        `Fecha: ${booking.date}`,
+        `Personas: ${booking.participants}`,
+        `Total: ${eur(est.total)}`,
+        paid != null ? `Pagado online (depósito): ${eur(paid)}` : null,
+        paid != null && est.total != null ? `A pagar en la escuela: ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
+        '',
+        'Las clases dependen de la marea y del estado del mar: te escribiremos para confirmar la hora.',
+        'Mundaka Surf Academy · Erreka 6, 48360 Mundaka · mundakasurfacademy@gmail.com',
+      ]
+    : [
+        status === 'paid' ? 'Thank you: your booking with Mundaka Surf Academy is confirmed.' : 'Thank you: we have received your booking request at Mundaka Surf Academy.',
+        '',
+        `Reference: ${reference}`,
+        `Lesson: ${booking.planName} (${option})`,
+        `Date: ${booking.date}`,
+        `People: ${booking.participants}`,
+        `Total: ${eur(est.total)}`,
+        paid != null ? `Paid online (deposit): ${eur(paid)}` : null,
+        paid != null && est.total != null ? `To pay at the school: ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
+        '',
+        'Lessons depend on the tide and the sea: we will write to confirm the time.',
+        'Mundaka Surf Academy · Erreka 6, 48360 Mundaka · mundakasurfacademy@gmail.com',
+      ];
+  return {
+    subject: es ? `Mundaka Surf Academy — ${status === 'paid' ? 'reserva confirmada' : 'solicitud recibida'} (${reference})` : `Mundaka Surf Academy — ${status === 'paid' ? 'booking confirmed' : 'request received'} (${reference})`,
+    text: lines.filter((l) => l != null).join('\n'),
   };
 }

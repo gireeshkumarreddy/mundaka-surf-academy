@@ -25,10 +25,10 @@ function initSmoothScroll() {
   // touch screens keep their native scrolling: Lenis would add nothing there but per-frame work
   if (!window.Lenis || window.matchMedia('(pointer: coarse)').matches) return;
   lenis = new window.Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+    // lerp (no fixed duration): follows the wheel closely, smooth without the floaty delay
+    lerp: 0.16,
     smoothWheel: true,
-    wheelMultiplier: 0.95,
+    wheelMultiplier: 1,
     touchMultiplier: 1.5,
   });
   window.__lenis = lenis;
@@ -61,14 +61,13 @@ function initSmoothScroll() {
 }
 
 /* ---------- reveals ---------- */
-const SKIP = '.hero, .site-header, .page-curtain, .lightbox, .mobile-menu, [data-booking-form], [data-plan-panel], [data-plan-tabs], [data-plans-compare], [data-plan-photo], .finder__result, [data-no-motion]';
+const SKIP = '.hero, .site-header, .page-curtain, .lightbox, .mobile-menu, .cookie-banner, .wa-float, [data-booking-form], [data-summary-box], .embed';
 const FADE = [
-  'h1', 'h2', 'h3', 'h4', 'p', 'dl', 'blockquote', 'address', '.btn', '.link-arrow', '.eyebrow', '.dash', '.spain-map', '.steps', '.booking__note',
-  '.catch__chips', '.conditions-mini', '.channels > li', '.facts > li', '.practical__grid > li', '.pay__list > li', '.approach__list > li',
-  '.faq__list > details', '.choice-group', '.gallery__grid > li', '.clips__item', '.strip__item', '.conditions__card', '.story', '.callout', '.feature-card',
-  '.footer-claim', '.footer-arch-nav a', '.footer-tagline', '.footer-actions', '.footer-badge',
+  'h1', 'h2', 'h3', 'h4', 'p', 'dl', 'blockquote', 'address', '.btn', '.link-arrow', '.eyebrow', '.price-table', '.ticks', '.steps',
+  '.class-card', '.team-card', '.review-card', '.info-card', '.link-card', '.panel', '.faq__list > details', '.gallery__cell', '.channel-list > li',
+  '.policy-box', '.chips', '.filters', '.site-footer__col', '.site-footer__brand',
 ].join(',');
-const SPLIT = '.title, .catch__title, .poster__title, .cta-band__title, .plans-hero__title, .loc-hero__title, .meet__name, .stories__vertical, .profile__name, .type__name, .anatomy__title, .footer-claim__big, .framed__title';
+const SPLIT = '.title, .page-hero__title';
 
 function splitWords(el) {
   let i = 0;
@@ -114,15 +113,15 @@ function initReveals() {
   const watched = new Map();
   const io = new IntersectionObserver((entries) => {
     const entering = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
-    const base = html.classList.contains('is-entered') ? 0 : 0.35;
+    const base = html.classList.contains('is-entered') ? 0 : 0.2;
     entering.forEach((entry, n) => {
       for (const el of watched.get(entry.target) ?? []) {
-        el.style.setProperty('--delay', `${(base + Math.min(n, 8) * 0.08).toFixed(2)}s`);
+        el.style.setProperty('--delay', `${(base + Math.min(n, 6) * 0.05).toFixed(2)}s`);
         el.classList.add('is-in');
       }
       io.unobserve(entry.target);
     });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
+  }, { rootMargin: '0px 0px 8% 0px', threshold: 0 }); // start just before things enter the screen, so nothing is late
   const watch = (els) => els.forEach((el) => {
     targets.add(el);
     const probe = el.matches('[data-img]') && el.parentElement ? el.parentElement : el;
@@ -139,7 +138,7 @@ function initReveals() {
 
   // every section after the first glides up as a whole
   const sections = [...main.querySelectorAll(':scope > section, :scope > div.section')].filter((s) => s !== first && !s.matches('.hero'));
-  sections.forEach((section) => section.setAttribute('data-section', section.matches('.catch, .poster, .framed') ? 'slow' : ''));
+  sections.forEach((section) => section.setAttribute('data-section', section.matches('.page-hero') ? 'slow' : ''));
   watch(sections);
 
   // the content of each block is tagged only as it nears the screen (its section is still hidden then): tagging the
@@ -217,7 +216,7 @@ function initTransitions() {
     html.classList.remove('is-entered', 'is-lifting');
     if (curtain) getComputedStyle(curtain).transform; // start from below the screen
     html.classList.add('is-leaving');
-    setTimeout(() => window.location.assign(url.href), 560);
+    setTimeout(() => window.location.assign(url.href), 280);
   });
 }
 

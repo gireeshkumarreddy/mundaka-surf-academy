@@ -1,0 +1,32 @@
+<!--page {"key": "conditions", "slug": "conditions", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="cond-title">
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{conditions.eyebrow}}</p>
+    <h1 class="page-hero__title" id="cond-title">{{conditions.title}}</h1>
+    <p class="lead">{{conditions.lead}}</p>
+  </div>
+  <img class="page-hero__badge" src="{{src:badge-clear@320}}" alt="" width="320" height="320" aria-hidden="true">
+</section>
+
+<section class="section legal" aria-label="{{conditions.title}}">
+  <div class="container container--narrow prose">
+    {{#if review}}<p class="review-note">{{conditions.note}}</p>{{/if}}
+    <h2>{{conditions.h.booking}}</h2>
+    <ul>
+      <li>{{conditions.items.deposit}}</li>
+      <li>{{conditions.items.balance}}</li>
+      <li>{{conditions.items.how}}</li>
+    </ul>
+    <h2>{{conditions.h.cancel}}</h2>
+    <ul>
+      <li>{{conditions.items.cancel}} {{tbc}}</li>
+      <li>{{conditions.items.weather}} {{tbc}}</li>
+      <li>{{conditions.items.noshow}} {{tbc}}</li>
+    </ul>
+    <h2>{{conditions.h.examples}}</h2>
+    {{deposit-table}}
+    <h2>{{conditions.h.lessons}}</h2>
+    <p>{{conditions.lessonsText}}</p>
+    {{> section-actions}}
+  </div>
+</section>

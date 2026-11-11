@@ -1,17 +1,20 @@
-<!--page {"key": "privacy", "slug": "privacy", "header": "dark"} -->
-<section class="legal section">
-  <div class="container--narrow">
-    <span class="dash" aria-hidden="true"></span>
-    <h1 class="title title--md">{{privacy.title}}</h1>
-    <p class="muted small">{{legalCommon.updated}} 20/10/2026 · {{legalCommon.draft}}</p>
+<!--page {"key": "privacy", "slug": "privacy", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="privacy-title">
+  <div class="container page-hero__inner">
+    <h1 class="page-hero__title" id="privacy-title">{{privacy.title}}</h1>
+    <p class="small muted">{{legalCommon.updated}} 11/11/2026 · {{legalCommon.draft}}</p>
+  </div>
+</section>
+<section class="section legal">
+  <div class="container container--narrow">
     <div class="prose">
       <h2>{{privacy.controller.title}}</h2>
       <p>{{privacy.controller.text}}</p>
       <ul>
         <li>{{legalCommon.owner}}: {{tbc}}</li>
         <li>{{legalCommon.taxId}}: {{tbc}}</li>
-        <li>{{legalCommon.address}}: {{tbc}}</li>
-        <li>{{legalCommon.email}}: {{#if config.contact.email}}<a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a>{{/if}}{{#unless config.contact.email}}{{tbc}}{{/unless}}</li>
+        <li>{{legalCommon.address}}: {{config.contact.address}}</li>
+        <li>{{legalCommon.email}}: <a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a></li>
       </ul>
       <h2>{{privacy.data.title}}</h2>
       <p>{{privacy.data.text}}</p>

@@ -1,0 +1,24 @@
+<!--page {"key": "faq", "slug": "faq", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="faq-title">
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{faq.eyebrow}}</p>
+    <h1 class="page-hero__title" id="faq-title">{{faq.title}}</h1>
+    <p class="lead">{{faq.lead}}</p>
+  </div>
+  <img class="page-hero__badge" src="{{src:badge-clear@320}}" alt="" width="320" height="320" aria-hidden="true">
+</section>
+
+<section class="section faq" aria-label="{{faq.title}}">
+  <div class="container container--narrow">
+    <div class="faq__list">
+      <details open><summary>{{faq.q1}}</summary><div><p>{{faq.a1}}</p></div></details>
+      <details><summary>{{faq.q2}}</summary><div><p>{{faq.a2}}</p></div></details>
+      <details><summary>{{faq.q3}}</summary><div><p>{{faq.a3}}</p><ol class="steps steps--plain"><li><span>1</span>{{lessons.info.how.s1}}</li><li><span>2</span>{{lessons.info.how.s2}}</li><li><span>3</span>{{lessons.info.how.s3}}</li><li><span>4</span>{{lessons.info.how.s4}}</li><li><span>5</span>{{lessons.info.how.s5}}</li><li><span>6</span>{{lessons.info.how.s6}}</li></ol></div></details>
+      <details><summary>{{faq.q4}}</summary><div><p>{{faq.a4}}</p></div></details>
+      <details><summary>{{faq.q5}}</summary><div><p>{{faq.a5}}</p></div></details>
+      <details><summary>{{faq.q6}}</summary><div><p>{{faq.a6}}</p><p><a href="{{link:book}}">{{common.cta.bookNow}}</a> · <a href="{{link:conditions}}">{{common.nav.conditions}}</a></p></div></details>
+      <details><summary>{{faq.q7}}</summary><div><p>{{faq.a7}} <a href="{{link:conditions}}">{{common.nav.conditions}}</a></p></div></details>
+    </div>
+    {{> section-actions}}
+  </div>
+</section>

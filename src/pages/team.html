@@ -1,0 +1,40 @@
+<!--page {"key": "team", "slug": "team", "header": "light"} -->
+<section class="page-hero page-hero--img" aria-labelledby="team-title">
+  {{img name=stock-courses sizes="100vw" alt=- class="page-hero__img" loading=eager fetchpriority=high}}
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{team.eyebrow}}</p>
+    <h1 class="page-hero__title" id="team-title">{{team.title}}</h1>
+    <p class="lead">{{team.lead}}</p>
+  </div>
+</section>
+
+<section class="section team" aria-labelledby="team-grid-title">
+  <div class="container">
+    <h2 class="visually-hidden" id="team-grid-title">{{team.gridTitle}}</h2>
+    {{#if review}}<p class="review-note">{{team.note}}</p>{{/if}}
+    <div class="team-grid">
+{{team-cards}}
+    </div>
+    {{#if review}}<p class="review-note">{{team.photoNote}}</p>{{/if}}
+  </div>
+</section>
+
+<section class="section section--tint approach" aria-labelledby="approach-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{{team.approach.eyebrow}}</p>
+      <h2 class="title" id="approach-title">{{team.approach.title}}</h2>
+      <p class="lead">{{team.approach.lead}}</p>
+    </div>
+    <div class="approach__grid">
+      <article class="approach__item"><span class="approach__num">01</span><h3>{{team.approach.a.title}}</h3><p>{{team.approach.a.text}}</p></article>
+      <article class="approach__item"><span class="approach__num">02</span><h3>{{team.approach.b.title}}</h3><p>{{team.approach.b.text}}</p></article>
+      <article class="approach__item"><span class="approach__num">03</span><h3>{{team.approach.c.title}}</h3><p>{{team.approach.c.text}}</p></article>
+      <article class="approach__item"><span class="approach__num">04</span><h3>{{team.approach.d.title}}</h3><p>{{team.approach.d.text}}</p></article>
+    </div>
+    <div class="team__end">
+      <p>{{team.end}}</p>
+      {{> section-actions}}
+    </div>
+  </div>
+</section>

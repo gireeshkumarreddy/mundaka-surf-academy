@@ -1,209 +1,113 @@
-<!--page {"key": "lessons", "slug": "lessons", "header": "dark"} -->
-<section class="lessons-hero" aria-labelledby="lessons-title">
-  <div class="lessons-hero__img">{{img name=stock-lessons-hero sizes="100vw" alt=lessons.hero.alt loading=eager fetchpriority=high}}</div>
-  <div class="lessons-hero__copy">
-    <p class="eyebrow">{{lessons.hero.eyebrow}}</p>
-    <h1 class="lessons-hero__title" id="lessons-title"><span class="lessons-hero__grad">{{lessons.hero.title1}}</span><em class="serif">{{lessons.hero.title2}}</em></h1>
+<!--page {"key": "lessons", "slug": "lessons", "header": "overlay"} -->
+<section class="page-hero page-hero--img" aria-labelledby="lessons-title">
+  {{img name=stock-wave-tunnel mobile=stock-wave-tunnel-m sizes="100vw" alt=- class="page-hero__img" loading=eager fetchpriority=high}}
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{lessons.eyebrow}}</p>
+    <h1 class="page-hero__title" id="lessons-title">{{lessons.title}}</h1>
+    <p class="lead">{{lessons.lead}}</p>
+    <nav class="chips" aria-label="{{lessons.jump}}">
+      <a href="#private">{{lessons.private.name}}</a>
+      <a href="#group">{{lessons.group.name}}</a>
+      <a href="#advanced">{{lessons.advanced.name}}</a>
+      <a href="#info">{{lessons.info.title}}</a>
+    </nav>
   </div>
-  <a class="feature-card" href="#adaptive">
-    <span class="feature-card__label">{{lessons.hero.featured}}</span>
-    <span class="feature-card__img">{{img name=xabier-cutout sizes="160px" alt=-}}</span>
-    <span class="feature-card__name">{{lessons.types.adaptive.name}}</span>
-    <span class="feature-card__sub">{{lessons.hero.featuredSub}}</span>
-  </a>
 </section>
 
-<section class="anatomy section" aria-labelledby="anatomy-title">
-  <header class="anatomy__head" data-reveal>
-    <h2 class="anatomy__title" id="anatomy-title">{{lessons.levels.title}}</h2>
-    <p class="anatomy__sub serif">{{lessons.levels.sub}}</p>
-  </header>
-  <div class="anatomy__stage">
-    <div class="anatomy__center" aria-hidden="true">
-      <span class="anatomy__streaks"></span>
-      {{img name=xabier-cutout sizes="(min-width: 1024px) 26vw, 50vw" alt=- class="anatomy__surfer"}}
-    </div>
-    <article class="callout callout--a" data-reveal>
-      <span class="callout__lens">{{img name=level-beginner sizes="120px" alt=-}}</span>
-      <span class="callout__line" aria-hidden="true"></span>
-      <h3 class="callout__title">{{lessons.levels.beginner.title}}</h3>
-      <p>{{lessons.levels.beginner.text}}</p>
-    </article>
-    <article class="callout callout--b" data-reveal>
-      <span class="callout__lens">{{img name=level-intermediate sizes="120px" alt=-}}</span>
-      <span class="callout__line" aria-hidden="true"></span>
-      <h3 class="callout__title">{{lessons.levels.intermediate.title}}</h3>
-      <p>{{lessons.levels.intermediate.text}}</p>
-    </article>
-    <article class="callout callout--c" data-reveal>
-      <span class="callout__lens">{{img name=level-advanced sizes="120px" alt=-}}</span>
-      <span class="callout__line" aria-hidden="true"></span>
-      <h3 class="callout__title">{{lessons.levels.advanced.title}}</h3>
-      <p>{{lessons.levels.advanced.text}}</p>
-    </article>
-  </div>
-  <p class="review-note anatomy__note">{{lessons.levels.draft}}</p>
-</section>
-
-<section class="finder section section--foam" id="finder" aria-labelledby="finder-title" data-finder>
-  <div class="container finder__grid">
-    <div class="finder__intro" data-reveal>
-      <span class="dash" aria-hidden="true"></span>
-      <h2 class="title title--md" id="finder-title">{{lessons.finder.title}}</h2>
-      <p>{{lessons.finder.text}}</p>
-    </div>
-    <form class="finder__form" data-finder-form>
-      <fieldset class="choice-group">
-        <legend>{{lessons.finder.whoQ}}</legend>
-        <label class="choice"><input type="radio" name="who" value="me" required><span>{{lessons.finder.who.me}}</span></label>
-        <label class="choice"><input type="radio" name="who" value="group"><span>{{lessons.finder.who.group}}</span></label>
-        <label class="choice"><input type="radio" name="who" value="kids"><span>{{lessons.finder.who.kids}}</span></label>
-        <label class="choice"><input type="radio" name="who" value="adaptive"><span>{{lessons.finder.who.adaptive}}</span></label>
-      </fieldset>
-      <fieldset class="choice-group">
-        <legend>{{lessons.finder.levelQ}}</legend>
-        <label class="choice"><input type="radio" name="level" value="beginner" required><span>{{lessons.finder.level.never}}</span></label>
-        <label class="choice"><input type="radio" name="level" value="beginner-plus"><span>{{lessons.finder.level.whitewater}}</span></label>
-        <label class="choice"><input type="radio" name="level" value="intermediate"><span>{{lessons.finder.level.green}}</span></label>
-        <label class="choice"><input type="radio" name="level" value="advanced"><span>{{lessons.finder.level.advanced}}</span></label>
-      </fieldset>
-      <div class="finder__result" data-finder-result aria-live="polite">
-        <p class="finder__placeholder" data-finder-placeholder>{{lessons.finder.placeholder}}</p>
-        <div data-finder-output hidden>
-          <p class="finder__label">{{lessons.finder.resultLabel}}</p>
-          <p class="finder__plan" data-finder-plan></p>
-          <p class="finder__why" data-finder-why></p>
-          <div class="finder__actions">
-            <a class="btn btn--pill" href="{{link:contact}}" data-finder-book>{{common.cta.request}}</a>
-            <a class="link-arrow" href="{{link:lessons}}" data-finder-more>{{lessons.finder.details}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
+<section class="section lesson" id="private" aria-labelledby="private-title">
+  <div class="container lesson__grid">
+    <figure class="lesson__photo frame">{{img name=stock-private sizes="(min-width: 900px) 40vw, 92vw" alt=lessons.private.photoAlt}}</figure>
+    <div class="lesson__body">
+      <p class="lesson__num">01</p>
+      <h2 class="title" id="private-title">{{lessons.private.name}}</h2>
+      <p class="lead">{{lessons.private.text}}</p>
+      <dl class="facts">
+        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.private.level}}</dd></div>
+        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
+        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+      </dl>
+      {{price-table:private}}
+      <div class="section-actions">
+        <a class="btn btn--primary" href="{{link:book}}?type=private"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
+        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
       </div>
-    </form>
+    </div>
   </div>
 </section>
 
-<section class="framed framed--short" aria-labelledby="every-title">
-  {{img name=stock-group-women sizes="100vw" alt=- class="framed__img"}}
-  <div class="framed__inner">
-    <div class="framed__box" data-reveal><h2 class="framed__title" id="every-title"><span>{{lessons.framed.title1}}</span><em>{{lessons.framed.title2}}</em></h2></div>
+<section class="section section--tint lesson lesson--flip" id="group" aria-labelledby="group-title">
+  <div class="container lesson__grid">
+    <figure class="lesson__photo frame">{{img name=stock-group-women sizes="(min-width: 900px) 40vw, 92vw" alt=lessons.group.photoAlt}}</figure>
+    <div class="lesson__body">
+      <p class="lesson__num">02</p>
+      <h2 class="title" id="group-title">{{lessons.group.name}}</h2>
+      <p class="lead">{{lessons.group.text}}</p>
+      <dl class="facts">
+        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.group.level}}</dd></div>
+        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
+        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+      </dl>
+      {{price-table:group}}
+      <div class="section-actions">
+        <a class="btn btn--primary" href="{{link:book}}?type=group"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
+        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="types section" aria-labelledby="types-title">
+<section class="section lesson" id="advanced" aria-labelledby="advanced-title">
+  <div class="container lesson__grid">
+    <figure class="lesson__photo frame">{{img name=green-curl sizes="(min-width: 900px) 40vw, 100vw" alt=lessons.advanced.photoAlt}}</figure>
+    <div class="lesson__body">
+      <p class="lesson__num">03</p>
+      <h2 class="title" id="advanced-title">{{lessons.advanced.name}}</h2>
+      <p class="lead">{{lessons.advanced.text}}</p>
+      <ul class="ticks">
+        <li>{{lessons.advanced.f1}}</li>
+        <li>{{lessons.advanced.f2}}</li>
+        <li>{{lessons.advanced.f3}}</li>
+        <li>{{lessons.advanced.f4}}</li>
+      </ul>
+      <dl class="facts">
+        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.advanced.level}}</dd></div>
+        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
+        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+      </dl>
+      <p class="small muted">{{lessons.advanced.samePrice}}</p>
+      {{price-table:advanced}}
+      <div class="section-actions">
+        <a class="btn btn--primary" href="{{link:book}}?type=advanced"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
+        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--deep info" id="info" aria-labelledby="info-title">
   <div class="container">
-    <div class="types__head" data-reveal>
-      <span class="dash" aria-hidden="true"></span>
-      <h2 class="title title--md" id="types-title">{{lessons.typesTitle}}</h2>
-      <p class="lead">{{lessons.typesLead}}</p>
+    <div class="section-head">
+      <p class="eyebrow">{{lessons.info.eyebrow}}</p>
+      <h2 class="title" id="info-title">{{lessons.info.title}}</h2>
     </div>
-    <div class="types__list">
-      <article class="type" id="private" data-reveal>
-        <div class="type__media">{{img name=stock-private sizes="(min-width: 1024px) 40vw, 92vw" alt=lessons.types.private.alt style="object-position: 50% 30%"}}</div>
-        <div class="type__body">
-          <p class="type__n">01</p>
-          <h3 class="type__name">{{lessons.types.private.name}}</h3>
-          <p>{{lessons.types.private.text}}</p>
-          <dl class="spec">
-            <div><dt>{{lessons.spec.format}}</dt><dd>{{lessons.types.private.format}}</dd></div>
-            <div><dt>{{lessons.spec.levels}}</dt><dd>{{lessons.spec.allLevels}}</dd></div>
-            <div><dt>{{lessons.spec.duration}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.equipment}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.price}}</dt><dd><a href="{{link:plans}}?plan=private">{{lessons.spec.seePlans}}</a></dd></div>
-          </dl>
-          <a class="btn btn--pill" href="{{link:contact}}?plan=private#booking">{{common.cta.request}}</a>
-        </div>
+    <div class="info-grid">
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><h3>{{lessons.info.where.title}}</h3><p>{{lessons.info.where.text}}</p>{{#if review}}<p class="review-note">{{lessons.info.where.note}}</p>{{/if}}</article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><h3>{{lessons.info.when.title}}</h3><p>{{lessons.info.when.text}}</p></article>
+      <article class="info-card info-card--wide"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg><h3>{{lessons.info.how.title}}</h3>
+        <ol class="steps">
+          <li><span>1</span>{{lessons.info.how.s1}}</li>
+          <li><span>2</span>{{lessons.info.how.s2}}</li>
+          <li><span>3</span>{{lessons.info.how.s3}}</li>
+          <li><span>4</span>{{lessons.info.how.s4}}</li>
+          <li><span>5</span>{{lessons.info.how.s5}}</li>
+          <li><span>6</span>{{lessons.info.how.s6}}</li>
+        </ol>
       </article>
-      <article class="type type--flip" id="group" data-reveal>
-        <div class="type__media">{{img name=stock-group sizes="(min-width: 1024px) 40vw, 92vw" alt=lessons.types.group.alt}}</div>
-        <div class="type__body">
-          <p class="type__n">02</p>
-          <h3 class="type__name">{{lessons.types.group.name}}</h3>
-          <p>{{lessons.types.group.text}}</p>
-          <dl class="spec">
-            <div><dt>{{lessons.spec.format}}</dt><dd>{{lessons.types.group.format}}</dd></div>
-            <div><dt>{{lessons.spec.levels}}</dt><dd>{{lessons.spec.allLevels}}</dd></div>
-            <div><dt>{{lessons.spec.groupSize}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.duration}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.equipment}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.price}}</dt><dd><a href="{{link:plans}}?plan=group">{{lessons.spec.seePlans}}</a></dd></div>
-          </dl>
-          <a class="btn btn--pill" href="{{link:contact}}?plan=group#booking">{{common.cta.request}}</a>
-        </div>
-      </article>
-      <article class="type" id="kids" data-reveal>
-        <div class="type__media">{{img name=stock-kids sizes="(min-width: 1024px) 40vw, 92vw" alt=lessons.types.kids.alt}}</div>
-        <div class="type__body">
-          <p class="type__n">03</p>
-          <h3 class="type__name">{{lessons.types.kids.name}}</h3>
-          <p>{{lessons.types.kids.text}}</p>
-          <dl class="spec">
-            <div><dt>{{lessons.spec.format}}</dt><dd>{{lessons.types.kids.format}}</dd></div>
-            <div><dt>{{lessons.spec.ages}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.groupSize}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.duration}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.price}}</dt><dd><a href="{{link:plans}}?plan=kids">{{lessons.spec.seePlans}}</a></dd></div>
-          </dl>
-          <a class="btn btn--pill" href="{{link:contact}}?plan=kids#booking">{{common.cta.request}}</a>
-        </div>
-      </article>
-      <article class="type type--flip" id="courses" data-reveal>
-        <div class="type__media">{{img name=stock-courses sizes="(min-width: 1024px) 40vw, 92vw" alt=lessons.types.courses.alt}}</div>
-        <div class="type__body">
-          <p class="type__n">04</p>
-          <h3 class="type__name">{{lessons.types.courses.name}}</h3>
-          <p>{{lessons.types.courses.text}}</p>
-          <dl class="spec">
-            <div><dt>{{lessons.spec.format}}</dt><dd>{{lessons.types.courses.format}}</dd></div>
-            <div><dt>{{lessons.spec.levels}}</dt><dd>{{lessons.spec.allLevels}}</dd></div>
-            <div><dt>{{lessons.spec.sessions}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.duration}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.price}}</dt><dd><a href="{{link:plans}}?plan=courses">{{lessons.spec.seePlans}}</a></dd></div>
-          </dl>
-          <a class="btn btn--pill" href="{{link:contact}}?plan=courses#booking">{{common.cta.request}}</a>
-        </div>
-      </article>
-      <article class="type" id="adaptive" data-reveal>
-        <div class="type__media">{{img name=stock-adaptive sizes="(min-width: 1024px) 40vw, 92vw" alt=lessons.types.adaptive.alt}}</div>
-        <div class="type__body">
-          <p class="type__n">05</p>
-          <h3 class="type__name">{{lessons.types.adaptive.name}}</h3>
-          <p>{{lessons.types.adaptive.text}}</p>
-          <dl class="spec">
-            <div><dt>{{lessons.spec.format}}</dt><dd>{{lessons.types.adaptive.format}}</dd></div>
-            <div><dt>{{lessons.spec.levels}}</dt><dd>{{lessons.spec.allLevels}}</dd></div>
-            <div><dt>{{lessons.spec.support}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.duration}}</dt><dd>{{tbc}}</dd></div>
-            <div><dt>{{lessons.spec.price}}</dt><dd><a href="{{link:plans}}?plan=adaptive">{{lessons.spec.seePlans}}</a></dd></div>
-          </dl>
-          <a class="btn btn--pill" href="{{link:contact}}?plan=adaptive#booking">{{common.cta.request}}</a>
-        </div>
-      </article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><h3>{{lessons.info.bring.title}}</h3><p>{{lessons.info.bring.text}}</p></article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><h3>{{lessons.info.groups.title}}</h3><p>{{lessons.info.groups.text}}</p>{{#if review}}<p class="review-note">{{lessons.info.groups.note}}</p>{{/if}}</article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg><h3>{{lessons.info.travel.title}}</h3><p>{{lessons.info.travel.text}}</p></article>
     </div>
+    <p class="info__links"><a href="{{link:conditions}}">{{common.nav.conditions}}</a> · <a href="{{link:faq}}">{{common.nav.faq}}</a> · <a href="{{link:surf}}">{{common.nav.surf}}</a></p>
+    {{> section-actions}}
   </div>
 </section>
-
-<section class="practical section section--sand" id="practical" aria-labelledby="practical-title">
-  <div class="container">
-    <div class="practical__head" data-reveal>
-      <span class="dash" aria-hidden="true"></span>
-      <h2 class="title title--md" id="practical-title">{{lessons.practical.title}}</h2>
-    </div>
-    <ul class="practical__grid">
-      <li class="info" data-reveal><h3>{{lessons.practical.season.title}}</h3><p>{{lessons.practical.season.text}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.booking.title}}</h3><p>{{lessons.practical.booking.text}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.duration.title}}</h3><p>{{tbc}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.equipment.title}}</h3><p>{{lessons.practical.equipment.text}} {{tbc}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.ages.title}}</h3><p>{{lessons.practical.ages.text}} {{tbc}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.bring.title}}</h3><p>{{tbc}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.safety.title}}</h3><p>{{lessons.practical.safety.text}} {{tbc}}</p></li>
-      <li class="info" data-reveal><h3>{{lessons.practical.meeting.title}}</h3><p>{{lessons.practical.meeting.text}} {{tbc}}</p></li>
-    </ul>
-  </div>
-</section>
-
-<div class="section section--tight">
-  <div class="container">{{> conditions}}</div>
-</div>
-
-{{> cta-band}}

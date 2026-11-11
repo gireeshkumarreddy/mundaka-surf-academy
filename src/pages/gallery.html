@@ -1,0 +1,32 @@
+<!--page {"key": "gallery", "slug": "gallery", "header": "light"} -->
+<section class="page-hero page-hero--plain page-hero--short" aria-labelledby="gallery-title">
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{{gallery.eyebrow}}</p>
+    <h1 class="page-hero__title" id="gallery-title">{{gallery.title}}</h1>
+    <p class="lead">{{gallery.lead}}</p>
+  </div>
+  <img class="page-hero__badge" src="{{src:badge-clear@320}}" alt="" width="320" height="320" aria-hidden="true">
+</section>
+
+<section class="section gallery" aria-label="{{gallery.title}}" data-gallery>
+  <div class="container">
+    <div class="filters" role="group" aria-label="{{gallery.filter}}">
+      <button type="button" class="filter" data-filter="all" aria-pressed="true">{{gallery.all}}</button>
+      <button type="button" class="filter" data-filter="lessons" aria-pressed="false">{{gallery.lessons}}</button>
+      <button type="button" class="filter" data-filter="instructors" aria-pressed="false">{{gallery.instructors}}</button>
+    </div>
+    {{#if review}}<p class="review-note">{{gallery.note}}</p>{{/if}}
+    <ul class="gallery__grid">
+{{gallery-items}}
+    </ul>
+    <p class="small muted gallery__credit">{{gallery.credit}}</p>
+    {{> section-actions}}
+  </div>
+  <dialog class="lightbox" data-lightbox aria-label="{{gallery.title}}">
+    <img data-lightbox-img alt="">
+    <p class="lightbox__caption" data-lightbox-caption></p>
+    <button type="button" class="lightbox__btn lightbox__prev" data-lightbox-prev aria-label="{{gallery.prev}}"><svg class="icon"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lightbox__btn lightbox__next" data-lightbox-next aria-label="{{gallery.next}}"><svg class="icon"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lightbox__btn lightbox__close" data-lightbox-close aria-label="{{gallery.close}}"><svg class="icon"><use href="#i-close"/></svg></button>
+  </dialog>
+</section>

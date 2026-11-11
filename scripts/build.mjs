@@ -3,7 +3,7 @@
  * Static site builder (no dependencies).
  *
  * Renders every page in src/pages once per enabled locale:
- *   en -> dist/<slug>.html     es -> dist/es/<slug>.html
+ *   es (default) -> dist/<slug>.html     en -> dist/en/<slug>.html
  *
  * Template syntax (pages, partials, layout and locale strings):
  *   {{> partial}}                 include src/partials/partial.html
@@ -12,10 +12,13 @@
  *   {{config.brand.name}}         value from site.config.json (HTML-escaped)
  *   {{link:plans}}  {{link:lessons#kids}}   relative link to a page in the same locale
  *   {{asset:img/x.webp}}          relative path into /assets
- *   {{img name=x sizes="100vw" alt=key.path class=y loading=eager}}   responsive <img>
+ *   {{img name=x sizes="100vw" alt=key.path class=y loading=eager mobile=x-m}}   responsive <img> (mobile: phone crop)
  *   {{srcset:name}}  {{src:name}}  {{src:name@800}}
  *   {{#if config.whatsapp.number}} ... {{else}} ... {{/if}}   ({{#unless}} too, not nested)
  *   {{tbc}}                       "to be confirmed" marker
+ *   {{wa-url}}                    WhatsApp click-to-chat link with the default message (site.config.json → whatsapp)
+ *   {{price-table:group}}  {{from-price:private}}   prices from public/data/plans.json
+ *   {{team-cards}}  {{gallery-items}}  {{reviews}}   cards from public/data/team.json, gallery.json, site.config reviews
  *
  * `node scripts/build.mjs --check` also verifies every internal link, asset and #anchor.
  */
@@ -23,6 +26,7 @@ import { readFile, writeFile, mkdir, readdir, cp, rm, stat } from 'node:fs/promi
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { planOptions, fromPrice, formatMoney, split } from '../src/scripts/pricing.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
@@ -50,6 +54,8 @@ export async function build({ check = false, quiet = false } = {}) {
   const locales = {};
   for (const code of config.locales.enabled) locales[code] = await readJSON(path.join(SRC, 'locales', `${code}.json`));
   const plansData = await readJSON(path.join(PUBLIC, 'data/plans.json'));
+  const teamData = await readJSON(path.join(PUBLIC, 'data/team.json'));
+  const galleryData = await readJSON(path.join(PUBLIC, 'data/gallery.json'));
   const defaultLocale = config.locales.default;
 
   const layout = await readFile(path.join(SRC, 'layouts/base.html'), 'utf8');
@@ -130,7 +136,9 @@ export async function build({ check = false, quiet = false } = {}) {
             .filter((k) => attrs[k])
             .map((k) => ` ${k}="${attrs[k]}"`)
             .join('');
-          return `<img src="${src(attrs.name)}" srcset="${srcset(attrs.name)}" sizes="${attrs.sizes ?? '100vw'}" width="${max}" height="${Math.round(max / e.ratio)}" alt="${alt}" loading="${attrs.loading ?? 'lazy'}" decoding="async"${extra}>`;
+          const tag = `<img src="${src(attrs.name)}" srcset="${srcset(attrs.name)}" sizes="${attrs.sizes ?? '100vw'}" width="${max}" height="${Math.round(max / e.ratio)}" alt="${alt}" loading="${attrs.loading ?? 'lazy'}" decoding="async"${extra}>`;
+          // mobile=<name>: phones (≤ 640 px) get their own crop of the photo
+          return attrs.mobile ? `<picture><source media="(max-width: 640px)" srcset="${srcset(attrs.mobile)}" sizes="100vw">${tag}</picture>` : tag;
         }
         if (token === 'tbc') return `<span class="tbc">${t('common.tbc')}</span>`;
         if (token === 'year') return String(new Date().getFullYear());
@@ -141,17 +149,115 @@ export async function build({ check = false, quiet = false } = {}) {
             .join('')}</nav>`;
         }
         if (token === 'head-extra') return headExtra();
-        // the plan tabs are written into the page (plans.js takes them over), so nothing moves when the data arrives
-        if (token === 'plan-tabs') {
-          return plansData.plans
-            .map((p) => `<button type="button" role="tab" class="plan-tab" id="tab-${p.id}" data-id="${p.id}" aria-controls="plan-panel">${escapeHTML(p.name[locale] ?? p.name[defaultLocale])}</button>`)
-            .join('');
+        if (token === 'wa-url') return waUrl(t('common.waMessage'));
+        if (token.startsWith('price-table:')) return priceTable(token.slice(12));
+        if (token.startsWith('from-price:')) {
+          const plan = planById(token.slice(11));
+          return plan ? escapeHTML(formatMoney(fromPrice(plan), plan.price.currency, locale) ?? '') : '';
         }
+        if (token === 'deposit-table') return depositTable();
+        if (token === 'team-cards') return teamCards();
+        if (token === 'gallery-items') return galleryItems();
+        if (token === 'reviews') return reviews();
         if (token === 'site-config') return siteConfigScript();
         if (token.startsWith('meta.')) return t(`${page.key}.${token}`);
         if (token.startsWith('config.')) return escapeHTML(get(config, token.slice(7)) ?? '');
         if (token.startsWith('page.')) return escapeHTML(get(page, token.slice(5)) ?? '');
         return t(token);
+      };
+
+      const L = (v) => (v && typeof v === 'object' ? v[locale] ?? v[defaultLocale] ?? '' : v ?? '');
+      const waUrl = (message) => {
+        const n = String(config.whatsapp?.number ?? '').replace(/\D/g, '');
+        return n ? `https://wa.me/${n}?text=${encodeURIComponent(message)}` : '';
+      };
+      const planById = (id) => {
+        const plan = plansData.plans.find((p) => p.id === id);
+        if (!plan) errors.push(`${page.file}: unknown plan "${id}"`);
+        return plan;
+      };
+      const money = (n, cur = 'EUR') => escapeHTML(formatMoney(n, cur, locale));
+
+      // price table of one lesson type, written into the page at build time (restyled from the client's price list)
+      const priceTable = (id) => {
+        const plan = planById(id);
+        if (!plan) return '';
+        const cur = plan.price.currency;
+        if (plan.price.unit === 'personHour') {
+          return `<table class="price-table"><caption class="visually-hidden">${escapeHTML(L(plan.name))}</caption>
+<thead><tr><th scope="col">${t('lessons.table.type')}</th><th scope="col">${t('lessons.table.price')}</th></tr></thead>
+<tbody><tr><td>${t('lessons.table.privateRow')}</td><td><strong>${money(plan.price.amount, cur)}</strong> ${t('lessons.table.perPersonHour')}</td></tr></tbody></table>`;
+        }
+        const rows = planOptions(plan)
+          .map((o) => `<tr><td>${o.days}</td><td>${o.hours} h</td><td><strong>${money(o.amount, cur)}</strong></td></tr>`)
+          .join('');
+        return `<table class="price-table"><caption class="visually-hidden">${escapeHTML(L(plan.name))}</caption>
+<thead><tr><th scope="col">${t('lessons.table.days')}</th><th scope="col">${t('lessons.table.hours')}</th><th scope="col">${t('lessons.table.pricePerson')}</th></tr></thead>
+<tbody>${rows}</tbody></table>`;
+      };
+
+      // deposit examples (brief, section 7): every group package and one private hour for one person
+      const depositTable = () => {
+        const pct = config.payments.depositPercent;
+        const rows = [];
+        const group = planById('group');
+        for (const o of planOptions(group)) rows.push([t('book.examples.group').replace('{d}', o.days).replace('{h}', o.hours), o.amount, group.price.currency]);
+        const priv = planById('private');
+        rows.push([t('book.examples.private'), planOptions(priv)[0].amount, priv.price.currency]);
+        const body = rows
+          .map(([label, total, cur]) => {
+            const { now, later } = split(total, pct);
+            return `<tr><td>${escapeHTML(label)}</td><td>${money(total, cur)}</td><td><strong>${money(now, cur)}</strong></td><td>${money(later, cur)}</td></tr>`;
+          })
+          .join('');
+        return `<div class="table-wrap"><table class="price-table price-table--deposit"><thead><tr><th scope="col">${t('book.examples.lesson')}</th><th scope="col">${t('book.examples.total')}</th><th scope="col">${t('book.examples.now').replace('{p}', pct)}</th><th scope="col">${t('book.examples.later').replace('{p}', 100 - pct)}</th></tr></thead><tbody>${body}</tbody></table></div>`;
+      };
+
+      const pending = (key) => (config.reviewMode ? `<span class="tbc">${t(key)}</span>` : '');
+      const teamCards = () =>
+        teamData.instructors
+          .map((p, i) => {
+            const photo = p.photo
+              ? helpers(`img name=${p.photo} sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 90vw" alt=-`).replace('alt=""', `alt="${escapeHTML(L(p.name))}"`)
+              : `<span class="team-card__ph" aria-hidden="true"><img src="${src('badge-clear@320')}" alt="" width="320" height="320" loading="lazy"></span>${pending('team.photoPending')}`;
+            const certs = p.certificates?.length
+              ? `<ul class="team-card__certs">${p.certificates.map((c) => `<li>${escapeHTML(L(c))}</li>`).join('')}</ul>`
+              : `<p class="team-card__certs-empty">${pending('team.certsPending')}</p>`;
+            const bio = L(p.bio) ? `<p class="team-card__bio">${escapeHTML(L(p.bio))}</p>` : `<p class="team-card__bio">${pending('team.bioPending')}</p>`;
+            return `<article class="team-card" id="${escapeHTML(p.id)}">
+  <figure class="team-card__photo">${photo}</figure>
+  <div class="team-card__body">
+    <p class="team-card__num">${String(i + 1).padStart(2, '0')}</p>
+    <h3 class="team-card__name">${escapeHTML(L(p.name))}</h3>
+    <p class="team-card__role">${escapeHTML(L(p.role))}</p>
+    ${bio}
+    <h4 class="team-card__certs-title">${t('team.certsTitle')}</h4>
+    ${certs}
+  </div>
+</article>`;
+          })
+          .join('\n');
+
+      const galleryItems = () =>
+        galleryData.items
+          .map((g) => {
+            const alt = escapeHTML(L(g.alt));
+            return `<li class="gallery__cell" data-cat="${g.category}"><button type="button" class="gallery__item" data-full="${src(`${g.image}@${imgEntry(g.image).widths.filter((w) => w <= 1600).at(-1) ?? imgEntry(g.image).widths[0]}`)}" data-caption="${alt}" aria-label="${t('gallery.open')}: ${alt}">${helpers(`img name=${g.image} sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 96vw" alt=-`).replace('alt=""', `alt="${alt}"`)}</button></li>`;
+          })
+          .join('\n');
+
+      const stars = (n) => `<span class="stars" aria-label="${t('home.reviews.rating').replace('{n}', n)}">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
+      const reviews = () => {
+        const items = config.reviews?.items ?? [];
+        if (!items.length) {
+          return config.reviewMode
+            ? `<div class="reviews__empty">${[1, 2, 3].map(() => `<figure class="review-card review-card--ph">${stars(5)}<blockquote><p>${t('home.reviews.placeholder')}</p></blockquote><figcaption>${t('home.reviews.placeholderName')}</figcaption></figure>`).join('')}</div><p class="review-note">${t('home.reviews.pending')}</p>`
+            : '';
+        }
+        const fmt = new Intl.DateTimeFormat(locale === 'en' ? 'en-GB' : 'es-ES', { month: 'long', year: 'numeric' });
+        return items
+          .map((r) => `<figure class="review-card">${stars(Number(r.rating) || 5)}<blockquote><p>${escapeHTML(L(r.text))}</p></blockquote><figcaption><strong>${escapeHTML(r.name)}</strong>${r.date ? ` · <time datetime="${escapeHTML(r.date)}">${fmt.format(new Date(`${r.date}T12:00:00`))}</time>` : ''}</figcaption></figure>`)
+          .join('');
       };
 
       const headExtra = () => {
@@ -175,14 +281,14 @@ export async function build({ check = false, quiet = false } = {}) {
             description: t('home.meta.description'),
             address: {
               '@type': 'PostalAddress',
+              streetAddress: config.brand.street,
               addressLocality: config.brand.locality,
               addressRegion: config.brand.region,
               postalCode: config.brand.postalCode,
               addressCountry: config.brand.country,
             },
             geo: { '@type': 'GeoCoordinates', latitude: config.brand.geo.lat, longitude: config.brand.geo.lng },
-            employee: { '@type': 'Person', name: config.brand.instructor, jobTitle: t('common.instructorRole') },
-            sameAs: [config.social.instagram.url].filter(Boolean),
+            sameAs: [config.social.instagram?.url, config.social.facebook?.url].filter(Boolean),
           };
           if (config.siteUrl) ld.url = abs(locale);
           if (config.contact.email) ld.email = config.contact.email;
@@ -197,14 +303,17 @@ export async function build({ check = false, quiet = false } = {}) {
           locale,
           reviewMode: config.reviewMode,
           brand: config.brand,
+          defaultLocale,
           whatsapp: config.whatsapp,
+          forecast: config.forecast,
           enquiry: config.enquiry,
           payments: config.payments,
-          season: config.season,
           paths: {
             plans: `${up}data/plans.json`,
             contact: pageUrl('contact'),
-            plansPage: pageUrl('plans'),
+            book: pageUrl('book'),
+            conditions: pageUrl('conditions'),
+            cookies: pageUrl('cookies'),
             bookingStatus: pageUrl('bookingStatus'),
             images: asset('img/'),
             directions: config.maps.directions,
@@ -246,7 +355,7 @@ ${page.body}` : layout.replace('{{content}}', () => page.body);
   await cp(path.join(SRC, 'scripts'), path.join(DIST, 'assets/js'), { recursive: true });
 
   // robots + sitemap (sitemap needs the production domain in site.config.json)
-  const robots = ['User-agent: *', 'Allow: /'];
+  const robots = ['User-agent: *', 'Allow: /', `Disallow: ${BASE}admin/`];
   for (const l of config.locales.enabled) {
     for (const p of pages.filter((p) => p.fragment)) robots.push(`Disallow: ${BASE}${l === defaultLocale ? '' : `${l}/`}${p.slug}.html`);
   }
