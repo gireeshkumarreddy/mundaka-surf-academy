@@ -728,5 +728,31 @@
       "title": "Map",
       "description": "Map"
     }
+  },
+  "craig": {
+    "meta": {
+      "title": "Thank You, Craig — Mundaka Surf Academy",
+      "description": "A letter from Xabier Gondra León to Craig, who ran Mundaka Surf Shop for 41 years."
+    },
+    "letterhead": "Mundaka · Bizkaia",
+    "title": "Thank You, Craig",
+    "greeting": "Craig, mate,",
+    "p1": "A few years ago I walked into Mundaka Surf Shop as a sixteen-year-old kid who didn’t know much about anything. Four years later I walked out a different person, and a big part of that is down to you. I wanted to put this in writing, somewhere everyone can read it, because you’ve earned it.",
+    "p2": "You came over from Australia to Mundaka more than forty years ago and decided to stay. You opened a shop that, for 41 years, was a lot more than a business. It was a meeting point, a landmark for surfers from here and from all over the world, and a part of the town’s identity. Keeping something like that going for so long, with that consistency and honesty, isn’t something just anyone can do.",
+    "p3": "As a boss, you were the best I could have asked for. In four years you never once made me feel small. When I stuffed up, and I stuffed up plenty, there were no blame games, just constructive feedback, given calmly and always with the aim of helping me get better. You taught me that you can have high standards without putting people down, and that the way you correct someone says a lot about who you are. I’ll carry that with me for life.",
+    "p4": "But somewhere along the way you stopped being just my boss. You became a mate and a mentor. You taught me a thousand things you can’t learn from any manual: how to treat people, how to look after a customer, how to be reliable, and how to do a job properly even when nobody’s watching. And when I started talking to you about my dream of opening a surf school, you always had a bit of advice, an idea or a fair warning up your sleeve. Without your experience and your support, Mundaka Surf Academy wouldn’t be what it is today.",
+    "p5": "Now that you’re retiring and a new chapter begins for you, I just want to say I feel incredibly lucky to have been part of your story, even if it’s only a small chapter. You’ve been a real role model for me, and your journey is the one I look up to. I reckon if I can run this school with even half the dedication and heart you put into the shop, I’ll be doing alright.",
+    "p6": "I hope you get to watch me grow, Craig, just like you’ve grown and helped this town grow in your own way. I promise to look after what you taught me and to pass on to the next generation a bit of what you gave me.",
+    "p7": "Thanks for the trust, the patience, the advice, and all the waves we shared, in and out of the water. Enjoy a well-earned rest, you legend. You’ve got a mate here for life, and the first round is on me.",
+    "cheers": "Cheers for everything, mate.",
+    "closing": "With all my gratitude and respect,",
+    "signature": "Xabier Gondra León",
+    "photoAlt": "Craig and Xabi smiling behind the counter of Mundaka Surf Shop, with surfboards hanging from the ceiling.",
+    "caption": "Craig and Xabi at Mundaka Surf Shop",
+    "teaser": {
+      "label": "A letter from Xabi",
+      "quote": "“Without your experience and your support, Mundaka Surf Academy wouldn’t be what it is today.”",
+      "cta": "Read the letter"
+    }
   }
 }

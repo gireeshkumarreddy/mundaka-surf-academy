@@ -1,0 +1,35 @@
+<!--page {"key": "craig", "slug": "craig", "header": "light"} -->
+<section class="letter-page" aria-labelledby="craig-title">
+  <div class="letter-page__grid">
+    <div class="letter-page__aside">
+      <figure class="polaroid">
+        <span class="tape tape--l" aria-hidden="true"></span><span class="tape tape--r" aria-hidden="true"></span>
+        {{img name=craig-xabi sizes="(min-width: 900px) 320px, 76vw" alt=craig.photoAlt loading=eager fetchpriority=high}}
+        <figcaption>{{craig.caption}}</figcaption>
+      </figure>
+    </div>
+
+    <article class="letter">
+      <header class="letter__head">
+        <img class="letter__badge" src="{{src:badge-clear@320}}" alt="" width="56" height="56">
+        <p class="letter__from">{{config.brand.name}}<span>{{craig.letterhead}}</span></p>
+      </header>
+      <h1 class="letter__title" id="craig-title">{{craig.title}}</h1>
+      <p class="letter__greeting">{{craig.greeting}}</p>
+      <div class="letter__body">
+        <p>{{craig.p1}}</p>
+        <p>{{craig.p2}}</p>
+        <p>{{craig.p3}}</p>
+        <p>{{craig.p4}}</p>
+        <p>{{craig.p5}}</p>
+        <p>{{craig.p6}}</p>
+        <p>{{craig.p7}}</p>
+        <p>{{craig.cheers}}</p>
+      </div>
+      <p class="letter__closing">{{craig.closing}}</p>
+      <p class="letter__sign">{{craig.signature}}</p>
+      <svg class="letter__swash" viewBox="0 0 260 18" aria-hidden="true"><path d="M3 12c38-8 78-10 118-5s80 8 136-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <p class="letter__org">{{config.brand.name}}</p>
+    </article>
+  </div>
+</section>

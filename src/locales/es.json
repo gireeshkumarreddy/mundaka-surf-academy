@@ -728,5 +728,31 @@
       "title": "Mapa",
       "description": "Mapa"
     }
+  },
+  "craig": {
+    "meta": {
+      "title": "Gracias, Craig — Mundaka Surf Academy",
+      "description": "Carta de Xabier Gondra León a Craig, que durante 41 años llevó Mundaka Surf Shop."
+    },
+    "letterhead": "Mundaka · Bizkaia",
+    "title": "Gracias, Craig",
+    "greeting": "Craig,",
+    "p1": "Hace unos años entré en Mundaka Surf Shop con dieciséis años y sin saber demasiado de la vida. Salí cuatro años después siendo otra persona, y buena parte de eso te lo debo a ti. Quiero que esto quede por escrito, en un sitio donde cualquiera pueda leerlo, porque creo que te lo mereces.",
+    "p2": "Llegaste desde Australia a Mundaka hace más de cuatro décadas y decidiste quedarte. Abriste una tienda que durante 41 años fue mucho más que un negocio: fue un punto de encuentro, una referencia para surfistas de aquí y de fuera, y parte de la identidad del pueblo. Sostener algo así durante tanto tiempo, con esa constancia y esa honestidad, no está al alcance de cualquiera.",
+    "p3": "Para mí fuiste un jefe extraordinario. En cuatro años nunca me hiciste sentir pequeño. Cuando me equivocaba, y me equivoqué muchas veces, no hubo reproches, sino críticas constructivas, dichas con calma y con la intención de que mejorara. Aprendí contigo que se puede exigir sin humillar, y que la manera de corregir a alguien dice mucho de quién eres. Esa lección me la llevo para siempre.",
+    "p4": "Pero con el tiempo dejaste de ser solo mi jefe. Te convertiste en un amigo y en un mentor. Me enseñaste mil cosas que no se aprenden en ningún manual: cómo tratar a la gente, cómo cuidar a un cliente, cómo ser responsable y cómo trabajar bien aunque nadie esté mirando. Y cuando empecé a hablarte de mi sueño de montar una escuela de surf, siempre tuviste un consejo, una idea o una advertencia útil. Sin tu experiencia y tu apoyo, Mundaka Surf Academy no sería lo que es.",
+    "p5": "Ahora que te jubilas y empieza una etapa nueva para ti, quiero decirte que me siento muy afortunado de haber sido parte de tu historia, aunque sea un capítulo pequeño. Tú has sido un referente para mí, y tu trayectoria es un espejo en el que me miro. Ojalá pueda llevar esta escuela con la mitad de la dedicación y el cariño con los que tú llevaste la tienda.",
+    "p6": "Espero que me veas crecer, Craig, igual que tú has crecido y has hecho crecer este pueblo a tu manera. Prometo cuidar lo que me enseñaste y devolver, a quienes vengan detrás, parte de lo que tú me diste a mí.",
+    "p7": "Gracias por la confianza, por la paciencia, por los consejos y por tantas olas compartidas, dentro y fuera del agua. Disfruta de tu merecido descanso. Aquí tienes un amigo para siempre.",
+    "cheers": "",
+    "closing": "Con todo mi cariño y mi respeto,",
+    "signature": "Xabier Gondra León",
+    "photoAlt": "Craig y Xabi sonriendo detrás del mostrador de Mundaka Surf Shop, con tablas de surf colgadas del techo.",
+    "caption": "Craig y Xabi en Mundaka Surf Shop",
+    "teaser": {
+      "label": "Una carta de Xabi",
+      "quote": "«Sin tu experiencia y tu apoyo, Mundaka Surf Academy no sería lo que es.»",
+      "cta": "Leer la carta"
+    }
   }
 }

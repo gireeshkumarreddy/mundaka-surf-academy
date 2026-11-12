@@ -80,8 +80,10 @@
   },
 
   "partners": {
-    "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" }.",
-    "items": []
+    "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" } (url optional: without it the logo is not a link).",
+    "items": [
+      { "name": "Indio", "logo": "partner-indio", "url": "" }
+    ]
   },
 
   "reviews": {

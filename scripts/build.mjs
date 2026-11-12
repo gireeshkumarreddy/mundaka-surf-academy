@@ -267,7 +267,13 @@ export async function build({ check = false, quiet = false } = {}) {
         const items = config.partners?.items ?? [];
         if (!items.length) return config.reviewMode ? `<div class="partners partners--ph"><p class="partners__title">${t('footer.partners')}</p><p class="review-note">${t('footer.partnersPending')}</p></div>` : '';
         return `<div class="partners"><p class="partners__title">${t('footer.partners')}</p><ul class="partners__list">${items
-          .map((it) => `<li><a href="${escapeHTML(it.url ?? '#')}" target="_blank" rel="noopener"><img src="${src(`${it.logo}@${imgEntry(it.logo).widths[0]}`)}" alt="${escapeHTML(it.name)}" loading="lazy"></a></li>`)
+          .map((it) => {
+            const e = imgEntry(it.logo);
+            const w = e.widths.at(-1);
+            const img = `<img src="${src(`${it.logo}@${w}`)}" alt="${escapeHTML(it.name)}" width="${w}" height="${Math.round(w / e.ratio)}" loading="lazy" decoding="async">`;
+            // no website yet → the logo is shown without a link
+            return `<li>${it.url ? `<a href="${escapeHTML(it.url)}" target="_blank" rel="noopener">${img}</a>` : img}</li>`;
+          })
           .join('')}</ul></div>`;
       };
 

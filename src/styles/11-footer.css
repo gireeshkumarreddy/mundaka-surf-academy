@@ -56,6 +56,6 @@
 .partners { padding: 1.5rem 0 2rem; border-top: 1px solid var(--line); }
 .partners__title { margin: 0 0 1rem; font: 700 var(--step--2)/1.2 var(--font-head); letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
 .partners__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 2.5rem; }
-.partners__list img { height: 44px; width: auto; filter: grayscale(1); opacity: 0.75; transition: filter 0.3s, opacity 0.3s; }
+.partners__list img { height: 60px; width: auto; max-width: 170px; object-fit: contain; filter: grayscale(1); opacity: 0.8; transition: filter 0.3s, opacity 0.3s; }
 .partners__list a:hover img { filter: none; opacity: 1; }
 .partners--ph .review-note { margin: 0; }
