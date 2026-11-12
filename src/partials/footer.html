@@ -13,6 +13,7 @@
       <h3>{{footer.contactTitle}}</h3>
       <address class="site-footer__address">
         <a href="{{config.maps.directions}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>{{config.contact.address}}</a>
+        <a href="tel:+34633290073"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{config.contact.phone}}</a>
         <a href="mailto:{{config.contact.email}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{config.contact.email}}</a>
         {{#if config.whatsapp.number}}<a href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{config.whatsapp.display}}</a>{{/if}}
       </address>
@@ -38,6 +39,7 @@
       </ul>
     </div>
   </div>
+  <div class="container">{{partners}}</div>
   <div class="site-footer__legal">
     <div class="container site-footer__legal-inner">
       <p>© {{year}} {{config.brand.name}}</p>

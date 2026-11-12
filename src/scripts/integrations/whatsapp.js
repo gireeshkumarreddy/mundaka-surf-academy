@@ -20,6 +20,7 @@ export function bookingMessage(details) {
   if (details.plan) lines.push(`${t('waPlan')}: ${details.plan}`);
   if (details.option) lines.push(`${t('waOption')}: ${details.option}`);
   if (details.date) lines.push(`${t('waDate')}: ${details.date}`);
+  if (details.time) lines.push(`${t('waTime')}: ${details.time}`);
   if (details.participants) lines.push(`${t('waPeople')}: ${details.participants}`);
   if (details.level) lines.push(`${t('waLevel')}: ${details.level}`);
   if (details.name) lines.push(`${t('waName')}: ${details.name}`);

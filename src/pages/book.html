@@ -15,33 +15,43 @@
 
       <fieldset class="field-group">
         <legend class="field-group__title"><span>1</span>{{book.step1}}</legend>
-        <div class="type-options">
-          <label class="type-option"><input type="radio" name="type" value="private" required><span class="type-option__body"><span class="type-option__name">{{lessons.private.name}}</span><span class="type-option__price">{{from-price:private}} {{lessons.table.perPersonHour}}</span></span></label>
-          <label class="type-option"><input type="radio" name="type" value="group"><span class="type-option__body"><span class="type-option__name">{{lessons.group.name}}</span><span class="type-option__price">{{common.from}} {{from-price:group}} {{lessons.table.perPersonDay}}</span></span></label>
-          <label class="type-option"><input type="radio" name="type" value="advanced"><span class="type-option__body"><span class="type-option__name">{{lessons.advanced.name}}</span><span class="type-option__price">{{common.from}} {{from-price:advanced}} {{lessons.table.perPersonDay}}</span></span></label>
+        <div class="cal" data-cal aria-label="{{book.cal.label}}">
+          <div class="cal__head">
+            <button type="button" class="cal__nav cal__nav--prev" data-cal-prev aria-label="{{book.cal.prev}}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="cal__month" data-cal-month aria-live="polite"></p>
+            <button type="button" class="cal__nav" data-cal-next aria-label="{{book.cal.next}}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+          <div class="cal__grid" data-cal-grid></div>
+          <p class="cal__legend"><span class="cal__key"><span class="cal__dot cal__dot--slots"></span>{{book.cal.legendSlots}}</span><span class="cal__key"><span class="cal__dot cal__dot--tbc"></span>{{book.cal.legendTbc}}</span></p>
         </div>
-        <p class="field-error field-error--group" data-error="type" hidden>{{book.errors.type}}</p>
+        <div class="slots" data-slots aria-live="polite" hidden></div>
+        <input type="hidden" name="date"><input type="hidden" name="time">
+        <p class="field-error field-error--group" data-error="day" hidden>{{book.errors.day}}</p>
+        <p class="field-hint">{{book.cal.season}} · {{book.tideHint}}</p>
+        {{#if review}}<p class="review-note">{{book.cal.example}}</p>{{/if}}
       </fieldset>
 
       <fieldset class="field-group">
         <legend class="field-group__title"><span>2</span>{{book.step2}}</legend>
-        <div class="fields">
+        <div class="type-options">
+          <label class="type-option"><input type="radio" name="type" value="group" required><span class="type-option__body"><span class="type-option__name">{{lessons.group.name}}</span><span class="type-option__price">{{common.from}} {{from-price:group}} {{lessons.table.perPersonDay}}</span></span></label>
+          <label class="type-option"><input type="radio" name="type" value="advanced"><span class="type-option__body"><span class="type-option__name">{{lessons.advanced.name}}</span><span class="type-option__price">{{common.from}} {{from-price:advanced}} {{lessons.table.perPersonDay}}</span></span></label>
+          <label class="type-option"><input type="radio" name="type" value="private"><span class="type-option__body"><span class="type-option__name">{{lessons.private.name}}</span><span class="type-option__price">{{from-price:private}} {{lessons.table.perPersonHour}}</span></span></label>
+          <label class="type-option"><input type="radio" name="type" value="inclusive"><span class="type-option__body"><span class="type-option__name">{{lessons.inclusive.name}}</span><span class="type-option__price">{{from-price:inclusive}} {{lessons.table.perPersonHour}}</span></span></label>
+        </div>
+        <p class="field-error field-error--group" data-error="type" hidden>{{book.errors.type}}</p>
+        <div class="fields fields--after">
           <div class="field" data-field="option">
             <label for="b-option" data-option-label>{{book.fields.option}}</label>
             <select id="b-option" name="option" required disabled><option value="">{{book.fields.optionFirst}}</option></select>
             <p class="field-error">{{book.errors.option}}</p>
           </div>
-          <div class="field" data-field="date">
-            <label for="b-date">{{book.fields.date}}</label>
-            <input id="b-date" name="date" type="date" required>
-            <p class="field-error">{{book.errors.date}}</p>
-          </div>
           <div class="field" data-field="participants">
             <label for="b-people">{{book.fields.people}}</label>
             <input id="b-people" name="participants" type="number" min="1" max="20" value="1" inputmode="numeric" required>
-            <p class="field-error">{{book.errors.people}}</p>
+            <p class="field-error" data-people-error>{{book.errors.people}}</p>
           </div>
-          <div class="field" data-field="level">
+          <div class="field field--full" data-field="level">
             <label for="b-level">{{book.fields.level}}</label>
             <select id="b-level" name="level" required>
               <option value="">{{book.fields.levelChoose}}</option>
@@ -52,7 +62,6 @@
             <p class="field-error">{{book.errors.level}}</p>
           </div>
         </div>
-        <p class="field-hint">{{book.tideHint}}</p>
       </fieldset>
 
       <fieldset class="field-group">
@@ -88,11 +97,18 @@
           <ul>
             <li>{{conditions.items.deposit}}</li>
             <li>{{conditions.items.balance}}</li>
-            <li>{{conditions.items.cancel}} {{tbc}}</li>
-            <li>{{conditions.items.weather}} {{tbc}}</li>
-            <li>{{conditions.items.noshow}} {{tbc}}</li>
+            <li>{{conditions.items.cancel24}}</li>
+            <li>{{conditions.items.cancelLate}}</li>
+            <li>{{conditions.items.weather}}</li>
+            <li>{{conditions.items.late}}</li>
+            <li>{{conditions.items.health}}</li>
           </ul>
           <a class="link-arrow" href="{{link:conditions}}" target="_blank">{{book.policyFull}}<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+        </div>
+        <div class="pay-choice" role="radiogroup" aria-labelledby="pay-title">
+          <p class="pay-choice__title" id="pay-title">{{book.pay.title}}</p>
+          <label class="pay-option"><input type="radio" name="pay" value="deposit" checked><span>{{book.pay.deposit}}</span></label>
+          <label class="pay-option"><input type="radio" name="pay" value="full"><span>{{book.pay.full}}</span></label>
         </div>
         <div class="field field--check" data-field="policy">
           <label><input type="checkbox" name="policy" required> <span>{{book.fields.policy}}</span></label>
@@ -115,8 +131,8 @@
         <dl class="summary__rows" data-summary></dl>
         <dl class="summary__money">
           <div><dt>{{book.summary.total}}</dt><dd data-sum-total>—</dd></div>
-          <div class="summary__now"><dt>{{book.summary.now}}</dt><dd data-sum-now>—</dd></div>
-          <div><dt>{{book.summary.later}}</dt><dd data-sum-later>—</dd></div>
+          <div class="summary__now"><dt data-sum-now-label>{{book.summary.now}}</dt><dd data-sum-now>—</dd></div>
+          <div data-sum-later-row><dt>{{book.summary.later}}</dt><dd data-sum-later>—</dd></div>
         </dl>
         <p class="summary__fine">{{book.summary.fine}}</p>
         {{#if config.whatsapp.number}}<a class="btn btn--wa btn--block" href="{{wa-url}}" target="_blank" rel="noopener" data-wa-booking><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{book.waAlt}}</a>{{/if}}
@@ -126,7 +142,7 @@
 
     <div class="pay-bar" data-pay-bar aria-hidden="true">
       <div><span class="pay-bar__k">{{book.summary.total}}</span><span class="pay-bar__v" data-bar-total>—</span></div>
-      <div class="pay-bar__now"><span class="pay-bar__k">{{book.summary.now}}</span><span class="pay-bar__v" data-bar-now>—</span></div>
+      <div class="pay-bar__now"><span class="pay-bar__k" data-bar-now-label>{{book.summary.now}}</span><span class="pay-bar__v" data-bar-now>—</span></div>
     </div>
 
     <div class="booking__done" data-booking-done tabindex="-1" hidden>

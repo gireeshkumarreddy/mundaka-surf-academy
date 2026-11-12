@@ -24,7 +24,9 @@ export async function validateBooking(input) {
   const plan = plans.find((p) => p.id === input.plan?.id && p.bookable !== false);
   if (!plan) return { error: 'unknown-plan' };
   const participants = Number(input.participants);
-  if (!Number.isInteger(participants) || participants < 1 || participants > 40) return { error: 'participants' };
+  if (!Number.isInteger(participants) || participants < 1 || participants > (plan.maxPeople ?? 40)) return { error: 'participants' };
+  const time = String(input.time ?? '');
+  if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) return { error: 'time' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? '')) return { error: 'date' };
   // hours (private) or days (group packages): must be one of the options published in plans.json
   const option = Number(input.option);
@@ -41,6 +43,8 @@ export async function validateBooking(input) {
       option,
       level: clip(input.level, 20),
       date: input.date,
+      time,
+      payMode: input.payMode === 'full' ? 'full' : 'deposit',
       participants,
       contact: { name: clip(name, 120), email: clip(email, 200), phone: clip(input.contact?.phone, 40) },
       policyAccepted: input.policyAccepted === true,
@@ -72,11 +76,11 @@ export function customerEmail(booking, est, reference, status, paid = null) {
         '',
         `Referencia: ${reference}`,
         `Clase: ${booking.planName} (${option})`,
-        `Fecha: ${booking.date}`,
+        `Fecha: ${booking.date}${booking.time ? ` · ${booking.time}` : ' (hora según marea, te la confirmamos)'}`,
         `Personas: ${booking.participants}`,
         `Total: ${eur(est.total)}`,
-        paid != null ? `Pagado online (depósito): ${eur(paid)}` : null,
-        paid != null && est.total != null ? `A pagar en la escuela: ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
+        paid != null ? `Pagado online: ${eur(paid)}` : null,
+        paid != null && est.total != null && est.total - paid > 0 ? `A pagar en la escuela (efectivo o tarjeta): ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
         '',
         'Las clases dependen de la marea y del estado del mar: te escribiremos para confirmar la hora.',
         'Mundaka Surf Academy · Erreka 6, 48360 Mundaka · mundakasurfacademy@gmail.com',
@@ -86,11 +90,11 @@ export function customerEmail(booking, est, reference, status, paid = null) {
         '',
         `Reference: ${reference}`,
         `Lesson: ${booking.planName} (${option})`,
-        `Date: ${booking.date}`,
+        `Date: ${booking.date}${booking.time ? ` · ${booking.time}` : ' (time set by the tide, we will confirm it)'}`,
         `People: ${booking.participants}`,
         `Total: ${eur(est.total)}`,
-        paid != null ? `Paid online (deposit): ${eur(paid)}` : null,
-        paid != null && est.total != null ? `To pay at the school: ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
+        paid != null ? `Paid online: ${eur(paid)}` : null,
+        paid != null && est.total != null && est.total - paid > 0 ? `To pay at the school (cash or card): ${eur(Math.round((est.total - paid) * 100) / 100)}` : null,
         '',
         'Lessons depend on the tide and the sea: we will write to confirm the time.',
         'Mundaka Surf Academy · Erreka 6, 48360 Mundaka · mundakasurfacademy@gmail.com',

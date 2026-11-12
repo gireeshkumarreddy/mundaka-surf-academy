@@ -1,38 +1,51 @@
 {
-  "$comment": "Lessons and prices (website brief, section 6). Editable without rebuilding for the booking form and the server; run `npm run build` to refresh the price tables printed on the pages. price.unit: 'personHour' (amount per person per hour, choose hours) or 'package' (amount per person for N days).",
-  "updated": "2026-11-11",
+  "$comment": "Lessons and prices (website brief, section 6). Editable without rebuilding for the booking form and the server; run `npm run build` to refresh the price tables printed on the pages. price.unit: 'personHour' (amount per person per hour, choose hours; optional maxPeople) or 'package' (amount per person for N days).",
+  "updated": "2026-11-12",
   "currency": "EUR",
   "plans": [
     {
-      "id": "private",
-      "image": "stock-private",
-      "name": { "es": "Clases privadas", "en": "Private lessons" },
-      "summary": {
-        "es": "Clase personal con tu monitor, a tu ritmo y centrada en tus objetivos.",
-        "en": "A personal lesson with your instructor, at your pace and focused on your goals."
-      },
-      "levels": ["beginner", "intermediate", "advanced"],
-      "price": { "unit": "personHour", "amount": 60, "currency": "EUR", "hours": [1, 2, 3] },
-      "bookable": true
-    },
-    {
       "id": "group",
       "image": "stock-group-women",
-      "name": { "es": "Clases en grupo", "en": "Group lessons" },
-      "summary": {
-        "es": "Aprende con amigos, familia o gente nueva: sesiones de 2 horas, de 1 a 5 días.",
-        "en": "Learn with friends, family or new faces: 2-hour sessions, from 1 to 5 days."
+      "name": {
+        "es": "Clases en grupo (Iniciación)",
+        "en": "Group lessons (Beginners)"
       },
-      "levels": ["beginner", "intermediate"],
+      "summary": {
+        "es": "Tus primeras olas en la playa de Laida: sesiones de 2 horas, de 1 a 5 días.",
+        "en": "Your first waves at Laida beach: 2-hour sessions, from 1 to 5 days."
+      },
+      "levels": [
+        "beginner"
+      ],
       "price": {
         "unit": "package",
         "currency": "EUR",
         "packages": [
-          { "days": 1, "hours": 2, "amount": 35 },
-          { "days": 2, "hours": 4, "amount": 70 },
-          { "days": 3, "hours": 6, "amount": 100 },
-          { "days": 4, "hours": 8, "amount": 120 },
-          { "days": 5, "hours": 10, "amount": 135 }
+          {
+            "days": 1,
+            "hours": 2,
+            "amount": 35
+          },
+          {
+            "days": 2,
+            "hours": 4,
+            "amount": 70
+          },
+          {
+            "days": 3,
+            "hours": 6,
+            "amount": 100
+          },
+          {
+            "days": 4,
+            "hours": 8,
+            "amount": 120
+          },
+          {
+            "days": 5,
+            "hours": 10,
+            "amount": 135
+          }
         ]
       },
       "bookable": true
@@ -40,21 +53,107 @@
     {
       "id": "advanced",
       "image": "green-curl",
-      "name": { "es": "Grupos avanzados / técnicos", "en": "Advanced / technical groups" },
+      "name": {
+        "es": "Grupos avanzados y técnicos",
+        "en": "Advanced and technical groups"
+      },
       "summary": {
         "es": "Para surfistas de nivel intermedio y avanzado: seguimiento, vídeo y corrección técnica.",
         "en": "For intermediate and advanced surfers: session follow-up, video and technique correction."
       },
-      "levels": ["intermediate", "advanced"],
+      "levels": [
+        "intermediate",
+        "advanced"
+      ],
       "price": {
         "unit": "package",
         "currency": "EUR",
         "packages": [
-          { "days": 1, "hours": 2, "amount": 35 },
-          { "days": 2, "hours": 4, "amount": 70 },
-          { "days": 3, "hours": 6, "amount": 100 },
-          { "days": 4, "hours": 8, "amount": 120 },
-          { "days": 5, "hours": 10, "amount": 135 }
+          {
+            "days": 1,
+            "hours": 2,
+            "amount": 35
+          },
+          {
+            "days": 2,
+            "hours": 4,
+            "amount": 70
+          },
+          {
+            "days": 3,
+            "hours": 6,
+            "amount": 100
+          },
+          {
+            "days": 4,
+            "hours": 8,
+            "amount": 120
+          },
+          {
+            "days": 5,
+            "hours": 10,
+            "amount": 135
+          }
+        ]
+      },
+      "bookable": true
+    },
+    {
+      "id": "private",
+      "image": "stock-private",
+      "name": {
+        "es": "Clases privadas",
+        "en": "Private lessons"
+      },
+      "summary": {
+        "es": "Para 1 o 2 personas, con las horas que quieras y centradas en tus objetivos.",
+        "en": "For 1 or 2 people, as many hours as you like, focused on your goals."
+      },
+      "levels": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "price": {
+        "unit": "personHour",
+        "amount": 60,
+        "currency": "EUR",
+        "hours": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "bookable": true,
+      "maxPeople": 2
+    },
+    {
+      "id": "inclusive",
+      "image": "stock-adaptive",
+      "name": {
+        "es": "Clases inclusivas",
+        "en": "Inclusive lessons"
+      },
+      "summary": {
+        "es": "Surf adaptado para personas con discapacidad, en la playa de Laida.",
+        "en": "Adaptive surfing for people with disabilities, at Laida beach."
+      },
+      "levels": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "price": {
+        "unit": "personHour",
+        "amount": 50,
+        "currency": "EUR",
+        "hours": [
+          1,
+          2,
+          3
         ]
       },
       "bookable": true

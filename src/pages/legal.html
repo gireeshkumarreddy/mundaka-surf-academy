@@ -2,7 +2,7 @@
 <section class="page-hero page-hero--plain page-hero--short" aria-labelledby="legal-title">
   <div class="container page-hero__inner">
     <h1 class="page-hero__title" id="legal-title">{{legal.title}}</h1>
-    <p class="small muted">{{legalCommon.updated}} 11/11/2026 · {{legalCommon.draft}}</p>
+    <p class="small muted">{{legalCommon.updated}} 12/11/2026 · {{legalCommon.draft}}</p>
   </div>
 </section>
 <section class="section legal">
@@ -11,10 +11,10 @@
       <h2>{{legal.owner.title}}</h2>
       <p>{{legal.owner.text}}</p>
       <ul>
-        <li>{{legalCommon.owner}}: {{tbc}}</li>
-        <li>{{legalCommon.tradeName}}: {{config.brand.name}}</li>
-        <li>{{legalCommon.taxId}}: {{tbc}}</li>
-        <li>{{legalCommon.address}}: {{config.contact.address}}</li>
+        <li>{{legalCommon.owner}}: {{config.legal.owner}}</li>
+        <li>{{legalCommon.taxId}}: {{config.legal.taxId}}</li>
+        <li>{{legalCommon.address}}: {{config.legal.address}}</li>
+        <li>{{legalCommon.phone}}: <a href="tel:+34633290073">{{config.legal.phone}}</a></li>
         <li>{{legalCommon.email}}: <a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a></li>
       </ul>
       <h2>{{legal.use.title}}</h2>

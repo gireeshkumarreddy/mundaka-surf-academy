@@ -97,13 +97,13 @@ await test('parseJSON agrees with JSON.parse on every data file', async () => {
 await test('patchJSON changes only what changed', async () => {
   const plans = await read('public/data/plans.json');
   const d = JSON.parse(plans);
-  d.plans[0].price.amount = 65;
-  d.plans[1].name.es = 'Clases en grupo «nuevas»';
+  d.plans.find((p) => p.id === 'private').price.amount = 65;
+  d.plans.find((p) => p.id === 'group').name.es = 'Clases en grupo «nuevas»';
   const out = A.patchJSON(plans, d);
   assert.deepEqual(JSON.parse(out), d);
   const diff = out.split('\n').filter((l, i) => l !== plans.split('\n')[i]);
   assert.equal(diff.length, 2, 'two lines changed');
-  assert.match(diff[0], /"amount": 65,/);
+  assert.ok(diff.some((l) => /"amount": 65,/.test(l)), "the price line changed");
 
   // a key added → only that object is rewritten, at its own indentation; $comment kept
   const cfg = await read('site.config.json');
@@ -112,7 +112,7 @@ await test('patchJSON changes only what changed', async () => {
   c.whatsapp.number = '34600000000';
   const cOut = A.patchJSON(cfg, c);
   assert.deepEqual(JSON.parse(cOut), c);
-  assert.ok(cOut.includes('"$comment": "Temporary number'), '$comment kept');
+  assert.ok(cOut.includes(`"$comment": ${JSON.stringify(JSON.parse(cfg).whatsapp.$comment)}`), '$comment kept');
   assert.ok(cOut.includes('\n\n  "contact"'), 'blank lines between sections kept');
   assert.ok(cOut.includes('\n    "items": [\n      {\n        "name": "Ane",'), 'new array indented in place');
   assert.ok(cOut.endsWith('}\n'));

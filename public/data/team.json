@@ -1,9 +1,129 @@
 {
-  "$comment": "Instructor cards (website brief, section 5). Add an object to add an instructor; the grid grows by itself. photo = an image name in public/assets/img (4:5 crop, a different photo per person) or null while it is missing. Empty texts show as 'pending' in review mode. Never put two cards on the same photo.",
+  "$comment": "Instructor cards (website brief, section 5). Add an object to add an instructor; the grid grows by itself. photo = an image name in public/assets/img (4:5 crop, a different photo per person) or null while it is missing. languages and certificates are lists of {es, en}. Empty texts show as 'pending' in review mode. Never put two cards on the same photo.",
   "instructors": [
-    { "id": "instructor-1", "photo": null, "name": { "es": "Instructor 1", "en": "Instructor 1" }, "role": { "es": "Monitor principal", "en": "Head instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
-    { "id": "instructor-2", "photo": null, "name": { "es": "Instructor 2", "en": "Instructor 2" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
-    { "id": "instructor-3", "photo": null, "name": { "es": "Instructor 3", "en": "Instructor 3" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] },
-    { "id": "instructor-4", "photo": null, "name": { "es": "Instructor 4", "en": "Instructor 4" }, "role": { "es": "Monitor de surf", "en": "Surf instructor" }, "bio": { "es": "", "en": "" }, "certificates": [] }
+    {
+      "id": "xabier-gondra",
+      "photo": "xabi-portrait",
+      "name": {
+        "es": "Xabier Gondra León",
+        "en": "Xabier Gondra León"
+      },
+      "role": {
+        "es": "Instructor principal y fundador",
+        "en": "Head coach and founder"
+      },
+      "languages": [
+        {
+          "es": "Euskera (nativo)",
+          "en": "Basque (native)"
+        },
+        {
+          "es": "Castellano (nativo)",
+          "en": "Spanish (native)"
+        },
+        {
+          "es": "Inglés (C1)",
+          "en": "English (C1)"
+        }
+      ],
+      "bio": {
+        "es": "Me llamo Xabier Gondra, soy surfista local de Mundaka, apasionado del mar y con una vocación tremenda por enseñar a otros a buscar esa conexión que tengo yo con el mar. Empecé a surfear con tan solo cinco años, y desde entonces este deporte se ha convertido en mi absoluta pasión y mi forma de vida. Crecer en un entorno como el de Mundaka te marca, y el hecho de montar mi propia escuela es un sueño por el que llevo luchando durante mucho tiempo. Llevo dando clases de surf desde los 16 años y es lo que más me gusta hacer: entrenar con la gente, ver cómo evolucionan y transmitirles el respeto por las olas.",
+        "en": "My name is Xabier Gondra, a local surfer from Mundaka, deeply passionate about the ocean and driven by a strong desire to help others find that same connection to the sea that I have felt since I was a child. I started surfing at just five years old, and ever since, this sport has become my absolute passion and way of life. Growing up in a unique setting like Mundaka shapes who you are, and opening my own surf school is a dream I have fought for over a long time. I have been teaching surf classes since I was 16, and it is what I love doing most: training with people, watching them progress, and passing on a deep respect for the waves."
+      },
+      "certificates": [
+        {
+          "es": "Monitor de surf por la Euskal Surf Federazioa",
+          "en": "Surf instructor, Basque Surf Federation (Euskal Surf Federazioa)"
+        },
+        {
+          "es": "Socorrista acuático (RFESS e International Life Saving)",
+          "en": "Lifeguard (Royal Spanish Lifesaving Federation and ILS)"
+        },
+        {
+          "es": "Primeros auxilios por la Cruz Roja",
+          "en": "First aid, Red Cross"
+        },
+        {
+          "es": "Soporte Vital Básico y DEA",
+          "en": "Basic Life Support and AED"
+        }
+      ]
+    },
+    {
+      "id": "mikel-agos",
+      "photo": null,
+      "name": {
+        "es": "Mikel Agos Francisco",
+        "en": "Mikel Agos Francisco"
+      },
+      "role": {
+        "es": "Monitor de surf",
+        "en": "Surf instructor"
+      },
+      "languages": [
+        {
+          "es": "Castellano (nativo)",
+          "en": "Spanish (native)"
+        },
+        {
+          "es": "Inglés (C1)",
+          "en": "English (C1)"
+        },
+        {
+          "es": "Alemán (B2)",
+          "en": "German (B2)"
+        },
+        {
+          "es": "Francés (B1)",
+          "en": "French (B1)"
+        }
+      ],
+      "bio": {
+        "es": "Me llamo Mikel Agos, tengo 18 años y el surf es mi gran pasión. Empecé a surfear a los 12 años y desde entonces el mar es parte de mi día a día. Llevo tres años dando clases a todos los niveles, desde quienes se suben por primera vez a una tabla hasta quienes quieren seguir mejorando. Mi objetivo es transmitir lo que he aprendido con mi propia experiencia para que aprender sea más fácil y llevadero, y que cada persona disfrute del surf tanto como yo. Además del surf, practico boxeo y snowboard, deportes que me aportan disciplina, equilibrio y control del cuerpo. Doy clases en castellano, alemán, inglés y francés, así que cada alumno puede aprender en su idioma.",
+        "en": "My name is Mikel Agos, I'm 18 years old, and surfing is my great passion. I started surfing at 12, and the ocean has been part of my everyday life ever since. I have been teaching for three years at all levels, from people standing on a board for the first time to those who want to keep improving. My goal is to pass on what I have learned through my own experience, so that learning is easier and more enjoyable, and everyone can love surfing as much as I do. Besides surfing, I practice boxing and snowboarding, which give me discipline, balance and body control. I teach in Spanish, German, English and French, so every student can learn in their own language."
+      },
+      "certificates": [
+        {
+          "es": "Título de Monitor de Surf, Nivel 1",
+          "en": "Surf Instructor Qualification, Level 1"
+        }
+      ]
+    },
+    {
+      "id": "instructor-3",
+      "photo": null,
+      "name": {
+        "es": "Instructor 3",
+        "en": "Instructor 3"
+      },
+      "role": {
+        "es": "Monitor de surf",
+        "en": "Surf instructor"
+      },
+      "languages": [],
+      "bio": {
+        "es": "",
+        "en": ""
+      },
+      "certificates": []
+    },
+    {
+      "id": "instructor-4",
+      "photo": null,
+      "name": {
+        "es": "Instructor 4",
+        "en": "Instructor 4"
+      },
+      "role": {
+        "es": "Monitor de surf",
+        "en": "Surf instructor"
+      },
+      "languages": [],
+      "bio": {
+        "es": "",
+        "en": ""
+      },
+      "certificates": []
+    }
   ]
 }

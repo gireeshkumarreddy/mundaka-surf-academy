@@ -13,13 +13,16 @@ globalThis.fetch = async (url, init) => {
 };
 Object.assign(process.env, { RESEND_API_KEY: 'test', ENQUIRY_TO: 'academy@example.com', ENQUIRY_FROM: 'web@example.com', STRIPE_SECRET_KEY: 'sk_test_x', SITE_URL: 'https://example.com', STRIPE_WEBHOOK_SECRET: 'whsec_test', DEPOSIT_PERCENT: '15' });
 const post = (body) => new Request('http://x/api', { method: 'POST', body: typeof body === 'string' ? body : JSON.stringify(body) });
-const good = { plan: { id: 'group' }, option: 1, level: 'beginner', date: '2027-06-15', participants: 3, contact: { name: 'Test Person', email: 'test@example.com' }, policyAccepted: true, locale: 'es' };
+const good = { plan: { id: 'group' }, option: 1, time: '16:00', level: 'beginner', date: '2027-06-15', participants: 3, contact: { name: 'Test Person', email: 'test@example.com' }, policyAccepted: true, locale: 'es' };
 
 let r = await enquiry(post(good)); let b = await r.json();
 assert.equal(r.status, 200); assert.ok(b.reference); assert.equal((await getBooking(b.reference)).status, 'requested');
 assert.ok(calls.at(-2).body.includes('Booking request') && calls.at(-2).body.includes('105 EUR')); // academy: 3 × 35 €
 assert.ok(calls.at(-1).body.includes('test@example.com') && calls.at(-1).body.includes('solicitud de reserva')); // customer copy, in Spanish
 assert.equal((await enquiry(post({ ...good, option: 9 }))).status, 422); // not a published package
+assert.equal((await enquiry(post({ ...good, time: '25:00' }))).status, 422); // not a time
+assert.equal((await enquiry(post({ ...good, plan: { id: 'private' }, participants: 3 }))).status, 422); // private: 1 or 2 people
+assert.equal((await enquiry(post({ ...good, plan: { id: 'inclusive' }, participants: 1 }))).status, 200); // the new inclusive lessons
 assert.equal((await enquiry(post({ ...good, plan: { id: 'nope' } }))).status, 422);
 assert.equal((await enquiry(post({ ...good, contact: { name: 'A', email: 'bad' } }))).status, 422);
 assert.equal((await enquiry(post('not json'))).status, 400);
@@ -35,7 +38,11 @@ const stripeBody = new URLSearchParams(calls.at(-1).body);
 assert.equal(stripeBody.get('line_items[0][price_data][unit_amount]'), '1575'); // 3 × 35 € = 105 €, 15 % deposit = 15.75 €
 assert.ok(stripeBody.get('success_url').startsWith('https://example.com/booking-status.html?status=success')); // Spanish at the root
 assert.equal((await getBooking(b.reference)).status, 'pending');
-console.log('checkout: ok (deposit 15.75 EUR of 105 EUR)');
+r = await checkout(post({ booking: { ...good, payMode: 'full' } }));
+assert.equal(r.status, 200);
+assert.equal(new URLSearchParams(calls.at(-1).body).get('line_items[0][price_data][unit_amount]'), '10500'); // the customer chose 100 %
+r = await checkout(post({ booking: good })); b = await r.json(); // the deposit booking used by the webhook test below
+console.log('checkout: ok (15 % deposit 15.75 EUR of 105 EUR, or 100 % online)');
 
 const event = JSON.stringify({ type: 'checkout.session.completed', data: { object: { metadata: { reference: b.reference }, payment_status: 'paid', amount_total: 1575 } } });
 const t = Math.floor(Date.now() / 1000);

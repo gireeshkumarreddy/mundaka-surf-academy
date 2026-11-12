@@ -27,7 +27,8 @@ export default async function handler(request) {
 
   const est = estimate(plan, { participants: booking.participants, option: booking.option });
   if (est.total == null) return json({ error: 'price-not-published' }, 409);
-  const percent = Number(process.env.DEPOSIT_PERCENT) || 15;
+  // 15 % deposit by default; the customer may choose to pay everything online (booking conditions, Nov 2026)
+  const percent = booking.payMode === 'full' ? 100 : Number(process.env.DEPOSIT_PERCENT) || 15;
   const dueNow = Math.round(est.total * percent) / 100;
 
   const reference = await createBooking({ ...booking, estimate: est, dueNow }, 'pending');

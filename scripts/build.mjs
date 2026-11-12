@@ -159,6 +159,7 @@ export async function build({ check = false, quiet = false } = {}) {
         if (token === 'team-cards') return teamCards();
         if (token === 'gallery-items') return galleryItems();
         if (token === 'reviews') return reviews();
+        if (token === 'partners') return partners();
         if (token === 'site-config') return siteConfigScript();
         if (token.startsWith('meta.')) return t(`${page.key}.${token}`);
         if (token.startsWith('config.')) return escapeHTML(get(config, token.slice(7)) ?? '');
@@ -186,7 +187,7 @@ export async function build({ check = false, quiet = false } = {}) {
         if (plan.price.unit === 'personHour') {
           return `<table class="price-table"><caption class="visually-hidden">${escapeHTML(L(plan.name))}</caption>
 <thead><tr><th scope="col">${t('lessons.table.type')}</th><th scope="col">${t('lessons.table.price')}</th></tr></thead>
-<tbody><tr><td>${t('lessons.table.privateRow')}</td><td><strong>${money(plan.price.amount, cur)}</strong> ${t('lessons.table.perPersonHour')}</td></tr></tbody></table>`;
+<tbody><tr><td>${plan.id === 'private' ? t('lessons.table.privateRow') : escapeHTML(L(plan.name))}</td><td><strong>${money(plan.price.amount, cur)}</strong> ${t('lessons.table.perPersonHour')}</td></tr></tbody></table>`;
         }
         const rows = planOptions(plan)
           .map((o) => `<tr><td>${o.days}</td><td>${o.hours} h</td><td><strong>${money(o.amount, cur)}</strong></td></tr>`)
@@ -218,7 +219,7 @@ export async function build({ check = false, quiet = false } = {}) {
         teamData.instructors
           .map((p, i) => {
             const photo = p.photo
-              ? helpers(`img name=${p.photo} sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 90vw" alt=-`).replace('alt=""', `alt="${escapeHTML(L(p.name))}"`)
+              ? helpers(`img name=${p.photo} sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw" alt=-`).replace('alt=""', `alt="${escapeHTML(L(p.name))}"`)
               : `<span class="team-card__ph" aria-hidden="true"><img src="${src('badge-clear@320')}" alt="" width="320" height="320" loading="lazy"></span>${pending('team.photoPending')}`;
             const certs = p.certificates?.length
               ? `<ul class="team-card__certs">${p.certificates.map((c) => `<li>${escapeHTML(L(c))}</li>`).join('')}</ul>`
@@ -231,6 +232,7 @@ export async function build({ check = false, quiet = false } = {}) {
     <h3 class="team-card__name">${escapeHTML(L(p.name))}</h3>
     <p class="team-card__role">${escapeHTML(L(p.role))}</p>
     ${bio}
+    ${p.languages?.length ? `<p class="team-card__langs"><strong>${t('team.langsTitle')}:</strong> ${p.languages.map((x) => escapeHTML(L(x))).join(' · ')}</p>` : ''}
     <h4 class="team-card__certs-title">${t('team.certsTitle')}</h4>
     ${certs}
   </div>
@@ -258,6 +260,15 @@ export async function build({ check = false, quiet = false } = {}) {
         return items
           .map((r) => `<figure class="review-card">${stars(Number(r.rating) || 5)}<blockquote><p>${escapeHTML(L(r.text))}</p></blockquote><figcaption><strong>${escapeHTML(r.name)}</strong>${r.date ? ` · <time datetime="${escapeHTML(r.date)}">${fmt.format(new Date(`${r.date}T12:00:00`))}</time>` : ''}</figcaption></figure>`)
           .join('');
+      };
+
+      // brand partners in the footer (site.config.json → partners.items); a dashed placeholder in review mode until then
+      const partners = () => {
+        const items = config.partners?.items ?? [];
+        if (!items.length) return config.reviewMode ? `<div class="partners partners--ph"><p class="partners__title">${t('footer.partners')}</p><p class="review-note">${t('footer.partnersPending')}</p></div>` : '';
+        return `<div class="partners"><p class="partners__title">${t('footer.partners')}</p><ul class="partners__list">${items
+          .map((it) => `<li><a href="${escapeHTML(it.url ?? '#')}" target="_blank" rel="noopener"><img src="${src(`${it.logo}@${imgEntry(it.logo).widths[0]}`)}" alt="${escapeHTML(it.name)}" loading="lazy"></a></li>`)
+          .join('')}</ul></div>`;
       };
 
       const headExtra = () => {
@@ -310,6 +321,7 @@ export async function build({ check = false, quiet = false } = {}) {
           payments: config.payments,
           paths: {
             plans: `${up}data/plans.json`,
+            schedule: `${up}data/schedule.json`,
             contact: pageUrl('contact'),
             book: pageUrl('book'),
             conditions: pageUrl('conditions'),

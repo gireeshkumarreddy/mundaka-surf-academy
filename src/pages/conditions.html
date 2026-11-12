@@ -10,18 +10,27 @@
 
 <section class="section legal" aria-label="{{conditions.title}}">
   <div class="container container--narrow prose">
-    {{#if review}}<p class="review-note">{{conditions.note}}</p>{{/if}}
     <h2>{{conditions.h.booking}}</h2>
     <ul>
       <li>{{conditions.items.deposit}}</li>
+      <li>{{conditions.items.full}}</li>
       <li>{{conditions.items.balance}}</li>
-      <li>{{conditions.items.how}}</li>
     </ul>
     <h2>{{conditions.h.cancel}}</h2>
     <ul>
-      <li>{{conditions.items.cancel}} {{tbc}}</li>
-      <li>{{conditions.items.weather}} {{tbc}}</li>
-      <li>{{conditions.items.noshow}} {{tbc}}</li>
+      <li>{{conditions.items.cancel24}}</li>
+      <li>{{conditions.items.cancelLate}}</li>
+      <li>{{conditions.items.weather}}</li>
+    </ul>
+    <h2>{{conditions.h.attendance}}</h2>
+    <ul>
+      <li>{{conditions.items.noshow}}</li>
+      <li>{{conditions.items.late}}</li>
+      <li>{{conditions.items.conduct}}</li>
+    </ul>
+    <h2>{{conditions.h.health}}</h2>
+    <ul>
+      <li>{{conditions.items.health}}</li>
     </ul>
     <h2>{{conditions.h.examples}}</h2>
     {{deposit-table}}

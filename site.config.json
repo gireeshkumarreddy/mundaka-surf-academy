@@ -22,20 +22,20 @@
 
   "contact": {
     "email": "mundakasurfacademy@gmail.com",
-    "phone": "",
+    "phone": "+34 633 29 00 73",
     "address": "Erreka 6, 48360 Mundaka, Bizkaia",
     "openingHours": ""
   },
 
   "social": {
-    "instagram": { "url": "https://www.instagram.com/mundakasurfacademy/", "handle": "@mundakasurfacademy" },
-    "facebook": { "url": "https://www.facebook.com/mundakasurfacademy", "handle": "@mundakasurfacademy" }
+    "instagram": { "url": "https://www.instagram.com/mundacasurfacademy/", "handle": "@mundacasurfacademy" },
+    "facebook": { "url": "https://www.facebook.com/mundacasurfacademy", "handle": "@mundacasurfacademy" }
   },
 
   "whatsapp": {
-    "$comment": "Temporary number from the brief — replace it here (digits with country code, no + or spaces) when the business number arrives; every WhatsApp button on the site uses this one value.",
-    "number": "34688681436",
-    "display": "688 68 14 36"
+    "$comment": "Official number from the client (12 Nov 2026) — change it here (digits with country code, no + or spaces) when the business number arrives; every WhatsApp button on the site uses this one value.",
+    "number": "34633290073",
+    "display": "633 29 00 73"
   },
 
   "hero": {
@@ -50,7 +50,7 @@
   },
 
   "payments": {
-    "$comment": "Online deposit is prepared but OFF until the Stripe functions are deployed with their secret keys (server/README.md). The browser never sees card data.",
+    "$comment": "15 % deposit (or 100 % if the customer prefers) online; prepared but OFF until the Stripe functions are deployed with their secret keys (server/README.md). The browser never sees card data.",
     "enabled": false,
     "provider": "stripe",
     "mode": "deposit",
@@ -69,6 +69,19 @@
   "maps": {
     "embed": "https://maps.google.com/maps?q=Erreka%206%2C%2048360%20Mundaka%2C%20Bizkaia%2C%20Spain&z=16&output=embed",
     "directions": "https://www.google.com/maps/dir/?api=1&destination=Erreka%206%2C%2048360%20Mundaka%2C%20Bizkaia%2C%20Spain"
+  },
+
+  "legal": {
+    "$comment": "Website owner (LSSI-CE), as given by the client on 12 Nov 2026.",
+    "owner": "Xabier Gondra León",
+    "taxId": "20975102E",
+    "address": "Barrio Erreka, nº 3, 48380 Mundaka (Bizkaia)",
+    "phone": "+34 633 29 00 73"
+  },
+
+  "partners": {
+    "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" }.",
+    "items": []
   },
 
   "reviews": {

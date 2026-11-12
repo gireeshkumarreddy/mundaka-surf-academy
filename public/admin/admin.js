@@ -1409,7 +1409,7 @@ function addInstructor(list, panel) {
   const ids = new Set(list.map((p) => p.id));
   let n = list.length + 1;
   while (ids.has(`instructor-${n}`)) n++;
-  list.push({ id: `instructor-${n}`, photo: null, name: { es: '', en: '' }, role: { es: 'Monitor de surf', en: 'Surf instructor' }, bio: { es: '', en: '' }, certificates: [] });
+  list.push({ id: `instructor-${n}`, photo: null, name: { es: '', en: '' }, role: { es: 'Monitor de surf', en: 'Surf instructor' }, languages: [], bio: { es: '', en: '' }, certificates: [] });
   rerender();
   scrollToLast(panel, '.card');
 }
@@ -1417,7 +1417,9 @@ function addInstructor(list, panel) {
 function teamCard(p, i, list) {
   const title = h('span', {}, L(p.name) || 'Instructor sin nombre');
   if (!Array.isArray(p.certificates)) p.certificates = [];
+  if (!Array.isArray(p.languages)) p.languages = [];
   const certs = p.certificates;
+  const langs = p.languages;
   const photoCol = h(
     'div',
     { class: 'photo-col' },
@@ -1442,6 +1444,17 @@ function teamCard(p, i, list) {
       h('button', { type: 'button', class: 'btn btn--danger btn--small', 'aria-label': `Quitar certificado ${j + 1}`, onclick: () => (certs.splice(j, 1), rerender()) }, 'Quitar'),
     );
   });
+  const langRows = langs.map((c, j) => {
+    const val = { es: typeof c === 'object' ? (c?.es ?? '') : (c ?? ''), en: typeof c === 'object' ? (c?.en ?? '') : '' };
+    const write = () => (langs[j] = !val.en || val.en === val.es ? val.es : { es: val.es, en: val.en });
+    return h(
+      'div',
+      { class: 'line-row line-row--cert' },
+      field('Idioma (ES)', textInput(val.es, (v) => ((val.es = v), write()), { placeholder: 'p. ej. Inglés (C1)' })),
+      field('Language (EN)', textInput(val.en, (v) => ((val.en = v), write()), { placeholder: 'e.g. English (C1)' })),
+      h('button', { type: 'button', class: 'btn btn--danger btn--small', 'aria-label': `Quitar idioma ${j + 1}`, onclick: () => (langs.splice(j, 1), rerender()) }, 'Quitar'),
+    );
+  });
   return card({
     title,
     num: i + 1,
@@ -1457,6 +1470,9 @@ function teamCard(p, i, list) {
         bi(p, 'name', 'Nombre', { onInput: (lang) => lang === 'es' && (title.textContent = L(p.name) || 'Instructor sin nombre') }),
         bi(p, 'role', 'Puesto'),
         bi(p, 'bio', 'Biografía', { multiline: true, rows: 4, hint: 'Vacía = la web muestra «pendiente» mientras el modo revisión esté activado.' }),
+        h('h4', { class: 'subhead' }, 'Idiomas'),
+        langRows.length ? langRows : h('p', { class: 'empty' }, 'Sin idiomas.'),
+        h('div', { class: 'panel__actions' }, h('button', { type: 'button', class: 'btn btn--ghost btn--small', onclick: () => (langs.push(''), rerender()) }, 'Añadir idioma')),
         h('h4', { class: 'subhead' }, 'Certificados'),
         certRows.length ? certRows : h('p', { class: 'empty' }, 'Sin certificados.'),
         h('div', { class: 'panel__actions' }, h('button', { type: 'button', class: 'btn btn--ghost btn--small', onclick: () => (certs.push(''), rerender()) }, 'Añadir certificado')),

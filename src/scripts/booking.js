@@ -1,7 +1,8 @@
 /**
- * Booking (website brief, section 7): lesson type → duration, date, people, level → details → conditions accepted
- * → pay the 15 % deposit online (payments enabled) or send the request (until then). The summary beside the form
- * always shows the total, the deposit paid now and the balance paid at the school.
+ * Booking (brief section 7 + client feedback, Nov 2026): day and tide-based time on the calendar → lesson type,
+ * duration, people, level → details → conditions accepted → pay 15 % (or 100 %) online when payments are enabled,
+ * or send the request until then. The summary beside the form always shows the total, what is paid now and the
+ * balance paid at the school.
  */
 import { t, local } from './integrations/config.js';
 import { sendEnquiry, enquiryConfigured } from './integrations/enquiry.js';
@@ -10,14 +11,10 @@ import { paymentsEnabled, startCheckout } from './integrations/payments.js';
 import { estimate, planOptions, split, formatMoney } from './pricing.js';
 import { loadPlans, escapeHTML } from './data.js';
 import { scrollToTarget } from './motion.js';
+import { initCalendar } from './calendar.js';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE = /^\+?[\d\s().-]{6,20}$/;
-
-const isoToday = () => {
-  const d = new Date();
-  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-};
 
 export default async function initBooking(root, config) {
   const form = root.querySelector('[data-booking-form]');
@@ -44,10 +41,15 @@ export default async function initBooking(root, config) {
   if (!paymentsEnabled(config) && !enquiryConfigured(config) && config.reviewMode) form.querySelector('[data-demo-note]').hidden = false;
   submit.textContent = t('submit');
 
-  f.date.min = isoToday();
-  const max = new Date();
-  max.setMonth(max.getMonth() + 18);
-  f.date.max = max.toISOString().slice(0, 10);
+  const peopleError = form.querySelector('[data-people-error]');
+  const peopleErrorText = peopleError.textContent;
+  // the calendar fills the hidden date/time fields
+  const calendar = await initCalendar(form.querySelector('[data-cal]'), config, ({ date, time }) => {
+    f.date.value = date;
+    f.time.value = time;
+    if (date) form.querySelector('[data-error="day"]').hidden = true;
+    render();
+  });
 
   const plan = () => plans.find((p) => p.id === f.type.value);
 
@@ -69,12 +71,18 @@ export default async function initBooking(root, config) {
     const beginner = f.level.querySelector('option[value="beginner"]');
     beginner.disabled = !p.levels.includes('beginner');
     if (beginner.disabled && f.level.value === 'beginner') f.level.value = '';
+    // private lessons are for 1 or 2 people
+    f.participants.max = String(p.maxPeople ?? 20);
+    if (p.maxPeople && Number(f.participants.value) > p.maxPeople) f.participants.value = String(p.maxPeople);
+    peopleError.textContent = p.maxPeople ? t('maxPeople') : peopleErrorText;
   };
 
   const details = () => ({
     plan: plan(),
     option: Number(optionSelect.value) || null,
     date: f.date.value,
+    time: f.time.value,
+    pay: f.pay.value === 'full' ? 'full' : 'deposit',
     participants: Number(f.participants.value) || 1,
     level: f.level.value,
     name: f.name.value.trim(),
@@ -95,23 +103,29 @@ export default async function initBooking(root, config) {
       [t('sumLesson'), d.plan ? local(d.plan.name) : ''],
       [t('sumOption'), optionText(d)],
       [t('sumDate'), d.date ? dateFmt.format(new Date(`${d.date}T12:00:00`)) : ''],
+      [t('sumTime'), d.time || (d.date ? t('timeTbc') : '')],
       [t('sumPeople'), String(d.participants)],
       [t('sumLevel'), d.level ? t(`level_${d.level}`) : ''],
     ];
     summary.querySelector('[data-summary]').innerHTML = rows.map(([k, v]) => `<div><dt>${escapeHTML(k)}</dt><dd>${v ? escapeHTML(v) : '—'}</dd></div>`).join('');
     const est = d.plan ? estimate(d.plan, { participants: d.participants, option: d.option }) : { total: null };
-    const { now, later } = split(est.total, pct);
+    const full = d.pay === 'full';
+    const { now, later } = split(est.total, full ? 100 : pct);
+    const nowLabel = full ? t('payNowFull') : t('payNowDeposit');
     summary.querySelector('[data-sum-total]').textContent = money(est.total, est.currency);
+    summary.querySelector('[data-sum-now-label]').textContent = nowLabel;
     summary.querySelector('[data-sum-now]').textContent = money(now, est.currency);
     summary.querySelector('[data-sum-later]').textContent = money(later, est.currency);
+    summary.querySelector('[data-sum-later-row]').hidden = full;
     if (bar) {
       bar.querySelector('[data-bar-total]').textContent = money(est.total, est.currency);
+      bar.querySelector('[data-bar-now-label]').textContent = nowLabel;
       bar.querySelector('[data-bar-now]').textContent = money(now, est.currency);
       showBar();
     }
     if (paymentsEnabled(config)) submit.textContent = now == null ? t('submit') : t('submitPay', { amount: money(now, est.currency) });
     if (waLink) {
-      const url = whatsappUrl(config, bookingMessage({ plan: d.plan ? local(d.plan.name) : '', option: optionText(d), date: rows[2][1], participants: d.participants, level: rows[4][1], name: d.name }));
+      const url = whatsappUrl(config, bookingMessage({ plan: d.plan ? local(d.plan.name) : '', option: optionText(d), date: rows[2][1], time: d.time, participants: d.participants, level: rows[5][1], name: d.name }));
       if (url) waLink.href = url;
     }
     return { d, est, now };
@@ -129,11 +143,13 @@ export default async function initBooking(root, config) {
     const typeOk = Boolean(d.plan);
     form.querySelector('[data-error="type"]').hidden = typeOk;
     const n = d.participants;
+    const dayOk = Boolean(d.date);
+    form.querySelector('[data-error="day"]').hidden = dayOk;
     const results = [
+      dayOk,
       typeOk,
       mark('option', Boolean(d.option)),
-      mark('date', Boolean(d.date) && d.date >= f.date.min && d.date <= f.date.max),
-      mark('participants', Number.isInteger(n) && n >= 1 && n <= 20),
+      mark('participants', Number.isInteger(n) && n >= 1 && n <= (d.plan?.maxPeople ?? 20)),
       mark('level', Boolean(d.level)),
       mark('name', d.name.length >= 2),
       mark('email', EMAIL.test(d.email)),
@@ -177,7 +193,11 @@ export default async function initBooking(root, config) {
     e.preventDefault();
     alertBox.hidden = true;
     if (!validate()) {
-      const first = form.querySelector('[data-error="type"]:not([hidden])') ? form.querySelector('input[name="type"]') : form.querySelector('.is-invalid input, .is-invalid select, .is-invalid textarea');
+      const first = !form.querySelector('[data-error="day"]').hidden
+        ? form.querySelector('.cal__day:not([disabled])')
+        : !form.querySelector('[data-error="type"]').hidden
+          ? form.querySelector('input[name="type"]')
+          : form.querySelector('.is-invalid input, .is-invalid select, .is-invalid textarea');
       first?.focus();
       return;
     }
@@ -191,6 +211,8 @@ export default async function initBooking(root, config) {
       option: d.option,
       level: d.level,
       date: d.date,
+      time: d.time,
+      payMode: d.pay,
       participants: d.participants,
       contact: { name: d.name, email: d.email, phone: d.phone },
       message: d.message,
@@ -211,7 +233,7 @@ export default async function initBooking(root, config) {
         form.reset();
         render();
       } else if (result.reason === 'not-configured') {
-        const text = `${bookingMessage({ plan: local(d.plan.name), option: optionText(d), date: d.date, participants: d.participants, level: t(`level_${d.level}`), name: d.name })}\n${d.email}${d.phone ? ` · ${d.phone}` : ''}`;
+        const text = `${bookingMessage({ plan: local(d.plan.name), option: optionText(d), date: d.date, time: d.time, participants: d.participants, level: t(`level_${d.level}`), name: d.name })}\n${d.email}${d.phone ? ` · ${d.phone}` : ''}`;
         finish(t('demoTitle'), `${escapeHTML(t('demoText'))}<br><button type="button" class="btn btn--ghost btn--sm" data-copy>${escapeHTML(t('copy'))}</button>`);
         done.querySelector('[data-copy]').addEventListener('click', async (ev) => {
           try {

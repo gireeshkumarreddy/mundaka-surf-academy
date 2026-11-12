@@ -1,0 +1,8 @@
+{
+  "$comment": "Booking calendar (client feedback, 12 Nov 2026): the season and the lesson times of each day, set by the tide. days: { \"YYYY-MM-DD\": { \"slots\": [\"HH:MM\", ...], \"low\": \"HH:MM\", \"high\": \"HH:MM\", \"closed\": true } } — all keys optional. A season day without an entry can still be booked: the time is confirmed later by email/WhatsApp. Entries with \"example\": true only show while reviewMode is on. The client will send the full tide table as a spreadsheet.",
+  "season": { "from": "2027-03-01", "to": "2027-10-31" },
+  "days": {
+    "2027-08-22": { "slots": ["16:00", "18:00"], "example": true },
+    "2027-08-25": { "slots": ["17:00", "19:00"], "example": true }
+  }
+}

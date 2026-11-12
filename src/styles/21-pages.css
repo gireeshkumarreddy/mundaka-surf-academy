@@ -32,7 +32,7 @@
 .lesson__photo img { aspect-ratio: 4 / 5; }
 .lesson__num { margin: 0 0 0.5rem; font: 800 var(--step-3)/1 var(--font-head); color: var(--aqua-100); -webkit-text-stroke: 1.5px var(--turq); }
 .lesson .ticks { margin-bottom: 1.5rem; }
-.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
 .facts > div { padding: 0.9rem 1rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); }
 .section--tint .facts > div { background: #fff; }
 .facts dt { font: 700 var(--step--2)/1.2 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.35rem; }
@@ -131,3 +131,61 @@
 .approach .team__end { background: #fff; }
 @media (max-width: 1023px) { .approach__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .approach__grid { grid-template-columns: 1fr; gap: 0.6rem; } .approach__item { padding: 1.1rem; } }
+
+/* booking calendar (calendar.js): month grid over the season, tide-based times per day */
+.cal { border: 1px solid var(--line); background: #fff; padding: 0.75rem; }
+.cal__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+.cal__month { margin: 0; font: 800 var(--step-1)/1.2 var(--font-head); color: var(--deep); }
+.cal__month::first-letter { text-transform: uppercase; }
+.cal__nav { display: grid; place-items: center; width: 44px; height: 44px; border: 1.5px solid var(--line-strong); background: #fff; color: var(--deep); cursor: pointer; }
+.cal__nav--prev .icon { rotate: 180deg; }
+.cal__nav:hover:not(:disabled) { border-color: var(--teal); background: var(--aqua-50); }
+.cal__nav:disabled { opacity: 0.3; cursor: default; }
+.cal__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.cal__wd { padding: 0.3rem 0; text-align: center; font: 700 0.75rem/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.cal__day {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 78px; padding: 0.4rem 0.45rem;
+  border: 1px solid var(--line); background: #fff; color: var(--ink); text-align: left; cursor: pointer; font: inherit;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.cal__num { font: 700 0.95rem/1 var(--font-head); color: var(--deep); }
+.cal__slot { font: 600 0.75rem/1.25 var(--font-sans); color: var(--teal); white-space: nowrap; }
+.cal__slot small { color: var(--ink-3); font-weight: 500; }
+.cal__day.has-slots { background: var(--aqua-50); border-color: rgba(48, 203, 198, 0.6); }
+.cal__day:hover:not(:disabled) { border-color: var(--teal); }
+.cal__day.is-off { background: #f5f7f7; cursor: default; }
+.cal__day.is-off .cal__num { color: #b5c2c5; }
+.cal__day.is-selected { background: var(--deep); border-color: var(--deep); }
+.cal__day.is-selected .cal__num, .cal__day.is-selected .cal__slot, .cal__day.is-selected .cal__slot small { color: #fff; }
+.cal__legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; margin: 0.75rem 0 0; font-size: var(--step--1); color: var(--ink-3); }
+.cal__key { display: inline-flex; align-items: center; gap: 0.45rem; }
+.cal__dot { display: inline-block; width: 12px; height: 12px; border: 1px solid var(--line); flex: none; }
+.cal__dot--slots { background: var(--aqua-50); border-color: var(--turq); }
+.cal__dot--tbc { background: #fff; }
+.slots { margin-top: 1rem; padding: 1rem; background: var(--aqua-50); border: 1px solid var(--line); }
+.slots__title { margin: 0 0 0.35rem; font: 700 var(--step-0)/1.3 var(--font-head); color: var(--deep); text-transform: none; }
+.slots__title::first-letter { text-transform: uppercase; }
+.slots__tide { margin: 0 0 0.6rem; font-size: var(--step--1); color: var(--ink-2); }
+.slots__none { margin: 0; font-size: var(--step--1); color: var(--ink-2); }
+.slots__list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.slot { position: relative; cursor: pointer; }
+.slot input { position: absolute; opacity: 0; inset: 0; }
+.slot span { display: inline-flex; align-items: baseline; gap: 0.4rem; min-height: 44px; padding: 0.7rem 1.1rem; border: 2px solid var(--line-strong); background: #fff; font: 700 1rem/1 var(--font-head); color: var(--deep); }
+.slot small { font: 500 0.75rem/1 var(--font-sans); color: var(--ink-3); }
+.slot input:checked + span { border-color: var(--deep); background: var(--deep); color: #fff; }
+.slot input:checked + span small { color: rgba(255, 255, 255, 0.75); }
+.slot input:focus-visible + span { outline: 3px solid var(--turq); outline-offset: 2px; }
+.fields--after { margin-top: 1rem; }
+.type-options { grid-template-columns: repeat(2, 1fr); }
+
+/* payment choice: 15 % deposit or 100 % */
+.pay-choice { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+.pay-choice__title { margin: 0 0 0.2rem; font: 700 var(--step-0)/1.3 var(--font-head); color: var(--deep); }
+.pay-option { display: flex; align-items: center; gap: 0.7rem; min-height: 48px; padding: 0.6rem 0.9rem; border: 2px solid var(--line); cursor: pointer; }
+.pay-option input { width: 20px; height: 20px; accent-color: var(--teal); flex: none; }
+.pay-option:has(input:checked) { border-color: var(--teal); background: var(--aqua-50); }
+.summary [hidden] { display: none; }
+
+/* lessons: the location spans the facts row */
+.facts__wide { grid-column: 1 / -1; }
+.team-card__langs { margin: 0 0 0.5rem; font-size: var(--step--1); color: var(--ink-2); }

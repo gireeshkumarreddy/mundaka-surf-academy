@@ -19,7 +19,8 @@ Node 18 or newer. Nothing to install.
 
 ```
 site.config.json          ← contact details, WhatsApp number, socials, hero video, forms, payments, forecast widgets
-public/data/plans.json    ← lessons and prices (Private 60 €/person/hour; Group and Advanced 1–5 days, 35–135 €)
+public/data/plans.json    ← lessons and prices (Group and Advanced 1–5 days 35–135 €, Private 60 €/person/hour, Inclusive 50 €/person/hour)
+public/data/schedule.json ← booking calendar: season and tide-based lesson times per day
 public/data/team.json     ← instructor cards (add an entry to add an instructor)
 public/data/gallery.json  ← gallery photos and their filter (lessons | instructors)
 src/locales/es.json, en.json ← all text, Spanish and English
@@ -88,8 +89,10 @@ from the gallery or a card does not delete its files. Helper tests: `node _tools
 
 ## Booking and payments
 
-Booking (`book.html`): lesson type → duration → date, people, level → details → booking conditions accepted → pay the
-**15 % deposit** online; the summary always shows total, deposit now and balance at the school (85 %). Until payments
+Booking (`book.html`): **tide calendar** (season and daily lesson times in `public/data/schedule.json`) → lesson type
+(group/beginners, advanced & technical, private for 1–2 people, inclusive) → duration, people, level → details →
+booking conditions accepted → pay the **15 % deposit** or **100 %** online; the summary always shows total, what is
+paid now and the balance at the school. Hosting, domain and Stripe steps: `docs/DOMAIN-AND-PAYMENTS.md`. Until payments
 are switched on the form sends a booking request (or runs in demo mode if no delivery is configured).
 
 * **Delivery** – `site.config.json → enquiry`: `formspree`, `netlify` or `webhook` (`server/enquiry.mjs` emails the

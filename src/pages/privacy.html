@@ -2,7 +2,7 @@
 <section class="page-hero page-hero--plain page-hero--short" aria-labelledby="privacy-title">
   <div class="container page-hero__inner">
     <h1 class="page-hero__title" id="privacy-title">{{privacy.title}}</h1>
-    <p class="small muted">{{legalCommon.updated}} 11/11/2026 · {{legalCommon.draft}}</p>
+    <p class="small muted">{{legalCommon.updated}} 12/11/2026 · {{legalCommon.draft}}</p>
   </div>
 </section>
 <section class="section legal">
@@ -11,9 +11,10 @@
       <h2>{{privacy.controller.title}}</h2>
       <p>{{privacy.controller.text}}</p>
       <ul>
-        <li>{{legalCommon.owner}}: {{tbc}}</li>
-        <li>{{legalCommon.taxId}}: {{tbc}}</li>
-        <li>{{legalCommon.address}}: {{config.contact.address}}</li>
+        <li>{{legalCommon.owner}}: {{config.legal.owner}}</li>
+        <li>{{legalCommon.taxId}}: {{config.legal.taxId}}</li>
+        <li>{{legalCommon.address}}: {{config.legal.address}}</li>
+        <li>{{legalCommon.phone}}: <a href="tel:+34633290073">{{config.legal.phone}}</a></li>
         <li>{{legalCommon.email}}: <a href="mailto:{{config.contact.email}}">{{config.contact.email}}</a></li>
       </ul>
       <h2>{{privacy.data.title}}</h2>
@@ -23,7 +24,7 @@
       <h2>{{privacy.basis.title}}</h2>
       <p>{{privacy.basis.text}}</p>
       <h2>{{privacy.retention.title}}</h2>
-      <p>{{privacy.retention.text}} {{tbc}}</p>
+      <p>{{privacy.retention.text}}</p>
       <h2>{{privacy.recipients.title}}</h2>
       <p>{{privacy.recipients.text}}</p>
       <h2>{{privacy.rights.title}}</h2>

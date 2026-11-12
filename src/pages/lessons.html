@@ -6,46 +6,26 @@
     <h1 class="page-hero__title" id="lessons-title">{{lessons.title}}</h1>
     <p class="lead">{{lessons.lead}}</p>
     <nav class="chips" aria-label="{{lessons.jump}}">
-      <a href="#private">{{lessons.private.name}}</a>
       <a href="#group">{{lessons.group.name}}</a>
       <a href="#advanced">{{lessons.advanced.name}}</a>
+      <a href="#private">{{lessons.private.name}}</a>
+      <a href="#inclusive">{{lessons.inclusive.name}}</a>
       <a href="#info">{{lessons.info.title}}</a>
     </nav>
   </div>
 </section>
 
-<section class="section lesson" id="private" aria-labelledby="private-title">
+<section class="section lesson" id="group" aria-labelledby="group-title">
   <div class="container lesson__grid">
-    <figure class="lesson__photo frame">{{img name=stock-private sizes="(min-width: 900px) 40vw, 92vw" alt=lessons.private.photoAlt}}</figure>
+    <figure class="lesson__photo frame">{{img name=stock-group-women sizes="(min-width: 900px) 40vw, 100vw" alt=lessons.group.photoAlt}}</figure>
     <div class="lesson__body">
       <p class="lesson__num">01</p>
-      <h2 class="title" id="private-title">{{lessons.private.name}}</h2>
-      <p class="lead">{{lessons.private.text}}</p>
-      <dl class="facts">
-        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.private.level}}</dd></div>
-        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
-        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
-      </dl>
-      {{price-table:private}}
-      <div class="section-actions">
-        <a class="btn btn--primary" href="{{link:book}}?type=private"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
-        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--tint lesson lesson--flip" id="group" aria-labelledby="group-title">
-  <div class="container lesson__grid">
-    <figure class="lesson__photo frame">{{img name=stock-group-women sizes="(min-width: 900px) 40vw, 92vw" alt=lessons.group.photoAlt}}</figure>
-    <div class="lesson__body">
-      <p class="lesson__num">02</p>
       <h2 class="title" id="group-title">{{lessons.group.name}}</h2>
       <p class="lead">{{lessons.group.text}}</p>
       <dl class="facts">
         <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.group.level}}</dd></div>
-        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
         <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+        <div class="facts__wide"><dt>{{lessons.labels.where}}</dt><dd>{{lessons.group.where}}</dd></div>
       </dl>
       {{price-table:group}}
       <div class="section-actions">
@@ -56,11 +36,11 @@
   </div>
 </section>
 
-<section class="section lesson" id="advanced" aria-labelledby="advanced-title">
+<section class="section section--tint lesson lesson--flip" id="advanced" aria-labelledby="advanced-title">
   <div class="container lesson__grid">
     <figure class="lesson__photo frame">{{img name=green-curl sizes="(min-width: 900px) 40vw, 100vw" alt=lessons.advanced.photoAlt}}</figure>
     <div class="lesson__body">
-      <p class="lesson__num">03</p>
+      <p class="lesson__num">02</p>
       <h2 class="title" id="advanced-title">{{lessons.advanced.name}}</h2>
       <p class="lead">{{lessons.advanced.text}}</p>
       <ul class="ticks">
@@ -69,15 +49,58 @@
         <li>{{lessons.advanced.f3}}</li>
         <li>{{lessons.advanced.f4}}</li>
       </ul>
+      <p class="small muted">{{lessons.advanced.samePrice}}</p>
       <dl class="facts">
         <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.advanced.level}}</dd></div>
-        <div><dt>{{lessons.labels.where}}</dt><dd>{{lessons.labels.whereValue}}</dd></div>
         <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+        <div class="facts__wide"><dt>{{lessons.labels.where}}</dt><dd>{{lessons.advanced.where}}</dd></div>
       </dl>
-      <p class="small muted">{{lessons.advanced.samePrice}}</p>
       {{price-table:advanced}}
       <div class="section-actions">
         <a class="btn btn--primary" href="{{link:book}}?type=advanced"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
+        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section lesson" id="private" aria-labelledby="private-title">
+  <div class="container lesson__grid">
+    <figure class="lesson__photo frame">{{img name=stock-private sizes="(min-width: 900px) 40vw, 100vw" alt=lessons.private.photoAlt}}</figure>
+    <div class="lesson__body">
+      <p class="lesson__num">03</p>
+      <h2 class="title" id="private-title">{{lessons.private.name}}</h2>
+      <p class="lead">{{lessons.private.text}}</p>
+      <p class="small muted">{{lessons.private.pairs}}</p>
+      <dl class="facts">
+        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.private.level}}</dd></div>
+        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+        <div class="facts__wide"><dt>{{lessons.labels.where}}</dt><dd>{{lessons.private.where}}</dd></div>
+      </dl>
+      {{price-table:private}}
+      <div class="section-actions">
+        <a class="btn btn--primary" href="{{link:book}}?type=private"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
+        <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint lesson lesson--flip" id="inclusive" aria-labelledby="inclusive-title">
+  <div class="container lesson__grid">
+    <figure class="lesson__photo frame">{{img name=stock-adaptive sizes="(min-width: 900px) 40vw, 100vw" alt=lessons.inclusive.photoAlt}}</figure>
+    <div class="lesson__body">
+      <p class="lesson__num">04</p>
+      <h2 class="title" id="inclusive-title">{{lessons.inclusive.name}}</h2>
+      <p class="lead">{{lessons.inclusive.text}}</p>
+      <dl class="facts">
+        <div><dt>{{lessons.labels.level}}</dt><dd>{{lessons.inclusive.level}}</dd></div>
+        <div><dt>{{lessons.labels.when}}</dt><dd>{{lessons.labels.whenValue}}</dd></div>
+        <div class="facts__wide"><dt>{{lessons.labels.where}}</dt><dd>{{lessons.inclusive.where}}</dd></div>
+      </dl>
+      {{price-table:inclusive}}
+      <div class="section-actions">
+        <a class="btn btn--primary" href="{{link:book}}?type=inclusive"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{lessons.bookThis}}</a>
         <a class="btn btn--wa" href="{{wa-url}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{common.cta.whatsapp}}</a>
       </div>
     </div>
@@ -91,7 +114,7 @@
       <h2 class="title" id="info-title">{{lessons.info.title}}</h2>
     </div>
     <div class="info-grid">
-      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><h3>{{lessons.info.where.title}}</h3><p>{{lessons.info.where.text}}</p>{{#if review}}<p class="review-note">{{lessons.info.where.note}}</p>{{/if}}</article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><h3>{{lessons.info.where.title}}</h3><p>{{lessons.info.where.text}}</p></article>
       <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><h3>{{lessons.info.when.title}}</h3><p>{{lessons.info.when.text}}</p></article>
       <article class="info-card info-card--wide"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg><h3>{{lessons.info.how.title}}</h3>
         <ol class="steps">
@@ -104,7 +127,7 @@
         </ol>
       </article>
       <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><h3>{{lessons.info.bring.title}}</h3><p>{{lessons.info.bring.text}}</p></article>
-      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><h3>{{lessons.info.groups.title}}</h3><p>{{lessons.info.groups.text}}</p>{{#if review}}<p class="review-note">{{lessons.info.groups.note}}</p>{{/if}}</article>
+      <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><h3>{{lessons.info.groups.title}}</h3><p>{{lessons.info.groups.text}}</p></article>
       <article class="info-card"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg><h3>{{lessons.info.travel.title}}</h3><p>{{lessons.info.travel.text}}</p></article>
     </div>
     <p class="info__links"><a href="{{link:conditions}}">{{common.nav.conditions}}</a> · <a href="{{link:faq}}">{{common.nav.faq}}</a> · <a href="{{link:surf}}">{{common.nav.surf}}</a></p>

@@ -20,7 +20,7 @@ Cloudflare Workers/Pages or a tiny Node server with minimal wiring. Secrets live
 | `STRIPE_SECRET_KEY` | checkout | `sk_test_…` while testing |
 | `STRIPE_WEBHOOK_SECRET` | webhook | `whsec_…` |
 | `SITE_URL` | checkout | `https://your-domain` |
-| `DEPOSIT_PERCENT` | checkout | `20` (omit to charge the full price) |
+| `DEPOSIT_PERCENT` | checkout | `15` (the customer can still choose to pay 100 % in the booking form) |
 | `PLANS_FILE` | all | optional path to `plans.json` if not deployed next to `server/` |
 
 ## Payment flow once enabled
@@ -31,7 +31,7 @@ Cloudflare Workers/Pages or a tiny Node server with minimal wiring. Secrets live
 3. Visitor pays on Stripe → returns to `booking-status.html?status=success` or `?status=cancelled`.
 4. Stripe calls `/api/stripe-webhook` → booking becomes `paid` (or `failed` / `cancelled`). Send confirmation emails here.
 
-Then set in `site.config.json`: `"payments": { "enabled": true, "depositPercent": 20, … }` (the browser uses
+Then set in `site.config.json`: `"payments": { "enabled": true, "depositPercent": 15, … }` (the browser uses
 `depositPercent` only to show the amount; the server's `DEPOSIT_PERCENT` decides what is charged — keep them equal).
 
 `npm test` runs `_tools/test-server.mjs`, which exercises all three handlers with the network stubbed.
