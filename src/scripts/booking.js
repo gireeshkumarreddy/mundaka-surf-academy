@@ -30,13 +30,15 @@ export default async function initBooking(root, config) {
   const bar = root.querySelector('[data-pay-bar]');
   // sections skip rendering off screen (content-visibility), which would pin the bar to the section instead of the screen
   if (bar) document.body.append(bar);
-  let formInView = false;
-  const showBar = () => bar?.classList.toggle('is-on', formInView && Boolean(plan()) && !form.hidden);
-  if (bar) new IntersectionObserver(([e]) => { formInView = e.isIntersecting; showBar(); }).observe(form);
   const pct = config.payments?.depositPercent ?? 15;
   const money = (n, cur = 'EUR') => (n == null ? '—' : formatMoney(n, cur, config.locale));
   const dateFmt = new Intl.DateTimeFormat(config.locale === 'en' ? 'en-GB' : 'es-ES', { dateStyle: 'long' });
   let plans = [];
+  // declared before anything async: the observer below can fire while the calendar is still loading
+  const plan = () => plans.find((p) => p.id === f.type.value);
+  let formInView = false;
+  const showBar = () => bar?.classList.toggle('is-on', formInView && Boolean(plan()) && !form.hidden);
+  if (bar) new IntersectionObserver(([e]) => { formInView = e.isIntersecting; showBar(); }).observe(form);
 
   if (!paymentsEnabled(config) && !enquiryConfigured(config) && config.reviewMode) form.querySelector('[data-demo-note]').hidden = false;
   submit.textContent = t('submit');
@@ -50,8 +52,6 @@ export default async function initBooking(root, config) {
     if (date) form.querySelector('[data-error="day"]').hidden = true;
     render();
   });
-
-  const plan = () => plans.find((p) => p.id === f.type.value);
 
   const fillOptions = () => {
     const p = plan();
