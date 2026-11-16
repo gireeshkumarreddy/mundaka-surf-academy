@@ -175,7 +175,7 @@
       },
       "b": {
         "title": "Everyone is welcome",
-        "text": "Children, families, visitors and surfers with disabilities or special needs all have a place in the water."
+        "text": "Children, families, visitors and surfers with reduced mobility or special needs all have a place in the water."
       },
       "c": {
         "title": "Read the sea first",
@@ -222,7 +222,7 @@
     },
     "private": {
       "name": "Private lessons",
-      "short": "For 1, 2 or 3 people, 1-hour lessons.",
+      "short": "Personalized lessons for groups of 1–3 people.",
       "text": "A fully personalised 1-hour lesson, for you alone or a group of up to 3 people, with the instructor’s full attention. The more of you there are, the less each person pays.",
       "level": "All levels",
       "photoAlt": "A surfer carrying a board out of the water",
@@ -230,7 +230,7 @@
     },
     "group": {
       "name": "Group lessons (Beginners)",
-      "short": "Your first waves at Laida beach, from 1 to 7 days.",
+      "short": "Your first waves at Laida beach.",
       "text": "2-hour group sessions to take your first steps on the board. The more days you book, the cheaper each one is and the more progress you’ll see.",
       "level": "Beginner",
       "photoAlt": "A group of surfers with their boards on the beach",
@@ -283,11 +283,11 @@
     },
     "inclusive": {
       "name": "Inclusive lessons",
-      "short": "Adaptive surfing for people with disabilities.",
-      "text": "Adaptive surf lessons for people with disabilities or special needs. Tell us what you need when you book and we will plan the session with you.",
+      "short": "Adapted surf for people with reduced mobility.",
+      "text": "Adapted surf lessons for people with reduced mobility or special needs. Tell us what you need when you book and we will plan the session with you.",
       "level": "All levels",
       "where": "Laida Beach.",
-      "photoAlt": "An adapted beach wheelchair at the water’s edge"
+      "photoAlt": "An instructor coaching a surfer lying on a board, next to an amphibious beach chair"
     }
   },
   "book": {

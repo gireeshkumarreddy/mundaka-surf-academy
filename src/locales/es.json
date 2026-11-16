@@ -175,7 +175,7 @@
       },
       "b": {
         "title": "Todo el mundo es bienvenido",
-        "text": "Niños, familias, visitantes y surfistas con discapacidad o necesidades especiales tienen su sitio en el agua."
+        "text": "Niños, familias, visitantes y surfistas con movilidad reducida o necesidades especiales tienen su sitio en el agua."
       },
       "c": {
         "title": "Primero, leer el mar",
@@ -222,7 +222,7 @@
     },
     "private": {
       "name": "Clases privadas",
-      "short": "Para 1, 2 o 3 personas, clases de 1 hora.",
+      "short": "Clases personalizadas para grupos de 1–3 personas.",
       "text": "Una clase de 1 hora totalmente personalizada, para ti solo o para un grupo de hasta 3 personas, con toda la atención del monitor. Cuantas más personas, menos paga cada una.",
       "level": "Todos los niveles",
       "photoAlt": "Surfista con su tabla saliendo del agua",
@@ -230,7 +230,7 @@
     },
     "group": {
       "name": "Clases en grupo (Iniciación)",
-      "short": "Tus primeras olas en la playa de Laida, de 1 a 7 días.",
+      "short": "Tus primeras olas en la playa de Laida.",
       "text": "Sesiones de 2 horas en grupo, para dar tus primeros pasos sobre la tabla. Cuantos más días, más barato sale cada uno y más se nota el progreso.",
       "level": "Iniciación",
       "photoAlt": "Un grupo de surfistas con sus tablas en la playa",
@@ -283,11 +283,11 @@
     },
     "inclusive": {
       "name": "Clases inclusivas",
-      "short": "Surf adaptado para personas con discapacidad.",
-      "text": "Clases de surf adaptado para personas con discapacidad o necesidades especiales. Cuéntanos tus necesidades al reservar y preparamos la sesión contigo.",
+      "short": "Surf adaptado para personas con movilidad reducida.",
+      "text": "Clases de surf adaptado para personas con movilidad reducida o necesidades especiales. Cuéntanos tus necesidades al reservar y preparamos la sesión contigo.",
       "level": "Todos los niveles",
       "where": "Playa de Laida.",
-      "photoAlt": "Silla anfibia adaptada en la orilla de la playa"
+      "photoAlt": "Un monitor enseña a un surfista tumbado en la tabla, junto a una silla anfibia en la playa"
     }
   },
   "book": {
