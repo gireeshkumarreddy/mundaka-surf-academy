@@ -90,22 +90,52 @@
       ]
     },
     {
-      "id": "instructor-3",
+      "id": "roberto-suarez",
       "photo": null,
       "name": {
-        "es": "Instructor 3",
-        "en": "Instructor 3"
+        "es": "Roberto Suárez García",
+        "en": "Roberto Suárez García"
       },
       "role": {
-        "es": "Monitor de surf",
-        "en": "Surf instructor"
+        "es": "Segundo instructor",
+        "en": "Second instructor / Assistant coach"
       },
-      "languages": [],
+      "languages": [
+        {
+          "es": "Castellano (nativo)",
+          "en": "Spanish (native)"
+        },
+        {
+          "es": "Inglés (B2)",
+          "en": "English (B2)"
+        }
+      ],
       "bio": {
-        "es": "",
-        "en": ""
+        "es": "Me llamo Roberto Suárez García, soy un apasionado del deporte y del mar con una gran vocación por enseñar. Empecé a surfear en Mundaka con tan solo seis años y, desde entonces, este deporte se ha convertido en mi forma de vida, llevándome a disfrutar y surfear en muchas playas de todo el Cantábrico. Además de las olas, me apasionan los deportes en la naturaleza como la escalada. Esa inquietud por el movimiento y por ayudar a los demás a mejorar me llevó a estudiar el grado superior en Técnico Superior en Acondicionamiento Físico. Me encanta entrenar con la gente y llevarla al máximo nivel que puedan alcanzar. Llevo dando clases de surf desde los 16 años y lo que más disfruto es acompañar a cada alumno y ver cómo va evolucionando sesión tras sesión.",
+        "en": "My name is Roberto Suárez García, and I am deeply passionate about sports and the ocean, with a strong vocation for teaching. I started surfing in Mundaka at just six years old, and ever since, surfing has become my way of life, taking me to surf across many beaches all along the Cantabrian coast. Beyond the waves, I am passionate about outdoor sports such as climbing. That drive for movement and helping others improve led me to pursue a Higher Technician degree in Physical Conditioning. I love training with people and helping them reach the highest level they can achieve. I have been teaching surf lessons since I was 16, and what I enjoy most is guiding every student and watching them progress session after session."
       },
-      "certificates": []
+      "certificates": [
+        {
+          "es": "Técnico Superior en Acondicionamiento Físico (TSAF)",
+          "en": "Higher Technician in Physical Conditioning (TSAF)"
+        },
+        {
+          "es": "Monitor de tiempo libre",
+          "en": "Leisure and Youth Activities Instructor"
+        },
+        {
+          "es": "Socorrismo acuático",
+          "en": "Aquatic Lifeguard"
+        },
+        {
+          "es": "Monitor de piragüismo",
+          "en": "Canoeing and Kayaking Instructor"
+        },
+        {
+          "es": "Soporte Vital Básico y uso de Desfibrilador Externo Automatizado (DEA)",
+          "en": "Basic Life Support and Automated External Defibrillator (AED) operator"
+        }
+      ]
     },
     {
       "id": "instructor-4",
