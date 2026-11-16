@@ -19,7 +19,7 @@
       <a class="link-arrow" href="{{config.forecast.windguru}}" target="_blank" rel="noopener">windguru.cz<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
     </div>
     <div class="panel">
-      <div class="embed embed--windguru embed--tall" data-embed data-kind="windguru" data-spot="{{config.forecast.windguruSpot}}" data-hours="168" data-lang="{{locale}}">
+      <div class="embed embed--windguru embed--tall" data-embed data-group="forecast" data-kind="windguru" data-spot="{{config.forecast.windguruSpot}}" data-hours="168" data-lang="{{locale}}">
         <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-wave"/></svg><p class="embed__text">{{common.embed.windguruText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button></div>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <a class="link-arrow" href="{{config.forecast.aemet}}" target="_blank" rel="noopener">aemet.es<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
     </div>
     <div class="panel">
-      <div class="embed embed--aemet" data-embed data-src="{{config.forecast.aemetWidget}}" data-title="{{surf.weather.frameTitle}}">
+      <div class="embed embed--aemet" data-embed data-group="forecast" data-src="{{config.forecast.aemetWidget}}" data-title="{{surf.weather.frameTitle}}">
         <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-sun"/></svg><p class="embed__text">{{common.embed.aemetText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button></div>
       </div>
     </div>

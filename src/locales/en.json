@@ -37,11 +37,12 @@
     },
     "embed": {
       "mapTitle": "Map: Mundaka Surf Academy, Erreka 6, Mundaka",
-      "mapText": "The interactive map comes from Google Maps, which may use cookies. It loads when you accept cookies or press the button.",
-      "mapLoad": "Load map",
+      "mapText": "The interactive map is Google Maps, which uses cookies: it loads when you press the button or accept cookies.",
+      "mapLoad": "Open interactive map",
       "windguruText": "Windguru wave, wind and period forecast for Mundaka. It loads when you accept cookies or press the button.",
       "aemetText": "AEMET weather forecast for Mundaka. It loads when you accept cookies or press the button.",
-      "forecastLoad": "Show forecast"
+      "forecastLoad": "Show forecast",
+      "mapAlt": "Map of the Erreka area in Mundaka showing Mundaka Surf Academy (Erreka 6)"
     }
   },
   "footer": {

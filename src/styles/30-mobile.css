@@ -57,7 +57,11 @@
   .reviews .section-head { margin-bottom: 1.1rem; }
 
   /* the map and forecasts read better a little taller */
-  .embed--map { aspect-ratio: 1 / 1; }
+  .embed--map { aspect-ratio: 4 / 5; }
+  /* map preview: the address is printed right above the map, so the bar keeps only the button and the cookie note */
+  .embed__bar { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; grid-template-columns: minmax(0, 1fr); padding: 0.7rem 0.75rem; }
+  .embed__bar .embed__name { display: none; }
+  .embed__bar .btn { width: 100%; }
   .forecast__grid .panel { padding: 0.9rem; }
 
   /* lessons: facts side by side when they fit */

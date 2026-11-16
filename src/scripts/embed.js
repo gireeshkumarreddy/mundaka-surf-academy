@@ -31,9 +31,42 @@ function load(box) {
   box.replaceChildren(frame);
 }
 
+// groups (map, forecast) the visitor asked to see during this visit: one tap shows them on every page until the tab closes
+const KEY = 'msa:embeds';
+const asked = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(KEY) || '[]');
+  } catch {
+    return [];
+  }
+};
+const remember = (group) => {
+  try {
+    sessionStorage.setItem(KEY, JSON.stringify([...new Set([...asked(), group])]));
+  } catch {
+    /* private mode: it just isn't remembered */
+  }
+};
+
 export default function initEmbeds() {
   const boxes = [...document.querySelectorAll('[data-embed]')];
-  boxes.forEach((box) => box.querySelector('[data-embed-load]')?.addEventListener('click', () => load(box)));
+  const show = (group) => boxes.filter((b) => b.dataset.group === group).forEach(load);
+  boxes.forEach((box) =>
+    box.querySelector('[data-embed-load]')?.addEventListener('click', () => {
+      if (!box.dataset.group) return load(box);
+      remember(box.dataset.group);
+      show(box.dataset.group); // e.g. both forecasts (Windguru and AEMET) with one tap
+    }),
+  );
   if (getConsent() === 'all') boxes.forEach(load);
-  onConsent((value) => value === 'all' && boxes.forEach(load));
+  else asked().forEach(show);
+  onConsent((value) => {
+    if (value === 'all') boxes.forEach(load);
+    else
+      try {
+        sessionStorage.removeItem(KEY);
+      } catch {
+        /* nothing stored */
+      }
+  });
 }

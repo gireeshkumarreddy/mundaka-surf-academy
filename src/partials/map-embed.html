@@ -1,8 +1,12 @@
-<div class="embed embed--map" data-embed data-src="{{config.maps.embed}}" data-title="{{common.embed.mapTitle}}">
-  <div class="embed__ph">
-    <svg class="icon embed__icon" aria-hidden="true"><use href="#i-pin"/></svg>
-    <p class="embed__name">{{config.contact.address}}</p>
-    <p class="embed__text">{{common.embed.mapText}}</p>
-    <button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.mapLoad}}</button>
+<div class="embed embed--map" data-embed data-group="map" data-src="{{config.maps.embed}}" data-title="{{common.embed.mapTitle}}">
+  <div class="embed__ph embed__ph--map">
+    <img class="embed__static" src="{{src:map-mundaka@900}}" srcset="{{srcset:map-mundaka}}" sizes="(min-width: 900px) 46vw, 100vw" alt="{{common.embed.mapAlt}}" width="1200" height="1200" loading="lazy" decoding="async">
+    <span class="embed__pin" aria-hidden="true"><svg viewBox="0 0 32 42"><path d="M16 40.5S29.5 27.6 29.5 16.5a13.5 13.5 0 0 0-27 0C2.5 27.6 16 40.5 16 40.5Z" fill="currentColor" stroke="#fff" stroke-width="2.5"/><circle cx="16" cy="16.5" r="5.2" fill="#fff"/></svg></span>
+    <div class="embed__bar">
+      <p class="embed__name">{{config.contact.address}}</p>
+      <button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.mapLoad}}</button>
+      <p class="embed__note">{{common.embed.mapText}}</p>
+    </div>
+    <a class="embed__credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a>
   </div>
 </div>
