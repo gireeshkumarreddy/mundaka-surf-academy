@@ -1,6 +1,6 @@
 {
-  "$comment": "Lessons and prices (website brief, section 6). Editable without rebuilding for the booking form and the server; run `npm run build` to refresh the price tables printed on the pages. price.unit: 'personHour' (amount per person per hour, choose hours; optional maxPeople) or 'package' (amount per person for N days).",
-  "updated": "2026-11-12",
+  "$comment": "Lessons and prices (website brief, section 6; client feedback 3). Editable without rebuilding for the booking form and the server; run `npm run build` to refresh the price tables printed on the pages. price.unit: 'personHour' (amount per person per hour, choose hours; optional groupRates [{ people, amount }] = the rate per person for that group size, and maxPeople) or 'package' (amount per person for N days).",
+  "updated": "2026-11-16",
   "currency": "EUR",
   "plans": [
     {
@@ -11,8 +11,8 @@
         "en": "Group lessons (Beginners)"
       },
       "summary": {
-        "es": "Tus primeras olas en la playa de Laida: sesiones de 2 horas, de 1 a 5 días.",
-        "en": "Your first waves at Laida beach: 2-hour sessions, from 1 to 5 days."
+        "es": "Tus primeras olas en la playa de Laida: sesiones de 2 horas, de 1 a 7 días.",
+        "en": "Your first waves at Laida beach: 2-hour sessions, from 1 to 7 days."
       },
       "levels": [
         "beginner"
@@ -45,6 +45,11 @@
             "days": 5,
             "hours": 10,
             "amount": 135
+          },
+          {
+            "days": 7,
+            "hours": 14,
+            "amount": 160
           }
         ]
       },
@@ -58,8 +63,8 @@
         "en": "Advanced and technical groups"
       },
       "summary": {
-        "es": "Para surfistas de nivel intermedio y avanzado: seguimiento, vídeo y corrección técnica.",
-        "en": "For intermediate and advanced surfers: session follow-up, video and technique correction."
+        "es": "Para surfistas de nivel intermedio y avanzado: seguimiento y corrección técnica.",
+        "en": "For intermediate and advanced surfers: session follow-up and technique correction."
       },
       "levels": [
         "intermediate",
@@ -93,6 +98,11 @@
             "days": 5,
             "hours": 10,
             "amount": 135
+          },
+          {
+            "days": 7,
+            "hours": 14,
+            "amount": 160
           }
         ]
       },
@@ -106,8 +116,8 @@
         "en": "Private lessons"
       },
       "summary": {
-        "es": "Para 1 o 2 personas, con las horas que quieras y centradas en tus objetivos.",
-        "en": "For 1 or 2 people, as many hours as you like, focused on your goals."
+        "es": "Para 1, 2 o 3 personas: clases de 1 hora centradas en tus objetivos.",
+        "en": "For 1, 2 or 3 people: 1-hour lessons focused on your goals."
       },
       "levels": [
         "beginner",
@@ -119,16 +129,25 @@
         "amount": 60,
         "currency": "EUR",
         "hours": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          1
+        ],
+        "groupRates": [
+          {
+            "people": 1,
+            "amount": 60
+          },
+          {
+            "people": 2,
+            "amount": 55
+          },
+          {
+            "people": 3,
+            "amount": 50
+          }
         ]
       },
       "bookable": true,
-      "maxPeople": 2
+      "maxPeople": 3
     },
     {
       "id": "inclusive",

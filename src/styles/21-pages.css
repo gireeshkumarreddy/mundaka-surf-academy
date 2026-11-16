@@ -15,7 +15,13 @@
 .team-card__num { margin: 0; font: 800 var(--step--2)/1 var(--font-head); color: var(--teal); letter-spacing: 0.12em; }
 .team-card__name { margin: 0; font-size: var(--step-1); }
 .team-card__role { margin: 0 0 0.5rem; font-weight: 600; color: var(--teal); font-size: var(--step--1); }
-.team-card__bio { font-size: var(--step--1); color: var(--ink-2); margin-bottom: 0.6rem; }
+.team-card__bio { font-size: var(--step--1); line-height: 1.6; color: var(--ink-2); margin-bottom: 0.6rem; }
+.team-card__bio p { margin: 0; }
+/* short bios (client feedback 3): four lines, then "Leer más" opens the full text */
+.team-card__bio.is-clamped:not(.is-open) p { display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.team-card__more { display: inline-flex; align-items: center; min-height: 36px; margin-top: 0.2rem; padding: 0; border: 0; background: none; cursor: pointer;
+  font: 700 var(--step--2)/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+.team-card__more:hover { text-decoration: underline; text-underline-offset: 3px; }
 .team-card__certs-title { margin: 0.25rem 0 0.4rem; font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
 .team-card__certs { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .team-card__certs li { padding: 0.25rem 0.65rem; border-radius: 0; background: var(--aqua-50); border: 1px solid var(--line); font-size: var(--step--2); font-weight: 600; color: var(--deep); }

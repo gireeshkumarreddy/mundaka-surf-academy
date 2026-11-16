@@ -28,8 +28,8 @@
   },
 
   "social": {
-    "instagram": { "url": "https://www.instagram.com/mundacasurfacademy/", "handle": "@mundacasurfacademy" },
-    "facebook": { "url": "https://www.facebook.com/mundacasurfacademy", "handle": "@mundacasurfacademy" }
+    "instagram": { "url": "https://www.instagram.com/mundakasurfacademy/", "handle": "@mundakasurfacademy" },
+    "facebook": { "url": "https://www.facebook.com/mundakasurfacademy", "handle": "@mundakasurfacademy" }
   },
 
   "whatsapp": {
@@ -75,14 +75,15 @@
     "$comment": "Website owner (LSSI-CE), as given by the client on 12 Nov 2026.",
     "owner": "Xabier Gondra León",
     "taxId": "20975102E",
-    "address": "Barrio Erreka, nº 3, 48380 Mundaka (Bizkaia)",
+    "address": "Barrio Erreka, nº 6, 48360 Mundaka (Bizkaia)",
     "phone": "+34 633 29 00 73"
   },
 
   "partners": {
     "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" } (url optional: without it the logo is not a link).",
     "items": [
-      { "name": "Indio", "logo": "partner-indio", "url": "" }
+      { "name": "Indio", "logo": "partner-indio", "url": "" },
+      { "name": "Billabong", "logo": "partner-billabong", "url": "" }
     ]
   },
 

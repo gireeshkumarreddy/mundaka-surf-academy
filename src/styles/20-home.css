@@ -30,7 +30,6 @@
 
 .xabi__grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 1rem + 5vw, 6rem); align-items: center; }
 .xabi__photo img { aspect-ratio: 4 / 5; object-position: 50% 35%; }
-.xabi__text .lead { color: var(--deep); }
 @media (max-width: 899px) { .xabi__grid { grid-template-columns: 1fr; } .xabi__photo { max-width: 460px; } }
 
 .where__grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: center; }

@@ -40,6 +40,8 @@ main:focus { outline: none; }
 .title { font-size: var(--step-3); font-weight: 800; }
 .title--sm { font-size: var(--step-2); font-weight: 700; }
 .lead { font-size: var(--step-1); color: var(--ink-2); line-height: 1.55; }
+/* client feedback 3: the founder's introduction and the Our story texts (academy, Mundaka wave, Urdaibai) in one font and size */
+.intro-text { font-family: var(--font-sans); font-size: max(var(--step-0), 1.0625rem); line-height: 1.7; }
 .section--deep .lead { color: rgba(255, 255, 255, 0.8); }
 .small { font-size: var(--step--1); }
 .muted { color: var(--ink-3); }
@@ -99,6 +101,7 @@ main:focus { outline: none; }
 .table-wrap .price-table { margin-bottom: 0; }
 .price-table th { background: var(--deep); color: #fff; text-align: left; font: 700 var(--step--1)/1.3 var(--font-head); padding: 0.8rem 1rem; }
 .price-table td { padding: 0.72rem 1rem; border-top: 1px solid var(--line); }
+.price-table td:first-child { white-space: nowrap; } /* "2 personas", "10 h" on one line */
 .price-table tbody tr:nth-child(even) td { background: var(--aqua-50); }
 .price-table strong { color: var(--teal); font: 800 1.05em/1 var(--font-head); }
 

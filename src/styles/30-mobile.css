@@ -83,7 +83,8 @@
   .team-card__name { grid-column: 2; grid-row: 2; }
   .team-card__role { grid-column: 2; grid-row: 3; margin: 0; }
   .team-card__langs { grid-column: 2; grid-row: 4; margin: 0.2rem 0 0; }
-  .team-card__bio { grid-column: 1 / -1; grid-row: 5; margin: 0.75rem 0 0.4rem; font-size: 0.95rem; line-height: 1.6; }
+  .team-card__bio { grid-column: 1 / -1; grid-row: 5; margin: 0.75rem 0 0.4rem; }
+  .team-card__more { min-height: 44px; }
   .team-card__certs-title { grid-column: 1 / -1; grid-row: 6; }
   .team-card__certs, .team-card__certs-empty { grid-column: 1 / -1; grid-row: 7; }
   .team-card .tbc { white-space: normal; }
@@ -132,6 +133,7 @@
 @media (max-width: 640px) {
   .cal { padding: 0.5rem; margin-inline: -0.25rem; }
   .cal__grid { gap: 3px; }
+  .cal { margin-inline: -0.6rem; padding-inline: 2px; } /* wider grid: each day at least 44 px wide for a finger */
   .cal__wd { font-size: 0.8125rem; letter-spacing: 0; }
   .cal__day { min-height: 46px; align-items: center; justify-content: center; padding: 0.25rem 0; }
   .cal__slot { display: none; }

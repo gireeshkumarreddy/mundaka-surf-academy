@@ -19,8 +19,8 @@ Node 18 or newer. Nothing to install.
 
 ```
 site.config.json          ← contact details, WhatsApp number, socials, hero video, forms, payments, forecast widgets
-public/data/plans.json    ← lessons and prices (Group and Advanced 1–5 days 35–135 €, Private 60 €/person/hour, Inclusive 50 €/person/hour)
-public/data/schedule.json ← booking calendar: season and tide-based lesson times per day
+public/data/plans.json    ← lessons and prices (Group and Advanced 1–5 and 7 days 35–160 €, Private 1 h 60/55/50 € per person for 1/2/3 people, Inclusive 50 €/person/hour)
+public/data/schedule.json ← booking calendar: season and tide-based lesson times per day (_tools/import_calendar.py loads the academy's PDF)
 public/data/team.json     ← instructor cards (add an entry to add an instructor)
 public/data/gallery.json  ← gallery photos and their filter (lessons | instructors)
 src/locales/es.json, en.json ← all text, Spanish and English

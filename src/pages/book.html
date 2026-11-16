@@ -22,13 +22,12 @@
             <button type="button" class="cal__nav" data-cal-next aria-label="{{book.cal.next}}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
           </div>
           <div class="cal__grid" data-cal-grid></div>
-          <p class="cal__legend"><span class="cal__key"><span class="cal__dot cal__dot--slots"></span>{{book.cal.legendSlots}}</span><span class="cal__key"><span class="cal__dot cal__dot--tbc"></span>{{book.cal.legendTbc}}</span></p>
+          <p class="cal__legend"><span class="cal__key"><span class="cal__dot cal__dot--slots"></span>{{book.cal.legendSlots}}</span></p>
         </div>
         <div class="slots" data-slots aria-live="polite" hidden></div>
         <input type="hidden" name="date"><input type="hidden" name="time">
         <p class="field-error field-error--group" data-error="day" hidden>{{book.errors.day}}</p>
         <p class="field-hint">{{book.cal.season}} · {{book.tideHint}}</p>
-        {{#if review}}<p class="review-note">{{book.cal.example}}</p>{{/if}}
       </fieldset>
 
       <fieldset class="field-group">

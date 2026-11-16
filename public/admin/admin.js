@@ -594,6 +594,15 @@ function validate() {
       if (!Array.isArray(pr.hours) || !pr.hours.length) add('precios', `${label}: añade al menos una duración.`);
       else if (!pr.hours.every(isHours)) add('precios', `${label}: cada duración debe ser un número de horas (entero o media hora, p. ej. 1.5).`);
       else if (new Set(pr.hours).size !== pr.hours.length) add('precios', `${label}: hay duraciones repetidas.`);
+      if (Array.isArray(pr.groupRates)) {
+        // price per person by group size (private lessons: 1 person 60 €, 2 people 55 € each, 3 people 50 € each)
+        pr.groupRates.forEach((r, i) => {
+          if (!isWhole(r.people, 20) || r.people < 1) add('precios', `${label}, tarifa ${i + 1}: el número de personas debe ser un entero entre 1 y 20.`);
+          if (!isPrice(r.amount)) add('precios', `${label}, tarifa ${i + 1}: el precio por persona no es válido.`);
+        });
+        if (!pr.groupRates.some((r) => r.people === 1)) add('precios', `${label}: falta la tarifa para 1 persona.`);
+        if (new Set(pr.groupRates.map((r) => r.people)).size !== pr.groupRates.length) add('precios', `${label}: hay dos tarifas para el mismo número de personas.`);
+      }
     } else if (pr.unit === 'package') {
       const ks = Array.isArray(pr.packages) ? pr.packages : [];
       if (!ks.length) add('precios', `${label}: añade al menos un paquete.`);
@@ -1326,9 +1335,34 @@ function planCard(p) {
     if (!Array.isArray(pr.hours)) pr.hours = [];
     const calcs = [];
     const refresh = () => calcs.forEach((c) => c());
+    const rates = Array.isArray(pr.groupRates) ? pr.groupRates : null;
+    // with group rates, the 1-person rate is also the plan's base price, and the largest group is the maximum
+    const syncRates = () => {
+      const one = rates.find((r) => r.people === 1);
+      if (one && isPrice(one.amount)) pr.amount = one.amount;
+      const sizes = rates.map((r) => r.people).filter((n) => isWhole(n, 20));
+      if (sizes.length) p.maxPeople = Math.max(...sizes);
+      refresh();
+    };
     body.push(
-      h('h4', { class: 'subhead' }, 'Precio'),
-      h('div', { class: 'grid-2' }, field('Precio por persona y hora (€)', numInput(pr, 'amount', { check: isPrice, label: 'Precio por persona y hora', step: '0.01', onInput: refresh }), 'Ejemplo: 60')),
+      h('h4', { class: 'subhead' }, rates ? 'Precio por persona y hora, según cuántas personas vienen' : 'Precio'),
+      rates
+        ? h(
+            'div',
+            {},
+            rates.map((r, i) =>
+              h(
+                'div',
+                { class: 'line-row line-row--hour' },
+                field('Personas', numInput(r, 'people', { check: (v) => isWhole(v, 20) && v >= 1, label: `Tarifa ${i + 1}: personas`, step: '1', onInput: syncRates })),
+                field('Precio por persona (€)', numInput(r, 'amount', { check: isPrice, label: `Tarifa ${i + 1}: precio por persona y hora`, step: '0.01', onInput: syncRates })),
+                h('button', { type: 'button', class: 'btn btn--danger btn--small', 'aria-label': `Quitar tarifa ${i + 1}`, onclick: () => (rates.splice(i, 1), syncRates(), rerender()) }, 'Quitar'),
+              ),
+            ),
+            h('div', { class: 'panel__actions' }, h('button', { type: 'button', class: 'btn btn--ghost btn--small', onclick: () => (rates.push({ people: (Math.max(0, ...rates.map((r) => Number(r.people) || 0)) || 0) + 1, amount: '' }), syncRates(), rerender()) }, 'Añadir tarifa')),
+            h('p', { class: 'hint' }, `Máximo por clase: ${p.maxPeople ?? '—'} personas (la tarifa con más personas).`),
+          )
+        : h('div', { class: 'grid-2' }, field('Precio por persona y hora (€)', numInput(pr, 'amount', { check: isPrice, label: 'Precio por persona y hora', step: '0.01', onInput: refresh }), 'Ejemplo: 60')),
       h('h4', { class: 'subhead' }, 'Duraciones que se pueden reservar'),
       h(
         'div',

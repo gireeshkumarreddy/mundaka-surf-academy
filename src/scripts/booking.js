@@ -8,7 +8,7 @@ import { t, local } from './integrations/config.js';
 import { sendEnquiry, enquiryConfigured } from './integrations/enquiry.js';
 import { whatsappUrl, bookingMessage } from './integrations/whatsapp.js';
 import { paymentsEnabled, startCheckout } from './integrations/payments.js';
-import { estimate, planOptions, split, formatMoney } from './pricing.js';
+import { estimate, planOptions, rateFor, split, formatMoney } from './pricing.js';
 import { loadPlans, escapeHTML } from './data.js';
 import { scrollToTarget } from './motion.js';
 import { initCalendar } from './calendar.js';
@@ -62,7 +62,9 @@ export default async function initBooking(root, config) {
     optionSelect.innerHTML = planOptions(p)
       .map((o) => {
         const label = hours ? t('optionHours', { n: o.hours }) : t('optionDays', { n: o.days, h: o.hours });
-        return `<option value="${o.value}">${escapeHTML(label)} — ${escapeHTML(t('optionPrice', { price: money(o.amount, p.price.currency) }))}</option>`;
+        // private lessons: the price per person depends on how many people come (60 / 55 / 50 €)
+        const each = hours ? rateFor(p, Number(f.participants.value) || 1) * o.hours : o.amount;
+        return `<option value="${o.value}">${escapeHTML(label)} — ${escapeHTML(t('optionPrice', { price: money(each, p.price.currency) }))}</option>`;
       })
       .join('');
     if ([...optionSelect.options].some((o) => o.value === keep)) optionSelect.value = keep;
@@ -71,7 +73,7 @@ export default async function initBooking(root, config) {
     const beginner = f.level.querySelector('option[value="beginner"]');
     beginner.disabled = !p.levels.includes('beginner');
     if (beginner.disabled && f.level.value === 'beginner') f.level.value = '';
-    // private lessons are for 1 or 2 people
+    // private lessons are for 1 to 3 people (plans.json → maxPeople)
     f.participants.max = String(p.maxPeople ?? 20);
     if (p.maxPeople && Number(f.participants.value) > p.maxPeople) f.participants.value = String(p.maxPeople);
     peopleError.textContent = p.maxPeople ? t('maxPeople') : peopleErrorText;
@@ -103,7 +105,7 @@ export default async function initBooking(root, config) {
       [t('sumLesson'), d.plan ? local(d.plan.name) : ''],
       [t('sumOption'), optionText(d)],
       [t('sumDate'), d.date ? dateFmt.format(new Date(`${d.date}T12:00:00`)) : ''],
-      [t('sumTime'), d.time || (d.date ? t('timeTbc') : '')],
+      [t('sumTime'), d.time ? d.time.replace('-', '–') : d.date ? t('timeTbc') : ''],
       [t('sumPeople'), String(d.participants)],
       [t('sumLevel'), d.level ? t(`level_${d.level}`) : ''],
     ];
@@ -169,6 +171,7 @@ export default async function initBooking(root, config) {
   });
   form.addEventListener('input', (e) => {
     e.target.closest('[data-field]')?.classList.remove('is-invalid');
+    if (e.target.name === 'participants' && plan()?.price.groupRates) fillOptions(); // the per-person price changes with the group
     render();
   });
 

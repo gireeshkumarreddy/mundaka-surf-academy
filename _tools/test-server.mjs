@@ -21,7 +21,9 @@ assert.ok(calls.at(-2).body.includes('Booking request') && calls.at(-2).body.inc
 assert.ok(calls.at(-1).body.includes('test@example.com') && calls.at(-1).body.includes('solicitud de reserva')); // customer copy, in Spanish
 assert.equal((await enquiry(post({ ...good, option: 9 }))).status, 422); // not a published package
 assert.equal((await enquiry(post({ ...good, time: '25:00' }))).status, 422); // not a time
-assert.equal((await enquiry(post({ ...good, plan: { id: 'private' }, participants: 3 }))).status, 422); // private: 1 or 2 people
+assert.equal((await enquiry(post({ ...good, time: '15:00-17:00' }))).status, 200); // a class time from the calendar (start-end)
+assert.equal((await enquiry(post({ ...good, time: '15:00-25:00' }))).status, 422);
+assert.equal((await enquiry(post({ ...good, plan: { id: 'private' }, participants: 4 }))).status, 422); // private: 1 to 3 people
 assert.equal((await enquiry(post({ ...good, plan: { id: 'inclusive' }, participants: 1 }))).status, 200); // the new inclusive lessons
 assert.equal((await enquiry(post({ ...good, plan: { id: 'nope' } }))).status, 422);
 assert.equal((await enquiry(post({ ...good, contact: { name: 'A', email: 'bad' } }))).status, 422);
@@ -41,15 +43,26 @@ assert.equal((await getBooking(b.reference)).status, 'pending');
 r = await checkout(post({ booking: { ...good, payMode: 'full' } }));
 assert.equal(r.status, 200);
 assert.equal(new URLSearchParams(calls.at(-1).body).get('line_items[0][price_data][unit_amount]'), '10500'); // the customer chose 100 %
+// private lessons (feedback 3): 1 hour, 60 € for one, 55 € each for two, 50 € each for three — paid in full here
+const privateTotal = async (participants) => {
+  const res = await checkout(post({ booking: { ...good, plan: { id: 'private' }, option: 1, participants, payMode: 'full' } }));
+  assert.equal(res.status, 200);
+  return new URLSearchParams(calls.at(-1).body).get('line_items[0][price_data][unit_amount]');
+};
+assert.equal(await privateTotal(1), '6000');
+assert.equal(await privateTotal(2), '11000');
+assert.equal(await privateTotal(3), '15000');
+r = await checkout(post({ booking: { ...good, option: 7, payMode: 'full' } })); // the new 7-day package: 3 × 160 €
+assert.equal(new URLSearchParams(calls.at(-1).body).get('line_items[0][price_data][unit_amount]'), '48000');
 r = await checkout(post({ booking: good })); b = await r.json(); // the deposit booking used by the webhook test below
-console.log('checkout: ok (15 % deposit 15.75 EUR of 105 EUR, or 100 % online)');
+console.log('checkout: ok (15 % deposit 15.75 EUR of 105 EUR, or 100 % online; private 60/110/150 EUR; 7 days 480 EUR for 3)');
 
 const event = JSON.stringify({ type: 'checkout.session.completed', data: { object: { metadata: { reference: b.reference }, payment_status: 'paid', amount_total: 1575 } } });
 const t = Math.floor(Date.now() / 1000);
 const key = await crypto.subtle.importKey('raw', new TextEncoder().encode('whsec_test'), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
 const sig = [...new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${t}.${event}`)))].map((x) => x.toString(16).padStart(2, '0')).join('');
 assert.equal(await verifyStripeSignature(event, `t=${t},v1=${sig}`, 'whsec_test'), true);
-assert.equal(await verifyStripeSignature(event, `t=${t},v1=${sig.replace(/^./, '0')}`, 'whsec_test'), false);
+assert.equal(await verifyStripeSignature(event, `t=${t},v1=${sig.replace(/^./, (c) => (c === '0' ? '1' : '0'))}`, 'whsec_test'), false); // always a different first digit
 assert.equal(await verifyStripeSignature(event, `t=${t - 1000},v1=${sig}`, 'whsec_test'), false);
 const bad = await webhook(new Request('http://x', { method: 'POST', body: event, headers: { 'stripe-signature': `t=${t},v1=deadbeef` } }));
 assert.equal(bad.status, 400);

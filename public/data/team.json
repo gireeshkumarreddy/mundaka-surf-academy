@@ -22,8 +22,8 @@
           "en": "Spanish (native)"
         },
         {
-          "es": "Inglés (C1)",
-          "en": "English (C1)"
+          "es": "Inglés (C2)",
+          "en": "English (C2)"
         }
       ],
       "bio": {
@@ -33,7 +33,7 @@
       "certificates": [
         {
           "es": "Monitor de surf por la Euskal Surf Federazioa",
-          "en": "Surf instructor, Basque Surf Federation (Euskal Surf Federazioa)"
+          "en": "Surf Instructor by the Euskal Surf Federazioa"
         },
         {
           "es": "Socorrista acuático (RFESS e International Life Saving)",
@@ -66,8 +66,8 @@
           "en": "Spanish (native)"
         },
         {
-          "es": "Inglés (C1)",
-          "en": "English (C1)"
+          "es": "Inglés (C2)",
+          "en": "English (C2)"
         },
         {
           "es": "Alemán (B2)",
@@ -84,8 +84,8 @@
       },
       "certificates": [
         {
-          "es": "Título de Monitor de Surf, Nivel 1",
-          "en": "Surf Instructor Qualification, Level 1"
+          "es": "Monitor de surf por la Euskal Surf Federazioa",
+          "en": "Surf Instructor by the Euskal Surf Federazioa"
         }
       ]
     },
@@ -138,22 +138,40 @@
       ]
     },
     {
-      "id": "instructor-4",
+      "id": "ur-ugalde",
       "photo": null,
       "name": {
-        "es": "Instructor 4",
-        "en": "Instructor 4"
+        "es": "Ur Ugalde Larrauri",
+        "en": "Ur Ugalde Larrauri"
       },
       "role": {
         "es": "Monitor de surf",
         "en": "Surf instructor"
       },
-      "languages": [],
+      "languages": [
+        {
+          "es": "Euskera (nativo)",
+          "en": "Basque (native)"
+        },
+        {
+          "es": "Castellano (nativo)",
+          "en": "Spanish (native)"
+        },
+        {
+          "es": "Inglés (C1)",
+          "en": "English (C1)"
+        }
+      ],
       "bio": {
-        "es": "",
-        "en": ""
+        "es": "Me llamo Ur Ugalde Larrauri, tengo 17 años y soy surfista local de Mundaka. El surf forma parte de mi vida desde que era niño y he crecido practicándolo en esta costa, que conozco y siento como mi hogar. Soy un apasionado de este deporte y me hace ilusión compartir lo que he aprendido en el agua y ayudar a otras personas a disfrutar del surf.",
+        "en": "My name is Ur Ugalde Larrauri, I am 17 years old, and I am a local surfer from Mundaka. Surfing has been part of my life since I was a child, and I have grown up surfing along this coast, which I know and consider home. I am passionate about the sport and excited to share what I have learned in the water and help others enjoy surfing."
       },
-      "certificates": []
+      "certificates": [
+        {
+          "es": "Monitor de surf por la Euskal Surf Federazioa",
+          "en": "Surf Instructor by the Euskal Surf Federazioa"
+        }
+      ]
     }
   ]
 }

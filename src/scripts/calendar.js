@@ -6,6 +6,13 @@
 import { t } from './integrations/config.js';
 import { escapeHTML } from './data.js';
 
+// a class time is "HH:MM-HH:MM" (start and end, from the academy's calendar) or just "HH:MM"
+const slotParts = (s) => {
+  const [from, to] = String(s).split('-');
+  return { from, label: to ? `${from}–${to}` : from };
+};
+const list = (v) => [].concat(v ?? []); // "low"/"high" may be one time or a list (two low tides a day)
+
 const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const parse = (s) => {
   const [y, m, d] = s.split('-').map(Number);
@@ -48,10 +55,13 @@ export async function initCalendar(root, config, onChange) {
     }
     const d = days[selected.date] ?? {};
     const title = escapeHTML(t('slotsFor', { date: dayFmt.format(parse(selected.date)) }));
-    const tide = [d.low && `${t('lowTide')} ${d.low}`, d.high && `${t('highTide')} ${d.high}`].filter(Boolean).map(escapeHTML).join(' · ');
+    const tide = [list(d.low).length && `${t('lowTide')} ${list(d.low).join(' · ')}`, list(d.high).length && `${t('highTide')} ${list(d.high).join(' · ')}`]
+      .filter(Boolean)
+      .map(escapeHTML)
+      .join(' · ');
     slotsBox.innerHTML = d.slots?.length
       ? `<p class="slots__title">${title}</p>${tide ? `<p class="slots__tide">${tide}</p>` : ''}<div class="slots__list" role="radiogroup" aria-label="${title}">${d.slots
-          .map((time, i) => `<label class="slot"><input type="radio" name="slot" value="${escapeHTML(time)}"${selected.time === time ? ' checked' : ''}><span><small>${escapeHTML(t('slotN', { n: i + 1 }))}</small>${escapeHTML(time)}</span></label>`)
+          .map((time, i) => `<label class="slot"><input type="radio" name="slot" value="${escapeHTML(time)}"${selected.time === time ? ' checked' : ''}><span><small>${escapeHTML(t('slotN', { n: i + 1 }))}</small>${escapeHTML(slotParts(time).label)}</span></label>`)
           .join('')}</div>`
       : `<p class="slots__title">${title}</p>${tide ? `<p class="slots__tide">${tide}</p>` : ''}<p class="slots__none">${escapeHTML(t('slotsNone'))}</p>`;
     slotsBox.hidden = false;
@@ -71,9 +81,10 @@ export async function initCalendar(root, config, onChange) {
       const ok = bookable(key);
       const slots = ok && d?.slots?.length ? d.slots : [];
       const cls = ['cal__day', ok ? (slots.length ? 'has-slots' : 'is-tbc') : 'is-off', selected.date === key ? 'is-selected' : ''].filter(Boolean).join(' ');
-      const label = `${dayFmt.format(parse(key))}${slots.length ? ` · ${slots.join(', ')}` : ''}`;
+      const label = `${dayFmt.format(parse(key))}${slots.length ? ` · ${slots.map((s) => slotParts(s).label).join(', ')}` : ''}`;
+      // the cell shows each class's start time; the full times are listed once the day is picked
       html += `<button type="button" class="${cls}" data-day="${key}"${ok ? '' : ' disabled'} aria-pressed="${selected.date === key}" aria-label="${escapeHTML(label)}"><span class="cal__num">${day}</span>${slots
-        .map((s, i) => `<span class="cal__slot"><small>${escapeHTML(t('slotN', { n: i + 1 }))}</small> ${escapeHTML(s)}</span>`)
+        .map((s) => `<span class="cal__slot">${escapeHTML(slotParts(s).from)}</span>`)
         .join('')}</button>`;
     }
     grid.innerHTML = html;

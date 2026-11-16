@@ -26,7 +26,8 @@ export async function validateBooking(input) {
   const participants = Number(input.participants);
   if (!Number.isInteger(participants) || participants < 1 || participants > (plan.maxPeople ?? 40)) return { error: 'participants' };
   const time = String(input.time ?? '');
-  if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) return { error: 'time' };
+  // a class time from the calendar: "HH:MM-HH:MM" (start-end), or just "HH:MM"
+  if (time && !/^([01]\d|2[0-3]):[0-5]\d(-([01]\d|2[0-3]):[0-5]\d)?$/.test(time)) return { error: 'time' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? '')) return { error: 'date' };
   // hours (private) or days (group packages): must be one of the options published in plans.json
   const option = Number(input.option);

@@ -50,7 +50,7 @@
     "contactTitle": "Contact",
     "exploreTitle": "The school",
     "followTitle": "Follow us",
-    "partners": "Partners",
+    "partners": "Supported by",
     "partnersPending": "Reserved space for brand partners (e.g. Billabong): they will be added when the academy sends the logos."
   },
   "home": {
@@ -65,8 +65,8 @@
     },
     "xabi": {
       "eyebrow": "The founder",
-      "title": "Hi, I'm Xabi",
-      "p1": "My name is Xabi Gondra; I’m a local surfer from Mundaka, and my connection to the ocean began when I was just five years old. Since then, this sport has become my absolute passion and my way of life. Growing up in a place like Mundaka shapes your path, and starting my own surf school is the fulfillment of a dream I’ve been working toward for many years.",
+      "title": "Xabier Gondra León",
+      "p1": "My name is Xabier Gondra León; I’m a local surfer from Mundaka, and my connection to the ocean began when I was just five years old. Since then, this sport has become my absolute passion and my way of life. Growing up in a place like Mundaka shapes your path, and starting my own surf school is the fulfillment of a dream I’ve been working toward for many years.",
       "p2": "Teaching has been part of my daily life since I was 16, when I started giving surf lessons. I enjoy sharing my knowledge, training with students, and guiding their progress in the water while maintaining a deep respect for the marine environment. To ensure the highest standards of safety and professionalism in my work, I hold an official certification as a surf instructor and am trained in lifesaving and first aid. If you want to learn or improve your technique, see you in the water.",
       "cta": "Our story",
       "photoAlt": "Xabi with his surfboard in Mundaka"
@@ -156,9 +156,9 @@
     },
     "eyebrow": "The team",
     "title": "Instructors",
-    "lead": "Certified instructors and lifelong friends who know every corner of Mundaka.",
+    "lead": "Qualified instructors with extensive work experience in the waters of Mundaka.",
     "gridTitle": "Instructor cards",
-    "note": "To come: each instructor’s photo, the group photo and the details of two instructors (the academy will send them later).",
+    "note": "To come: each instructor’s photo and the group photo (in the academy’s next delivery).",
     "end": "Want to know who will teach you? Message us.",
     "photoPending": "Photo to come",
     "bioPending": "Bio to come",
@@ -191,11 +191,11 @@
   "lessons": {
     "meta": {
       "title": "Lessons and prices — Mundaka Surf Academy",
-      "description": "Private lessons (60 EUR per person per hour), group lessons and advanced/technical groups (35 to 135 EUR per person) in Mundaka."
+      "description": "Private lessons (€50 to €60 per person, 1 hour), group and advanced/technical groups (€35 to €160 per person) in Mundaka."
     },
     "eyebrow": "Surf lessons",
     "title": "Lessons and prices",
-    "lead": "Four kinds of lesson, all with board and wetsuit included.",
+    "lead": "Four types of classes, with all equipment included in the price.",
     "jump": "Jump to",
     "bookThis": "Book this lesson",
     "labels": {
@@ -213,21 +213,25 @@
       "perPersonDay": "per person",
       "days": "Days",
       "hours": "Hours",
-      "pricePerson": "Price (per person)"
+      "pricePerson": "Price (per person)",
+      "people": "People",
+      "perPersonOne": "Price per person (1 hour)",
+      "total": "Total",
+      "person1": "1 person",
+      "personsN": "{n} people"
     },
     "private": {
       "name": "Private lessons",
-      "short": "For 1 or 2 people, as many hours as you like.",
-      "text": "A fully personalised lesson for one or two people, with the instructor’s full attention. Book as many hours as you need.",
+      "short": "For 1, 2 or 3 people, 1-hour lessons.",
+      "text": "A fully personalised 1-hour lesson, for you alone or a group of up to 3 people, with the instructor’s full attention. The more of you there are, the less each person pays.",
       "level": "All levels",
       "photoAlt": "A surfer carrying a board out of the water",
-      "where": "Depending on your level: Laida Beach, between Laida and the bar, or the Mundaka wave.",
-      "pairs": "1 person: €60 / hour · 2 people: €60 / hour per person (€120 / hour in total)."
+      "where": "Depending on your level: Laida Beach, between Laida and the bar, or the Mundaka wave."
     },
     "group": {
       "name": "Group lessons (Beginners)",
-      "short": "Your first waves at Laida beach, from 1 to 5 days.",
-      "text": "2-hour group sessions, from 1 to 5 days, to take your first steps on a board. The more days, the less each one costs and the more you progress.",
+      "short": "Your first waves at Laida beach, from 1 to 7 days.",
+      "text": "2-hour group sessions to take your first steps on the board. The more days you book, the cheaper each one is and the more progress you’ll see.",
       "level": "Beginner",
       "photoAlt": "A group of surfers with their boards on the beach",
       "where": "Laida Beach, just below the Mundaka sandbar: safe, gentle conditions to start from scratch."
@@ -239,7 +243,6 @@
       "level": "Intermediate, advanced and expert coaching",
       "photoAlt": "A surfer riding a green and turquoise wave",
       "f1": "Follow-up of every session",
-      "f2": "Video recording and correction",
       "f3": "Simulations and land drills",
       "f4": "A plan adapted to your level and goals",
       "samePrice": "Same prices as the group lessons.",
@@ -301,7 +304,7 @@
     "step2": "Lesson and group",
     "step3": "Your details",
     "step4": "Conditions and payment",
-    "tideHint": "Times depend on each day’s tide.",
+    "tideHint": "Two groups around each low tide: 2 h before and 2 h after, always in daylight.",
     "policyFull": "Read the full conditions",
     "submit": "Send booking",
     "payNote": "When you confirm you only pay the deposit; the rest is paid at the school.",
@@ -356,9 +359,7 @@
       "prev": "Previous month",
       "next": "Next month",
       "season": "Season: March – October 2027",
-      "legendSlots": "Times available",
-      "legendTbc": "Time set by the tide (we confirm it)",
-      "example": "Review mode: 22 and 25 August show the client’s example. The real tide table will be loaded when the spreadsheet arrives."
+      "legendSlots": "Days with lessons: tap one to see its times"
     },
     "pay": {
       "title": "How much do you want to pay now?",
@@ -691,9 +692,11 @@
     "lowTide": "Low tide",
     "highTide": "High tide",
     "slotN": "#{n}",
-    "maxPeople": "Private lessons are for 1 or 2 people.",
+    "maxPeople": "Private lessons are for 1, 2 or 3 people.",
     "waTime": "Time",
-    "outOfSeason": "Out of season"
+    "outOfSeason": "Out of season",
+    "readMore": "Read more",
+    "readLess": "Read less"
   },
   "location": {
     "facts": {

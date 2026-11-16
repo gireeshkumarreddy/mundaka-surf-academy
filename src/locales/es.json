@@ -50,7 +50,7 @@
     "contactTitle": "Contacto",
     "exploreTitle": "La escuela",
     "followTitle": "Síguenos",
-    "partners": "Colaboradores",
+    "partners": "Supported by",
     "partnersPending": "Espacio reservado para las marcas colaboradoras (p. ej. Billabong): se añadirán cuando la academia envíe los logos."
   },
   "home": {
@@ -65,8 +65,8 @@
     },
     "xabi": {
       "eyebrow": "El fundador",
-      "title": "Hola, soy Xabi",
-      "p1": "Me llamo Xabi Gondra, soy surfista local de Mundaka y mi vínculo con el mar comenzó con tan solo cinco años. Desde entonces, este deporte se ha convertido en mi absoluta pasión y en mi forma de vida. Crecer en un entorno como el de Mundaka marca tu trayectoria, y montar mi propia escuela de surf es la culminación de un sueño por el que llevo luchando muchos años.",
+      "title": "Xabier Gondra León",
+      "p1": "Me llamo Xabier Gondra León, soy surfista local de Mundaka y mi vínculo con el mar comenzó con tan solo cinco años. Desde entonces, este deporte se ha convertido en mi absoluta pasión y en mi forma de vida. Crecer en un entorno como el de Mundaka marca tu trayectoria, y montar mi propia escuela de surf es la culminación de un sueño por el que llevo luchando muchos años.",
       "p2": "La enseñanza forma parte de mi día a día desde los 16 años, edad en la que comencé a dar clases de surf. Disfruto transmitiendo mis conocimientos, entrenando con los alumnos y guiando su evolución en el agua con un firme respeto por el entorno marino. Para desarrollar esta labor con las máximas garantías de seguridad y profesionalidad, cuento con la titulación oficial de monitor de surf, además de estar formado en socorrismo y primeros auxilios. Si quieres aprender o mejorar tu técnica, nos vemos en el agua.",
       "cta": "Nuestra historia",
       "photoAlt": "Xabi con su tabla de surf en Mundaka"
@@ -156,9 +156,9 @@
     },
     "eyebrow": "El equipo",
     "title": "Instructores",
-    "lead": "Monitores titulados, amigos de toda la vida, que conocen cada rincón de Mundaka.",
+    "lead": "Monitores titulados y con amplia experiencia laboral en los mares de Mundaka.",
     "gridTitle": "Fichas de los instructores",
-    "note": "Pendiente: las fotos individuales de cada monitor, la foto de grupo y los datos de dos monitores (la academia los enviará más adelante).",
+    "note": "Pendiente: la foto de cada monitor y la foto de grupo (llegan en el próximo envío de la academia).",
     "end": "¿Quieres saber con quién harás tu clase? Escríbenos.",
     "photoPending": "Foto pendiente",
     "bioPending": "Biografía pendiente",
@@ -191,11 +191,11 @@
   "lessons": {
     "meta": {
       "title": "Clases y precios — Mundaka Surf Academy",
-      "description": "Clases privadas (60 € por persona y hora), en grupo y grupos avanzados/técnicos (de 35 € a 135 € por persona) en Mundaka."
+      "description": "Clases privadas (de 50 € a 60 € por persona, 1 hora), en grupo y grupos avanzados/técnicos (de 35 € a 160 € por persona) en Mundaka."
     },
     "eyebrow": "Clases de surf",
     "title": "Clases y precios",
-    "lead": "Cuatro tipos de clase, todos con tabla y neopreno incluidos.",
+    "lead": "Cuatro tipos de clases con todo el material incluido en el precio.",
     "jump": "Ir a",
     "bookThis": "Reservar esta clase",
     "labels": {
@@ -213,21 +213,25 @@
       "perPersonDay": "por persona",
       "days": "Días",
       "hours": "Horas",
-      "pricePerson": "Precio (por persona)"
+      "pricePerson": "Precio (por persona)",
+      "people": "Personas",
+      "perPersonOne": "Precio por persona (1 hora)",
+      "total": "Total",
+      "person1": "1 persona",
+      "personsN": "{n} personas"
     },
     "private": {
       "name": "Clases privadas",
-      "short": "Para 1 o 2 personas, con las horas que quieras.",
-      "text": "Una clase totalmente personalizada para ti o para dos personas, con toda la atención del monitor. Contratas las horas que quieras.",
+      "short": "Para 1, 2 o 3 personas, clases de 1 hora.",
+      "text": "Una clase de 1 hora totalmente personalizada, para ti solo o para un grupo de hasta 3 personas, con toda la atención del monitor. Cuantas más personas, menos paga cada una.",
       "level": "Todos los niveles",
       "photoAlt": "Surfista con su tabla saliendo del agua",
-      "where": "Según tu nivel: playa de Laida, entre Laida y la barra, o la ola de Mundaka.",
-      "pairs": "1 persona: 60 € / hora · 2 personas: 60 € / hora por persona (120 € / hora en total)."
+      "where": "Según tu nivel: playa de Laida, entre Laida y la barra, o la ola de Mundaka."
     },
     "group": {
       "name": "Clases en grupo (Iniciación)",
-      "short": "Tus primeras olas en la playa de Laida, de 1 a 5 días.",
-      "text": "Sesiones de 2 horas en grupo, de 1 a 5 días, para dar tus primeros pasos sobre la tabla. Cuantos más días, más barato sale cada uno y más se nota el progreso.",
+      "short": "Tus primeras olas en la playa de Laida, de 1 a 7 días.",
+      "text": "Sesiones de 2 horas en grupo, para dar tus primeros pasos sobre la tabla. Cuantos más días, más barato sale cada uno y más se nota el progreso.",
       "level": "Iniciación",
       "photoAlt": "Un grupo de surfistas con sus tablas en la playa",
       "where": "Playa de Laida, justo debajo de la barra de Mundaka: condiciones idóneas y muy seguras para empezar desde cero."
@@ -239,7 +243,6 @@
       "level": "Intermedio, avanzado y tecnificación",
       "photoAlt": "Surfista en una ola verde y turquesa",
       "f1": "Seguimiento de cada sesión",
-      "f2": "Grabación en vídeo y corrección",
       "f3": "Simulaciones y ejercicios en tierra",
       "f4": "Plan adaptado a tu nivel y a tus objetivos",
       "samePrice": "Mismos precios que las clases en grupo.",
@@ -301,7 +304,7 @@
     "step2": "Clase y grupo",
     "step3": "Tus datos",
     "step4": "Condiciones y pago",
-    "tideHint": "Las horas dependen de la marea de cada día.",
+    "tideHint": "Dos grupos por cada bajamar: 2 h antes y 2 h después, siempre con luz de día.",
     "policyFull": "Leer las condiciones completas",
     "submit": "Enviar reserva",
     "payNote": "Al confirmar pagas solo el depósito; el resto se paga en la escuela.",
@@ -356,9 +359,7 @@
       "prev": "Mes anterior",
       "next": "Mes siguiente",
       "season": "Temporada: marzo – octubre 2027",
-      "legendSlots": "Con horarios",
-      "legendTbc": "Hora según marea (te la confirmamos)",
-      "example": "Modo revisión: los días 22 y 25 de agosto muestran el ejemplo del cliente. La tabla de mareas real se cargará cuando llegue el Excel."
+      "legendSlots": "Días con clase: toca uno para ver sus horarios"
     },
     "pay": {
       "title": "¿Cuánto quieres pagar ahora?",
@@ -691,9 +692,11 @@
     "lowTide": "Bajamar",
     "highTide": "Pleamar",
     "slotN": "{n}ª",
-    "maxPeople": "Las clases privadas son para 1 o 2 personas.",
+    "maxPeople": "Las clases privadas son para 1, 2 o 3 personas.",
     "waTime": "Hora",
-    "outOfSeason": "Fuera de temporada"
+    "outOfSeason": "Fuera de temporada",
+    "readMore": "Leer más",
+    "readLess": "Leer menos"
   },
   "location": {
     "facts": {

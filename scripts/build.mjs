@@ -184,6 +184,16 @@ export async function build({ check = false, quiet = false } = {}) {
         const plan = planById(id);
         if (!plan) return '';
         const cur = plan.price.currency;
+        if (plan.price.unit === 'personHour' && plan.price.groupRates?.length) {
+          // private lessons: the price per person drops with the group size (client feedback 3)
+          const h = plan.price.hours?.[0] ?? 1;
+          const rows = plan.price.groupRates
+            .map((r) => `<tr><td>${r.people === 1 ? t('lessons.table.person1') : t('lessons.table.personsN').replace('{n}', r.people)}</td><td><strong>${money(r.amount * h, cur)}</strong></td><td>${money(r.amount * h * r.people, cur)}</td></tr>`)
+            .join('');
+          return `<table class="price-table"><caption class="visually-hidden">${escapeHTML(L(plan.name))}</caption>
+<thead><tr><th scope="col">${t('lessons.table.people')}</th><th scope="col">${t('lessons.table.perPersonOne')}</th><th scope="col">${t('lessons.table.total')}</th></tr></thead>
+<tbody>${rows}</tbody></table>`;
+        }
         if (plan.price.unit === 'personHour') {
           return `<table class="price-table"><caption class="visually-hidden">${escapeHTML(L(plan.name))}</caption>
 <thead><tr><th scope="col">${t('lessons.table.type')}</th><th scope="col">${t('lessons.table.price')}</th></tr></thead>
@@ -224,7 +234,9 @@ export async function build({ check = false, quiet = false } = {}) {
             const certs = p.certificates?.length
               ? `<ul class="team-card__certs">${p.certificates.map((c) => `<li>${escapeHTML(L(c))}</li>`).join('')}</ul>`
               : `<p class="team-card__certs-empty">${pending('team.certsPending')}</p>`;
-            const bio = L(p.bio) ? `<p class="team-card__bio">${escapeHTML(L(p.bio))}</p>` : `<p class="team-card__bio">${pending('team.bioPending')}</p>`;
+            // short bio with "Leer más" (client feedback 3); the button only for bios long enough to be cut at four lines
+            const more = L(p.bio).length > 180 ? `<button type="button" class="team-card__more" data-readmore-toggle aria-expanded="false" hidden>${t('js.readMore')}</button>` : '';
+            const bio = L(p.bio) ? `<div class="team-card__bio" data-readmore><p>${escapeHTML(L(p.bio))}</p>${more}</div>` : `<p class="team-card__bio">${pending('team.bioPending')}</p>`;
             return `<article class="team-card" id="${escapeHTML(p.id)}">
   <figure class="team-card__photo">${photo}</figure>
   <div class="team-card__body">
