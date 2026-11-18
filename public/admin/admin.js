@@ -490,7 +490,8 @@ async function loadLive() {
   }
   S.head = head;
   S.images = imageManifest(inDir(IMG_DIR));
-  S.videos = inDir(VIDEO_DIR).filter((f) => /\.mp4$/i.test(f)).sort();
+  // hero videos by name: <name>.mp4 (landscape) with its <name>-phone.mp4 cut; the phone cuts aren't offered separately
+  S.videos = inDir(VIDEO_DIR).filter((f) => /\.mp4$/i.test(f) && !/-phone\.mp4$/i.test(f)).map((f) => f.replace(/\.mp4$/i, '')).sort();
   resetWork();
   buildLocaleIndex();
 }

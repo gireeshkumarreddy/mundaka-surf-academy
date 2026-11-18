@@ -61,7 +61,8 @@
     "hero": {
       "h1": "surf school in Mundaka, Bizkaia",
       "tagline": "Surf lessons at Europe's most famous left-hand wave, for every level.",
-      "photoAlt": "The Mundaka barrel with a surfer inside and others waiting in the line-up"
+      "photoAlt": "The Mundaka barrel with a surfer inside and others waiting in the line-up",
+      "videoAlt": "Aerial view of the Laida sandbanks and the Urdaibai estuary, with Mundaka in the background"
     },
     "xabi": {
       "eyebrow": "The founder",
@@ -226,7 +227,8 @@
       "text": "A fully personalised 1-hour lesson, for you alone or a group of up to 3 people, with the instructor’s full attention. The more of you there are, the less each person pays.",
       "level": "All levels",
       "photoAlt": "A surfer carrying a board out of the water",
-      "where": "Depending on your level: Laida Beach, between Laida and the bar, or the Mundaka wave."
+      "where": "Depending on your level: Laida Beach, between Laida and the bar, or the Mundaka wave.",
+      "videoLabel": "Drone video: a student stands up on a wave"
     },
     "group": {
       "name": "Group lessons (Beginners)",
@@ -234,7 +236,8 @@
       "text": "2-hour group sessions to take your first steps on the board. The more days you book, the cheaper each one is and the more progress you’ll see.",
       "level": "Beginner",
       "photoAlt": "A group of surfers with their boards on the beach",
-      "where": "Laida Beach, just below the Mundaka sandbar: safe, gentle conditions to start from scratch."
+      "where": "Laida Beach, just below the Mundaka sandbar: safe, gentle conditions to start from scratch.",
+      "videoLabel": "Drone video: a group lesson catching whitewater at Laida beach"
     },
     "advanced": {
       "name": "Advanced and technical groups",

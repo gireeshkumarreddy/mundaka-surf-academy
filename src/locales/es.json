@@ -61,7 +61,8 @@
     "hero": {
       "h1": "escuela de surf en Mundaka, Bizkaia",
       "tagline": "Clases de surf en la ola izquierda más famosa de Europa, para todos los niveles.",
-      "photoAlt": "El tubo de Mundaka con un surfista dentro y otros esperando en el pico"
+      "photoAlt": "El tubo de Mundaka con un surfista dentro y otros esperando en el pico",
+      "videoAlt": "Vista aérea de los bancos de arena de Laida y el estuario de Urdaibai, con Mundaka al fondo"
     },
     "xabi": {
       "eyebrow": "El fundador",
@@ -226,7 +227,8 @@
       "text": "Una clase de 1 hora totalmente personalizada, para ti solo o para un grupo de hasta 3 personas, con toda la atención del monitor. Cuantas más personas, menos paga cada una.",
       "level": "Todos los niveles",
       "photoAlt": "Surfista con su tabla saliendo del agua",
-      "where": "Según tu nivel: playa de Laida, entre Laida y la barra, o la ola de Mundaka."
+      "where": "Según tu nivel: playa de Laida, entre Laida y la barra, o la ola de Mundaka.",
+      "videoLabel": "Vídeo desde el dron: un alumno se pone de pie en una ola"
     },
     "group": {
       "name": "Clases en grupo (Iniciación)",
@@ -234,7 +236,8 @@
       "text": "Sesiones de 2 horas en grupo, para dar tus primeros pasos sobre la tabla. Cuantos más días, más barato sale cada uno y más se nota el progreso.",
       "level": "Iniciación",
       "photoAlt": "Un grupo de surfistas con sus tablas en la playa",
-      "where": "Playa de Laida, justo debajo de la barra de Mundaka: condiciones idóneas y muy seguras para empezar desde cero."
+      "where": "Playa de Laida, justo debajo de la barra de Mundaka: condiciones idóneas y muy seguras para empezar desde cero.",
+      "videoLabel": "Vídeo desde el dron: una clase en grupo cogiendo espumas en la playa de Laida"
     },
     "advanced": {
       "name": "Grupos avanzados y técnicos",

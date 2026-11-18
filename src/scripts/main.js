@@ -73,6 +73,8 @@ const modules = [
   ['[data-booking-status]', './status.js'],
   ['[data-map]', './map.js'],
   ['[data-readmore]', './readmore.js'],
+  ['[data-hero-video]', './hero-video.js'],
+  ['[data-inview-video]', './inview-video.js'],
 ];
 const startModules = (root) => {
   for (const [selector, path] of modules) {

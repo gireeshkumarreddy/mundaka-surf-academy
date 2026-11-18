@@ -51,7 +51,8 @@ _tools/                   ← brand.py (logos → web), build_enhanced.py (enhan
 * **Instructors** – `public/data/team.json`: name, role, bio, certificates and a photo name (4:5, one different photo per person).
 * **Reviews** – `site.config.json → reviews.items` (name, date, rating, text) and `reviews.googleUrl`.
 * **WhatsApp** – `site.config.json → whatsapp.number` (temporary number from the brief); every button uses it.
-* **Hero video** – drop the drone video in `public/assets/video/` and set `site.config.json → hero.video`; the photo becomes its poster.
+* **Hero video** – `site.config.json → hero.video` is a name: `public/assets/video/<name>.mp4` (landscape, 1280 px) and `<name>-phone.mp4` (portrait cut for phones); the still of its first frame is the image `hero-urdaibai` / `hero-urdaibai-m`. The video starts after the first paint and never for "reduce motion" / "save data" (`src/scripts/hero-video.js`). Encoded with the ffmpeg bundled in the media venv: H.264, CRF 26, no audio, `-movflags +faststart`; the phone cut is `crop=404:720:219:0`. Empty = the main photo again.
+* **Lesson clips** – the drone clips on the Lessons page (`lesson-group.mp4`, `lesson-private.mp4`, 960 px, CRF 28) download only when near the screen and play while visible (`src/scripts/inview-video.js`).
 * **Review markers** – while `reviewMode` is `true`, everything still to be supplied by the academy shows in amber. Set it
   to `false` before launch.
 

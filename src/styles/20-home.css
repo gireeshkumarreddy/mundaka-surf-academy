@@ -4,6 +4,10 @@
 .hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(560px, calc(100svh - var(--header-h)), 920px); isolation: isolate; overflow: hidden; color: #fff; }
 .hero__media { position: absolute; inset: 0; z-index: -2; background: var(--deep); }
 .hero__img, .hero__video { width: 100%; height: 100%; object-fit: cover; object-position: 58% 45%; }
+/* drone video (site.config hero.video): the still of its first frame paints first, the video fades in over it once it plays */
+.hero__still { object-position: 50% 50%; }
+.hero__video { position: absolute; inset: 0; object-position: 50% 50%; opacity: 0; transition: opacity 0.9s var(--ease); }
+.hero__video.is-playing { opacity: 1; }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(0, 40, 50, 0.78) 0%, rgba(0, 40, 50, 0.35) 38%, transparent 62%), linear-gradient(90deg, rgba(0, 40, 50, 0.35), transparent 55%); }
 .hero__inner { padding-block: clamp(2rem, 1rem + 4vw, 4.5rem); }
 .hero__title { margin: 0 0 1.1rem; display: grid; justify-items: start; }

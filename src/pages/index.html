@@ -1,7 +1,7 @@
 <!--page {"key": "home", "slug": "index", "header": "light"} -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__media">
-    {{#if config.hero.video}}<video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="{{src:mundaka-lineup@1600}}"><source src="{{asset:video/}}{{config.hero.video}}" type="video/mp4"></video>{{else}}{{img name=mundaka-lineup mobile=mundaka-lineup-m sizes="100vw" alt=home.hero.photoAlt class="hero__img" loading=eager fetchpriority=high}}{{/if}}
+    {{#if config.hero.video}}{{img name=hero-urdaibai mobile=hero-urdaibai-m sizes="100vw" alt=home.hero.videoAlt class="hero__img hero__still" loading=eager fetchpriority=high}}<video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-hero-video data-src="{{asset:video/}}{{config.hero.video}}.mp4" data-src-phone="{{asset:video/}}{{config.hero.video}}-phone.mp4"></video>{{else}}{{img name=mundaka-lineup mobile=mundaka-lineup-m sizes="100vw" alt=home.hero.photoAlt class="hero__img" loading=eager fetchpriority=high}}{{/if}}
   </div>
   <div class="container hero__inner">
     <h1 class="hero__title" id="hero-title">

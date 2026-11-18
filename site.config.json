@@ -39,8 +39,8 @@
   },
 
   "hero": {
-    "$comment": "Home hero background. Leave video empty to show the main photo (mundaka-lineup); put an .mp4 file name from public/assets/video to play the drone video instead, with the photo as its poster.",
-    "video": ""
+    "$comment": "Home hero background. Empty = the main photo (mundaka-lineup). A name = the drone video: public/assets/video/<name>.mp4 (landscape) and <name>-phone.mp4 (portrait cut for phones); its first-frame still is the image hero-urdaibai / hero-urdaibai-m in public/assets/img.",
+    "video": "hero-urdaibai"
   },
 
   "enquiry": {

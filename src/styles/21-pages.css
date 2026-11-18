@@ -36,6 +36,8 @@
 .lesson--flip .lesson__photo { order: 2; }
 .lesson__photo { position: sticky; top: calc(var(--header-h) + 2rem); }
 .lesson__photo img { aspect-ratio: 4 / 5; }
+/* drone clips of the lessons: landscape 4:3 frame on every screen, so the shot keeps most of the water */
+.lesson__video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--aqua-50); }
 .lesson__num { margin: 0 0 0.5rem; font: 800 var(--step-3)/1 var(--font-head); color: var(--aqua-100); -webkit-text-stroke: 1.5px var(--turq); }
 .lesson .ticks { margin-bottom: 1.5rem; }
 .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
