@@ -90,6 +90,12 @@ from the gallery or a card does not delete its files. Helper tests: `node _tools
 
 ## Booking and payments
 
+**Until March 2027: booking requests only.** The academy can't take payments before registering as autónomo, so
+`site.config.json → payments.enabled` is `false` and the whole site follows it: the booking page shows no 15 % / 100 %
+choice, no "pay now" amounts and no deposit examples; the button says "Enviar solicitud"; the booking page, conditions
+and FAQ say that nothing is paid online and the academy confirms each booking and how to pay. Setting it to `true`
+(with the Stripe functions deployed) brings back the deposit texts, the payment choice and the deposit tables.
+
 Booking (`book.html`): **tide calendar** (season and daily lesson times in `public/data/schedule.json`) → lesson type
 (group/beginners, advanced & technical, private for 1–2 people, inclusive) → duration, people, level → details →
 booking conditions accepted → pay the **15 % deposit** or **100 %** online; the summary always shows total, what is

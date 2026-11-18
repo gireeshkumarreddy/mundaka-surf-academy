@@ -56,7 +56,7 @@
   "home": {
     "meta": {
       "title": "Mundaka Surf Academy — Surf school in Mundaka, Bizkaia",
-      "description": "Surf lessons in Mundaka: private, group and advanced groups. Book online with a 15% deposit and pay the rest at the school."
+      "description": "Surf lessons in Mundaka: group, advanced, private and inclusive. Book online on the tide calendar."
     },
     "hero": {
       "h1": "surf school in Mundaka, Bizkaia",
@@ -296,7 +296,7 @@
   "book": {
     "meta": {
       "title": "Book now — Mundaka Surf Academy",
-      "description": "Book your surf lesson in Mundaka: pay 15% online and the rest at the school on the day."
+      "description": "Book your surf lesson in Mundaka: choose the day and time on the tide calendar, the lesson and your group."
     },
     "eyebrow": "Online booking",
     "title": "Book your lesson",
@@ -347,7 +347,8 @@
       "total": "Total price",
       "now": "Pay now (15%)",
       "later": "At the school (85%)",
-      "fine": "Paying online confirms your place. If you pay 15%, the rest is paid at the school before or after the class."
+      "fine": "Paying online confirms your place. If you pay 15%, the rest is paid at the school before or after the class.",
+      "fineRequest": "No online payment: we confirm your booking and how to pay by WhatsApp or email."
     },
     "examples": {
       "group": "Group {d} day(s) ({h} h)",
@@ -368,12 +369,15 @@
       "title": "How much do you want to pay now?",
       "deposit": "15% now and the rest at the school (cash or card)",
       "full": "100% now"
-    }
+    },
+    "leadRequest": "Choose the day and time on the tide calendar, the lesson and your group, and send us your request. For now nothing is paid online: we confirm your booking and how to pay by WhatsApp or email.",
+    "step4Request": "Conditions",
+    "payNoteRequest": "Nothing is charged when you send the request: we confirm your booking by WhatsApp or email."
   },
   "conditions": {
     "meta": {
       "title": "Booking and cancellation conditions — Mundaka Surf Academy",
-      "description": "Mundaka Surf Academy booking and cancellation conditions: 15% deposit online, the rest at the school."
+      "description": "Mundaka Surf Academy booking and cancellation conditions: bookings, cancellations, lateness and health."
     },
     "eyebrow": "Before you pay",
     "title": "Booking and cancellation conditions",
@@ -385,7 +389,9 @@
       "examples": "Deposit examples",
       "lessons": "Lessons and the sea",
       "attendance": "3. Attendance, delays and conduct",
-      "health": "4. Liability and health"
+      "health": "4. Liability and health",
+      "bookingRequest": "1. Bookings",
+      "cancelRequest": "2. Cancellations"
     },
     "items": {
       "deposit": "<strong>Mandatory deposit:</strong> to confirm any booking for lessons or courses, an online payment of 15% of the total is required at the time of booking.",
@@ -401,7 +407,11 @@
       "conduct": "<strong>Safety:</strong> the academy may refuse anyone showing clear signs of intoxication, drug use or a physical condition that compromises their or the group’s safety, with no refund.",
       "health": "You must know how to swim and tell the school about any prior injury, medical condition or health issue that could affect surfing before entering the water."
     },
-    "lessonsText": "Mundaka changes with the tide, the swell and the wind. Each day the instructor chooses the safest spot and time for your level, and tells you if the lesson needs to move."
+    "lessonsText": "Mundaka changes with the tide, the swell and the wind. Each day the instructor chooses the safest spot and time for your level, and tells you if the lesson needs to move.",
+    "request": {
+      "how": "<strong>Booking without online payment:</strong> for now the website doesn’t charge anything. You send your request (day, time, lesson and people) and the academy confirms your booking by WhatsApp or email, together with how to pay.",
+      "cancel": "<strong>Cancellations:</strong> if you can’t come, let us know as soon as possible, ideally 24 hours or more in advance, by WhatsApp or phone."
+    }
   },
   "surf": {
     "meta": {
@@ -479,7 +489,8 @@
     "a7": "Cancel 24 hours or more ahead and you get a full refund; within 24 hours there is no refund. If the academy cancels because of the weather, you choose between a new date or a full refund. Everything is in the",
     "a1a": "<strong>Beginner & inclusive classes:</strong> held at Laida Beach.",
     "a1b": "<strong>Advanced classes:</strong> conducted between the Mundaka bar and Laida.",
-    "a1c": "<strong>High-level advanced & technical coaching:</strong> carried out directly at the famous Mundaka wave."
+    "a1c": "<strong>High-level advanced & technical coaching:</strong> carried out directly at the famous Mundaka wave.",
+    "a6Request": "Online, with the “Book now” button: you choose the day and time on the calendar, the lesson, the people and the level, and send us your request. For now nothing is paid online: we confirm your booking and how to pay by WhatsApp or email. You can also book on WhatsApp."
   },
   "contact": {
     "meta": {
@@ -555,7 +566,7 @@
     },
     "use": {
       "title": "Use of the website",
-      "text": "This website presents Mundaka Surf Academy's lessons and lets you book them by paying a deposit. The conditions of each booking are on the booking and cancellation conditions page."
+      "text": "This website presents Mundaka Surf Academy’s lessons and lets you book them online. The conditions of each booking are on the booking and cancellation conditions page."
     },
     "ip": {
       "title": "Intellectual property",
@@ -587,7 +598,7 @@
     },
     "purpose": {
       "title": "What we use it for",
-      "text": "To manage and confirm your booking, take the deposit through the payment provider and answer your messages."
+      "text": "To manage and confirm your booking, take the online payment when there is one, and answer your messages."
     },
     "basis": {
       "title": "Legal basis",
@@ -599,7 +610,7 @@
     },
     "recipients": {
       "title": "Who receives it",
-      "text": "Your data is never sold or used for advertising. On the academy's behalf it may be processed by the service that delivers the website's emails and by the payment provider (Stripe)."
+      "text": "Your data is never sold or used for advertising. On the academy’s behalf it may be processed by the service that delivers the website’s emails and, when there is online payment, by the payment provider (Stripe)."
     },
     "rights": {
       "title": "Your rights",
@@ -699,7 +710,8 @@
     "waTime": "Time",
     "outOfSeason": "Out of season",
     "readMore": "Read more",
-    "readLess": "Read less"
+    "readLess": "Read less",
+    "submitRequest": "Send request"
   },
   "location": {
     "facts": {

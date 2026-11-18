@@ -16,7 +16,7 @@
       <details><summary>{{faq.q3}}</summary><div><p>{{faq.a3}}</p><ol class="steps steps--plain"><li><span>1</span>{{lessons.info.how.s1}}</li><li><span>2</span>{{lessons.info.how.s2}}</li><li><span>3</span>{{lessons.info.how.s3}}</li><li><span>4</span>{{lessons.info.how.s4}}</li><li><span>5</span>{{lessons.info.how.s5}}</li><li><span>6</span>{{lessons.info.how.s6}}</li></ol></div></details>
       <details><summary>{{faq.q4}}</summary><div><p>{{faq.a4}}</p></div></details>
       <details><summary>{{faq.q5}}</summary><div><p>{{faq.a5}}</p></div></details>
-      <details><summary>{{faq.q6}}</summary><div><p>{{faq.a6}}</p><p><a href="{{link:book}}">{{common.cta.bookNow}}</a> · <a href="{{link:conditions}}">{{common.nav.conditions}}</a></p></div></details>
+      <details><summary>{{faq.q6}}</summary><div><p>{{#if config.payments.enabled}}{{faq.a6}}{{else}}{{faq.a6Request}}{{/if}}</p><p><a href="{{link:book}}">{{common.cta.bookNow}}</a> · <a href="{{link:conditions}}">{{common.nav.conditions}}</a></p></div></details>
       <details><summary>{{faq.q7}}</summary><div><p>{{faq.a7}} <a href="{{link:conditions}}">{{common.nav.conditions}}</a></p></div></details>
     </div>
     {{> section-actions}}

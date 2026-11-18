@@ -56,7 +56,7 @@
   "home": {
     "meta": {
       "title": "Mundaka Surf Academy — Escuela de surf en Mundaka, Bizkaia",
-      "description": "Clases de surf en Mundaka: privadas, en grupo y grupos avanzados. Reserva online con un 15 % de depósito y el resto en la escuela."
+      "description": "Clases de surf en Mundaka: en grupo, grupos avanzados, privadas e inclusivas. Reserva online en el calendario de mareas."
     },
     "hero": {
       "h1": "escuela de surf en Mundaka, Bizkaia",
@@ -296,7 +296,7 @@
   "book": {
     "meta": {
       "title": "Reservar — Mundaka Surf Academy",
-      "description": "Reserva tu clase de surf en Mundaka: paga un 15 % online y el resto en la escuela el día de la clase."
+      "description": "Reserva tu clase de surf en Mundaka: eliges el día y la hora en el calendario de mareas, la clase y tu grupo."
     },
     "eyebrow": "Reserva online",
     "title": "Reserva tu clase",
@@ -347,7 +347,8 @@
       "total": "Precio total",
       "now": "Pagas ahora (15 %)",
       "later": "En la escuela (85 %)",
-      "fine": "El pago online confirma tu plaza. Si pagas el 15 %, el resto se paga en la escuela antes o después de la clase."
+      "fine": "El pago online confirma tu plaza. Si pagas el 15 %, el resto se paga en la escuela antes o después de la clase.",
+      "fineRequest": "Sin pago online: te confirmamos la reserva y la forma de pago por WhatsApp o email."
     },
     "examples": {
       "group": "Grupo {d} día(s) ({h} h)",
@@ -368,12 +369,15 @@
       "title": "¿Cuánto quieres pagar ahora?",
       "deposit": "15 % ahora y el resto en la escuela (efectivo o tarjeta)",
       "full": "El 100 % ahora"
-    }
+    },
+    "leadRequest": "Elige el día y la hora en el calendario de mareas, la clase y tu grupo, y envíanos la solicitud. Por ahora no se paga nada online: te confirmamos la reserva y la forma de pago por WhatsApp o email.",
+    "step4Request": "Condiciones",
+    "payNoteRequest": "Al enviar la solicitud no se cobra nada: te confirmamos la reserva por WhatsApp o email."
   },
   "conditions": {
     "meta": {
       "title": "Condiciones de reserva y cancelación — Mundaka Surf Academy",
-      "description": "Condiciones de reserva y cancelación de Mundaka Surf Academy: depósito del 15 % online y resto en la escuela."
+      "description": "Condiciones de reserva y cancelación de Mundaka Surf Academy: reservas, cancelaciones, retrasos y salud."
     },
     "eyebrow": "Antes de pagar",
     "title": "Condiciones de reserva y cancelación",
@@ -385,7 +389,9 @@
       "examples": "Ejemplos de depósito",
       "lessons": "Las clases y el mar",
       "attendance": "3. Asistencia, retrasos y conducta",
-      "health": "4. Responsabilidad y salud"
+      "health": "4. Responsabilidad y salud",
+      "bookingRequest": "1. Reservas",
+      "cancelRequest": "2. Cancelaciones"
     },
     "items": {
       "deposit": "<strong>Depósito obligatorio:</strong> para confirmar cualquier reserva de clases o cursos es obligatorio pagar online el 15 % del total en el momento de la reserva.",
@@ -401,7 +407,11 @@
       "conduct": "<strong>Seguridad:</strong> la academia puede negar el acceso a la clase a quien muestre signos de embriaguez, consumo de drogas o un estado físico que comprometa su seguridad o la del grupo, sin devolución.",
       "health": "Es obligatorio saber nadar y comunicar a la escuela cualquier lesión previa, problema médico o condición de salud que pueda afectar a la práctica del surf antes de entrar al agua."
     },
-    "lessonsText": "Mundaka cambia con la marea, el mar de fondo y el viento. El monitor elige cada día el lugar y la hora más seguros para tu nivel, y te avisa si hay que mover la clase."
+    "lessonsText": "Mundaka cambia con la marea, el mar de fondo y el viento. El monitor elige cada día el lugar y la hora más seguros para tu nivel, y te avisa si hay que mover la clase.",
+    "request": {
+      "how": "<strong>Reserva sin pago online:</strong> por ahora la web no cobra nada. Envías tu solicitud (día, hora, clase y personas) y la academia te confirma la reserva por WhatsApp o email, junto con la forma de pago.",
+      "cancel": "<strong>Cancelaciones:</strong> si no puedes venir, avísanos cuanto antes, a ser posible con 24 horas o más de antelación, por WhatsApp o teléfono."
+    }
   },
   "surf": {
     "meta": {
@@ -479,7 +489,8 @@
     "a7": "Si cancelas con 24 horas o más de antelación, te devolvemos todo lo pagado; con menos de 24 horas no hay devolución. Si la academia cancela por el tiempo, eliges entre cambiar la fecha o la devolución íntegra. Todo en las",
     "a1a": "<strong>Iniciación y clases inclusivas:</strong> se imparten en la playa de Laida.",
     "a1b": "<strong>Avanzadas:</strong> se realizan entre la barra de Mundaka y Laida.",
-    "a1c": "<strong>Muy avanzados y tecnificación:</strong> se llevan a cabo directamente en la famosa ola de Mundaka."
+    "a1c": "<strong>Muy avanzados y tecnificación:</strong> se llevan a cabo directamente en la famosa ola de Mundaka.",
+    "a6Request": "Online, desde el botón «Reservar»: eliges el día y la hora en el calendario, la clase, las personas y el nivel, y nos envías la solicitud. Por ahora no se paga nada online: te confirmamos la reserva y la forma de pago por WhatsApp o email. También puedes reservar por WhatsApp."
   },
   "contact": {
     "meta": {
@@ -555,7 +566,7 @@
     },
     "use": {
       "title": "Uso de la web",
-      "text": "Esta web presenta las clases de Mundaka Surf Academy y permite reservarlas pagando un depósito. Las condiciones de cada reserva están en la página de condiciones de reserva y cancelación."
+      "text": "Esta web presenta las clases de Mundaka Surf Academy y permite reservarlas online. Las condiciones de cada reserva están en la página de condiciones de reserva y cancelación."
     },
     "ip": {
       "title": "Propiedad intelectual",
@@ -587,7 +598,7 @@
     },
     "purpose": {
       "title": "Para qué los usamos",
-      "text": "Para gestionar y confirmar tu reserva, cobrar el depósito a través del proveedor de pagos y responder a tus mensajes."
+      "text": "Para gestionar y confirmar tu reserva, cobrar el pago online cuando lo haya y responder a tus mensajes."
     },
     "basis": {
       "title": "Base jurídica",
@@ -599,7 +610,7 @@
     },
     "recipients": {
       "title": "Quién los recibe",
-      "text": "Tus datos nunca se venden ni se usan para publicidad. Pueden tratarlos, por cuenta de la academia, el servicio que entrega los emails de la web y el proveedor de pagos (Stripe)."
+      "text": "Tus datos nunca se venden ni se usan para publicidad. Pueden tratarlos, por cuenta de la academia, el servicio que entrega los emails de la web y, cuando hay pago online, el proveedor de pagos (Stripe)."
     },
     "rights": {
       "title": "Tus derechos",
@@ -699,7 +710,8 @@
     "waTime": "Hora",
     "outOfSeason": "Fuera de temporada",
     "readMore": "Leer más",
-    "readLess": "Leer menos"
+    "readLess": "Leer menos",
+    "submitRequest": "Enviar solicitud"
   },
   "location": {
     "facts": {

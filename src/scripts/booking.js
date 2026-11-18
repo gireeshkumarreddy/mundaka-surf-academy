@@ -41,7 +41,9 @@ export default async function initBooking(root, config) {
   if (bar) new IntersectionObserver(([e]) => { formInView = e.isIntersecting; showBar(); }).observe(form);
 
   if (!paymentsEnabled(config) && !enquiryConfigured(config) && config.reviewMode) form.querySelector('[data-demo-note]').hidden = false;
-  submit.textContent = t('submit');
+  // online payment off (site.config payments.enabled, until the academy switches it on): booking requests only
+  const online = paymentsEnabled(config);
+  submit.textContent = online ? t('submit') : t('submitRequest');
 
   const peopleError = form.querySelector('[data-people-error]');
   const peopleErrorText = peopleError.textContent;
@@ -84,7 +86,7 @@ export default async function initBooking(root, config) {
     option: Number(optionSelect.value) || null,
     date: f.date.value,
     time: f.time.value,
-    pay: f.pay.value === 'full' ? 'full' : 'deposit',
+    pay: f.pay?.value === 'full' ? 'full' : 'deposit', // the choice only exists while online payment is on
     participants: Number(f.participants.value) || 1,
     level: f.level.value,
     name: f.name.value.trim(),
@@ -115,17 +117,20 @@ export default async function initBooking(root, config) {
     const { now, later } = split(est.total, full ? 100 : pct);
     const nowLabel = full ? t('payNowFull') : t('payNowDeposit');
     summary.querySelector('[data-sum-total]').textContent = money(est.total, est.currency);
-    summary.querySelector('[data-sum-now-label]').textContent = nowLabel;
-    summary.querySelector('[data-sum-now]').textContent = money(now, est.currency);
-    summary.querySelector('[data-sum-later]').textContent = money(later, est.currency);
-    summary.querySelector('[data-sum-later-row]').hidden = full;
+    // "pay now" / "at the school" rows only exist while online payment is on
+    const set = (el, text) => el && (el.textContent = text);
+    set(summary.querySelector('[data-sum-now-label]'), nowLabel);
+    set(summary.querySelector('[data-sum-now]'), money(now, est.currency));
+    set(summary.querySelector('[data-sum-later]'), money(later, est.currency));
+    const laterRow = summary.querySelector('[data-sum-later-row]');
+    if (laterRow) laterRow.hidden = full;
     if (bar) {
       bar.querySelector('[data-bar-total]').textContent = money(est.total, est.currency);
-      bar.querySelector('[data-bar-now-label]').textContent = nowLabel;
-      bar.querySelector('[data-bar-now]').textContent = money(now, est.currency);
+      set(bar.querySelector('[data-bar-now-label]'), nowLabel);
+      set(bar.querySelector('[data-bar-now]'), money(now, est.currency));
       showBar();
     }
-    if (paymentsEnabled(config)) submit.textContent = now == null ? t('submit') : t('submitPay', { amount: money(now, est.currency) });
+    if (online) submit.textContent = now == null ? t('submit') : t('submitPay', { amount: money(now, est.currency) });
     if (waLink) {
       const url = whatsappUrl(config, bookingMessage({ plan: d.plan ? local(d.plan.name) : '', option: optionText(d), date: rows[2][1], time: d.time, participants: d.participants, level: rows[5][1], name: d.name }));
       if (url) waLink.href = url;

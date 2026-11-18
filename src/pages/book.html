@@ -3,7 +3,7 @@
   <div class="container page-hero__inner">
     <p class="eyebrow">{{book.eyebrow}}</p>
     <h1 class="page-hero__title" id="book-title">{{book.title}}</h1>
-    <p class="lead">{{book.lead}}</p>
+    <p class="lead">{{#if config.payments.enabled}}{{book.lead}}{{else}}{{book.leadRequest}}{{/if}}</p>
   </div>
   <img class="page-hero__badge" src="{{src:badge-clear@320}}" alt="" width="320" height="320" aria-hidden="true">
 </section>
@@ -90,25 +90,26 @@
       </fieldset>
 
       <fieldset class="field-group">
-        <legend class="field-group__title"><span>4</span>{{book.step4}}</legend>
+        <legend class="field-group__title"><span>4</span>{{#if config.payments.enabled}}{{book.step4}}{{else}}{{book.step4Request}}{{/if}}</legend>
         <div class="policy-box" id="policy">
           <h3>{{conditions.title}}</h3>
           <ul>
-            <li>{{conditions.items.deposit}}</li>
+            {{#if config.payments.enabled}}<li>{{conditions.items.deposit}}</li>
             <li>{{conditions.items.balance}}</li>
             <li>{{conditions.items.cancel24}}</li>
-            <li>{{conditions.items.cancelLate}}</li>
+            <li>{{conditions.items.cancelLate}}</li>{{else}}<li>{{conditions.request.how}}</li>
+            <li>{{conditions.request.cancel}}</li>{{/if}}
             <li>{{conditions.items.weather}}</li>
             <li>{{conditions.items.late}}</li>
             <li>{{conditions.items.health}}</li>
           </ul>
           <a class="link-arrow" href="{{link:conditions}}" target="_blank">{{book.policyFull}}<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
         </div>
-        <div class="pay-choice" role="radiogroup" aria-labelledby="pay-title">
+        {{#if config.payments.enabled}}<div class="pay-choice" role="radiogroup" aria-labelledby="pay-title">
           <p class="pay-choice__title" id="pay-title">{{book.pay.title}}</p>
           <label class="pay-option"><input type="radio" name="pay" value="deposit" checked><span>{{book.pay.deposit}}</span></label>
           <label class="pay-option"><input type="radio" name="pay" value="full"><span>{{book.pay.full}}</span></label>
-        </div>
+        </div>{{/if}}
         <div class="field field--check" data-field="policy">
           <label><input type="checkbox" name="policy" required> <span>{{book.fields.policy}}</span></label>
           <p class="field-error">{{book.errors.policy}}</p>
@@ -121,7 +122,7 @@
 
       <div class="booking__alert" data-booking-alert role="alert" tabindex="-1" hidden></div>
       <button class="btn btn--primary btn--lg booking__submit" type="submit" data-submit>{{book.submit}}</button>
-      <p class="small muted" data-pay-note>{{book.payNote}}</p>
+      <p class="small muted" data-pay-note>{{#if config.payments.enabled}}{{book.payNote}}{{else}}{{book.payNoteRequest}}{{/if}}</p>
     </form>
 
     <aside class="summary" aria-labelledby="summary-title" data-summary-box>
@@ -130,10 +131,10 @@
         <dl class="summary__rows" data-summary></dl>
         <dl class="summary__money">
           <div><dt>{{book.summary.total}}</dt><dd data-sum-total>—</dd></div>
-          <div class="summary__now"><dt data-sum-now-label>{{book.summary.now}}</dt><dd data-sum-now>—</dd></div>
-          <div data-sum-later-row><dt>{{book.summary.later}}</dt><dd data-sum-later>—</dd></div>
+          {{#if config.payments.enabled}}<div class="summary__now"><dt data-sum-now-label>{{book.summary.now}}</dt><dd data-sum-now>—</dd></div>
+          <div data-sum-later-row><dt>{{book.summary.later}}</dt><dd data-sum-later>—</dd></div>{{/if}}
         </dl>
-        <p class="summary__fine">{{book.summary.fine}}</p>
+        <p class="summary__fine">{{#if config.payments.enabled}}{{book.summary.fine}}{{else}}{{book.summary.fineRequest}}{{/if}}</p>
         {{#if config.whatsapp.number}}<a class="btn btn--wa btn--block" href="{{wa-url}}" target="_blank" rel="noopener" data-wa-booking><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>{{book.waAlt}}</a>{{/if}}
       </div>
       <img class="summary__badge" src="{{src:badge-clear@160}}" alt="" width="160" height="160" aria-hidden="true" loading="lazy">
@@ -141,7 +142,7 @@
 
     <div class="pay-bar" data-pay-bar aria-hidden="true">
       <div><span class="pay-bar__k">{{book.summary.total}}</span><span class="pay-bar__v" data-bar-total>—</span></div>
-      <div class="pay-bar__now"><span class="pay-bar__k" data-bar-now-label>{{book.summary.now}}</span><span class="pay-bar__v" data-bar-now>—</span></div>
+{{#if config.payments.enabled}}<div class="pay-bar__now"><span class="pay-bar__k" data-bar-now-label>{{book.summary.now}}</span><span class="pay-bar__v" data-bar-now>—</span></div>{{/if}}
     </div>
 
     <div class="booking__done" data-booking-done tabindex="-1" hidden>
@@ -153,10 +154,10 @@
   </div>
 </section>
 
-<section class="section section--tint deposits" aria-labelledby="deposit-title">
+{{#if config.payments.enabled}}<section class="section section--tint deposits" aria-labelledby="deposit-title">
   <div class="container container--narrow">
     <h2 class="title title--sm" id="deposit-title">{{book.examplesTitle}}</h2>
     {{deposit-table}}
     {{> section-actions}}
   </div>
-</section>
+</section>{{/if}}
