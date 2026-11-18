@@ -86,6 +86,8 @@ const CHECKS = `(() => {
     const coverNeed = fit === 'cover' && img.naturalWidth ? Math.round(Math.max(r.width, r.height * img.naturalWidth / img.naturalHeight) * Math.min(devicePixelRatio, 2)) : need;
     if (have < coverNeed * 0.9) out.images.push(img.currentSrc.split('/').pop() + ' shown ' + Math.round(r.width) + '×' + Math.round(r.height) + ' needs ~' + coverNeed + 'w');
   }
+  // MARKS="sel1,sel2": where those elements sit in the full-page shot (for before/after crops)
+  out.marks = Object.fromEntries((${JSON.stringify(process.env.MARKS || '')}).split(',').filter(Boolean).map((sel) => { const el = document.querySelector(sel); const r = el && el.getBoundingClientRect(); return [sel, r ? [Math.round(r.top + scrollY), Math.round(r.height)] : null]; }));
   out.height = document.documentElement.scrollHeight;
   return out;
 })()`;
@@ -94,7 +96,8 @@ const report = {};
 for (const p of PAGES) {
   await send('Page.navigate', { url: `${base}/${p}` });
   await sleep(process.env.CONSENT === 'all' ? 5000 : 2200);
-  await evaluate(`document.documentElement.classList.add('cv-off'); document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager')); new Promise((r) => setTimeout(r, 1200))`);
+  // every image loaded before the full-page shot (lazy ones far down the page otherwise come out blank); at most 10 s
+  await evaluate(`document.documentElement.classList.add('cv-off'); document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager')); new Promise((r) => { const t0 = Date.now(); const tick = () => ([...document.images].every((i) => i.complete) || Date.now() - t0 > 10000 ? setTimeout(r, 400) : setTimeout(tick, 200)); setTimeout(tick, 300); }).then(() => Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => {}) : null))))`);
   const res = await evaluate(CHECKS);
   report[p || 'index'] = res;
   const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 60, captureBeyondViewport: true, clip: { x: 0, y: 0, width, height: Math.min(res.height, 16000), scale: SCALE } });
@@ -102,6 +105,7 @@ for (const p of PAGES) {
   writeFileSync(file, Buffer.from(shot.result.data, 'base64'));
   const dedupe = (a) => [...new Set(a)];
   console.log(`\n== ${p || 'index'}  (${res.height}px tall, doc width ${res.docWidth}/${width})`);
+  if (Object.keys(res.marks ?? {}).length) console.log('  marks: ' + JSON.stringify(res.marks));
   for (const k of ['overflow', 'taps', 'text', 'images']) if (res[k].length) console.log(`  ${k}: ${dedupe(res[k]).slice(0, 12).join(' | ')}${dedupe(res[k]).length > 12 ? ` (+${dedupe(res[k]).length - 12})` : ''}`);
 }
 writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(report, null, 1));

@@ -79,6 +79,12 @@
     "phone": "+34 633 29 00 73"
   },
 
+  "photographer": {
+    "$comment": "Photographer of the Mundaka photos on Our story (client feedback 5); credited under the academy photo and in 'Mundaka en fotos'.",
+    "name": "@31talasac",
+    "url": "https://www.instagram.com/31talasac/"
+  },
+
   "partners": {
     "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" } (url optional: without it the logo is not a link).",
     "items": [

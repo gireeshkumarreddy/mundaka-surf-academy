@@ -43,6 +43,9 @@
       "aemetText": "AEMET weather forecast for Mundaka. It loads when you accept cookies or press the button.",
       "forecastLoad": "Show forecast",
       "mapAlt": "Map of the Erreka area in Mundaka showing Mundaka Surf Academy (Erreka 6)"
+    },
+    "more": {
+      "photos": "See more photos"
     }
   },
   "footer": {
@@ -111,7 +114,7 @@
     "p2": "Although the project began as a personal initiative, this school would not be possible without the support of lifelong friends, who are part of the team as certified instructors. We share a common vision of surfing, rooted in years of experience in the water and a commitment to providing rigorous, safe instruction tailored to each student, backed by official training in instruction, lifeguarding, and first aid.",
     "p3": "Beyond the sport itself, at Mundaka Surf Academy we maintain a deep connection and absolute respect for the Urdaibai Biosphere Reserve and the Mundaka coastline. We view our environment as a home that must be cared for and protected, instilling in every class a respect for the currents, the tides, and the area’s maritime culture. Here, you don’t just learn to ride waves—you learn to understand and experience the ocean with the seriousness it deserves.",
     "note": "To come: the academy will send high-quality photos of Mundaka and the school later.",
-    "photoAlt": "The Santa Catalina hermitage on the rocks of Mundaka",
+    "photoAlt": "A golden wave at sunset in front of Mundaka’s cliffs",
     "nextTitle": "Keep exploring",
     "toTeam": "Meet the instructors",
     "toLessons": "Lessons and prices",
@@ -136,8 +139,8 @@
       "eyebrow": "Urdaibai",
       "title": "Urdaibai Biosphere Reserve",
       "p1": "Located in the heart of Urdaibai, our school operates within one of Europe's most privileged and unique natural environments. Designated a <strong>UNESCO Biosphere Reserve</strong> in 1984, this protected area features a breathtaking mosaic of marshes, estuaries, cliffs, and beaches of extraordinary ecological and scenic value. The Urdaibai river flows into a unique estuary that not only supports unmatched biodiversity and migratory wildlife, but also acts as the direct geographical engine shaping Mundaka's legendary sandbar. Surfing here means connecting with a protected territory of incalculable value, where absolute respect for the environment and nature conservation are part of our daily identity.",
-      "alt": "The San Juan de Gaztelugatxe hermitage on its islet",
-      "caption": "San Juan de Gaztelugatxe, a few kilometres from Mundaka"
+      "alt": "The Urdaibai estuary from the air, with Mundaka and Laida beach",
+      "caption": "The Urdaibai estuary from the air: Mundaka on the left, Laida beach on the right."
     },
     "strip": {
       "eyebrow": "Our sea",
@@ -148,7 +151,9 @@
       "a4": "A grey barrel on a big day",
       "a5": "A surfer on a wave face",
       "a6": "A surfer gliding along a green wave"
-    }
+    },
+    "photoBy": "Photo:",
+    "photosBy": "Photos:"
   },
   "team": {
     "meta": {
@@ -453,17 +458,19 @@
     },
     "eyebrow": "Gallery",
     "title": "Photos and moments",
-    "lead": "Lessons and instructors in the water at Mundaka.",
+    "lead": "Our instructors and our lessons in the water at Mundaka.",
     "filter": "Filter photos",
     "all": "All",
     "lessons": "Lessons",
     "instructors": "Instructors",
-    "note": "Provisional photos from the academy's archive: they will be replaced by the lesson and instructor photos from Google Drive.",
+    "note": "To come: photos of the lessons and of each instructor, from the academy.",
     "credit": "Photos: Mundaka Surf Academy archive (Koldo Erauzkin, Martin Ugalde).",
     "open": "Enlarge photo",
     "prev": "Previous photo",
     "next": "Next photo",
-    "close": "Close"
+    "close": "Close",
+    "instructorsLead": "The academy’s instructors surfing at Mundaka.",
+    "lessonsLead": "Lessons filmed from the drone. More class photos coming soon."
   },
   "faq": {
     "meta": {
@@ -711,7 +718,9 @@
     "outOfSeason": "Out of season",
     "readMore": "Read more",
     "readLess": "Read less",
-    "submitRequest": "Send request"
+    "submitRequest": "Send request",
+    "showMore": "See more photos ({n})",
+    "showLess": "See fewer photos"
   },
   "location": {
     "facts": {

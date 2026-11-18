@@ -10,16 +10,34 @@
 
 <section class="section gallery" aria-label="{{gallery.title}}" data-gallery>
   <div class="container">
-    <div class="filters" role="group" aria-label="{{gallery.filter}}">
-      <button type="button" class="filter" data-filter="all" aria-pressed="true">{{gallery.all}}</button>
-      <button type="button" class="filter" data-filter="lessons" aria-pressed="false">{{gallery.lessons}}</button>
-      <button type="button" class="filter" data-filter="instructors" aria-pressed="false">{{gallery.instructors}}</button>
-    </div>
     {{#if review}}<p class="review-note">{{gallery.note}}</p>{{/if}}
-    <ul class="gallery__grid">
-{{gallery-items}}
-    </ul>
-    <p class="small muted gallery__credit">{{gallery.credit}}</p>
+    <div class="gallery__section">
+      <div class="section-head">
+        <h2 class="title title--sm" id="gallery-instructors">{{gallery.instructors}}</h2>
+        <p class="lead">{{gallery.instructorsLead}}</p>
+      </div>
+      <div data-more-wrap>
+        <ul class="gallery__grid" data-more aria-labelledby="gallery-instructors">
+{{gallery-items:instructors}}
+        </ul>
+        <div class="more-row">
+          <button type="button" class="btn btn--ghost" data-more-btn aria-expanded="false" hidden>{{common.more.photos}}</button>
+          <p class="small muted gallery__credit">{{gallery.credit}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery__section">
+      <div class="section-head">
+        <h2 class="title title--sm" id="gallery-lessons">{{gallery.lessons}}</h2>
+        <p class="lead">{{gallery.lessonsLead}}</p>
+      </div>
+      <ul class="gallery__grid gallery__grid--videos" aria-labelledby="gallery-lessons">
+        <li class="gallery__cell gallery__cell--video"><video class="gallery__video" muted loop playsinline preload="none" poster="{{src:lesson-group-still@960}}" data-inview-video data-src="{{asset:video/lesson-group.mp4}}" aria-label="{{lessons.group.videoLabel}}"></video></li>
+        <li class="gallery__cell gallery__cell--video"><video class="gallery__video" muted loop playsinline preload="none" poster="{{src:lesson-private-still@960}}" data-inview-video data-src="{{asset:video/lesson-private.mp4}}" aria-label="{{lessons.private.videoLabel}}"></video></li>
+        <li class="gallery__cell gallery__cell--video"><video class="gallery__video" muted loop playsinline preload="none" poster="{{src:hero-urdaibai@960}}" data-inview-video data-src="{{asset:video/hero-urdaibai.mp4}}" aria-label="{{home.hero.videoAlt}}"></video></li>
+{{gallery-items:lessons}}
+      </ul>
+    </div>
     {{> section-actions}}
   </div>
   <dialog class="lightbox" data-lightbox aria-label="{{gallery.title}}">

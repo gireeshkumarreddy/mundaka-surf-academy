@@ -109,6 +109,9 @@
 .gallery__item { display: block; width: 100%; padding: 0; border: 0; border-radius: 0; overflow: hidden; background: var(--aqua-50); cursor: zoom-in; aspect-ratio: 4 / 3; }
 .gallery__item img { width: 100%; height: 100%; object-fit: cover; }
 .gallery__credit { margin-top: 1.25rem; }
+.gallery__section + .gallery__section { margin-top: clamp(2.75rem, 2rem + 3vw, 4.5rem); }
+.gallery__section .section-head { margin-bottom: 1.25rem; }
+.gallery__video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--aqua-50); }
 @media (max-width: 899px) { .gallery__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .gallery__grid { grid-template-columns: 1fr; } }
 

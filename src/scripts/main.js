@@ -75,6 +75,7 @@ const modules = [
   ['[data-readmore]', './readmore.js'],
   ['[data-hero-video]', './hero-video.js'],
   ['[data-inview-video]', './inview-video.js'],
+  ['[data-more-wrap]', './showmore.js'],
 ];
 const startModules = (root) => {
   for (const [selector, path] of modules) {

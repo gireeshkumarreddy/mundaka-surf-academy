@@ -56,6 +56,7 @@ export async function build({ check = false, quiet = false } = {}) {
   const plansData = await readJSON(path.join(PUBLIC, 'data/plans.json'));
   const teamData = await readJSON(path.join(PUBLIC, 'data/team.json'));
   const galleryData = await readJSON(path.join(PUBLIC, 'data/gallery.json'));
+  const mundakaPhotos = await readJSON(path.join(PUBLIC, 'data/mundaka-photos.json'));
   const defaultLocale = config.locales.default;
 
   const layout = await readFile(path.join(SRC, 'layouts/base.html'), 'utf8');
@@ -158,6 +159,8 @@ export async function build({ check = false, quiet = false } = {}) {
         if (token === 'deposit-table') return depositTable();
         if (token === 'team-cards') return teamCards();
         if (token === 'gallery-items') return galleryItems();
+        if (token.startsWith('gallery-items:')) return galleryItems(token.slice(14));
+        if (token === 'photo-grid:mundaka') return photoGrid(mundakaPhotos);
         if (token === 'reviews') return reviews();
         if (token === 'partners') return partners();
         if (token === 'site-config') return siteConfigScript();
@@ -252,11 +255,25 @@ export async function build({ check = false, quiet = false } = {}) {
           })
           .join('\n');
 
-      const galleryItems = () =>
+      // one section of the gallery (instructors | lessons) or all of it; cells past the first `visible` wait behind "Ver más"
+      const galleryItems = (cat) =>
         galleryData.items
-          .map((g) => {
+          .filter((g) => !cat || g.category === cat)
+          .map((g, i, all) => {
+            const more = cat === 'instructors' && i >= (galleryData.instructorsVisible ?? all.length) ? ' data-more-item' : '';
             const alt = escapeHTML(L(g.alt));
-            return `<li class="gallery__cell" data-cat="${g.category}"><button type="button" class="gallery__item" data-full="${src(`${g.image}@${imgEntry(g.image).widths.filter((w) => w <= 1600).at(-1) ?? imgEntry(g.image).widths[0]}`)}" data-caption="${alt}" aria-label="${t('gallery.open')}: ${alt}">${helpers(`img name=${g.image} sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 96vw" alt=-`).replace('alt=""', `alt="${alt}"`)}</button></li>`;
+            return `<li class="gallery__cell" data-cat="${g.category}"${more}><button type="button" class="gallery__item" data-full="${src(`${g.image}@${imgEntry(g.image).widths.filter((w) => w <= 1600).at(-1) ?? imgEntry(g.image).widths[0]}`)}" data-caption="${alt}" aria-label="${t('gallery.open')}: ${alt}">${helpers(`img name=${g.image} sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 96vw" alt=-`).replace('alt=""', `alt="${alt}"`)}</button></li>`;
+          })
+          .join('\n');
+
+      // 'Mundaka en fotos' (Our story): photos by the academy's photographer, landscape ones across two tiles
+      const photoGrid = (data) =>
+        data.items
+          .map((p, i) => {
+            const wide = p.wide ? ' class="photo-grid__wide"' : '';
+            const more = i >= (data.visible ?? data.items.length) ? ' data-more-item' : '';
+            const img = helpers(`img name=${p.image} sizes="${p.wide ? '(min-width: 900px) 62vw, 100vw' : '(min-width: 900px) 31vw, 50vw'}" alt=-`).replace('alt=""', `alt="${escapeHTML(L(p.alt))}"`);
+            return `<figure${wide}${more}>${img}</figure>`;
           })
           .join('\n');
 

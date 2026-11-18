@@ -34,7 +34,13 @@
   .story__photo img, .lesson__photo img { aspect-ratio: 4 / 3; }
   .xabi__photo { max-width: 340px; }
   .lesson__photo { max-width: none; }
-  .story__grid .story__photo { order: -1; }
+  .story__grid .story__photo, .story__grid .story__media { order: -1; }
+  .story__media .story__photo img { aspect-ratio: 4 / 5; } /* the academy photo is a portrait: keep it whole */
+  .urdaibai__photo img { aspect-ratio: 3 / 2; }
+  .photo-grid--mundaka { grid-auto-rows: auto; }
+  .photo-grid--mundaka .photo-grid__wide { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+  .gallery__grid--videos li:nth-child(5n + 1) { grid-column: auto; }
+  .gallery__grid--videos { grid-template-columns: minmax(0, 1fr); }
 
   /* class cards: compact rows (photo left, name and price right) so all three fit on one screen */
   .class-grid { grid-template-columns: 1fr; gap: 0.6rem; max-width: none; }

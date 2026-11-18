@@ -1,0 +1,158 @@
+{
+  "$comment": "'Mundaka en fotos' on Our story (client feedback 5): photos by the academy's photographer (site.config.json → photographer). image = a name in public/assets/img (_tools/import_photos.py); wide = a landscape photo across two tiles; the first `visible` show, the rest open with 'Ver más fotos'.",
+  "visible": 9,
+  "items": [
+    {
+      "image": "mundaka-foto-01",
+      "wide": true,
+      "alt": {
+        "es": "Mundaka y su ola desde el monte, con la isla de Izaro al fondo",
+        "en": "Mundaka and its wave from the hill, with Izaro island behind"
+      }
+    },
+    {
+      "image": "mundaka-foto-02",
+      "alt": {
+        "es": "La ola izquierda de Mundaka frente a los acantilados",
+        "en": "The Mundaka left wave in front of the cliffs"
+      }
+    },
+    {
+      "image": "mundaka-foto-03",
+      "alt": {
+        "es": "Una ola enorme rompiendo con espuma en Mundaka",
+        "en": "A huge wave breaking into spray at Mundaka"
+      }
+    },
+    {
+      "image": "mundaka-foto-04",
+      "wide": true,
+      "alt": {
+        "es": "La ermita de Santa Catalina bajo las nubes rojas del atardecer",
+        "en": "Santa Catalina hermitage under red sunset clouds"
+      }
+    },
+    {
+      "image": "mundaka-foto-05",
+      "alt": {
+        "es": "Casas de Mundaka sobre una ola que rompe",
+        "en": "Mundaka’s houses above a breaking wave"
+      }
+    },
+    {
+      "image": "mundaka-foto-06",
+      "alt": {
+        "es": "La ermita de Santa Catalina bajo un arcoíris y un cielo de tormenta",
+        "en": "Santa Catalina hermitage under a rainbow and a stormy sky"
+      }
+    },
+    {
+      "image": "mundaka-foto-07",
+      "wide": true,
+      "alt": {
+        "es": "El puerto y las casas de Mundaka",
+        "en": "Mundaka’s harbour and houses"
+      }
+    },
+    {
+      "image": "mundaka-foto-08",
+      "alt": {
+        "es": "Atardecer sobre el mar, con una lancha",
+        "en": "Sunset over the sea, with a boat"
+      }
+    },
+    {
+      "image": "mundaka-foto-09",
+      "alt": {
+        "es": "Casas de colores de Mundaka bajo el monte en otoño",
+        "en": "Mundaka’s colourful houses below the hill in autumn"
+      }
+    },
+    {
+      "image": "mundaka-foto-10",
+      "wide": true,
+      "alt": {
+        "es": "La ermita de Santa Catalina y una ola rompiendo",
+        "en": "Santa Catalina hermitage and a breaking wave"
+      }
+    },
+    {
+      "image": "mundaka-foto-11",
+      "alt": {
+        "es": "La ola de Mundaka entre la bruma y los acantilados",
+        "en": "The Mundaka wave between the mist and the cliffs"
+      }
+    },
+    {
+      "image": "mundaka-foto-12",
+      "alt": {
+        "es": "Casas rojas y blancas junto al puerto, entre las ramas",
+        "en": "Red and white houses by the harbour, through the branches"
+      }
+    },
+    {
+      "image": "mundaka-foto-13",
+      "alt": {
+        "es": "La iglesia de Mundaka sobre la ría",
+        "en": "Mundaka’s church above the estuary"
+      }
+    },
+    {
+      "image": "mundaka-foto-14",
+      "wide": true,
+      "alt": {
+        "es": "Una palmera y la iglesia bajo un cielo de tormenta",
+        "en": "A palm tree and the church under a stormy sky"
+      }
+    },
+    {
+      "image": "mundaka-foto-15",
+      "alt": {
+        "es": "Niebla sobre el monte y una ola rompiendo",
+        "en": "Mist over the hills and a breaking wave"
+      }
+    },
+    {
+      "image": "mundaka-foto-16",
+      "alt": {
+        "es": "La ermita sobre las rocas, con olas",
+        "en": "The hermitage on the rocks, with waves"
+      }
+    },
+    {
+      "image": "mundaka-foto-17",
+      "alt": {
+        "es": "Una persona mira el mar desde un banco",
+        "en": "Someone watching the sea from a bench"
+      }
+    },
+    {
+      "image": "mundaka-foto-18",
+      "alt": {
+        "es": "La torre de la iglesia entre árboles de otoño",
+        "en": "The church tower among autumn trees"
+      }
+    },
+    {
+      "image": "mundaka-foto-19",
+      "alt": {
+        "es": "Casas de colores junto a la ría",
+        "en": "Colourful houses by the estuary"
+      }
+    },
+    {
+      "image": "mundaka-foto-20",
+      "alt": {
+        "es": "Mundaka desde la orilla, con olas",
+        "en": "Mundaka from the shore, with waves"
+      }
+    },
+    {
+      "image": "mundaka-foto-21",
+      "alt": {
+        "es": "El puerto de Mundaka entre los árboles",
+        "en": "Mundaka harbour through the trees"
+      }
+    }
+  ]
+}

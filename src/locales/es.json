@@ -43,6 +43,9 @@
       "aemetText": "Previsión del tiempo de AEMET para Mundaka. Se carga al aceptar las cookies o al pulsar el botón.",
       "forecastLoad": "Ver previsión",
       "mapAlt": "Mapa de la zona de Erreka, en Mundaka, con la ubicación de Mundaka Surf Academy (Erreka 6)"
+    },
+    "more": {
+      "photos": "Ver más fotos"
     }
   },
   "footer": {
@@ -111,7 +114,7 @@
     "p2": "Aunque el proyecto parte de una iniciativa personal, esta escuela no se entiende sin el apoyo de los amigos de toda la vida, quienes forman parte del equipo como monitores titulados. Compartimos una misma visión del surf, basada en años de vivencias en el agua y en el compromiso de ofrecer un aprendizaje riguroso, seguro y adaptado a cada alumno, respaldado por la formación oficial en monitorado, socorrismo y primeros auxilios.",
     "p3": "Más allá de la práctica deportiva, en Mundaka Surf Academy mantenemos un vínculo profundo y de absoluto respeto hacia la Reserva de la Biosfera de Urdaibai y la costa de Mundaka. Entendemos nuestro entorno como un hogar que hay que cuidar y proteger, inculcando en cada clase el respeto por las corrientes, las mareas y la cultura marinera de la zona. Aquí no solo se aprende a coger olas, sino a entender y vivir el mar con la seriedad que merece.",
     "note": "Pendiente: la academia enviará más adelante fotos de calidad de Mundaka y de la escuela.",
-    "photoAlt": "La ermita de Santa Catalina sobre las rocas de Mundaka",
+    "photoAlt": "Una ola dorada al atardecer frente a los acantilados de Mundaka",
     "nextTitle": "Sigue explorando",
     "toTeam": "Conoce a los monitores",
     "toLessons": "Clases y precios",
@@ -136,8 +139,8 @@
       "eyebrow": "Urdaibai",
       "title": "Reserva de la Biosfera de Urdaibai",
       "p1": "Situada en el corazón de Urdaibai, nuestra escuela opera en uno de los entornos naturales más privilegiados y singulares de Europa. Declarada <strong>Reserva de la Biosfera por la UNESCO</strong> en 1984, esta área protegida abarca un impresionante mosaico de marismas, estuarios, acantilados y playas de extraordinaria riqueza ecológica y paisajística. El río Urdaibai desemboca formando un estuario único que no solo sustenta una biodiversidad inigualable de flora y fauna migratoria, sino que actúa como el motor geográfico directo que modela la legendaria barra de arena de Mundaka. Surfear aquí significa conectar con un territorio protegido de valor incalculable, donde el respeto absoluto por el medio ambiente y la conservación de la naturaleza forman parte de nuestra identidad diaria.",
-      "alt": "La ermita de San Juan de Gaztelugatxe sobre su islote",
-      "caption": "San Juan de Gaztelugatxe, a pocos kilómetros de Mundaka"
+      "alt": "La ría de Urdaibai desde el aire, con Mundaka y la playa de Laida",
+      "caption": "La ría de Urdaibai desde el aire: Mundaka a la izquierda, la playa de Laida a la derecha."
     },
     "strip": {
       "eyebrow": "Nuestro mar",
@@ -148,7 +151,9 @@
       "a4": "Tubo gris en un día de mar grande",
       "a5": "Surfista en una pared de ola",
       "a6": "Surfista deslizándose por una ola verde"
-    }
+    },
+    "photoBy": "Foto:",
+    "photosBy": "Fotos:"
   },
   "team": {
     "meta": {
@@ -453,17 +458,19 @@
     },
     "eyebrow": "Galería",
     "title": "Fotos y momentos",
-    "lead": "Clases e instructores en el agua de Mundaka.",
+    "lead": "Nuestros monitores y nuestras clases en el agua de Mundaka.",
     "filter": "Filtrar fotos",
     "all": "Todas",
     "lessons": "Clases",
     "instructors": "Instructores",
-    "note": "Fotos provisionales del archivo de la academia: se sustituirán por las fotos de clases e instructores de Google Drive.",
+    "note": "Pendiente: las fotos de las clases y de cada monitor, que enviará la academia.",
     "credit": "Fotos: archivo de Mundaka Surf Academy (Koldo Erauzkin, Martin Ugalde).",
     "open": "Ampliar foto",
     "prev": "Foto anterior",
     "next": "Foto siguiente",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "instructorsLead": "Los monitores de la academia surfeando en Mundaka.",
+    "lessonsLead": "Las clases, grabadas desde el dron. Pronto, más fotos de las clases."
   },
   "faq": {
     "meta": {
@@ -711,7 +718,9 @@
     "outOfSeason": "Fuera de temporada",
     "readMore": "Leer más",
     "readLess": "Leer menos",
-    "submitRequest": "Enviar solicitud"
+    "submitRequest": "Enviar solicitud",
+    "showMore": "Ver más fotos ({n})",
+    "showLess": "Ver menos fotos"
   },
   "location": {
     "facts": {
