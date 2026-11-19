@@ -160,6 +160,7 @@ export async function build({ check = false, quiet = false } = {}) {
         if (token === 'team-cards') return teamCards();
         if (token === 'gallery-items') return galleryItems();
         if (token.startsWith('gallery-items:')) return galleryItems(token.slice(14));
+        if (token === 'gallery-instructors') return galleryInstructors();
         if (token === 'photo-grid:mundaka') return photoGrid(mundakaPhotos);
         if (token === 'reviews') return reviews();
         if (token === 'partners') return partners();
@@ -256,15 +257,41 @@ export async function build({ check = false, quiet = false } = {}) {
           .join('\n');
 
       // one section of the gallery (instructors | lessons) or all of it; cells past the first `visible` wait behind "Ver más"
+      // one photo cell of the gallery (opens in the lightbox); `more` folds it behind "Ver más"
+      const galleryCell = (g, more = false) => {
+        const alt = escapeHTML(L(g.alt));
+        return `<li class="gallery__cell" data-cat="${g.category}"${more ? ' data-more-item' : ''}><button type="button" class="gallery__item" data-full="${src(`${g.image}@${imgEntry(g.image).widths.filter((w) => w <= 1600).at(-1) ?? imgEntry(g.image).widths[0]}`)}" data-caption="${alt}" aria-label="${t('gallery.open')}: ${alt}">${helpers(`img name=${g.image} sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 96vw" alt=-`).replace('alt=""', `alt="${alt}"`)}</button></li>`;
+      };
       const galleryItems = (cat) =>
         galleryData.items
           .filter((g) => !cat || g.category === cat)
-          .map((g, i, all) => {
-            const more = cat === 'instructors' && i >= (galleryData.instructorsVisible ?? all.length) ? ' data-more-item' : '';
-            const alt = escapeHTML(L(g.alt));
-            return `<li class="gallery__cell" data-cat="${g.category}"${more}><button type="button" class="gallery__item" data-full="${src(`${g.image}@${imgEntry(g.image).widths.filter((w) => w <= 1600).at(-1) ?? imgEntry(g.image).widths[0]}`)}" data-caption="${alt}" aria-label="${t('gallery.open')}: ${alt}">${helpers(`img name=${g.image} sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 96vw" alt=-`).replace('alt=""', `alt="${alt}"`)}</button></li>`;
+          .map((g) => galleryCell(g))
+          .join('\n');
+      // instructors (client feedback 6): one block per instructor, in the order of the team page, a couple of photos each
+      // and "Ver más fotos de …" for the rest; photos without an instructor go under "El equipo"
+      const galleryInstructors = () => {
+        const shown = galleryData.perInstructorVisible ?? 2;
+        const photos = galleryData.items.filter((g) => g.category === 'instructors');
+        const groups = [...teamData.instructors.map((p) => p.id), '']
+          .map((id) => ({ id, items: photos.filter((g) => (g.instructor ?? '') === id) }))
+          .filter((grp) => grp.items.length);
+        return groups
+          .map(({ id, items }) => {
+            const person = teamData.instructors.find((p) => p.id === id);
+            const name = person ? L(person.name) : t('gallery.teamGroup');
+            const first = name.split(' ')[0];
+            const headId = `gallery-${id || 'team'}`;
+            const label = person ? t('gallery.more').replace('{name}', first) : t('common.more.photos');
+            return `<div class="gallery__person" data-more-wrap>
+  <h3 class="gallery__person-name" id="${headId}">${escapeHTML(name)}</h3>
+  <ul class="gallery__grid gallery__grid--person" data-more aria-labelledby="${headId}">
+${items.map((g, i) => galleryCell(g, i >= shown)).join('\n')}
+  </ul>
+  <button type="button" class="btn btn--ghost" data-more-btn data-label="${escapeHTML(label)} ({n})" aria-expanded="false" hidden>${escapeHTML(label)}</button>
+</div>`;
           })
           .join('\n');
+      };
 
       // 'Mundaka en fotos' (Our story): photos by the academy's photographer, landscape ones across two tiles
       const photoGrid = (data) =>

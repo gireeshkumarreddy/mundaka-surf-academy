@@ -78,7 +78,7 @@ export default async function initBooking(root, config) {
     // private lessons are for 1 to 3 people (plans.json → maxPeople)
     f.participants.max = String(p.maxPeople ?? 20);
     if (p.maxPeople && Number(f.participants.value) > p.maxPeople) f.participants.value = String(p.maxPeople);
-    peopleError.textContent = p.maxPeople ? t('maxPeople') : peopleErrorText;
+    peopleError.textContent = p.maxPeople ? (p.maxPeople === 1 ? t('maxPeopleOne') : t('maxPeople', { n: p.maxPeople })) : peopleErrorText;
   };
 
   const details = () => ({
@@ -176,7 +176,12 @@ export default async function initBooking(root, config) {
   });
   form.addEventListener('input', (e) => {
     e.target.closest('[data-field]')?.classList.remove('is-invalid');
-    if (e.target.name === 'participants' && plan()?.price.groupRates) fillOptions(); // the per-person price changes with the group
+    if (e.target.name === 'participants' && plan()) {
+      // never more people than the lesson allows (private 3, inclusive 1): the summary stays right while typing
+      const max = plan().maxPeople;
+      if (max && Number(f.participants.value) > max) f.participants.value = String(max);
+      if (plan().price.groupRates) fillOptions(); // the per-person price changes with the group
+    }
     render();
   });
 

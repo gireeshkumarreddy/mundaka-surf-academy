@@ -49,7 +49,7 @@
     }
   },
   "footer": {
-    "tagline": "Escuela de surf en Mundaka, Bizkaia. Clases privadas, en grupo y avanzadas para todas las edades.",
+    "tagline": "Escuela de surf en Mundaka, Bizkaia. Clases en grupo, avanzadas, privadas e inclusivas.",
     "contactTitle": "Contacto",
     "exploreTitle": "La escuela",
     "followTitle": "Síguenos",
@@ -78,7 +78,7 @@
     "where": {
       "eyebrow": "Nuestro local",
       "title": "En el corazón de Mundaka",
-      "text": "Las clases empiezan en nuestro local, en el Barrio de Erreka, 6. Desde aquí vamos a la playa con el monitor."
+      "text": "Mundaka Surf Academy es la escuela de surf mejor situada y más cercana a la playa de Mundaka. A su vez, está junto al parking más grande de Mundaka."
     },
     "forecast": {
       "eyebrow": "Hoy en el agua",
@@ -113,13 +113,12 @@
     "p1": "Mundaka Surf Academy nace de un proyecto vital y de la ilusión de un niño que siempre soñó con tener su propia escuela de surf y dedicarse por completo al mar. Fundada por un joven surfista local de 20 años que lleva sobre la tabla desde los cinco, la academia se consolida como un espacio donde la experiencia en el agua se une a la profesionalidad para ofrecer una enseñanza de calidad.",
     "p2": "Aunque el proyecto parte de una iniciativa personal, esta escuela no se entiende sin el apoyo de los amigos de toda la vida, quienes forman parte del equipo como monitores titulados. Compartimos una misma visión del surf, basada en años de vivencias en el agua y en el compromiso de ofrecer un aprendizaje riguroso, seguro y adaptado a cada alumno, respaldado por la formación oficial en monitorado, socorrismo y primeros auxilios.",
     "p3": "Más allá de la práctica deportiva, en Mundaka Surf Academy mantenemos un vínculo profundo y de absoluto respeto hacia la Reserva de la Biosfera de Urdaibai y la costa de Mundaka. Entendemos nuestro entorno como un hogar que hay que cuidar y proteger, inculcando en cada clase el respeto por las corrientes, las mareas y la cultura marinera de la zona. Aquí no solo se aprende a coger olas, sino a entender y vivir el mar con la seriedad que merece.",
-    "note": "Pendiente: la academia enviará más adelante fotos de calidad de Mundaka y de la escuela.",
     "photoAlt": "Una ola dorada al atardecer frente a los acantilados de Mundaka",
     "nextTitle": "Sigue explorando",
     "toTeam": "Conoce a los monitores",
     "toLessons": "Clases y precios",
     "toGallery": "Fotos de las clases",
-    "lead": "Una escuela de surf en una de las olas más famosas de Europa, en plena Reserva de la Biosfera de Urdaibai.",
+    "lead": "Una escuela de surf en la mejor ola izquierda de toda Europa, en plena Reserva de la Biosfera de Urdaibai.",
     "wave": {
       "eyebrow": "La ola",
       "title": "La ola izquierda de Mundaka",
@@ -197,7 +196,7 @@
   "lessons": {
     "meta": {
       "title": "Clases y precios — Mundaka Surf Academy",
-      "description": "Clases privadas (de 50 € a 60 € por persona, 1 hora), en grupo y grupos avanzados/técnicos (de 35 € a 160 € por persona) en Mundaka."
+      "description": "Clases privadas (de 50 € a 60 € por persona y hora), en grupo y grupos avanzados/técnicos (de 35 € a 160 € por persona) en Mundaka."
     },
     "eyebrow": "Clases de surf",
     "title": "Clases y precios",
@@ -221,15 +220,15 @@
       "hours": "Horas",
       "pricePerson": "Precio (por persona)",
       "people": "Personas",
-      "perPersonOne": "Precio por persona (1 hora)",
-      "total": "Total",
+      "perPersonOne": "Precio por persona y hora",
+      "total": "Total por hora",
       "person1": "1 persona",
       "personsN": "{n} personas"
     },
     "private": {
       "name": "Clases privadas",
       "short": "Clases personalizadas para grupos de 1–3 personas.",
-      "text": "Una clase de 1 hora totalmente personalizada, para ti solo o para un grupo de hasta 3 personas, con toda la atención del monitor. Cuantas más personas, menos paga cada una.",
+      "text": "Una clase totalmente personalizada, para ti solo o para un grupo de hasta 3 personas, con toda la atención del monitor. Reservas las horas que quieras y, cuantas más personas, menos paga cada una.",
       "level": "Todos los niveles",
       "photoAlt": "Surfista con su tabla saliendo del agua",
       "where": "Según tu nivel: playa de Laida, entre Laida y la barra, o la ola de Mundaka.",
@@ -470,7 +469,9 @@
     "next": "Foto siguiente",
     "close": "Cerrar",
     "instructorsLead": "Los monitores de la academia surfeando en Mundaka.",
-    "lessonsLead": "Las clases, grabadas desde el dron. Pronto, más fotos de las clases."
+    "lessonsLead": "Las clases, grabadas desde el dron. Pronto, más fotos de las clases.",
+    "more": "Ver más fotos de {name}",
+    "teamGroup": "El equipo"
   },
   "faq": {
     "meta": {
@@ -479,7 +480,7 @@
     },
     "eyebrow": "FAQ",
     "title": "Preguntas frecuentes",
-    "lead": "¿No encuentras tu respuesta? Escríbenos por WhatsApp.",
+    "lead": "¿No encuentras tu respuesta? Háznoslo saber por WhatsApp, correo electrónico o teléfono y te ayudamos a resolver cualquier duda.",
     "q1": "¿Dónde son las clases?",
     "a1": "La clase empieza en nuestro local, en el Barrio de Erreka, 6. A partir de ahí, y dependiendo del nivel del alumno, la clase se impartirá en la zona correspondiente:",
     "q2": "¿Cuándo son las clases?",
@@ -497,7 +498,9 @@
     "a1a": "<strong>Iniciación y clases inclusivas:</strong> se imparten en la playa de Laida.",
     "a1b": "<strong>Avanzadas:</strong> se realizan entre la barra de Mundaka y Laida.",
     "a1c": "<strong>Muy avanzados y tecnificación:</strong> se llevan a cabo directamente en la famosa ola de Mundaka.",
-    "a6Request": "Online, desde el botón «Reservar»: eliges el día y la hora en el calendario, la clase, las personas y el nivel, y nos envías la solicitud. Por ahora no se paga nada online: te confirmamos la reserva y la forma de pago por WhatsApp o email. También puedes reservar por WhatsApp."
+    "a6Request": "Online, desde el botón «Reservar»: eliges el día y la hora en el calendario, la clase, las personas y el nivel, y nos envías la solicitud. Por ahora no se paga nada online: te confirmamos la reserva y la forma de pago por WhatsApp o email. También puedes reservar por WhatsApp.",
+    "q8": "¿De qué servicios dispone Mundaka Surf Academy en sus instalaciones?",
+    "a8": "Disponemos tanto de todo el material necesario para dar la clase como de cambiador, un baño adaptado para personas con discapacidad y un trato cercano y profesional con el cliente."
   },
   "contact": {
     "meta": {
@@ -506,7 +509,7 @@
     },
     "eyebrow": "Contacto",
     "title": "Hablamos",
-    "lead": "Escríbenos por WhatsApp, por email o con el formulario. Te respondemos lo antes posible.",
+    "lead": "Estamos a tu disposición para ayudarte con cualquier duda o problema. Contáctanos por WhatsApp, correo electrónico o teléfono y te contestaremos lo antes posible.",
     "channels": "Datos de contacto",
     "address": "Dirección",
     "formTitle": "Envíanos un mensaje",
@@ -713,14 +716,15 @@
     "lowTide": "Bajamar",
     "highTide": "Pleamar",
     "slotN": "{n}ª",
-    "maxPeople": "Las clases privadas son para 1, 2 o 3 personas.",
+    "maxPeople": "Esta clase es para un máximo de {n} personas.",
     "waTime": "Hora",
     "outOfSeason": "Fuera de temporada",
     "readMore": "Leer más",
     "readLess": "Leer menos",
     "submitRequest": "Enviar solicitud",
     "showMore": "Ver más fotos ({n})",
-    "showLess": "Ver menos fotos"
+    "showLess": "Ver menos fotos",
+    "maxPeopleOne": "Las clases inclusivas son individuales: 1 persona por clase."
   },
   "location": {
     "facts": {

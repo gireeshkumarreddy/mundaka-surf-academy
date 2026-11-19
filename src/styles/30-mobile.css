@@ -39,8 +39,6 @@
   .urdaibai__photo img { aspect-ratio: 3 / 2; }
   .photo-grid--mundaka { grid-auto-rows: auto; }
   .photo-grid--mundaka .photo-grid__wide { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
-  .gallery__grid--videos li:nth-child(5n + 1) { grid-column: auto; }
-  .gallery__grid--videos { grid-template-columns: minmax(0, 1fr); }
 
   /* class cards: compact rows (photo left, name and price right) so all three fit on one screen */
   .class-grid { grid-template-columns: 1fr; gap: 0.6rem; max-width: none; }

@@ -112,6 +112,16 @@
 .gallery__section + .gallery__section { margin-top: clamp(2.75rem, 2rem + 3vw, 4.5rem); }
 .gallery__section .section-head { margin-bottom: 1.25rem; }
 .gallery__video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--aqua-50); }
+/* instructors by name (client feedback 6): a couple of photos each, "Ver más" for the rest */
+.gallery__person + .gallery__person { margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem); }
+.gallery__person-name { margin: 0 0 0.75rem; font-size: var(--step-1); color: var(--deep); }
+.gallery__person [data-more-btn] { margin-top: 0.85rem; }
+@media (max-width: 767px) {
+  /* .gallery prefix: stronger than the general phone gallery rule (first photo of five across the full width) */
+  .gallery .gallery__grid--person li:nth-child(5n + 1) { grid-column: auto; } /* each instructor: two photos side by side */
+  .gallery .gallery__grid--videos { grid-template-columns: minmax(0, 1fr); } /* the drone clips one under another, full width */
+  .gallery .gallery__grid--videos li:nth-child(5n + 1) { grid-column: auto; }
+}
 @media (max-width: 899px) { .gallery__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .gallery__grid { grid-template-columns: 1fr; } }
 

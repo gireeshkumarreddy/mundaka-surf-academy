@@ -16,15 +16,8 @@
         <h2 class="title title--sm" id="gallery-instructors">{{gallery.instructors}}</h2>
         <p class="lead">{{gallery.instructorsLead}}</p>
       </div>
-      <div data-more-wrap>
-        <ul class="gallery__grid" data-more aria-labelledby="gallery-instructors">
-{{gallery-items:instructors}}
-        </ul>
-        <div class="more-row">
-          <button type="button" class="btn btn--ghost" data-more-btn aria-expanded="false" hidden>{{common.more.photos}}</button>
-          <p class="small muted gallery__credit">{{gallery.credit}}</p>
-        </div>
-      </div>
+{{gallery-instructors}}
+      <p class="small muted gallery__credit">{{gallery.credit}}</p>
     </div>
     <div class="gallery__section">
       <div class="section-head">

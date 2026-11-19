@@ -10,7 +10,8 @@ export default function initShowMore() {
     const btn = wrap.querySelector('[data-more-btn]');
     const extra = list?.querySelectorAll('[data-more-item]').length ?? 0;
     if (!list || !btn || !extra) return;
-    const label = (open) => (open ? t('showLess') : t('showMore', { n: extra }));
+    // a list can bring its own label (data-label, e.g. "Ver más fotos de Mikel ({n})")
+    const label = (open) => (open ? t('showLess') : btn.dataset.label ? btn.dataset.label.replace('{n}', extra) : t('showMore', { n: extra }));
     list.classList.add('is-collapsed');
     btn.textContent = label(false);
     btn.hidden = false;

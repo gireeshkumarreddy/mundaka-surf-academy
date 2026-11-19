@@ -1,6 +1,5 @@
 {
- "$comment": "Gallery (client feedback 5): two sections. category 'instructors' = photos of the instructors (the first `instructorsVisible` show, the rest open with 'Ver más'); category 'lessons' = photos of the classes, shown after the drone videos of the classes. image = a name in public/assets/img. The admin panel adds, removes and orders photos.",
- "instructorsVisible": 3,
+ "$comment": "Gallery (client feedback 5–6): category 'instructors' = photos of the instructors, grouped by `instructor` (an id from team.json; photos without one go under 'El equipo'); each group shows `perInstructorVisible` photos and 'Ver más' opens the rest. category 'lessons' = photos of the classes, shown after the drone videos. image = a name in public/assets/img.",
  "items": [
   {
    "image": "xabier-barrel",
@@ -8,7 +7,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-big-wall",
@@ -16,7 +16,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-layback",
@@ -24,7 +25,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-glassy-wall",
@@ -32,7 +34,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-snap",
@@ -40,7 +43,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-carve",
@@ -48,7 +52,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-trim",
@@ -56,7 +61,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-blue-wall",
@@ -64,7 +70,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-bottom-turn",
@@ -72,7 +79,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-dark-barrel",
@@ -80,7 +88,8 @@
    "alt": {
     "es": "Monitor de Mundaka Surf Academy surfeando en Mundaka",
     "en": "A Mundaka Surf Academy instructor surfing in Mundaka"
-   }
+   },
+   "instructor": "xabier-gondra"
   },
   {
    "image": "xabier-foam-line",
@@ -88,7 +97,9 @@
    "alt": {
     "es": "Xabier en una pared de ola, delante de la espuma",
     "en": "Xabier on a wave face, ahead of the whitewater"
-   }
+   },
+   "instructor": "xabier-gondra"
   }
- ]
+ ],
+ "perInstructorVisible": 2
 }

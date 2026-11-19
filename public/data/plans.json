@@ -1,6 +1,6 @@
 {
   "$comment": "Lessons and prices (website brief, section 6; client feedback 3). Editable without rebuilding for the booking form and the server; run `npm run build` to refresh the price tables printed on the pages. price.unit: 'personHour' (amount per person per hour, choose hours; optional groupRates [{ people, amount }] = the rate per person for that group size, and maxPeople) or 'package' (amount per person for N days).",
-  "updated": "2026-11-16",
+  "updated": "2026-11-19",
   "currency": "EUR",
   "plans": [
     {
@@ -116,8 +116,8 @@
         "en": "Private lessons"
       },
       "summary": {
-        "es": "Clases personalizadas de 1 hora para grupos de 1–3 personas.",
-        "en": "Personalized 1-hour lessons for groups of 1–3 people."
+        "es": "Clases personalizadas para grupos de 1–3 personas, con las horas que quieras.",
+        "en": "Personalized lessons for groups of 1–3 people, for as many hours as you like."
       },
       "levels": [
         "beginner",
@@ -129,7 +129,12 @@
         "amount": 60,
         "currency": "EUR",
         "hours": [
-          1
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
         ],
         "groupRates": [
           {
@@ -175,7 +180,8 @@
           3
         ]
       },
-      "bookable": true
+      "bookable": true,
+      "maxPeople": 1
     }
   ]
 }
