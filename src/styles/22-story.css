@@ -4,7 +4,10 @@
 .mosaic figure { margin: 0; overflow: hidden; }
 .mosaic img { width: 100%; height: 100%; object-fit: cover; }
 .mosaic__a { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
-.mosaic__b, .mosaic__c { aspect-ratio: 4 / 3; }
+/* 3:2 keeps the photographer's signature in the corner; the other photo keeps the church in view */
+.mosaic__b, .mosaic__c { aspect-ratio: 3 / 2; }
+.mosaic__b img { object-position: 15% 50%; }
+.mosaic .mosaic__credit { grid-column: 1 / -1; margin: 0; }
 
 .find__grid { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
 .find__facts { margin: 1.5rem 0; display: grid; }
@@ -102,7 +105,6 @@
 .photo-credit { margin: 0.7rem 0 0; font-size: var(--step--2); color: var(--ink-3); }
 .photo-credit a { color: var(--teal); font-weight: 600; }
 .section--deep .photo-credit { color: rgba(255, 255, 255, 0.7); }
-.mosaic__ph { display: grid; place-items: center; aspect-ratio: 4 / 3; margin: 0; background: var(--aqua-50); border: 1px dashed var(--line-strong); }
 /* Urdaibai: the estuary panorama across the full width, the text below */
 .urdaibai__grid--wide, .urdaibai .urdaibai__grid { grid-template-columns: minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
 .urdaibai__photo img { aspect-ratio: 21 / 9; object-position: 45% 50%; }
@@ -111,6 +113,7 @@
 .photo-grid--mundaka { grid-auto-rows: auto; grid-auto-flow: dense; }
 .photo-grid--mundaka figure { aspect-ratio: 4 / 5; }
 .photo-grid--mundaka .photo-grid__wide { grid-column: span 2; aspect-ratio: 8 / 5; }
+.photo-grid--mundaka .photo-grid__bottom img { object-position: 50% 100%; } /* keep the signature at the bottom */
 .more-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; margin-top: 1rem; }
 .more-row .photo-credit, .more-row .gallery__credit { margin: 0; }
 [data-more].is-collapsed [data-more-item] { display: none; }

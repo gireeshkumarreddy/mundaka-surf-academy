@@ -3,7 +3,10 @@
 ## Academy photos and videos
 
 Every photo and clip of Xabier Gondra León, Mundaka and the academy comes from the academy's own Google Drive folder
-(MIKEL / ROBERTO / UR / XABI). Where the photographer is known, the gallery caption credits them.
+(MIKEL / ROBERTO / UR / XABI); the gallery groups each instructor's photos by those folders. Where the photographer is
+known, the gallery caption credits them. Feedback 7 (2026-11-24): `wave-martin-ugalde` and `mundaka-foto-23` are by Martin
+Ugalde (his signature stays visible); `wave-eneko` and `mundaka-foto-22` came as "eneko" / "eneko2" — confirm whether Eneko
+is the photographer before adding a credit. `mikel-portrait` and `xabi-monitor` are cropped and resized only.
 
 ## Stock photos (illustrative)
 

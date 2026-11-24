@@ -287,8 +287,7 @@ export async function build({ check = false, quiet = false } = {}) {
   <ul class="gallery__grid gallery__grid--person" data-more aria-labelledby="${headId}">
 ${items.map((g, i) => galleryCell(g, i >= shown)).join('\n')}
   </ul>
-  <button type="button" class="btn btn--ghost" data-more-btn data-label="${escapeHTML(label)} ({n})" aria-expanded="false" hidden>${escapeHTML(label)}</button>
-</div>`;
+${items.length > shown ? `  <button type="button" class="btn btn--ghost" data-more-btn data-label="${escapeHTML(label)} ({n})" aria-expanded="false" hidden>${escapeHTML(label)}</button>\n` : ''}</div>`;
           })
           .join('\n');
       };
@@ -297,10 +296,10 @@ ${items.map((g, i) => galleryCell(g, i >= shown)).join('\n')}
       const photoGrid = (data) =>
         data.items
           .map((p, i) => {
-            const wide = p.wide ? ' class="photo-grid__wide"' : '';
+            const cls = [p.wide && 'photo-grid__wide', p.focus === 'bottom' && 'photo-grid__bottom'].filter(Boolean).join(' ');
             const more = i >= (data.visible ?? data.items.length) ? ' data-more-item' : '';
             const img = helpers(`img name=${p.image} sizes="${p.wide ? '(min-width: 900px) 62vw, 100vw' : '(min-width: 900px) 31vw, 50vw'}" alt=-`).replace('alt=""', `alt="${escapeHTML(L(p.alt))}"`);
-            return `<figure${wide}${more}>${img}</figure>`;
+            return `<figure${cls ? ` class="${cls}"` : ''}${more}>${img}</figure>`;
           })
           .join('\n');
 

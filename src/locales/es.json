@@ -124,10 +124,11 @@
       "title": "La ola izquierda de Mundaka",
       "p1": "Mundaka no es solo una ola; es un mito viviente del surf mundial. Situada en la Reserva de la Biosfera de Urdaibai, esta izquierda está considerada una de las olas más perfectas, largas y estéticas del planeta. Cuando las condiciones se alinean, Mundaka ofrece un tubo hueco, pesado y kilométrico que recorre la barra de arena de la ría, convirtiéndose en el sueño de cualquier surfista avanzado y profesional.",
       "p2": "La magia de Mundaka nace de una combinación perfecta entre la geodinámica de la ría y la batimetría del fondo marino. La desembocadura del río Urdaibai arrastra sedimentos que moldean una barra de arena precisa donde el oleaje procedente del Atlántico entra por la bocana y quiebra con fuerza. La ola rompe inicialmente con una potencia tremenda y abre una pared larguísima que puede superar los 300 o 400 metros de recorrido en días óptimos, permitiendo al surfista entubar sección tras sección mientras la ola acelera sobre la lámina de agua. Todo esto funciona principalmente con marea baja tirando a media, requiriendo un tamaño y dirección de norte o noroeste muy específicos.",
-      "altB": "Surfista dentro de un tubo azul en Mundaka",
-      "altC": "Surfista en una pared verde",
+      "altB": "Surfista en un tubo azul de Mundaka, con la iglesia al fondo",
+      "altC": "Surfista saliendo de un tubo verde entre la espuma",
       "p3": "Lo que hace única a Mundaka es su consistencia técnica y la velocidad vertiginosa que adquiere dentro del tubo. Al romper sobre arena, exige una lectura milimétrica de la ola y un dominio absoluto del take-off y el posicionamiento frente a la inmensa fuerza del agua. Es una izquierda pura, exigente y de clase mundial que pone a prueba a los mejores surfistas del panorama internacional.",
-      "p4": "Su fama traspasó fronteras hace décadas, consolidándose como un referente global y albergando durante años el <em>Billabong Pro Mundaka</em>, una de las pruebas más importantes del circuito mundial profesional de surf (ASP/WSL). Leyendas de la talla de Andy Irons, Kelly Slater o Mark Occhilupo han consagrado esta ola como una de sus favoritas absolutas. Protegida y surfeada con respeto por la comunidad local vasca, Mundaka representa la esencia más pura del surf de norte: autenticidad, respeto en el agua y una conexión inquebrantable con el mar."
+      "p4": "Su fama traspasó fronteras hace décadas, consolidándose como un referente global y albergando durante años el <em>Billabong Pro Mundaka</em>, una de las pruebas más importantes del circuito mundial profesional de surf (ASP/WSL). Leyendas de la talla de Andy Irons, Kelly Slater o Mark Occhilupo han consagrado esta ola como una de sus favoritas absolutas. Protegida y surfeada con respeto por la comunidad local vasca, Mundaka representa la esencia más pura del surf de norte: autenticidad, respeto en el agua y una conexión inquebrantable con el mar.",
+      "credit": "Fotos: Martin Ugalde y archivo de Mundaka Surf Academy."
     },
     "find": {
       "eyebrow": "Dónde estamos",
@@ -152,7 +153,8 @@
       "a6": "Surfista deslizándose por una ola verde"
     },
     "photoBy": "Foto:",
-    "photosBy": "Fotos:"
+    "photosBy": "Fotos:",
+    "photosAlso": ", Martin Ugalde y archivo de Mundaka Surf Academy"
   },
   "team": {
     "meta": {
@@ -163,7 +165,7 @@
     "title": "Instructores",
     "lead": "Monitores titulados y con amplia experiencia laboral en los mares de Mundaka.",
     "gridTitle": "Fichas de los instructores",
-    "note": "Pendiente: la foto de cada monitor y la foto de grupo (llegan en el próximo envío de la academia).",
+    "note": "Pendiente: las fotos de Roberto y de Ur, y la foto de grupo (llegan en el próximo envío de la academia).",
     "end": "¿Quieres saber con quién harás tu clase? Escríbenos.",
     "photoPending": "Foto pendiente",
     "bioPending": "Biografía pendiente",
@@ -462,7 +464,7 @@
     "all": "Todas",
     "lessons": "Clases",
     "instructors": "Instructores",
-    "note": "Pendiente: las fotos de las clases y de cada monitor, que enviará la academia.",
+    "note": "Pendiente: las fotos de las clases, que enviará la academia.",
     "credit": "Fotos: archivo de Mundaka Surf Academy (Koldo Erauzkin, Martin Ugalde).",
     "open": "Ampliar foto",
     "prev": "Foto anterior",

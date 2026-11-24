@@ -99,6 +99,87 @@
     "en": "Xabier on a wave face, ahead of the whitewater"
    },
    "instructor": "xabier-gondra"
+  },
+  {
+   "image": "green-wall",
+   "category": "instructors",
+   "alt": {
+    "es": "Mikel surfeando una pared de ola verde",
+    "en": "Mikel surfing a green wave face"
+   },
+   "instructor": "mikel-agos"
+  },
+  {
+   "image": "green-curl",
+   "category": "instructors",
+   "alt": {
+    "es": "Mikel bajando una ola con mucha espuma",
+    "en": "Mikel dropping down a wave full of spray"
+   },
+   "instructor": "mikel-agos"
+  },
+  {
+   "image": "whitewater",
+   "category": "instructors",
+   "alt": {
+    "es": "Mikel sobre la cresta de una ola",
+    "en": "Mikel on the lip of a wave"
+   },
+   "instructor": "mikel-agos"
+  },
+  {
+   "image": "spray-turn",
+   "category": "instructors",
+   "alt": {
+    "es": "Roberto haciendo un giro en la ola",
+    "en": "Roberto carving a turn on a wave"
+   },
+   "instructor": "roberto-suarez"
+  },
+  {
+   "image": "walking-out",
+   "category": "instructors",
+   "alt": {
+    "es": "Roberto saliendo del agua con la tabla",
+    "en": "Roberto walking out of the water with the board"
+   },
+   "instructor": "roberto-suarez"
+  },
+  {
+   "image": "barrel-blue",
+   "category": "instructors",
+   "alt": {
+    "es": "Ur surfeando una ola azul",
+    "en": "Ur surfing a blue wave"
+   },
+   "instructor": "ur-ugalde"
+  },
+  {
+   "image": "hero-mundaka",
+   "category": "instructors",
+   "alt": {
+    "es": "Ur en la ola de Mundaka, frente a Santa Catalina",
+    "en": "Ur on the Mundaka wave, in front of Santa Catalina"
+   },
+   "instructor": "ur-ugalde"
+  },
+  {
+   "image": "spray-backlit",
+   "category": "instructors",
+   "alt": {
+    "es": "Ur bajo una ola a contraluz",
+    "en": "Ur under a backlit wave"
+   },
+   "instructor": "ur-ugalde"
+  },
+  {
+   "image": "barrel-grey",
+   "category": "instructors",
+   "alt": {
+    "es": "Ur dentro de un tubo",
+    "en": "Ur inside a barrel"
+   },
+   "instructor": "ur-ugalde"
   }
  ],
  "perInstructorVisible": 2

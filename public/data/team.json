@@ -3,7 +3,7 @@
   "instructors": [
     {
       "id": "xabier-gondra",
-      "photo": "xabi-portrait",
+      "photo": "xabi-monitor",
       "name": {
         "es": "Xabier Gondra León",
         "en": "Xabier Gondra León"
@@ -51,7 +51,7 @@
     },
     {
       "id": "mikel-agos",
-      "photo": null,
+      "photo": "mikel-portrait",
       "name": {
         "es": "Mikel Agos Francisco",
         "en": "Mikel Agos Francisco"

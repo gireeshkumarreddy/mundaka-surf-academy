@@ -116,6 +116,11 @@
 .gallery__person + .gallery__person { margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem); }
 .gallery__person-name { margin: 0 0 0.75rem; font-size: var(--step-1); color: var(--deep); }
 .gallery__person [data-more-btn] { margin-top: 0.85rem; }
+@media (min-width: 900px) { /* two instructors per row, two photos each */
+  .gallery__people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem clamp(1.5rem, 1rem + 2vw, 2.5rem); align-items: start; }
+  .gallery .gallery__grid--person { grid-template-columns: 1fr 1fr; }
+  .gallery__person + .gallery__person { margin-top: 0; }
+}
 @media (max-width: 767px) {
   /* .gallery prefix: stronger than the general phone gallery rule (first photo of five across the full width) */
   .gallery .gallery__grid--person li:nth-child(5n + 1) { grid-column: auto; } /* each instructor: two photos side by side */

@@ -22,7 +22,7 @@ site.config.json          ← contact details, WhatsApp number, socials, hero vi
 public/data/plans.json    ← lessons and prices (Group and Advanced 1–5 and 7 days 35–160 €, Private 1 h 60/55/50 € per person for 1/2/3 people, Inclusive 50 €/person/hour)
 public/data/schedule.json ← booking calendar: season and tide-based lesson times per day (_tools/import_calendar.py loads the academy's PDF)
 public/data/team.json     ← instructor cards (add an entry to add an instructor)
-public/data/gallery.json  ← gallery: instructors (first 3 show, "Ver más" opens the rest) and class photos (after the drone clips)
+public/data/gallery.json  ← gallery: photos per instructor (2 show, "Ver más" opens the rest) and class photos (after the drone clips)
 public/data/mundaka-photos.json ← 'Mundaka en fotos' on Our story (photographer in site.config.json → photographer)
 src/locales/es.json, en.json ← all text, Spanish and English
 src/pages/                ← one template per page      src/partials/ ← header, footer, map, section buttons, icons

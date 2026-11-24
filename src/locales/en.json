@@ -124,10 +124,11 @@
       "title": "The left wave of Mundaka",
       "p1": "Mundaka is not just a wave; it is a living legend in global surfing. Located within the Urdaibai Biosphere Reserve, this left-hander is widely regarded as one of the most perfect, longest, and most aesthetic waves on the planet. When conditions align, Mundaka delivers a hollow, heavy, and incredibly long barrel running along the rivermouth's sandbar, making it the ultimate destination for advanced and professional surfers.",
       "p2": "Mundaka's magic stems from a precise combination of estuarine geodynamics and seabed bathymetry. The outflow of the Urdaibai river deposits sediments that shape an exact sandbar where Atlantic swells enter the mouth of the estuary and break with immense power. The wave breaks initially with tremendous force and opens up a massive wall that can run for 300 to 400 meters on optimal days, allowing surfers to slot into barrel after barrel as the wave accelerates across the shallow water sheet. It works best on low to mid-tide, requiring specific northwest or north swell directions to unlock its full potential.",
-      "altB": "A surfer inside a blue barrel in Mundaka",
-      "altC": "A surfer on a green wall",
+      "altB": "A surfer in a blue Mundaka barrel, with the church behind",
+      "altC": "A surfer coming out of a green barrel through the spray",
       "p3": "What makes Mundaka truly special is its technical consistency and the blistering speed generated inside the barrel. Because it breaks over sand, it requires millimeter-precise wave reading and absolute mastery of take-off and positioning against the sheer power of the water. It is a pure, demanding, world-class left that challenges the best surfers in the international arena.",
-      "p4": "Mundaka’s fame crossed borders decades ago, establishing itself as a global benchmark and serving for years as the legendary home of the <em>Billabong Pro Mundaka</em>, one of the most prestigious stops on the professional world surfing tour (ASP/WSL). World legends such as Andy Irons, Kelly Slater, and Mark Occhilupo have hailed this wave as an absolute favorite. Protected and surfed with deep respect by the local Basque community, Mundaka represents the purest essence of northern surfing: authenticity, lineup etiquette, and an unbreakable connection with the sea."
+      "p4": "Mundaka’s fame crossed borders decades ago, establishing itself as a global benchmark and serving for years as the legendary home of the <em>Billabong Pro Mundaka</em>, one of the most prestigious stops on the professional world surfing tour (ASP/WSL). World legends such as Andy Irons, Kelly Slater, and Mark Occhilupo have hailed this wave as an absolute favorite. Protected and surfed with deep respect by the local Basque community, Mundaka represents the purest essence of northern surfing: authenticity, lineup etiquette, and an unbreakable connection with the sea.",
+      "credit": "Photos: Martin Ugalde and the Mundaka Surf Academy archive."
     },
     "find": {
       "eyebrow": "Where we are",
@@ -152,7 +153,8 @@
       "a6": "A surfer gliding along a green wave"
     },
     "photoBy": "Photo:",
-    "photosBy": "Photos:"
+    "photosBy": "Photos:",
+    "photosAlso": ", Martin Ugalde and the Mundaka Surf Academy archive"
   },
   "team": {
     "meta": {
@@ -163,7 +165,7 @@
     "title": "Instructors",
     "lead": "Qualified instructors with extensive work experience in the waters of Mundaka.",
     "gridTitle": "Instructor cards",
-    "note": "To come: each instructor’s photo and the group photo (in the academy’s next delivery).",
+    "note": "To come: Roberto’s and Ur’s photos, and the group photo (in the academy’s next delivery).",
     "end": "Want to know who will teach you? Message us.",
     "photoPending": "Photo to come",
     "bioPending": "Bio to come",
@@ -462,7 +464,7 @@
     "all": "All",
     "lessons": "Lessons",
     "instructors": "Instructors",
-    "note": "To come: photos of the lessons and of each instructor, from the academy.",
+    "note": "To come: photos of the lessons, from the academy.",
     "credit": "Photos: Mundaka Surf Academy archive (Koldo Erauzkin, Martin Ugalde).",
     "open": "Enlarge photo",
     "prev": "Previous photo",

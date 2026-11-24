@@ -1,6 +1,6 @@
 {
-  "$comment": "'Mundaka en fotos' on Our story (client feedback 5): photos by the academy's photographer (site.config.json → photographer). image = a name in public/assets/img (_tools/import_photos.py); wide = a landscape photo across two tiles; the first `visible` show, the rest open with 'Ver más fotos'.",
-  "visible": 9,
+  "$comment": "'Mundaka en fotos' on Our story (client feedback 5): photos by the academy's photographer (site.config.json → photographer) plus two from feedback 7 (Martin Ugalde, academy archive; credit line in the locales: about.photosAlso). image = a name in public/assets/img (_tools/import_photos.py); wide = a landscape photo across two tiles; focus 'bottom' = keep the bottom edge (a signature) when cropped; the first `visible` show, the rest open with 'Ver más fotos'.",
+  "visible": 8,
   "items": [
     {
       "image": "mundaka-foto-01",
@@ -25,6 +25,14 @@
       }
     },
     {
+      "image": "mundaka-foto-22",
+      "wide": true,
+      "alt": {
+        "es": "Surfista saliendo del tubo en Mundaka, con las casas del pueblo al fondo",
+        "en": "A surfer coming out of the barrel in Mundaka, with the village houses behind"
+      }
+    },
+    {
       "image": "mundaka-foto-04",
       "wide": true,
       "alt": {
@@ -44,6 +52,15 @@
       "alt": {
         "es": "La ermita de Santa Catalina bajo un arcoíris y un cielo de tormenta",
         "en": "Santa Catalina hermitage under a rainbow and a stormy sky"
+      }
+    },
+    {
+      "image": "mundaka-foto-23",
+      "wide": true,
+      "focus": "bottom",
+      "alt": {
+        "es": "Surfista escondido en un tubo verde entre la espuma",
+        "en": "A surfer hidden in a green barrel behind the spray"
       }
     },
     {

@@ -39,7 +39,9 @@
     </div>
     <div class="mosaic">
       <figure class="mosaic__a">{{img name=mundaka-lineup mobile=mundaka-lineup-m sizes="(min-width: 900px) 46vw, 100vw" alt=home.hero.photoAlt}}</figure>
-      {{#if review}}<figure class="mosaic__ph" aria-hidden="true"><span class="tbc">{{team.photoPending}}</span></figure><figure class="mosaic__ph" aria-hidden="true"><span class="tbc">{{team.photoPending}}</span></figure>{{/if}}
+      <figure class="mosaic__b">{{img name=wave-eneko sizes="(min-width: 900px) 23vw, 50vw" alt=about.wave.altB}}</figure>
+      <figure class="mosaic__c">{{img name=wave-martin-ugalde sizes="(min-width: 900px) 23vw, 50vw" alt=about.wave.altC}}</figure>
+      <p class="photo-credit mosaic__credit">{{about.wave.credit}}</p>
     </div>
   </div>
   <div class="container">{{> section-actions}}</div>
@@ -91,7 +93,7 @@
       </div>
       <div class="more-row">
         <button type="button" class="btn btn--ghost" data-more-btn aria-expanded="false" hidden>{{common.more.photos}}</button>
-        <p class="photo-credit">{{about.photosBy}} <a href="{{config.photographer.url}}" target="_blank" rel="noopener">{{config.photographer.name}}</a></p>
+        <p class="photo-credit">{{about.photosBy}} <a href="{{config.photographer.url}}" target="_blank" rel="noopener">{{config.photographer.name}}</a>{{about.photosAlso}}</p>
       </div>
     </div>
   </div>
