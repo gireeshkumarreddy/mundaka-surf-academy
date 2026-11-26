@@ -89,7 +89,8 @@
     "$comment": "Brand partners for the footer (e.g. Billabong). Empty = hidden. Each: { \"name\": \"…\", \"logo\": \"image name in public/assets/img\", \"url\": \"https://…\" } (url optional: without it the logo is not a link).",
     "items": [
       { "name": "Indio", "logo": "partner-indio", "url": "" },
-      { "name": "Billabong", "logo": "partner-billabong", "url": "" }
+      { "name": "Billabong", "logo": "partner-billabong", "url": "" },
+      { "name": "Mundaka Surf Shop", "logo": "partner-mundaka-surf-shop", "url": "" }
     ]
   },
 
