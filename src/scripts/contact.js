@@ -2,6 +2,7 @@
 import { t } from './integrations/config.js';
 import { sendEnquiry, enquiryConfigured } from './integrations/enquiry.js';
 import { escapeHTML } from './data.js';
+import { whatsappUrl } from './integrations/whatsapp.js';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE = /^\+?[\d\s().-]{6,20}$/;
@@ -37,13 +38,15 @@ export default function initContact(form, config) {
       done.focus();
     };
     if (f.company.value) return finish(escapeHTML(t('contactDone', { name })));
+    const wa = whatsappUrl(config, `${t('waContact', { name })}\n${f.message.value.trim()}`);
+    const waButton = wa ? ` <a class="btn btn--wa btn--sm" href="${escapeHTML(wa)}" target="_blank" rel="noopener">${escapeHTML(t('waAlso'))}</a>` : '';
     const result = await sendEnquiry(config, { type: 'contact', locale: config.locale, submittedAt: new Date().toISOString(), contact: { name, email: f.email.value.trim(), phone }, message: f.message.value.trim() });
     if (result.ok) {
       form.reset();
-      finish(escapeHTML(t('contactDone', { name })));
+      finish(escapeHTML(t('contactDone', { name })) + waButton);
     } else if (result.reason === 'not-configured') finish(escapeHTML(t('contactDemo')));
     else {
-      alertBox.innerHTML = `<p>${escapeHTML(t('sendError'))}</p>`;
+      alertBox.innerHTML = `<p>${escapeHTML(t('sendError'))}${waButton}</p>`;
       alertBox.hidden = false;
     }
   });

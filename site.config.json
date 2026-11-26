@@ -44,9 +44,9 @@
   },
 
   "enquiry": {
-    "$comment": "provider: none | formspree | webhook | netlify. 'none' keeps the forms in demo mode: they validate and review but tell the visitor nothing was sent.",
-    "provider": "none",
-    "endpoint": ""
+    "$comment": "provider: none | formspree | webhook | netlify | formsubmit. 'none' keeps the forms in demo mode. formsubmit (client feedback 8): bookings and contact messages are emailed to the academy; the first submission sends an 'Activate Form' email to that address, and nothing arrives until it is clicked. After activation FormSubmit offers a random alias that can replace the address in the endpoint.",
+    "provider": "formsubmit",
+    "endpoint": "https://formsubmit.co/ajax/mundakasurfacademy@gmail.com"
   },
 
   "payments": {

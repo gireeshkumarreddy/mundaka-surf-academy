@@ -135,7 +135,7 @@ export default async function initBooking(root, config) {
       const url = whatsappUrl(config, bookingMessage({ plan: d.plan ? local(d.plan.name) : '', option: optionText(d), date: rows[2][1], time: d.time, participants: d.participants, level: rows[5][1], name: d.name }));
       if (url) waLink.href = url;
     }
-    return { d, est, now };
+    return { d, est, now, rows };
   };
 
   const mark = (name, ok) => {
@@ -214,7 +214,7 @@ export default async function initBooking(root, config) {
       first?.focus();
       return;
     }
-    const { d, est } = render();
+    const { d, est, rows: rowsNow } = render();
     if (f.company.value) return finish(t('doneTitle'), escapeHTML(t('doneText', { email: d.email })));
     const payload = {
       type: 'booking',
@@ -231,7 +231,11 @@ export default async function initBooking(root, config) {
       message: d.message,
       policyAccepted: true,
       estimate: est,
+      // the same wording as the summary, for the academy's email
+      display: { option: optionText(d), date: rowsNow[2][1], time: rowsNow[3][1], level: rowsNow[5][1], total: money(est.total, est.currency) },
     };
+    const waHref = waLink?.href || whatsappUrl(config, bookingMessage({ plan: local(d.plan.name), option: optionText(d), date: rowsNow[2][1], time: d.time, participants: d.participants, level: rowsNow[5][1], name: d.name }));
+    const waButton = waHref ? `<br><a class="btn btn--wa btn--sm" href="${escapeHTML(waHref)}" target="_blank" rel="noopener">${escapeHTML(t('waAlso'))}</a>` : '';
     submit.disabled = true;
     const label = submit.textContent;
     submit.textContent = t('sending');
@@ -242,7 +246,7 @@ export default async function initBooking(root, config) {
       }
       const result = await sendEnquiry(config, payload);
       if (result.ok) {
-        finish(t('doneTitle'), escapeHTML(t('doneText', { email: d.email })));
+        finish(t('doneTitle'), escapeHTML(t('doneText', { email: d.email })) + waButton);
         form.reset();
         render();
       } else if (result.reason === 'not-configured') {
@@ -257,7 +261,7 @@ export default async function initBooking(root, config) {
           }
         });
       } else {
-        alertBox.innerHTML = `<p>${escapeHTML(t('sendError'))}</p>`;
+        alertBox.innerHTML = `<p>${escapeHTML(t('sendError'))}${waButton}</p>`;
         alertBox.hidden = false;
         alertBox.focus();
       }

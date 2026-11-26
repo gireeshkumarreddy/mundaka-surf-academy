@@ -39,9 +39,9 @@
       "mapTitle": "Map: Mundaka Surf Academy, Erreka 6, Mundaka",
       "mapText": "The interactive map is Google Maps, which uses cookies: it loads when you press the button or accept cookies.",
       "mapLoad": "Open interactive map",
-      "windguruText": "Windguru wave, wind and period forecast for Mundaka. It loads when you accept cookies or press the button.",
-      "aemetText": "AEMET weather forecast for Mundaka. It loads when you accept cookies or press the button.",
-      "forecastLoad": "Show forecast",
+      "windguruText": "Waves (height, period and direction), wind and temperature in Mundaka, hour by hour, from Windguru. Press the button to see it: Windguru uses cookies, so it only loads when you ask or accept cookies.",
+      "aemetText": "The weather in Mundaka for the next few days, from AEMET. Press the button to see it: AEMET uses cookies, so it only loads when you ask or accept cookies.",
+      "forecastLoad": "Show the forecast",
       "mapAlt": "Map of the Erreka area in Mundaka showing Mundaka Surf Academy (Erreka 6)"
     },
     "more": {
@@ -165,7 +165,7 @@
     "title": "Instructors",
     "lead": "Qualified instructors with extensive work experience in the waters of Mundaka.",
     "gridTitle": "Instructor cards",
-    "note": "To come: Roberto’s and Ur’s photos, and the group photo (in the academy’s next delivery).",
+    "note": "To come: the group photo of all the instructors (in the academy’s next delivery).",
     "end": "Want to know who will teach you? Message us.",
     "photoPending": "Photo to come",
     "bioPending": "Bio to come",
@@ -622,7 +622,7 @@
     },
     "recipients": {
       "title": "Who receives it",
-      "text": "Your data is never sold or used for advertising. On the academy’s behalf it may be processed by the service that delivers the website’s emails and, when there is online payment, by the payment provider (Stripe)."
+      "text": "Your data is never sold or used for advertising. On the academy’s behalf it may be processed by the service that delivers the website’s messages and bookings to the academy (FormSubmit, formsubmit.co) and, when there is online payment, by the payment provider (Stripe)."
     },
     "rights": {
       "title": "Your rights",
@@ -686,8 +686,8 @@
     "submit": "Send booking",
     "submitPay": "Pay {amount} deposit",
     "sending": "Sending…",
-    "doneTitle": "Booking received!",
-    "doneText": "We have emailed a summary to {email}. We will confirm the time according to the tide.",
+    "doneTitle": "Request sent!",
+    "doneText": "The academy has received your request and will confirm the booking and time (depending on the tide) by email to {email} or on WhatsApp.",
     "demoTitle": "Demo mode",
     "demoText": "Booking delivery is not set up yet: nothing was sent or charged. You can copy the summary or send it on WhatsApp.",
     "copy": "Copy summary",
@@ -726,7 +726,9 @@
     "submitRequest": "Send request",
     "showMore": "See more photos ({n})",
     "showLess": "See fewer photos",
-    "maxPeopleOne": "Inclusive lessons are one-to-one: 1 person per lesson."
+    "maxPeopleOne": "Inclusive lessons are one-to-one: 1 person per lesson.",
+    "waAlso": "Send it on WhatsApp too",
+    "waContact": "Hello! I am {name}."
   },
   "location": {
     "facts": {

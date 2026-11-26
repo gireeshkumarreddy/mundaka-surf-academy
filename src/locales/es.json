@@ -39,9 +39,9 @@
       "mapTitle": "Mapa: Mundaka Surf Academy, Erreka 6, Mundaka",
       "mapText": "El mapa interactivo es de Google Maps, que usa cookies: se carga al pulsar el botón o al aceptar las cookies.",
       "mapLoad": "Ver mapa interactivo",
-      "windguruText": "Previsión de olas, viento y periodo de Windguru para Mundaka. Se carga al aceptar las cookies o al pulsar el botón.",
-      "aemetText": "Previsión del tiempo de AEMET para Mundaka. Se carga al aceptar las cookies o al pulsar el botón.",
-      "forecastLoad": "Ver previsión",
+      "windguruText": "Las olas (altura, periodo y dirección), el viento y la temperatura en Mundaka, hora a hora, de Windguru. Pulsa el botón para verlo: Windguru usa cookies, así que solo se carga si lo pides o aceptas las cookies.",
+      "aemetText": "El tiempo en Mundaka para los próximos días, de AEMET. Pulsa el botón para verlo: AEMET usa cookies, así que solo se carga si lo pides o aceptas las cookies.",
+      "forecastLoad": "Ver la previsión",
       "mapAlt": "Mapa de la zona de Erreka, en Mundaka, con la ubicación de Mundaka Surf Academy (Erreka 6)"
     },
     "more": {
@@ -165,7 +165,7 @@
     "title": "Instructores",
     "lead": "Monitores titulados y con amplia experiencia laboral en los mares de Mundaka.",
     "gridTitle": "Fichas de los instructores",
-    "note": "Pendiente: las fotos de Roberto y de Ur, y la foto de grupo (llegan en el próximo envío de la academia).",
+    "note": "Pendiente: la foto de grupo de todos los monitores (llega en el próximo envío de la academia).",
     "end": "¿Quieres saber con quién harás tu clase? Escríbenos.",
     "photoPending": "Foto pendiente",
     "bioPending": "Biografía pendiente",
@@ -622,7 +622,7 @@
     },
     "recipients": {
       "title": "Quién los recibe",
-      "text": "Tus datos nunca se venden ni se usan para publicidad. Pueden tratarlos, por cuenta de la academia, el servicio que entrega los emails de la web y, cuando hay pago online, el proveedor de pagos (Stripe)."
+      "text": "Tus datos nunca se venden ni se usan para publicidad. Pueden tratarlos, por cuenta de la academia, el servicio que entrega a la academia los mensajes y reservas de la web (FormSubmit, formsubmit.co) y, cuando hay pago online, el proveedor de pagos (Stripe)."
     },
     "rights": {
       "title": "Tus derechos",
@@ -686,8 +686,8 @@
     "submit": "Enviar reserva",
     "submitPay": "Pagar depósito de {amount}",
     "sending": "Enviando…",
-    "doneTitle": "¡Reserva recibida!",
-    "doneText": "Te hemos enviado un email a {email} con el resumen. Te confirmaremos la hora según la marea.",
+    "doneTitle": "¡Solicitud enviada!",
+    "doneText": "La academia ha recibido tu solicitud y te confirmará la reserva y la hora (según la marea) por email a {email} o por WhatsApp.",
     "demoTitle": "Modo demostración",
     "demoText": "La entrega de reservas aún no está configurada: no se ha enviado ni cobrado nada. Puedes copiar el resumen o enviarlo por WhatsApp.",
     "copy": "Copiar resumen",
@@ -726,7 +726,9 @@
     "submitRequest": "Enviar solicitud",
     "showMore": "Ver más fotos ({n})",
     "showLess": "Ver menos fotos",
-    "maxPeopleOne": "Las clases inclusivas son individuales: 1 persona por clase."
+    "maxPeopleOne": "Las clases inclusivas son individuales: 1 persona por clase.",
+    "waAlso": "Enviar también por WhatsApp",
+    "waContact": "¡Hola! Soy {name}."
   },
   "location": {
     "facts": {

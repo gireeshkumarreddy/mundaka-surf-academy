@@ -91,7 +91,7 @@
     },
     {
       "id": "roberto-suarez",
-      "photo": null,
+      "photo": "roberto-portrait",
       "name": {
         "es": "Roberto Suárez García",
         "en": "Roberto Suárez García"
@@ -139,7 +139,7 @@
     },
     {
       "id": "ur-ugalde",
-      "photo": null,
+      "photo": "ur-portrait",
       "name": {
         "es": "Ur Ugalde Larrauri",
         "en": "Ur Ugalde Larrauri"

@@ -41,7 +41,7 @@
     </div>
     <div class="class-grid">
       <a class="class-card" href="{{link:lessons#group}}">
-        <span class="class-card__img">{{img name=stock-group-women sizes="(min-width: 1100px) 23vw, (min-width: 700px) 45vw, 40vw" alt=-}}</span>
+        <span class="class-card__img"><video class="class-card__video" muted loop playsinline preload="none" poster="{{src:lesson-group-card@640}}" data-inview-video data-src="{{asset:video/lesson-group-card.mp4}}" aria-hidden="true"></video></span>
         <span class="class-card__body"><span class="class-card__num">01</span><span class="class-card__name">{{lessons.group.name}}</span><span class="class-card__text">{{lessons.group.short}}</span><span class="class-card__price">{{common.from}} <strong>{{from-price:group}}</strong> {{lessons.table.perPersonDay}}</span><span class="class-card__more">{{home.classes.more}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
       </a>
       <a class="class-card" href="{{link:lessons#advanced}}">
@@ -49,7 +49,7 @@
         <span class="class-card__body"><span class="class-card__num">02</span><span class="class-card__name">{{lessons.advanced.name}}</span><span class="class-card__text">{{lessons.advanced.short}}</span><span class="class-card__price">{{common.from}} <strong>{{from-price:advanced}}</strong> {{lessons.table.perPersonDay}}</span><span class="class-card__more">{{home.classes.more}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
       </a>
       <a class="class-card" href="{{link:lessons#private}}">
-        <span class="class-card__img">{{img name=stock-private sizes="(min-width: 1100px) 23vw, (min-width: 700px) 45vw, 40vw" alt=-}}</span>
+        <span class="class-card__img"><video class="class-card__video" muted loop playsinline preload="none" poster="{{src:lesson-private-card@640}}" data-inview-video data-src="{{asset:video/lesson-private-card.mp4}}" aria-hidden="true"></video></span>
         <span class="class-card__body"><span class="class-card__num">03</span><span class="class-card__name">{{lessons.private.name}}</span><span class="class-card__text">{{lessons.private.short}}</span><span class="class-card__price">{{common.from}} <strong>{{from-price:private}}</strong> {{lessons.table.perPersonHour}}</span><span class="class-card__more">{{home.classes.more}}<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
       </a>
       <a class="class-card" href="{{link:lessons#inclusive}}">
@@ -89,13 +89,13 @@
       <article class="panel">
         <h3 class="panel__title"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg>{{surf.waves.title}} <span>· Windguru</span></h3>
         <div class="embed embed--windguru" data-embed data-group="forecast" data-kind="windguru" data-spot="{{config.forecast.windguruSpot}}" data-hours="48" data-lang="{{locale}}">
-          <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-wave"/></svg><p class="embed__text">{{common.embed.windguruText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button><a class="embed__alt" href="{{config.forecast.windguru}}" target="_blank" rel="noopener">windguru.cz</a></div>
+          <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-wave"/></svg><p class="embed__text">{{common.embed.windguruText}}</p><button type="button" class="btn btn--teal" data-embed-load>{{common.embed.forecastLoad}}</button><a class="embed__alt" href="{{config.forecast.windguru}}" target="_blank" rel="noopener">windguru.cz</a></div>
         </div>
       </article>
       <article class="panel">
         <h3 class="panel__title"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>{{surf.weather.title}} <span>· AEMET</span></h3>
         <div class="embed embed--aemet" data-embed data-group="forecast" data-src="{{config.forecast.aemetWidget}}" data-title="{{surf.weather.frameTitle}}">
-          <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-sun"/></svg><p class="embed__text">{{common.embed.aemetText}}</p><button type="button" class="btn btn--teal btn--sm" data-embed-load>{{common.embed.forecastLoad}}</button><a class="embed__alt" href="{{config.forecast.aemet}}" target="_blank" rel="noopener">aemet.es</a></div>
+          <div class="embed__ph"><svg class="icon embed__icon" aria-hidden="true"><use href="#i-sun"/></svg><p class="embed__text">{{common.embed.aemetText}}</p><button type="button" class="btn btn--teal" data-embed-load>{{common.embed.forecastLoad}}</button><a class="embed__alt" href="{{config.forecast.aemet}}" target="_blank" rel="noopener">aemet.es</a></div>
         </div>
       </article>
     </div>

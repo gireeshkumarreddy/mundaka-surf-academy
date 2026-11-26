@@ -5,22 +5,34 @@
 import { getConsent, onConsent } from './consent.js';
 
 let wgCount = 0;
+// Windguru models for Mundaka (spot 48688): 84 = GFS-Wave 16 km (wave height, period, direction), 100 = WG (wind, gusts,
+// temperature, clouds, rain)
+const WINDGURU = [
+  { m: 84, p: 'HTSGW,PERPW,DIRPW' },
+  { m: 100, p: 'WINDSPD,GUST,SMER,TMPE,CDC,APCP1s' },
+];
 
 function load(box) {
   if (box.classList.contains('is-loaded')) return;
   box.classList.add('is-loaded');
   if (box.dataset.kind === 'windguru') {
-    // the official Windguru widget: a marker script with a unique id, then the loader that puts the iframe after it
-    const uid = `wg_fwdg_${box.dataset.spot}_100_${Date.now()}${wgCount++}`;
-    const marker = document.createElement('script');
-    marker.id = uid;
-    marker.type = 'text/plain';
-    box.replaceChildren(marker);
-    const args = [`s=${box.dataset.spot}`, 'm=100', `uid=${uid}`, 'wj=knots', 'tj=c', 'waj=m', 'tij=cm', 'odh=0', 'doh=24', `fhours=${box.dataset.hours || 72}`, 'hrsm=2', 'vt=forecasts', `lng=${box.dataset.lang === 'en' ? 'en' : 'es'}`, 'idbs=1', 'p=WINDSPD,GUST,SMER,HTSGW,PERPW,DIRPW,TMPE,CDC,APCP1s'];
-    const s = document.createElement('script');
-    s.src = `https://www.windguru.cz/js/widget.php?${args.join('&')}`;
-    s.async = true;
-    box.append(s);
+    // the official Windguru widget: a marker script with a unique id, then the loader that puts the iframe after it.
+    // One widget shows one model, so two tables: waves from GFS-Wave (the wind model has no wave rows), then wind.
+    box.replaceChildren();
+    for (const { m, p } of WINDGURU) {
+      const uid = `wg_fwdg_${box.dataset.spot}_${m}_${Date.now()}${wgCount++}`;
+      const marker = document.createElement('script');
+      marker.id = uid;
+      marker.type = 'text/plain';
+      const args = [`s=${box.dataset.spot}`, `m=${m}`, `uid=${uid}`, 'wj=knots', 'tj=c', 'waj=m', 'tij=cm', 'odh=0', 'doh=24', `fhours=${box.dataset.hours || 72}`, 'hrsm=2', 'vt=forecasts', `lng=${box.dataset.lang === 'en' ? 'en' : 'es'}`, 'idbs=1', `p=${p}`];
+      const s = document.createElement('script');
+      s.src = `https://www.windguru.cz/js/widget.php?${args.join('&')}`;
+      s.async = true;
+      const slot = document.createElement('div');
+      slot.className = 'embed__wg';
+      slot.append(marker, s);
+      box.append(slot);
+    }
     return;
   }
   const frame = document.createElement('iframe');

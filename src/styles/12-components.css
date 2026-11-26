@@ -37,6 +37,8 @@
 .embed--map iframe { position: absolute; inset: 0; height: 100%; }
 .embed--aemet iframe { height: 210px; }
 .embed--windguru.is-loaded { background: #fff; min-height: 0; overflow-x: auto; }
+.embed__wg + .embed__wg { margin-top: 0.75rem; } /* waves table, then wind */
+.embed--aemet:not(.is-loaded) { min-height: 270px; } /* room for the explanation and the button on narrow phones */
 .embed--tall:not(.is-loaded) { min-height: 360px; }
 .embed__ph { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 0.6rem; padding: 1.5rem; text-align: center;
   background: radial-gradient(circle at 20% 10%, rgba(160, 245, 238, 0.6), transparent 55%), radial-gradient(circle at 85% 90%, rgba(48, 203, 198, 0.25), transparent 50%), var(--aqua-50); }
